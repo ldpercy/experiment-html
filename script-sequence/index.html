@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>script sequence</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../css/default.css">
+	<script type="text/javascript" src="script-head.js"></script>
+</head>
+<body>
+	<script src="script-top.js"></script>
+	<h1>script sequence</h1>
+	<p>
+		In what order are scripts loaded and run?
+	</p>
+
+	<h2>Experiments</h2>
+	<ul>
+		<li>placement in document: head, body etc</li>
+		<li>order in document</li>
+		<li>inline or src</li>
+		<li>attributes: async, blocking, defer, fetchpriority</li>
+		<li>javascript modules</li>
+	</ul>
+
+	<p>
+		For some of these it will be a bit moot.
+		Rather than deferring to default browser behaviours it will be better to determine ordering properly and enforce it.
+	</p>
+
+	<script src="script-bottom.js"></script>
+</body>
+</html>
