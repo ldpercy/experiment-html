@@ -6,16 +6,12 @@
 			font-size: 20px
 		}
 
-		rect.frame {
+		rect {
 			stroke:blue;
 			stroke-width:2;
 		}
 
-		rect.box {
-			stroke:blue;
-			stroke-width:2;
-			fill:transparent;
-		}
+		rect.box { fill:transparent; }
 
 		.guideline {
 			stroke:orange;
@@ -23,7 +19,6 @@
 		}
 
 		text {
-			stroke:black;
 			fill: black;
 			text-anchor: middle;
 		}
@@ -40,14 +35,13 @@
 		</text>
 	</g>
 
-	<use href="#box" x="110" style="dominant-baseline: text-bottom"><title>text-bottom</title></use>
-	<use href="#box" x="220" style="dominant-baseline: middle"><title>middle</title></use>
-	<use href="#box" x="330" style="dominant-baseline: alphabetic"><title>alphabetic</title></use>
-	<use href="#box" x="440" style="dominant-baseline: ideographic"><title>ideographic</title></use>
-
-	<use href="#box" x="550" style="dominant-baseline: central"><title>central</title></use>
-	<use href="#box" x="660" style="dominant-baseline: mathematical"><title>mathematical</title></use>
-	<use href="#box" x="770" style="dominant-baseline: hanging"><title>hanging</title></use>
-	<use href="#box" x="880" style="dominant-baseline: text-top"><title>text-top</title></use>
+	<use href="#box" x="110" style="dominant-baseline: text-bottom">  <title>text-bottom</title></use>
+	<use href="#box" x="220" style="dominant-baseline: middle">       <title>middle</title></use>
+	<use href="#box" x="330" style="dominant-baseline: alphabetic">   <title>alphabetic</title></use>
+	<use href="#box" x="440" style="dominant-baseline: ideographic">  <title>ideographic</title></use>
+	<use href="#box" x="550" style="dominant-baseline: central">      <title>central</title></use>
+	<use href="#box" x="660" style="dominant-baseline: mathematical"> <title>mathematical</title></use>
+	<use href="#box" x="770" style="dominant-baseline: hanging">      <title>hanging</title></use>
+	<use href="#box" x="880" style="dominant-baseline: text-top">     <title>text-top</title></use>
 
 </svg>
