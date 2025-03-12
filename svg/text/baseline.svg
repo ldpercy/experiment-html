@@ -1,0 +1,53 @@
+<svg width="100%" height="100%" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+
+	<style>
+		svg {
+			fill: whitesmoke;
+			font-size: 20px
+		}
+
+		rect.frame {
+			stroke:blue;
+			stroke-width:2;
+		}
+
+		rect.box {
+			stroke:blue;
+			stroke-width:2;
+			fill:transparent;
+		}
+
+		.guideline {
+			stroke:orange;
+			stroke-width:1;
+		}
+
+		text {
+			stroke:black;
+			fill: black;
+			text-anchor: middle;
+		}
+	</style>
+
+	<rect x="5" y="5" width="990" height="390" class="frame"/>
+
+	<rect x="10" y="50" width="980" height="10" class="guideline"/>
+
+	<g id="box" class="text1" transform="translate(10, 10)">
+		<rect x="0" y="0" width="100" height="100" class="box"/>
+		<text x="50" y="50">
+			String 1
+		</text>
+	</g>
+
+	<use href="#box" x="110" style="dominant-baseline: text-bottom"><title>text-bottom</title></use>
+	<use href="#box" x="220" style="dominant-baseline: middle"><title>middle</title></use>
+	<use href="#box" x="330" style="dominant-baseline: alphabetic"><title>alphabetic</title></use>
+	<use href="#box" x="440" style="dominant-baseline: ideographic"><title>ideographic</title></use>
+
+	<use href="#box" x="550" style="dominant-baseline: central"><title>central</title></use>
+	<use href="#box" x="660" style="dominant-baseline: mathematical"><title>mathematical</title></use>
+	<use href="#box" x="770" style="dominant-baseline: hanging"><title>hanging</title></use>
+	<use href="#box" x="880" style="dominant-baseline: text-top"><title>text-top</title></use>
+
+</svg>
