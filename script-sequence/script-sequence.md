@@ -11,7 +11,6 @@ https://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html
 
 ### *script* without any attributes
 
-
 > The HTML file will be parsed until the script file is hit, at that point parsing will stop and a request will be made to fetch the file (if it’s external). The script will then be executed before parsing is resumed.
 
 ### async
@@ -20,7 +19,6 @@ https://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html
 
 
 ### defer
-
 
 > **defer** downloads the file during HTML parsing and will only execute it after the parser has completed. defer scripts are also guaranteed to execute in the order that they appear in the document.
 
