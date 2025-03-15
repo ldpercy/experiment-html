@@ -27,6 +27,13 @@ https://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html
 
 https://medium.com/javascript-zone/a-deep-dive-into-htmls-new-blocking-attribute-12ccb3243341
 
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/blocking
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#blocking
+
+Seems to only support render at the moment:
+
+	blocking="render"
 
 
 Conclusion
