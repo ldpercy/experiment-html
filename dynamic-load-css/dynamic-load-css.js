@@ -3,7 +3,6 @@ function bodyOnload() {
 	log('body onload');
 
 	dynamicStylesheet = document.getElementById('dynamicStylesheet');
-	dynamicScript = document.getElementById('dynamicScript');
 
 	let folder = getParameterByName('folder');
 
