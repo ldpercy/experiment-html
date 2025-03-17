@@ -44,7 +44,7 @@ function addNewStylesheet(url)
 {
 	let linkElement = document.createElement('link');
 	linkElement.rel = "stylesheet";
-	linkElement.type = "text/css";
+	//linkElement.type = "text/css";
 	linkElement.href = url;
 	document.getElementsByTagName('head')[0].appendChild(linkElement)
 }

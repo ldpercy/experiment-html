@@ -1,1 +1,4 @@
-* {color: red}
+body * {
+	color: red;
+	font-family:monospace;
+}
