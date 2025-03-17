@@ -9,14 +9,27 @@
 	<script defer src="util.js"></script>
 	<script defer src="dynamic-load.js"></script>
 
+	<link id="dynamicStylesheet" rel="stylesheet" href="">
+
 </head>
 <body onload="onload();"">
 	<h1>dynamic load</h1>
 
+	<h2>Navigate:</h2>
 	<p>
-		sdfsaf
+		<a href="index.html">index.html</a>
+		<a href="index.html?folder=abc">index.html?folder=abc</a>
+		<a href="index.html?folder=def">index.html?folder=def</a>
 	</p>
 
+	<h2>Live:</h2>
+	<p>
+		<button onclick="switchStylesheet(document.getElementById('dynamicStylesheet'),'')">none</button>
+		<button onclick="switchStylesheet(document.getElementById('dynamicStylesheet'),'abc/style.css')">abc/style.css</button>
+		<button onclick="switchStylesheet(document.getElementById('dynamicStylesheet'),'def/style.css')">def/style.css</button>
+	</p>
+
+	<h2>Output:</h2>
 	<textarea id="output" rows="10"></textarea>
 
 </body>

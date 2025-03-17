@@ -38,11 +38,28 @@ function output(text) {
 }
 
 
-function loadCSS(url)
+
+
+function addNewStylesheet(url)
 {
-	let link = document.createElement("link");
-	link.rel = "stylesheet";
-	link.type = "text/css";
-	link.href = url;
-	document.getElementsByTagName("head")[0].appendChild(link)
+	let linkElement = document.createElement('link');
+	linkElement.rel = "stylesheet";
+	linkElement.type = "text/css";
+	linkElement.href = url;
+	document.getElementsByTagName('head')[0].appendChild(linkElement)
 }
+
+
+
+function switchStylesheet(linkElement, url) {
+	if 	(linkElement.nodeName == "LINK" && linkElement.rel == "stylesheet" )
+	{
+		linkElement.href = url;
+	}
+	else
+	{
+		output('Element not stylesheet link');
+	}
+}
+
+
