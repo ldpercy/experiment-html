@@ -1,7 +1,7 @@
-Dynamic Load
-============
+Dynamic Load CSS
+================
 
-Experiments in dynamically loading/changing styles and scripts.
+Experiments in dynamically loading/changing styles.
 
 
 Styles
