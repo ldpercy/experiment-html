@@ -4,33 +4,55 @@
 	<title>dynamic load</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="../style/default.css">
 
+	<!-- core items -->
+	<link rel="stylesheet" href="../style/default.css">
 	<script defer src="util.js"></script>
 	<script defer src="dynamic-load.js"></script>
 
+	<!-- reloadable items  -->
 	<link id="dynamicStylesheet" rel="stylesheet" href="">
 
-</head>
-<body onload="onload();"">
-	<h1>dynamic load</h1>
+	<!---
+	<script id="dynamicScript" src=""></script>
+	src change doesn't work
+	--->
 
-	<h2>Navigate:</h2>
+
+</head>
+<body onload="bodyOnload();"">
+	<h1><a href="">Dynamic Load</a></h1>
+
+	<h2>Load page with folder:</h2>
 	<p>
 		<a href="index.html">index.html</a>
 		<a href="index.html?folder=abc">index.html?folder=abc</a>
 		<a href="index.html?folder=def">index.html?folder=def</a>
 	</p>
 
-	<h2>Live:</h2>
+	<h2>Change stylesheet directly:</h2>
 	<p>
-		<button onclick="switchStylesheet(document.getElementById('dynamicStylesheet'),'')">none</button>
-		<button onclick="switchStylesheet(document.getElementById('dynamicStylesheet'),'abc/style.css')">abc/style.css</button>
-		<button onclick="switchStylesheet(document.getElementById('dynamicStylesheet'),'def/style.css')">def/style.css</button>
+		<button onclick="switchStylesheet(dynamicStylesheet,'')">none</button>
+		<button onclick="switchStylesheet(dynamicStylesheet,'abc/style.css')">abc/style.css</button>
+		<button onclick="switchStylesheet(dynamicStylesheet,'def/style.css')">def/style.css</button>
 	</p>
 
-	<h2>Output:</h2>
-	<textarea id="output" rows="10"></textarea>
+
+	<h2>Load script:</h2>
+	<p>
+		<button onclick="loadScript('', null)">none</button>
+		<button onclick="loadScript('abc/script.js', scriptLoaded('abc'))">abc/script.js</button>
+		<button onclick="loadScript('def/script.js', scriptLoaded('def'))">def/script.js</button>
+	</p>
+	<p>
+		<button onclick="loadScript('', null)">none</button>
+		<button onclick="loadScript('abc/script.js',)">abc/script.js</button>
+		<button onclick="loadScript('def/script.js',)">def/script.js</button>
+	</p>
+
+
+	<h2>Log:</h2>
+	<pre id="log"></pre>
 
 </body>
 </html>

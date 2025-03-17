@@ -15,6 +15,43 @@ function getParameterByName(name)
 
 
 
+
+function log(text) {
+	console.log(text);
+	document.getElementById('log').innerHTML += `${text}\n`;
+}
+
+
+/* addNewStylesheet
+as these appear later in the document they override styles before it
+*/
+function addNewStylesheet(url)
+{
+	let linkElement = document.createElement('link');
+	linkElement.rel = "stylesheet";
+	//linkElement.type = "text/css";
+	linkElement.href = url;
+	document.getElementsByTagName('head')[0].appendChild(linkElement)
+}
+
+
+/* switchStylesheet
+*/
+function switchStylesheet(linkElement, url) {
+	log(`${linkElement.id} ${url}`);
+	if 	(linkElement.nodeName == "LINK" && linkElement.rel == "stylesheet" )
+	{
+		linkElement.href = url;
+	}
+	else
+	{
+		log('Element not stylesheet link');
+	}
+}
+
+
+
+
 function loadScript(url, callback)
 {
 	// adding the script element to the head as suggested before
@@ -32,34 +69,32 @@ function loadScript(url, callback)
 	head.appendChild(script);
 }
 
-
-function output(text) {
-	document.getElementById('output').innerHTML += `${text}\n`;
-}
-
-
-
-
-function addNewStylesheet(url)
-{
-	let linkElement = document.createElement('link');
-	linkElement.rel = "stylesheet";
-	//linkElement.type = "text/css";
-	linkElement.href = url;
-	document.getElementsByTagName('head')[0].appendChild(linkElement)
-}
-
-
-
-function switchStylesheet(linkElement, url) {
-	if 	(linkElement.nodeName == "LINK" && linkElement.rel == "stylesheet" )
+/* switchScript
+Not working - doesn't look like you can just change the src.
+*/
+function switchScript(scriptElement, url, callback) {
+	log(`${scriptElement.id} ${url} ${callback}`);
+	if 	(scriptElement.nodeName == "SCRIPT")
 	{
-		linkElement.href = url;
+		scriptElement.src = url;
+		if (callback) callback();
 	}
 	else
 	{
-		output('Element not stylesheet link');
+		log('Element not link');
 	}
 }
 
+/* loadScript
+*/
+function loadScript(scriptUrl, callback) {
+	log(`${scriptUrl} ${callback}`);
 
+	var scriptElement = document.createElement('script');
+	//if (callback) scriptElement.onload = callback()
+	if (callback) scriptElement.addEventListener('load', callback);
+	scriptElement.addEventListener('readystatechange', scriptReadystatechange);	// doesn't seem to fire
+	scriptElement.setAttribute('src', scriptUrl);
+
+	document.head.appendChild(scriptElement);
+};

@@ -1,15 +1,34 @@
 
 
+function bodyOnload() {
+	log('body onload');
 
-function onload() {
+	dynamicStylesheet = document.getElementById('dynamicStylesheet');
+	dynamicScript = document.getElementById('dynamicScript');
 
-	output('onload');
 
 	let folder = getParameterByName('folder');
 
-	output(folder);
+	log(folder);
 
 	let stylesheetUrl = `./${folder}/style.css`
-	output(stylesheetUrl);
-	addNewStylesheet(stylesheetUrl)
+	log(stylesheetUrl);
+	// addNewStylesheet(stylesheetUrl)
+
+
+	dynamicStylesheet = document.getElementById('dynamicStylesheet');
+	switchStylesheet(dynamicStylesheet,stylesheetUrl)
+}
+
+
+
+// This fires before anything in the script itself, but cannot be defined in the loaded script
+function scriptLoaded(message) {
+	log(`scriptLoaded: ${message}`);
+	//dynScriptLoaded();
+}
+
+
+function scriptReadystatechange(message) {
+	log(`scriptReadystatechange: ${message}`);
 }
