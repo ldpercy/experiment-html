@@ -10,14 +10,30 @@
 	<script defer src="../util/util.js"></script>
 	<script defer src="dynamic-load.js"></script>
 
-	<!---
-	<script id="dynamicScript" src=""></script>
-	src change doesn't work
-	--->
+	<!--- src change doesn't work --->
+	<script
+		defer
+		id="srcScript"
+		src="./script/placeholder.js"
+		onload="log('srcScript: onload');"
+		onreadystatechange="log('srcScript: onreadystatechange');"
+		>
+	</script>
+
+	<script
+		defer
+		id="replaceScript"
+		src="./script/placeholder.js"
+		>
+	</script>
 
 </head>
-<body onload="bodyOnload();"">
-	<h1><a href="">Dynamic Load JS</a></h1>
+<body
+	onload="bodyOnload();"
+	onreadystatechange="log('body: onreadystatechange');"
+	>
+
+	<h1><a href="index.html">Dynamic Load JS</a></h1>
 
 	<h2>Load page with folder:</h2>
 	<p>
@@ -26,16 +42,31 @@
 		<a href="index.html?folder=def">index.html?folder=def</a>
 	</p>
 
-	<h2>Load script:</h2>
+	<h2>Replace script:</h2>
 	<p>
-		<button onclick="loadScript('', null)">none</button>
-		<button onclick="loadScript('abc/script.js', scriptLoaded('abc'))">abc/script.js</button>
-		<button onclick="loadScript('def/script.js', scriptLoaded('def'))">def/script.js</button>
+		<button onclick="replaceScript('replaceScript', '', null)">none</button>
+		<button onclick="replaceScript('replaceScript', 'script/abc.js', scriptLoaded('abc'))">abc/script.js</button>
+		<button onclick="replaceScript('replaceScript', 'script/def.js', scriptLoaded('def'))">def/script.js</button>
 	</p>
 	<p>
-		<button onclick="loadScript('', null)">none</button>
-		<button onclick="loadScript('abc/script.js',)">abc/script.js</button>
-		<button onclick="loadScript('def/script.js',)">def/script.js</button>
+		<button onclick="replaceScript('replaceScript', '', null)">none</button>
+		<button onclick="replaceScript('replaceScript', 'script/abc.js', scriptAnnounce)">abc/script.js</button>
+		<button onclick="replaceScript('replaceScript', 'script/def.js', scriptAnnounce)">def/script.js</button>
+	</p>
+
+
+	<h2>Append script:</h2>
+	<p>
+		<button onclick="appendScript('', null)">none</button>
+		<button onclick="appendScript('script/abc.js', scriptLoaded('abc'))">abc/script.js</button>
+		<button onclick="appendScript('script/def.js', scriptLoaded('def'))">def/script.js</button>
+	</p>
+
+	<h2>Switch script:</h2>
+	<p>
+		<button onclick="updateSrc('script/placeholder.js', null)">script/placeholder.js</button>
+		<button onclick="updateSrc('script/abc.js', null)">abc/script.js</button>
+		<button onclick="updateSrc('script/def.js', null)">def/script.js</button>
 	</p>
 
 
