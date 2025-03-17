@@ -14,5 +14,16 @@ body {
 
 textarea {
 	width:90%;
-	height:5rlh;
+	height:auto;
+	min-height:5rlh;
+}
+
+
+pre#log {
+	display: pre;
+	width:90%;
+	height:auto;
+	min-height:5rlh;
+	border: 1ex silver inset;
+	padding:1em;
 }
