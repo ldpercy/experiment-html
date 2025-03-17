@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>dynamic load</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- external -->
+	<link rel="stylesheet" href="../style/default.css">
+	<script defer src="../util/util.js"></script>
+
+	<!-- core -->
+	<script defer src="dynamic-load-css.js"></script>
+
+	<!-- reloadable -->
+	<link id="dynamicStylesheet" rel="stylesheet" href="">
+
+</head>
+<body onload="bodyOnload();"">
+	<h1><a href="">Dynamic Load CSS</a></h1>
+
+	<h2>Load page with folder:</h2>
+	<p>
+		<a href="index.html">index.html</a>
+		<a href="index.html?folder=abc">index.html?folder=abc</a>
+		<a href="index.html?folder=def">index.html?folder=def</a>
+	</p>
+
+	<h2>Change stylesheet directly:</h2>
+	<p>
+		<button onclick="switchStylesheet(dynamicStylesheet,'')">none</button>
+		<button onclick="switchStylesheet(dynamicStylesheet,'abc/style.css')">abc/style.css</button>
+		<button onclick="switchStylesheet(dynamicStylesheet,'def/style.css')">def/style.css</button>
+	</p>
+
+	<h2>Log:</h2>
+	<pre id="log"></pre>
+
+</body>
+</html>
