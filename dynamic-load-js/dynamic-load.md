@@ -4,11 +4,6 @@ Dynamic Load
 Experiments in dynamically loading/changing styles and scripts.
 
 
-Styles
-------
-Updating the href attribute of a stylesheet link element works fine.
-
-
 Scripts
 -------
 Doesn't look like you can just change the src URL as you can with styles, most comments recommend creating a new script tag.

@@ -10,14 +10,10 @@
 	<script defer src="../util/util.js"></script>
 	<script defer src="dynamic-load.js"></script>
 
-	<!-- reloadable items  -->
-	<link id="dynamicStylesheet" rel="stylesheet" href="">
-
 	<!---
 	<script id="dynamicScript" src=""></script>
 	src change doesn't work
 	--->
-
 
 </head>
 <body onload="bodyOnload();"">
@@ -29,14 +25,6 @@
 		<a href="index.html?folder=abc">index.html?folder=abc</a>
 		<a href="index.html?folder=def">index.html?folder=def</a>
 	</p>
-
-	<h2>Change stylesheet directly:</h2>
-	<p>
-		<button onclick="switchStylesheet(dynamicStylesheet,'')">none</button>
-		<button onclick="switchStylesheet(dynamicStylesheet,'abc/style.css')">abc/style.css</button>
-		<button onclick="switchStylesheet(dynamicStylesheet,'def/style.css')">def/style.css</button>
-	</p>
-
 
 	<h2>Load script:</h2>
 	<p>
