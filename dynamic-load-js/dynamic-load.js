@@ -1,4 +1,9 @@
 
+
+// setup log
+log = createPageLog(document.getElementById('prelog'));
+
+
 // bodyOnload
 function bodyOnload() {
 	log('body: onload');

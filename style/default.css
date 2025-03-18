@@ -19,7 +19,7 @@ textarea {
 }
 
 
-pre#log {
+pre.log {
 	display: pre;
 	width:90%;
 	height:auto;

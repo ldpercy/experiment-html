@@ -13,9 +13,29 @@ function getParameterByName(name)
 }
 
 
-
-function log(text) {
-	console.log(text);
-	document.getElementById('log').innerHTML += `${text}\n`;
+/* createLog
+Returns a log function that logs to the console with performance timing.
+Use:
+	mylog = createLog();
+*/
+function createLog() {
+	return (text) => {
+		entry = `${performance.now()}: ${text}`
+		console.log(entry);
+	}
 }
 
+
+/* createPageLog
+Returns a log function that logs to a page element (as well as to the console).
+Includes performance timing.
+Use:
+	mylog = createPageLog(myLogElement);
+*/
+function createPageLog(logElement) {
+	return (text) => {
+		entry = `${performance.now()}: ${text}`
+		console.log(entry);
+		logElement.innerHTML += `${entry}\n`;
+	}
+}
