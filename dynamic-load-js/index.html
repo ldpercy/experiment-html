@@ -34,12 +34,13 @@
 
 	<h1><a href="index.html">Dynamic Load JS</a></h1>
 
-	<h2>Load page with folder:</h2>
-	<p>
-		<a href="index.html">index.html</a>
-		<a href="index.html?folder=abc">index.html?folder=abc</a>
-		<a href="index.html?folder=def">index.html?folder=def</a>
-	</p>
+	<h2>Load page with parameter:</h2>
+	<ul>
+		<li><a href="index.html?scriptname=foobar">index.html?scriptname=foobar</a></li>
+		<li><a href="index.html?scriptname=abc">index.html?scriptname=abc</a></li>
+		<li><a href="index.html?scriptname=def">index.html?scriptname=def</a></li>
+		<li><a href="index.html?scriptname=;--malicious*script">index.html?scriptname=;--malicious*script</a></li>
+	</ul>
 
 	<h2>Replace script - local callback</h2>
 	<p>
@@ -55,39 +56,39 @@
 	</p>
 	<h2>Replace script - remote callback</h2>
 	<p>
-		<button onclick="replaceScript('repscr-123', '', ()=>(scriptAnnounce('empty')) )">
+		<button onclick="replaceScript('repscr-123', '', ()=>(scriptAnnounce()) )">
 			src attribute ''
 		</button>
-		<button onclick="replaceScript('repscr-123', 'script/abc.js', ()=>(scriptAnnounce('abc')) )">
+		<button onclick="replaceScript('repscr-123', 'script/abc.js', ()=>(scriptAnnounce()) )">
 			abc/script.js
 		</button>
-		<button onclick="replaceScript('repscr-123', 'script/def.js', ()=>(scriptAnnounce('def')) )">
+		<button onclick="replaceScript('repscr-123', 'script/def.js', ()=>(scriptAnnounce()) )">
 			def/script.js
 		</button>
 	</p>
 
 	<h2>Append script:</h2>
 	<p>
-		<button onclick="appendScript('', null)">
+		<button onclick="appendScript('', ()=>(scriptAnnounce()) )">
 			src attribute ''
 		</button>
-		<button onclick="appendScript('script/abc.js', scriptOnload('abc'))">
+		<button onclick="appendScript('script/abc.js', ()=>(scriptAnnounce()) )">
 			abc/script.js
 		</button>
-		<button onclick="appendScript('script/def.js', scriptOnload('def'))">
+		<button onclick="appendScript('script/def.js', ()=>(scriptAnnounce()) )">
 			def/script.js
 		</button>
 	</p>
 
-	<h2>Change src:</h2>
+	<h2>Change src (doesn't work):</h2>
 	<p>
-		<button onclick="changeSrc('script/placeholder.js', null)">
+		<button onclick="changeSrc('script/placeholder.js', () => (scriptOnload('empty')) )">
 			script/placeholder.js
 		</button>
-		<button onclick="changeSrc('script/abc.js', null)">
+		<button onclick="changeSrc('script/abc.js', () => (scriptOnload('abc')) )">
 			abc/script.js
 		</button>
-		<button onclick="changeSrc('script/def.js', null)">
+		<button onclick="changeSrc('script/def.js', () => (scriptOnload('abc')) )">
 			def/script.js
 		</button>
 	</p>

@@ -3,29 +3,42 @@
 // setup log
 log = createPageLog(document.getElementById('prelog'));
 
+goodScriptname = /^[A-Za-z0-9-]+$/;
+
 
 // bodyOnload
 function bodyOnload() {
 	console.clear();
 	log('body: onload');
 
-	let folder = getParameterByName('folder');
-	log(`folder: ${folder}`);
+	// scriptname parameter
+	let scriptname = getParameterByName('scriptname');
+	log(`parameter-scriptname:  ${scriptname}`);
 
+	if (scriptname)
+	{
+		if (scriptname.match(goodScriptname)){
+			log('scriptname good');
+			replaceScript('repscr-123', `script/${scriptname}.js`, ()=>(scriptAnnounce()) )
+		}
+		else {
+			log('scriptname bad');
+		}
+	}
 }
 
 
 
 /* changeSrc
-Not working - doesn't look like you can just change the src.
+Doesn't work - src change alone seems insufficient.
+Looks like the load event only fires for *new* script tags.
 */
 function changeSrc(url, callback) {
 	log(`changeSrc: ${url} ${callback}`);
 	changeSrcElement = document.getElementById('changeSrc');
-	// changeSrcElement.src = url;
+	changeSrcElement.addEventListener('load', callback);
 	changeSrcElement.removeAttribute('src');
 	changeSrcElement.setAttribute('src',url);
-	//if (callback) callback();
 }
 
 
