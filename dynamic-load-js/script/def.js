@@ -1,6 +1,6 @@
 // def script
 
-log('def: load');
+log('def: run');
 
 function scriptAnnounce() {
 	log('def: scriptAnnounce');

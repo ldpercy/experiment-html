@@ -1,7 +1,6 @@
 // abc script
 
-log('abc: load');
-
+log('abc: run');
 
 function scriptAnnounce() {
 	log('abc: scriptAnnounce');
@@ -17,4 +16,4 @@ function abcTest() {
 	log('abc test');
 }
 
-abcTest()
+

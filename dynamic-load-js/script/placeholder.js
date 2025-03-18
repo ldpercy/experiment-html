@@ -1,3 +1,3 @@
 // placeholder script
 
-log('script: placeholder');
+log('placeholder: run');

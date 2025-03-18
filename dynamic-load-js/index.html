@@ -10,20 +10,21 @@
 	<script defer src="../util/util.js"></script>
 	<script defer src="dynamic-load.js"></script>
 
-	<!--- src change doesn't work --->
+	<!--- changeSrc doesn't work, no events are triggered --->
 	<script
 		defer
-		id="srcScript"
-		src="./script/placeholder.js"
-		onload="log('srcScript: onload');"
-		onreadystatechange="log('srcScript: onreadystatechange');"
+		id="changeSrc"
+		onload="log('changeSrc: onload');"
+		onreadystatechange="log('changeSrc: onreadystatechange');"
 		>
 	</script>
 
+	<!-- replaceScript -->
 	<script
 		defer
-		id="replaceScript"
-		src="./script/placeholder.js"
+		id="repscr-123"
+		onload="log('replaceScript: onload');"
+		onreadystatechange="log('replaceScript: onreadystatechange');"
 		>
 	</script>
 
@@ -42,33 +43,50 @@
 		<a href="index.html?folder=def">index.html?folder=def</a>
 	</p>
 
-	<h2>Replace script:</h2>
+	<h2>Replace script - local callback</h2>
 	<p>
-		<button onclick="replaceScript('replaceScript', '', null)">none</button>
-		<button onclick="replaceScript('replaceScript', 'script/abc.js', scriptLoaded('abc'))">abc/script.js</button>
-		<button onclick="replaceScript('replaceScript', 'script/def.js', scriptLoaded('def'))">def/script.js</button>
+		<button onclick="replaceScript('repscr-123', '', ()=>(scriptOnload('empty')) )">
+			src attribute ''
+		</button>
+		<button onclick="replaceScript('repscr-123', 'script/abc.js', () => (scriptOnload('abc')))">
+			abc/script.js
+		</button>
+		<button onclick="replaceScript('repscr-123', 'script/def.js', () => (scriptOnload('def')))">
+			def/script.js
+		</button>
 	</p>
+	<h2>Replace script - remote callback</h2>
 	<p>
-		<button onclick="replaceScript('replaceScript', '', null)">none</button>
-		<button onclick="replaceScript('replaceScript', 'script/abc.js', scriptAnnounce)">abc/script.js</button>
-		<button onclick="replaceScript('replaceScript', 'script/def.js', scriptAnnounce)">def/script.js</button>
+		<button onclick="replaceScript('repscr-123', '', ()=>(scriptAnnounce('empty')) )">
+			src attribute ''
+		</button>
+		<button onclick="replaceScript('repscr-123', 'script/abc.js', ()=>(scriptAnnounce('abc')) )">
+			abc/script.js
+		</button>
+		<button onclick="replaceScript('repscr-123', 'script/def.js', ()=>(scriptAnnounce('def')) )">
+			def/script.js
+		</button>
 	</p>
-
 
 	<h2>Append script:</h2>
 	<p>
-		<button onclick="appendScript('', null)">none</button>
-		<button onclick="appendScript('script/abc.js', scriptLoaded('abc'))">abc/script.js</button>
-		<button onclick="appendScript('script/def.js', scriptLoaded('def'))">def/script.js</button>
+		<button onclick="appendScript('', null)">
+			src attribute ''
+		</button>
+		<button onclick="appendScript('script/abc.js', scriptOnload('abc'))">
+			abc/script.js
+		</button>
+		<button onclick="appendScript('script/def.js', scriptOnload('def'))">
+			def/script.js
+		</button>
 	</p>
 
-	<h2>Switch script:</h2>
+	<h2>Change src:</h2>
 	<p>
-		<button onclick="updateSrc('script/placeholder.js', null)">script/placeholder.js</button>
-		<button onclick="updateSrc('script/abc.js', null)">abc/script.js</button>
-		<button onclick="updateSrc('script/def.js', null)">def/script.js</button>
+		<button onclick="changeSrc('script/placeholder.js', null)">script/placeholder.js</button>
+		<button onclick="changeSrc('script/abc.js', null)">abc/script.js</button>
+		<button onclick="changeSrc('script/def.js', null)">def/script.js</button>
 	</p>
-
 
 	<h2>Log:</h2>
 	<pre class="log" id="prelog"></pre>

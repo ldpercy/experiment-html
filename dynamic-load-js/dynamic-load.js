@@ -6,68 +6,64 @@ log = createPageLog(document.getElementById('prelog'));
 
 // bodyOnload
 function bodyOnload() {
+	console.clear();
 	log('body: onload');
 
-	srcScriptElement = document.getElementById('srcScript');
-
 	let folder = getParameterByName('folder');
-
 	log(`folder: ${folder}`);
 
-	/*
-	let stylesheetUrl = `./${folder}/style.css`
-	log(stylesheetUrl);
-	// addNewStylesheet(stylesheetUrl)
-
-	dynamicStylesheet = document.getElementById('dynamicStylesheet');
-	switchStylesheet(dynamicStylesheet,stylesheetUrl)
-	*/
 }
 
 
 
-/* updateSrc
+/* changeSrc
 Not working - doesn't look like you can just change the src.
 */
-function updateSrc(url, callback) {
-	log(`updateSrc: ${url} ${callback}`);
-	// srcScriptElement.src = url;
-	srcScriptElement.setAttribute('src',url);
+function changeSrc(url, callback) {
+	log(`changeSrc: ${url} ${callback}`);
+	changeSrcElement = document.getElementById('changeSrc');
+	// changeSrcElement.src = url;
+	changeSrcElement.removeAttribute('src');
+	changeSrcElement.setAttribute('src',url);
 	//if (callback) callback();
 }
 
 
 /* appendScript
 */
-function appendScript(scriptUrl, callback) {
+function appendScript(scriptUrl, callback)
+ {
 	log(`appendScript: ${scriptUrl} ${callback}`);
-
 	let scriptElement = document.createElement('script');
-	//if (callback) scriptElement.onload = callback()
 
-	if (callback) scriptElement.addEventListener('load', callback);
-	scriptElement.addEventListener('readystatechange', scriptReadystatechange);	// doesn't seem to fire
-	scriptElement.setAttribute('src', scriptUrl);
-	scriptElement.setAttribute('name', 'appendScript');
+	// create semi-unique id
 	let id = String(Math.random()).substring(2,6);
 	scriptElement.setAttribute('id', id);
 	log(`appendScript: id = ${id}`);
 
+	scriptElement.setAttribute('src', scriptUrl);
+	scriptElement.setAttribute('name', 'appendScript');
+	scriptElement.addEventListener('load', callback);
+	scriptElement.addEventListener('readystatechange', scriptReadystatechange);	// doesn't seem to fire
 
-	document.head.appendChild(scriptElement);
+	document.getElementsByTagName('head')[0].appendChild(scriptElement);
 }
 
 
 
+/* replaceScript
+*/
+function replaceScript(id, scriptUrl, callback) {
 
-function replaceScript(id, scriptUrl, callback)
-{
+	log(`replaceScript: ${id} ${scriptUrl} ${callback}`);
 	let scriptElement = document.createElement('script');
-	//script.type = 'text/javascript';
+
+	scriptElement.setAttribute('id', id);
+
 	scriptElement.setAttribute('src', scriptUrl);
 	scriptElement.setAttribute('name', 'appendScript');
-	scriptElement.setAttribute('id', id);
 	scriptElement.addEventListener('load', callback);
+	scriptElement.addEventListener('readystatechange', scriptReadystatechange);
 
 	// then bind the event to the callback function
 	// there are several events for cross browser compatibility
@@ -79,10 +75,13 @@ function replaceScript(id, scriptUrl, callback)
 
 
 
-// This fires before anything in the script itself, but cannot be defined in the loaded script
-function scriptLoaded(message) {
-	log(`scriptLoaded: ${message}`);
-	//dynScriptLoaded();
+// local callbacks
+
+/* scriptLoaded
+This fires before anything in the script itself, so cannot be used call anything in the loaded script
+*/
+function scriptOnload(message) {
+	log(`scriptOnload: ${message}`);
 }
 
 
