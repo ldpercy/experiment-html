@@ -6,6 +6,7 @@ html {
 body {
 	margin:1em;
 	padding:1em;
+	border-radius:1ex;
 	font-family:sans-serif;
 	color:black;
 	background-color: white;
@@ -26,4 +27,16 @@ pre.log {
 	min-height:5rlh;
 	border: 1ex silver inset;
 	padding:1em;
+}
+
+
+.navigate-up {
+	display:block;
+	float:right;
+	background-color:whitesmoke;
+	border:1px solid silver;
+	border-radius:1ex;
+	padding:1ex;
+	font-weight:bold;
+	text-decoration: none;
 }

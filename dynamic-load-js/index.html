@@ -34,6 +34,8 @@
 	onreadystatechange="log('body: onreadystatechange');"
 	>
 
+	<a class="navigate-up" title="Go up" href="./">🡅</a>
+
 	<h1><a href="index.html">Dynamic Load JS</a></h1>
 
 	<h2>Load page with folder:</h2>
@@ -83,9 +85,15 @@
 
 	<h2>Change src:</h2>
 	<p>
-		<button onclick="changeSrc('script/placeholder.js', null)">script/placeholder.js</button>
-		<button onclick="changeSrc('script/abc.js', null)">abc/script.js</button>
-		<button onclick="changeSrc('script/def.js', null)">def/script.js</button>
+		<button onclick="changeSrc('script/placeholder.js', null)">
+			script/placeholder.js
+		</button>
+		<button onclick="changeSrc('script/abc.js', null)">
+			abc/script.js
+		</button>
+		<button onclick="changeSrc('script/def.js', null)">
+			def/script.js
+		</button>
 	</p>
 
 	<h2>Log:</h2>
