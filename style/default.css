@@ -41,3 +41,7 @@ pre.log {
 	padding:1ex;
 	font-weight:bold;
 }
+
+.navigate-up:hover {
+	background-color: azure;
+}
