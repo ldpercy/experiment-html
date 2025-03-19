@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Overwrite JS</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../style/default.css">
+	<script defer src="../util/util.js"></script>
+	<script defer src="overwrite-js.js"></script>
+
+	<!-- overwrites
+	-->
+	<script defer src="script1.js"></script>
+	<script defer src="script2.js"></script>
+	<script defer src="script3.js"></script>
+
+</head>
+<body onload="bodyOnload()">
+	<a class="navigate-up" title="Go up" href="./">🡅</a>
+	<h1><a href="">Overwrite JS</a></h1>
+
+
+	<h2>Log:</h2>
+	<pre class="log" id="prelog"></pre>
+</body>
+</html>
