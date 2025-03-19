@@ -8,7 +8,7 @@
 	<!-- core items -->
 	<link rel="stylesheet" href="../style/default.css">
 	<script defer src="../util/util.js"></script>
-	<script defer src="dynamic-load.js"></script>
+	<script defer src="dynamic-load-js.js"></script>
 
 	<!--- changeSrc doesn't work, no events are triggered --->
 	<script
@@ -32,14 +32,14 @@
 <body onload="bodyOnload();">
 	<div class="navigate-up"><a  title="Up to folder" href="./">./</a> <a  title="Parent folder" href="../">../</a></div>
 
-	<h1><a href="index.html">Dynamic Load JS</a></h1>
+	<h1><a href="">Dynamic Load JS</a></h1>
 
 	<h2>Load page with parameter:</h2>
 	<ul>
-		<li><a href="index.html?scriptname=foobar">index.html?scriptname=foobar</a></li>
-		<li><a href="index.html?scriptname=abc">index.html?scriptname=abc</a></li>
-		<li><a href="index.html?scriptname=def">index.html?scriptname=def</a></li>
-		<li><a href="index.html?scriptname=;--malicious*script">index.html?scriptname=;--malicious*script</a></li>
+		<li><a href="?scriptname=foobar">?scriptname=foobar</a></li>
+		<li><a href="?scriptname=abcd">?scriptname=abcd</a></li>
+		<li><a href="?scriptname=efgh">?scriptname=efgh</a></li>
+		<li><a href="?scriptname=;--malicious*script">?scriptname=;--malicious*script</a></li>
 	</ul>
 
 	<h2>Replace script - local callback</h2>
@@ -47,11 +47,11 @@
 		<button onclick="replaceScript('repscr-123', '', ()=>(scriptOnload('empty')) )">
 			src attribute ''
 		</button>
-		<button onclick="replaceScript('repscr-123', 'script/abc.js', () => (scriptOnload('abc')))">
-			abc/script.js
+		<button onclick="replaceScript('repscr-123', 'script/abcd.js', () => (scriptOnload('abcd')))">
+			script/abcd.js
 		</button>
-		<button onclick="replaceScript('repscr-123', 'script/def.js', () => (scriptOnload('def')))">
-			def/script.js
+		<button onclick="replaceScript('repscr-123', 'script/efgh.js', () => (scriptOnload('efgh')))">
+			script/efgh.js
 		</button>
 	</p>
 	<h2>Replace script - remote callback</h2>
@@ -59,11 +59,11 @@
 		<button onclick="replaceScript('repscr-123', '', ()=>(scriptAnnounce()) )">
 			src attribute ''
 		</button>
-		<button onclick="replaceScript('repscr-123', 'script/abc.js', ()=>(scriptAnnounce()) )">
-			abc/script.js
+		<button onclick="replaceScript('repscr-123', 'script/abcd.js', ()=>(scriptAnnounce()) )">
+			script/abcd.js
 		</button>
-		<button onclick="replaceScript('repscr-123', 'script/def.js', ()=>(scriptAnnounce()) )">
-			def/script.js
+		<button onclick="replaceScript('repscr-123', 'script/efgh.js', ()=>(scriptAnnounce()) )">
+			script/efgh.js
 		</button>
 	</p>
 
@@ -72,11 +72,11 @@
 		<button onclick="appendScript('', ()=>(scriptAnnounce()) )">
 			src attribute ''
 		</button>
-		<button onclick="appendScript('script/abc.js', ()=>(scriptAnnounce()) )">
-			abc/script.js
+		<button onclick="appendScript('script/abcd.js', ()=>(scriptAnnounce()) )">
+			script/abcd.js
 		</button>
-		<button onclick="appendScript('script/def.js', ()=>(scriptAnnounce()) )">
-			def/script.js
+		<button onclick="appendScript('script/efgh.js', ()=>(scriptAnnounce()) )">
+			script/efgh.js
 		</button>
 	</p>
 
@@ -85,11 +85,11 @@
 		<button onclick="changeSrc('script/placeholder.js', () => (scriptOnload('empty')) )">
 			script/placeholder.js
 		</button>
-		<button onclick="changeSrc('script/abc.js', () => (scriptOnload('abc')) )">
-			abc/script.js
+		<button onclick="changeSrc('script/abcd.js', () => (scriptOnload('abcd')) )">
+			script/abcd.js
 		</button>
-		<button onclick="changeSrc('script/def.js', () => (scriptOnload('abc')) )">
-			def/script.js
+		<button onclick="changeSrc('script/efgh.js', () => (scriptOnload('abcd')) )">
+			script/efgh.js
 		</button>
 	</p>
 

@@ -1,19 +1,19 @@
-// abc script
+// abcd script
 
 log('abc: run');
 
 function scriptAnnounce() {
-	log('abc: scriptAnnounce');
+	log('abcd: scriptAnnounce');
 }
 
 /* the function above runs, but i can't to execute eithor of these */
 
 function dynScriptLoaded() {
-	log('abc: script onload');
+	log('abcd: script onload');
 }
 
 function abcTest() {
-	log('abc test');
+	log('abcd test');
 }
 
 

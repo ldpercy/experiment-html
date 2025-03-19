@@ -1,17 +1,17 @@
-// def script
+// efgh script
 
-log('def: run');
+log('efgh: run');
 
 function scriptAnnounce() {
-	log('def: scriptAnnounce');
+	log('efgh: scriptAnnounce');
 }
 
 
 function dynScriptLoaded() {
-	log('def: script onload');
+	log('efgh: script onload');
 }
 
 
 function defTest() {
-	log('def: test');
+	log('efgh: test');
 }

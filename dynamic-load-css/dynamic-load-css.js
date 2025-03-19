@@ -8,11 +8,11 @@ function bodyOnload() {
 
 	dynamicStylesheet = document.getElementById('dynamicStylesheet');
 
-	let folder = getParameterByName('folder');
+	let style = getParameterByName('style');
 
-	log(folder);
+	log(style);
 
-	let stylesheetUrl = `./${folder}/style.css`
+	let stylesheetUrl = `./style/${style}.css`
 	log(stylesheetUrl);
 	// addNewStylesheet(stylesheetUrl)
 

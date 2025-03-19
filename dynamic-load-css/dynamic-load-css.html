@@ -23,16 +23,16 @@
 
 	<h2>Load page with folder:</h2>
 	<p>
-		<a href="index.html">index.html</a>
-		<a href="index.html?folder=abc">index.html?folder=abc</a>
-		<a href="index.html?folder=def">index.html?folder=def</a>
+		<a href="?style=foobar">?style=foobar</a>
+		<a href="?style=abcd">?style=abcd</a>
+		<a href="?style=efgh">?style=efgh</a>
 	</p>
 
 	<h2>Change stylesheet directly:</h2>
 	<p>
 		<button onclick="switchStylesheet(dynamicStylesheet,'')">none</button>
-		<button onclick="switchStylesheet(dynamicStylesheet,'abc/style.css')">abc/style.css</button>
-		<button onclick="switchStylesheet(dynamicStylesheet,'def/style.css')">def/style.css</button>
+		<button onclick="switchStylesheet(dynamicStylesheet,'style/abcd.css')">style/abcd.css</button>
+		<button onclick="switchStylesheet(dynamicStylesheet,'style/efgh.css')">style/efgh.css</button>
 	</p>
 
 	<h2>Log:</h2>
