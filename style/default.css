@@ -40,8 +40,13 @@ pre.log {
 	border-radius:1ex;
 	padding:1ex;
 	font-weight:bold;
+	font-size: large;
 }
 
-.navigate-up:hover {
-	background-color: azure;
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
 }
