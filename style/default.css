@@ -16,6 +16,15 @@ h1:first-of-type {
 	margin-top:0;
 }
 
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+
 textarea {
 	width:90%;
 	height:auto;
@@ -43,10 +52,3 @@ pre.log {
 	font-size: large;
 }
 
-a {
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
