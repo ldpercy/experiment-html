@@ -1,0 +1,28 @@
+
+/* Relative Units
+*/
+
+.em 	{ font-size:1em; }
+.ex 	{ font-size:1ex; }
+.ch 	{ font-size:1ch; }
+.rem 	{ font-size:1rem; }
+.rex 	{ font-size:1rex; }
+.vw 	{ font-size:1vw; }
+.vh 	{ font-size:1vh; }
+.vmin 	{ font-size:1vmin; }
+.vmax 	{ font-size:1vmax; }
+.percent-50 { font-size:50%; }
+
+
+
+
+/* Absolute units
+*/
+
+.cm-1 	{ font-size:1cm; }
+.in-1 	{ font-size:1in; }
+.mm-5	{ font-size:5mm; }
+.pc-1 	{ font-size:1pc; }
+.pt-10 	{ font-size:10pt; }
+.px-10 	{ font-size:10px; }
+.q-10 	{ font-size:10q; }
