@@ -1,7 +1,7 @@
 
 
 // setup log
-log = createPageLog(document.getElementById('prelog'));
+log = createPageLog(document.getElementById('pageLog'));
 
 goodScriptname = /^[A-Za-z0-9-]+$/;
 

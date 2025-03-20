@@ -1,6 +1,6 @@
 
 // setup log
-log = createPageLog(document.getElementById('prelog'));
+log = createPageLog(document.getElementById('pageLog'));
 log('async-await: run');
 
 // bodyOnload

@@ -39,8 +39,9 @@ textarea {
 	min-height:5rlh;
 }
 
-pre.log {
-	display: pre;
+output#pageLog {
+	display: block;
+	white-space: pre;
 	width:90%;
 	height:auto;
 	min-height:5rlh;

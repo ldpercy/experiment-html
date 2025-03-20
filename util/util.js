@@ -30,7 +30,7 @@ function createLog() {
 Returns a log function that logs to a page element (as well as to the console).
 Includes performance timing.
 Use:
-	mylog = createPageLog(myLogElement);
+	mylog = createPageLog(myPageLogElement);
 */
 function createPageLog(logElement) {
 	return (text) => {
