@@ -1,8 +1,20 @@
 
 // setup log
-
-
 log = createPageLog(document.getElementById('prelog'));
+
+// setup button events
+//document.getElementById('button-rs-abcd').addEventListener('click',()=>{log('button-rs-abcd')});
+
+document.getElementById('button-rs-foobar').addEventListener('click', ()=> {
+	replaceScript('replaceable-script', 'script/foobar.js', ()=>(scriptOnload('foobar')))
+});
+document.getElementById('button-rs-abcd').addEventListener('click', ()=> {
+	replaceScript('replaceable-script', 'script/abcd.js', ()=>(scriptOnload('abcd')))
+});
+document.getElementById('button-rs-efgh').addEventListener('click', ()=> {
+	replaceScript('replaceable-script', 'script/efgh.js', ()=>(scriptOnload('efgh')))
+});
+
 
 
 // bodyOnload

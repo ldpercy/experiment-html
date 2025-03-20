@@ -14,20 +14,22 @@
 
 	<h1><a href="">async-await</a></h1>
 
-
-	<h2>Replace script - local callback</h2>
+	<h2>Replace script</h2>
+	<p>local callback</p>
 	<p>
-		<button onclick="replaceScript('replaceable-script', '', ()=>(scriptOnload('empty')) )">
-			src attribute ''
+		<button id="button-rs-foobar">
+			script/foobar.js
 		</button>
-		<button onclick="replaceScript('replaceable-script', 'script/abcd.js', () => (scriptOnload('abcd')))">
+		<button id="button-rs-abcd">
 			script/abcd.js
 		</button>
-		<button onclick="replaceScript('replaceable-script', 'script/efgh.js', () => (scriptOnload('efgh')))">
+		<button id="button-rs-efgh">
 			script/efgh.js
 		</button>
 	</p>
-	<h2>Replace script - remote callback</h2>
+
+	<!--
+	<p>remote callback</p>
 	<p>
 		<button onclick="replaceScript('replaceable-script', '', ()=>(scriptAnnounce()) )">
 			src attribute ''
@@ -39,7 +41,7 @@
 			script/efgh.js
 		</button>
 	</p>
-
+	-->
 
 	<h2>Log:</h2>
 	<pre class="log" id="prelog"></pre>
