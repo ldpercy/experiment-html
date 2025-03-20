@@ -1,6 +1,6 @@
 // abcd script
 
-log('abc: run');
+log('abcd: run');
 
 function scriptAnnounce() {
 	log('abcd: scriptAnnounce');
@@ -12,7 +12,7 @@ function dynScriptLoaded() {
 	log('abcd: script onload');
 }
 
-function abcTest() {
+function abcdTest() {
 	log('abcd test');
 }
 

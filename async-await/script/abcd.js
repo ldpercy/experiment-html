@@ -1,6 +1,6 @@
 // abcd script
 
-log('abc: run');
+log('abcd: run');
 
 function scriptAnnounce() {
 	log('abcd: scriptAnnounce');
