@@ -8,26 +8,96 @@
 	<script defer src="../util/util.js"></script>
 </head>
 <body>
-	<div class="navigate-up"><a  title="Up to folder" href="./">./</a> <a  title="Parent folder" href="../">../</a></div>
+	<div class="navigate-up"><a  title="Up to folder" href="./">./</a> <a title="Parent folder" href="../">../</a></div>
 
 	<h1><a href="">CSS Length</a></h1>
 
 
 	<h2>Relative units</h2>
 
-	<table border="1">
+	<h3>Percent</h3>
+	<table>
+	<tr>
+		<th>percent</th>
+		<td class="percent-50">font-size:50%;</td>
+	</tr>
+	</table>
 
-		.em 	{ font-size:1em; }
-		.ex 	{ font-size:1ex; }
-		.rem 	{ font-size:1rem; }
-		.rex 	{ font-size:1rex; }
-		.ch 	{ font-size:1ch; }
-		.vw 	{ font-size:1vw; }
-		.vh 	{ font-size:1vh; }
-		.vmin 	{ font-size:1vmin; }
-		.vmax 	{ font-size:1vmax; }
-		.percent-50 { font-size:50%; }
 
+	<h3>Font and character based</h3>
+
+	<table>
+	<tbody>
+	<tr class="em">
+		<th>em</th>
+		<td>font-size:1em;</td>
+	</tr>
+	<tr class="rem">
+		<th>rem</th>
+		<td>font-size:1rem;</td>
+	</tr>
+	<tr class="ex">
+		<th>ex</th>
+		<td>font-size:1ex;</td>
+	</tr>
+	<tr class="rex">
+		<th>rex</th>
+		<td>font-size:1rex;</td>
+	</tr>
+	<tr class="lh">
+		<th>lh</th>
+		<td>font-size:1lh;</td>
+	</tr>
+	<tr class="rlh">
+		<th>rlh</th>
+		<td>font-size:1rlh;</td>
+	</tr>
+	<tr class="cap">
+		<th>cap</th>
+		<td>font-size:1cap;</td>
+	</tr>
+	<tr class="rcap">
+		<th>rcap</th>
+		<td>font-size:1rcap;</td>
+	</tr>
+	<tr class="ch">
+		<th>ch</th>
+		<td>font-size:1ch;</td>
+	</tr>
+	<tr class="rch">
+		<th>rch</th>
+		<td>font-size:1rch;</td>
+	</tr>
+	</tbody>
+	</table>
+
+
+	<h3>Viewport based</h3>
+	<table>
+	<tr>
+		<th>vw</th>
+		<td class="vw">font-size:1vw;</td>
+	</tr>
+	<tr>
+		<th>vh</th>
+		<td class="vh">font-size:1vh;</td>
+	</tr>
+	<tr>
+		<th>vmin</th>
+		<td class="vmin">font-size:1vmin;</td>
+	</tr>
+	<tr>
+		<th>vmax</th>
+		<td class="vmax">font-size:1vmax;</td>
+	</tr>
+	<tr>
+		<th>vb</th>
+		<td class="vb">font-size:1vb;</td>
+	</tr>
+	<tr>
+		<th>vi</th>
+		<td class="vi">font-size:1vi;</td>
+	</tr>
 	</table>
 
 
@@ -36,28 +106,35 @@
 
 	<h2>Absolute Units</h2>
 
-	<table border="1">
-	<tr><td>cm-1</td><td class="cm-1">
-		abcdefg 12345
-	</td</tr>
-	<tr><td>in-1</td><td class="in-1">
-		abcdefg 12345
-	</td</tr>
-	<tr><td>mm-5</td><td class="mm-5">
-		abcdefg 12345
-	</td</tr>
-	<tr><td>pc-1</td><td class="pc-1">
-		abcdefg 12345
-	</td</tr>
-	<tr><td>pt-10</td><td class="pt-10">
-		abcdefg 12345
-	</td</tr>
-	<tr><td>px-10</td><td class="px-10">
-		abcdefg 12345
-	</td</tr>
-	<tr><td>q-1</td><td class="q-1">
-		abcdefg 12345
-	</td</tr>
+	<table>
+	<tr>
+		<th>cm</th>
+		<td class="cm-1">font-size:1cm;</td>
+	</tr>
+	<tr>
+		<th>in</th>
+		<td class="in-1">font-size:1in;</tr>
+	</tr>
+	<tr>
+		<th>mm</th>
+		<td class="mm-5">font-size:5mm;</tr>
+	</tr>
+	<tr>
+		<th>pc</th>
+		<td class="pc-1">font-size:1pc;</td>
+	</tr>
+	<tr>
+		<th>pt</th>
+		<td class="pt-10">font-size:10pt;</td>
+	</tr>
+	<tr>
+		<th>px</th>
+		<td class="px-10">font-size:10px;</td>
+	</tr>
+	<tr>
+		<th>q</th>
+		<td class="q-10">font-size:10q;</td>
+	</tr>
 	</table>
 
 	<!--
