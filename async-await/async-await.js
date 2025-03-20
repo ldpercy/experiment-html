@@ -1,8 +1,24 @@
 
 // setup log
 log = createPageLog(document.getElementById('prelog'));
+log('async-await: run');
 
-// setup button events
+// bodyOnload
+function bodyOnload() {
+	console.clear();
+	log('body: onload');
+}
+
+
+
+// simple button event
+document.getElementById('replace-simple').addEventListener('click', ()=> {
+	replaceScript('replaceable-script', 'script/abcd.js', ()=>(scriptOnload('foobar')))
+});
+
+
+
+// Register button events
 //document.getElementById('button-rs-abcd').addEventListener('click',()=>{log('button-rs-abcd')});
 
 document.getElementById('button-rs-foobar').addEventListener('click', ()=> {
@@ -17,11 +33,6 @@ document.getElementById('button-rs-efgh').addEventListener('click', ()=> {
 
 
 
-// bodyOnload
-function bodyOnload() {
-	console.clear();
-	log('body: onload');
-}
 
 
 /* replaceScript
