@@ -19,26 +19,34 @@ Use:
 	mylog = createLog();
 */
 function createLog() {
-	return (text) => {
-		entry = `${performance.now()}: ${text}`
-		console.log(entry);
+	return (value) => {
+		entry = `${performance.now()}: ${value}`
+		console.log(value);
 	}
 }
 
 
 /* createPageLog
-Returns a log function that logs to a page element (as well as to the console).
+Returns a function that logs text to a page element and also to the console.
+Optional 'value' will be fully logged to console.
 Includes performance timing.
 Use:
 	mylog = createPageLog(myPageLogElement);
+	mylog('foobar', myValue);
 */
 function createPageLog(logElement) {
-	return (text) => {
-		entry = `${performance.now()}: ${text}`
-		console.log(entry);
-		logElement.innerHTML += `${entry}\n`;
+	return (text, value) => {
+		const entry = `${performance.now()}: ${text}`;
+		if (value){
+			logElement.innerHTML += `${entry}; ${JSON.stringify(value)}\n`;
+			console.log(entry, value);
+		}
+		else {
+			logElement.innerHTML += `${entry}\n`;
+			console.log(entry);
+		}
 	}
-}
+}//createPageLog
 
 
 /* addEventHandlers
