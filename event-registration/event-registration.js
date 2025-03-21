@@ -11,31 +11,12 @@ function documentDOMContentLoaded()
 {
 	log('document DOMContentLoaded')
 	setHandlersSimple();
-	addEventHandlers('button.click','click',genericEventHandler);
+
+	//addEventHandlers('button.click','click',dumbHandler);
+	//addEventHandlers('button.click','click',genericHandler);
+	addEventHandlers('button.click','click', ((event)=>{eventHandler(event);}) );
+
 }
-
-
-// function addEventHandlers(query, eventName, handler) {
-// 	document.querySelectorAll(query).forEach((node) => {
-// 		node.addEventListener(eventName,
-// 			()=>handler()
-// 		);
-// 	});
-// }// addEventHandlers
-
-
-
-function setHandlersByQuery(query) {
-
-	const nodeList = document.querySelectorAll(query);
-
-	nodeList.forEach((node) => {
-		node.addEventListener('click',
-			()=>log('click: matched button')
-		);
-	});
-}
-
 
 
 function setHandlersSimple() {
@@ -43,16 +24,20 @@ function setHandlersSimple() {
 		()=>log('click: button-1')
 	);
 	document.getElementById('button-2').addEventListener('click',
-		(event)=>{genericEventHandler(event);}
+		(event)=>{genericHandler(event);}
 	);
 }
 
 
 // handlers
-function genericEventHandler() {
-	log(arguments)
+function eventHandler(event) {
+	log('eventHandler', event)
 }
 
-function logHandler() {
-	log('someting happened')
+function genericHandler() {
+	log('genericHandler', arguments)
+}
+
+function dumbHandler() {
+	log('something happened')
 }
