@@ -39,3 +39,15 @@ function createPageLog(logElement) {
 		logElement.innerHTML += `${entry}\n`;
 	}
 }
+
+
+/* addEventHandlers
+*/
+function addEventHandlers(query, eventName, handler) {
+	document.querySelectorAll(query).forEach((node) => {
+		node.addEventListener(eventName,
+			()=>handler()
+			//(args)=>handler(args)
+		);
+	});
+}

@@ -2,22 +2,24 @@
 // setup log
 log = createPageLog(document.getElementById('pageLog'));
 log('async-await: run');
-
+console.clear();
 
 document.addEventListener("DOMContentLoaded", documentDOMContentLoaded());
 
+
 function documentDOMContentLoaded() {
-	console.clear();
 	log('document DOMContentLoaded');
+
+	addEventHandlers('#script-abcd', 'click', (()=>{loadScript('script/abcd.js')}) );
+	addEventHandlers('#script-efgh', 'click', (()=>{loadScript('script/efgh.js')}) );
 }
 
 
-
-// simple button event
-document.getElementById('replace-simple').addEventListener('click', ()=> {
-	replaceScript('replaceable-script', 'script/abcd.js', ()=>(scriptOnload('foobar')))
-});
-
+function loadScript(url)
+{
+	log(url);
+	replaceScript('replaceable-script', url, ()=>(scriptAnnounce()));
+}
 
 
 // Register button events
@@ -32,9 +34,6 @@ document.getElementById('button-rs-abcd').addEventListener('click', ()=> {
 document.getElementById('button-rs-efgh').addEventListener('click', ()=> {
 	replaceScript('replaceable-script', 'script/efgh.js', ()=>(scriptOnload('efgh')))
 });
-
-
-
 
 
 /* replaceScript

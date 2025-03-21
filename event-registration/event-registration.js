@@ -11,17 +11,17 @@ function documentDOMContentLoaded()
 {
 	log('document DOMContentLoaded')
 	setHandlersSimple();
-	setHandlers('button.click','click',genericEventHandler);
+	addEventHandlers('button.click','click',genericEventHandler);
 }
 
 
-function setHandlers(query, eventName, handler) {
-	document.querySelectorAll(query).forEach((node) => {
-		node.addEventListener(eventName,
-			()=>handler()
-		);
-	});
-}// setHandlers
+// function addEventHandlers(query, eventName, handler) {
+// 	document.querySelectorAll(query).forEach((node) => {
+// 		node.addEventListener(eventName,
+// 			()=>handler()
+// 		);
+// 	});
+// }// addEventHandlers
 
 
 
