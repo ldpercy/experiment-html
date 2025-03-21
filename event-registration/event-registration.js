@@ -10,23 +10,42 @@ document.addEventListener("DOMContentLoaded", documentDOMContentLoaded());	// us
 function documentDOMContentLoaded()
 {
 	log('document DOMContentLoaded')
-	setSimpleHandlers();
-
+	setHandlersSimple();
+	setHandlers('button.click','click',genericEventHandler);
 }
 
 
-function setSimpleHandlers() {
-	document.getElementById('button-1').addEventListener('click',
-		()=>log('click button-1')
-	);
+function setHandlers(query, eventName, handler) {
+	document.querySelectorAll(query).forEach((node) => {
+		node.addEventListener(eventName,
+			()=>handler()
+		);
+	});
+}// setHandlers
 
+
+
+function setHandlersByQuery(query) {
+
+	const nodeList = document.querySelectorAll(query);
+
+	nodeList.forEach((node) => {
+		node.addEventListener('click',
+			()=>log('click: matched button')
+		);
+	});
+}
+
+
+
+function setHandlersSimple() {
+	document.getElementById('button-1').addEventListener('click',
+		()=>log('click: button-1')
+	);
 	document.getElementById('button-2').addEventListener('click',
 		(event)=>{genericEventHandler(event);}
 	);
 }
-
-
-
 
 
 // handlers
@@ -34,3 +53,6 @@ function genericEventHandler() {
 	log(arguments)
 }
 
+function logHandler() {
+	log('someting happened')
+}
