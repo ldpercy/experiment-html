@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>event-registration</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../style/favicon.svg">
+	<link rel="stylesheet" href="../style/default.css">
+	<script defer src="../util/util.js"></script>
+	<script defer src="event-registration.js"></script>
+</head>
+<body>
+	<nav><a title="Up to folder" href="./">./</a> <a title="Parent folder" href="../">../</a></nav>
+
+	<h1><a href="">event-registration</a></h1>
+
+
+	<h2>element attributes</h2>
+	<p>
+		Oldschool technique, set event handlers as attributes on html tags.
+	</p>
+
+	<h3>Basics</h3>
+	<p>
+		Function call in attribute:
+		<button onclick="log('click event')">click event</button>
+		<button onmouseover="log('onmouseover event')">onmouseover event</button>
+	</p>
+
+	<p>Parentheses and semicolons are okay:
+		<button onclick="(log('click event'));(genericEventHandler('click event'));">click event</button>
+		<button onmouseover="(log('onmouseover event'));(genericEventHandler('onmouseover event'));">onmouseover event</button>
+	</p>
+
+	<h3>IIFEs</h3>
+	<p>Require the right syntax to work.</p>
+	<p>
+		<button onclick="(() => { log('click event'); })()">click event</button>
+		<button onmouseover="(() => { log('onmouseover event'); })()">onmouseover event</button>
+		<br/>
+		<button onclick="(() => genericEventHandler())()">click event</button>
+		<button onmouseover="(() => genericEventHandler())()">onmouseover event</button>
+	</p>
+
+	<h3>Fails</h3>
+	<details>
+		<summary>None of these work:</summary>
+		<p>Plain function reference in attribute:
+			<button onclick="genericEventHandler">click event</button>
+			<button onmouseover="genericEventHandler">onmouseover event</button>
+		</p>
+		<p>Lambda returning function reference:
+			<button onclick="()=>genericEventHandler">click event</button>
+			<button onmouseover="()=>genericEventHandler">onmouseover event</button>
+		</p>
+		<p>Lambda - function reference return:
+			<button onclick="()=>{return genericEventHandler}">click event</button>
+			<button onmouseover="()=>{return genericEventHandler}">onmouseover event</button>
+		</p>
+		<p>Lambda - function call:
+			<button onclick="()=>{genericEventHandler()}">click event</button>
+			<button onmouseover="()=>{genericEventHandler()}">onmouseover event</button>
+		</p>
+		<p>IIFE returning plain function reference:
+			<button onclick="(() => genericEventHandler)();">click event</button>
+			<button onmouseover="(() => genericEventHandler)();">onmouseover event</button>
+		</p>
+		<p>Nearly an IIFE:
+			<button onclick="(function() { genericEventHandler })();">click event</button>
+			<button onmouseover="(function() { genericEventHandler })();">onmouseover event</button>
+		</p>
+		<p>IIFE without final execution:
+			<button onclick="(() => genericEventHandler());">click event</button>
+			<button onmouseover="(() => genericEventHandler());">onmouseover event</button>
+		</p>
+	</details>
+
+	<h2>Log:</h2>
+	<output id="pageLog"></output>
+</body>
+</html>
