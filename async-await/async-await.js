@@ -3,10 +3,12 @@
 log = createPageLog(document.getElementById('pageLog'));
 log('async-await: run');
 
-// bodyOnload
-function bodyOnload() {
+
+document.addEventListener("DOMContentLoaded", documentDOMContentLoaded());
+
+function documentDOMContentLoaded() {
 	console.clear();
-	log('body: onload');
+	log('document DOMContentLoaded');
 }
 
 

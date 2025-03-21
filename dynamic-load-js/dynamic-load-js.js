@@ -2,14 +2,14 @@
 
 // setup log
 log = createPageLog(document.getElementById('pageLog'));
-
 goodScriptname = /^[A-Za-z0-9-]+$/;
 
 
-// bodyOnload
-function bodyOnload() {
+document.addEventListener("DOMContentLoaded", documentDOMContentLoaded());
+
+function documentDOMContentLoaded() {
 	console.clear();
-	log('body: onload');
+	log('document DOMContentLoaded');
 
 	// scriptname parameter
 	let scriptname = getParameterByName('scriptname');

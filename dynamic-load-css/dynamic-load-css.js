@@ -3,8 +3,11 @@
 log = createPageLog(document.getElementById('pageLog'));
 
 
-function bodyOnload() {
-	log('body onload');
+document.addEventListener("DOMContentLoaded", documentDOMContentLoaded());
+
+
+function documentDOMContentLoaded() {
+	log('document DOMContentLoaded');
 
 	dynamicStylesheet = document.getElementById('dynamicStylesheet');
 

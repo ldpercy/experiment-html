@@ -1,12 +1,13 @@
 
 
 log = createPageLog(document.getElementById('pageLog'));
-
 log('overwrite.js: run');
 
 
-function bodyOnload() {
-	log('overwrite.js: bodyOnload');
+document.addEventListener("DOMContentLoaded", documentDOMContentLoaded());
+
+function documentDOMContentLoaded() {
+	log('overwrite.js: documentDOMContentLoaded');
 	testFunction();
 }
 
