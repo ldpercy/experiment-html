@@ -33,6 +33,16 @@ a:hover {
 }
 
 
+nav {
+	display:block;
+	float:right;
+	font-weight:bold;
+	font-size: 2em;
+}
+
+
+
+
 textarea {
 	width:90%;
 	height:auto;
@@ -50,13 +60,13 @@ output#pageLog {
 }
 
 
-nav {
-	display:block;
-	float:right;
-	font-weight:bold;
-	font-size: 2em;
+details {
+	margin:1em 0em;
+	cursor:pointer;
 }
-
+summary:hover {
+	text-decoration: underline dotted;
+}
 
 
 
