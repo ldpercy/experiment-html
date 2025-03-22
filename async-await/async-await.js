@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", documentDOMContentLoaded());
 function documentDOMContentLoaded() {
 	log('document DOMContentLoaded');
 
-	addEventHandlers('#script-abcd', 'click', (()=>{loadScript('script/abcd.js')}) );
-	addEventHandlers('#script-efgh', 'click', (()=>{loadScript('script/efgh.js')}) );
+	addEventListener('#script-abcd', 'click', (()=>{loadScript('script/abcd.js')}) );
+	addEventListener('#script-efgh', 'click', (()=>{loadScript('script/efgh.js')}) );
 }
 
 

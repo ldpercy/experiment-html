@@ -38,7 +38,7 @@ For the majority of tasks this is probably the go-to.
 
 Inline events
 -------------
-Oldschool html onEvent handlers, eg:
+Oldschool html onEvent listeners, eg:
 
 ```html
 <button onclick="doSomething()">
@@ -63,3 +63,11 @@ Missing either the inner function parentheses, here `doSomething()`, or the the 
 Ref: https://stackoverflow.com/questions/22001674/inline-javascript-onclick-function
 
 
+
+
+Terminology
+-----------
+I've been a bit casual so far, but 'listener' and 'handler' are different things.
+
+* Listener - acts as intermediary, listens for events and forwards on to handlers
+* Handler - performs action based upon events

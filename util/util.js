@@ -49,12 +49,12 @@ function createPageLog(logElement) {
 }//createPageLog
 
 
-/* addEventHandlers
+/* addEventListener
 */
-function addEventHandlers(query, eventName, handler) {
+function addEventListener(query, eventName, listener) {
 	document.querySelectorAll(query).forEach((node) => {
 		node.addEventListener(eventName,
-			(event)=>handler(event)
+			(event)=>listener(event)
 		);
 	});
 }

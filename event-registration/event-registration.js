@@ -12,9 +12,9 @@ function documentDOMContentLoaded()
 	log('document DOMContentLoaded')
 	setHandlersSimple();
 
-	//addEventHandlers('button.click','click',dumbHandler);
-	//addEventHandlers('button.click','click',genericHandler);
-	addEventHandlers('button.click','click', ((event)=>{eventHandler(event);}) );
+	//addEventListener('button.click','click',dumbHandler);
+	//addEventListener('button.click','click',genericHandler);
+	addEventListener('button.click','click', ((event)=>{eventHandler(event);}) );
 
 }
 
