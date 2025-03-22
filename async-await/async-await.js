@@ -10,12 +10,14 @@ document.addEventListener("DOMContentLoaded", documentDOMContentLoaded());
 function documentDOMContentLoaded() {
 	log('document DOMContentLoaded');
 
-	addEventListener('#load-sequence-with-callbacks', 'click', loadSequenceWithCallbacks );
-
+	//set listeners
 	addEventListener('#script-abcd', 'click', (()=>{loadScript('script/abcd.js')}) );
 	addEventListener('#script-efgh', 'click', (()=>{loadScript('script/efgh.js')}) );
-}
 
+	addEventListener('#load-sequence-with-callbacks', 'click', loadSequenceWithCallbacks );
+	//addEventListener('#load-sequence-with-loop', 'click', loadSequenceWithLoop );
+	addEventListener('#load-sequence-recursive', 'click', (()=>{loadSequenceRecursive('script/abcd.js',1)}) );
+}
 
 
 function loadSequenceWithCallbacks() {
@@ -42,21 +44,52 @@ function loadSequenceWithCallbacks() {
 }// loadSequenceWithCallbacks
 
 
-/*
-	let nextUrl = getNextUrl();
-	if (nextUrl) {
-		replaceScript('replaceable-script', nextUrl,
+
+/* loadSequenceWithLoop
+Very bad silly me, this doesn't work at all.
+* /
+function loadSequenceWithLoop() {
+	log('loadSequenceWithLoop');
+
+	// let scriptUrl = 'script/abcd.js';
+	var scriptUrl = 'script/abcd.js';
+	var counter = 1;
+
+	while (scriptUrl && counter < 5) {
+		log(`loadSequenceWithLoop: ${counter} ${scriptUrl}`);
+		counter++;
+
+		replaceScript('replaceable-script', scriptUrl,
 			(()=>{
 				scriptAnnounce();
-				let nextUrl = getNextUrl();
-				if (nextUrl)
-				{
-
-				}
+				scriptUrl = getNextScript();
+				log(`next script: ${scriptUrl}`);
 			})
 		);
 	}
+	log('loadSequenceWithLoop ended');
+}/ * loadSequenceWithLoop */
+
+
+/* loadSequenceRecursive
 */
+function loadSequenceRecursive(scriptUrl, counter) {
+	log(`loadSequenceRecursive: ${counter} ${scriptUrl}`);
+
+	if (scriptUrl && counter < 5) {
+		replaceScript('replaceable-script', scriptUrl,
+			(()=>{
+				scriptAnnounce();
+				let nextUrl = getNextScript();
+				log(`next script: ${scriptUrl}`);
+				loadSequenceRecursive(nextUrl, counter+1);
+			})
+		);
+	}
+	log(`loadSequenceRecursive ${counter} ${scriptUrl} ended`);
+}/* loadSequenceRecursive */
+
+
 
 function loadStep() {
 
@@ -74,7 +107,7 @@ function loadScript(url)
 /* replaceScript
 */
 function replaceScript(id, scriptUrl, callback) {
-	log(`replaceScript: ${id} ${scriptUrl} ${callback}`);
+	//log(`replaceScript: ${id} ${scriptUrl} ${callback}`);
 
 	let scriptElement = document.createElement('script');
 	scriptElement.setAttribute('id', id);

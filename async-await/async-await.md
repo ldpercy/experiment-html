@@ -16,4 +16,9 @@ Have done the dumbest callback version I can think of.
 Even for this version a while loop would be better as each step is the same.
 If each callback returns something different then you might end up with something like I've done here.
 
+### While Loop
+Err that didn't work at all, silly me. Got a couple nice juicy infinite loops for my trouble.
+Will try a variant.
 
+### Recursive (kind of)
+This works just fine.
