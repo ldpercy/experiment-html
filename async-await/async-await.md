@@ -22,3 +22,7 @@ Will try a variant.
 
 ### Recursive (kind of)
 This works just fine.
+
+https://javascript.info/async-await
+
+* async functions always return promises
