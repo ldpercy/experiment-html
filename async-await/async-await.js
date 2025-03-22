@@ -17,9 +17,13 @@ function documentDOMContentLoaded() {
 	addEventListener('#load-sequence-with-callbacks', 'click', loadSequenceWithCallbacks );
 	//addEventListener('#load-sequence-with-loop', 'click', loadSequenceWithLoop );
 	addEventListener('#load-sequence-recursive', 'click', (()=>{loadSequenceRecursive('script/abcd.js',1)}) );
+	addEventListener('#load-sequence-await', 'click', (()=>{loadSequenceAwait('script/abcd.js',1)}) );
 }
 
 
+/* loadSequenceWithCallbacks
+Deliberately kinda dumb.
+*/
 function loadSequenceWithCallbacks() {
 	log('loadSequenceWithCallbacks');
 
@@ -41,8 +45,7 @@ function loadSequenceWithCallbacks() {
 			);
 		})
 	);
-}// loadSequenceWithCallbacks
-
+}/* loadSequenceWithCallbacks */
 
 
 /* loadSequenceWithLoop
@@ -72,6 +75,7 @@ function loadSequenceWithLoop() {
 
 
 /* loadSequenceRecursive
+Works fine.
 */
 function loadSequenceRecursive(scriptUrl, counter) {
 	log(`loadSequenceRecursive: ${counter} ${scriptUrl}`);
@@ -91,10 +95,32 @@ function loadSequenceRecursive(scriptUrl, counter) {
 
 
 
-function loadStep() {
 
-	return getNextScript()
-}
+/* loadSequenceAwait
+*/
+function loadSequenceAwait(scriptUrl, counter) {
+	log(`loadSequenceAwait: ${counter} ${scriptUrl}`);
+
+	if (scriptUrl && counter < 5) {
+		replaceScript('replaceable-script', scriptUrl,
+			(()=>{
+				scriptAnnounce();
+				let nextUrl = getNextScript();
+				log(`next script: ${scriptUrl}`);
+				loadSequenceAwait(nextUrl, counter+1);
+			})
+		);
+	}
+	log(`loadSequenceAwait ${counter} ${scriptUrl} ended`);
+}/* loadSequenceAwait */
+
+
+
+
+
+
+
+
 
 
 function loadScript(url)
