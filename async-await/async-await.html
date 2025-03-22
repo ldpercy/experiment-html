@@ -15,6 +15,12 @@
 
 	<h1><a href="">async-await</a></h1>
 
+	<h2>Load series</h2>
+
+	<button id="load-sequence-with-callbacks">
+		load-sequence-with-callbacks
+	</button>
+
 
 	<h2>Replace script</h2>
 	<p>simple</p>
@@ -26,34 +32,6 @@
 			script/defg.js
 		</button>
 	</p>
-
-	<p>local callback</p>
-	<p>
-		<button id="button-rs-foobar">
-			script/foobar.js
-		</button>
-		<button id="button-rs-abcd">
-			script/abcd.js
-		</button>
-		<button id="button-rs-efgh">
-			script/efgh.js
-		</button>
-	</p>
-
-	<!--
-	<p>remote callback</p>
-	<p>
-		<button onclick="replaceScript('replaceable-script', '', ()=>(scriptAnnounce()) )">
-			src attribute ''
-		</button>
-		<button onclick="replaceScript('replaceable-script', 'script/abcd.js', ()=>(scriptAnnounce()) )">
-			script/abcd.js
-		</button>
-		<button onclick="replaceScript('replaceable-script', 'script/efgh.js', ()=>(scriptAnnounce()) )">
-			script/efgh.js
-		</button>
-	</p>
-	-->
 
 	<h2>Log:</h2>
 	<output id="pageLog"></output>

@@ -10,8 +10,57 @@ document.addEventListener("DOMContentLoaded", documentDOMContentLoaded());
 function documentDOMContentLoaded() {
 	log('document DOMContentLoaded');
 
+	addEventListener('#load-sequence-with-callbacks', 'click', loadSequenceWithCallbacks );
+
 	addEventListener('#script-abcd', 'click', (()=>{loadScript('script/abcd.js')}) );
 	addEventListener('#script-efgh', 'click', (()=>{loadScript('script/efgh.js')}) );
+}
+
+
+
+function loadSequenceWithCallbacks() {
+	log('loadSequenceWithCallbacks');
+
+	let startUrl = 'script/abcd.js';
+
+	replaceScript('replaceable-script', startUrl,
+		(()=>{
+			scriptAnnounce();
+			replaceScript('replaceable-script', 'script/efgh.js',
+				(()=>{
+					scriptAnnounce();
+					replaceScript('replaceable-script', 'script/ijkl.js',
+						(()=>{
+							scriptAnnounce();
+							// will stop here, you get the idea
+						 })
+					);
+			 	})
+			);
+		})
+	);
+}// loadSequenceWithCallbacks
+
+
+/*
+	let nextUrl = getNextUrl();
+	if (nextUrl) {
+		replaceScript('replaceable-script', nextUrl,
+			(()=>{
+				scriptAnnounce();
+				let nextUrl = getNextUrl();
+				if (nextUrl)
+				{
+
+				}
+			})
+		);
+	}
+*/
+
+function loadStep() {
+
+	return getNextScript()
 }
 
 
@@ -20,20 +69,6 @@ function loadScript(url)
 	log(url);
 	replaceScript('replaceable-script', url, ()=>(scriptAnnounce()));
 }
-
-
-// Register button events
-//document.getElementById('button-rs-abcd').addEventListener('click',()=>{log('button-rs-abcd')});
-
-document.getElementById('button-rs-foobar').addEventListener('click', ()=> {
-	replaceScript('replaceable-script', 'script/foobar.js', ()=>(scriptOnload('foobar')))
-});
-document.getElementById('button-rs-abcd').addEventListener('click', ()=> {
-	replaceScript('replaceable-script', 'script/abcd.js', ()=>(scriptOnload('abcd')))
-});
-document.getElementById('button-rs-efgh').addEventListener('click', ()=> {
-	replaceScript('replaceable-script', 'script/efgh.js', ()=>(scriptOnload('efgh')))
-});
 
 
 /* replaceScript
