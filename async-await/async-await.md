@@ -1,15 +1,16 @@
 async-await
 ===========
 
-In relation to the dynamic js load, want to see if the callbacks can be rewritten with asyc-await.
+https://en.wikipedia.org/wiki/Async/await
 
-Plus other things.
+
 
 
 First Experiment
 ----------------
+In relation to the dynamic js load, want to see if the callbacks can be rewritten with async-await.
 
-Adapted from the dynamic load experiment, want to dynamically load a script which has information about the next to load script, then load that.
+Want to dynamically load a script which has information about the next to load script, then load that.
 Will write with callbacks first, then try to rewrite with async await.
 
 Have done the dumbest callback version I can think of.
@@ -23,6 +24,14 @@ Will try a variant.
 ### Recursive (kind of)
 This works just fine.
 
+
+Promises etc
+------------
+https://javascript.info/callbacks
+https://javascript.info/promise-basics
 https://javascript.info/async-await
 
+https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch
+
 * async functions always return promises
+* await works only inside async functions

@@ -36,3 +36,10 @@ Script onload properly this time
 It works now, I was doing it wrong.
 Had to change the (accidental) function call to a proper function lambda.
 
+
+
+See also
+--------
+
+https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch
