@@ -20,8 +20,7 @@ Use:
 */
 function createLog() {
 	return (value) => {
-		entry = `${performance.now()}: ${value}`
-		console.log(value);
+		console.log(performance.now(), value);
 	}
 }
 
@@ -35,16 +34,9 @@ Use:
 	mylog('foobar', myValue);
 */
 function createPageLog(logElement) {
-	return (text, value) => {
-		const entry = `${performance.now()}: ${text}`;
-		if (value){
-			logElement.innerHTML += `${entry}; ${JSON.stringify(value)}\n`;
-			console.log(entry, value);
-		}
-		else {
-			logElement.innerHTML += `${entry}\n`;
-			console.log(entry);
-		}
+	return (value) => {
+		logElement.innerHTML += `${performance.now()}: ${value}\n`;
+		console.log(performance.now(), value);
 	}
 }//createPageLog
 
