@@ -20,8 +20,29 @@ I wish it had been called something like 'contract' instead.
 
 
 
-Promise
--------
+
+
+Construction
+------------
+
+```javascript
+	const p = new Promise(executor);
+
+
+	function executor(resolveFunc, rejectFunc) {
+		// Typically, some asynchronous operation that accepts a callback.
+	}
+
+	function resolveFunc(value) {} // call on resolved
+	function rejectFunc(reason) {} // call on rejected, reason is typically an Error
+```
+
+
+
+
+
+Promise states
+--------------
 
 Promise
 	pending
@@ -31,3 +52,8 @@ Promise
 		reject
 
 
+
+Thenable
+--------
+
+	a thenable is an object that has a then() function
