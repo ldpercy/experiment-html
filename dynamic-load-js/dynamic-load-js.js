@@ -67,20 +67,15 @@ function appendScript(scriptUrl, callback)
 /* replaceScript
 */
 function replaceScript(id, scriptUrl, callback) {
-
 	log(`replaceScript: ${id} ${scriptUrl} ${callback}`);
 	let scriptElement = document.createElement('script');
 
 	scriptElement.setAttribute('id', id);
-
 	scriptElement.setAttribute('src', scriptUrl);
 	scriptElement.setAttribute('name', 'appendScript');
 	scriptElement.addEventListener('load', callback);
-	scriptElement.addEventListener('readystatechange', scriptReadystatechange);
+	scriptElement.addEventListener('onerror', log('script load failed'));
 
-	// then bind the event to the callback function
-	// there are several events for cross browser compatibility
-	//script.onreadystatechange = callback;
 	document.getElementById(id).remove();
 	document.getElementsByTagName('head')[0].appendChild(scriptElement);
 }

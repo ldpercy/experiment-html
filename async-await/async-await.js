@@ -134,16 +134,16 @@ function loadScript(url)
 */
 function replaceScript(id, scriptUrl, callback) {
 	//log(`replaceScript: ${id} ${scriptUrl} ${callback}`);
-
 	let scriptElement = document.createElement('script');
+
 	scriptElement.setAttribute('id', id);
 	scriptElement.setAttribute('src', scriptUrl);
 	scriptElement.addEventListener('load', callback);
+	scriptElement.addEventListener('onerror', log('script load failed'));
 
 	document.getElementById(id).remove();
 	document.getElementsByTagName('head')[0].appendChild(scriptElement);
 }
-
 
 // local callbacks
 
