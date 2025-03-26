@@ -66,15 +66,15 @@ function appendScript(scriptUrl, callback)
 
 /* replaceScript
 */
-function replaceScript(id, scriptUrl, callback) {
-	log(`replaceScript: ${id} ${scriptUrl} ${callback}`);
+function replaceScript(id, scriptUrl, onLoad, onError) {
+	log(`replaceScript: ${id} ${scriptUrl}`); //${onLoad} ${onLoad}
 	let scriptElement = document.createElement('script');
 
 	scriptElement.setAttribute('id', id);
 	scriptElement.setAttribute('src', scriptUrl);
 	scriptElement.setAttribute('name', 'appendScript');
-	scriptElement.addEventListener('load', callback);
-	scriptElement.addEventListener('onerror', log('script load failed'));
+	scriptElement.addEventListener('load', onLoad);
+	scriptElement.addEventListener('error', onError);
 
 	document.getElementById(id).remove();
 	document.getElementsByTagName('head')[0].appendChild(scriptElement);
@@ -95,4 +95,8 @@ function scriptOnload(message) {
 
 function scriptReadystatechange(message) {
 	log(`scriptReadystatechange: ${message}`);
+}
+
+function scriptOnError(message) {
+	log(`scriptOnError: ${message}`);
 }

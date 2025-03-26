@@ -45,25 +45,25 @@
 
 	<h2>Replace script - local callback</h2>
 	<p>
-		<button onclick="replaceScript('repscr-123', '', ()=>(scriptOnload('empty')) )">
-			src attribute ''
+		<button onclick="replaceScript('repscr-123', 'script/missing.js', ()=>(scriptOnload('missing')), scriptOnError )">
+			script/missing.js
 		</button>
-		<button onclick="replaceScript('repscr-123', 'script/abcd.js', () => (scriptOnload('abcd')))">
+		<button onclick="replaceScript('repscr-123', 'script/abcd.js', () => (scriptOnload('abcd')), scriptOnError )">
 			script/abcd.js
 		</button>
-		<button onclick="replaceScript('repscr-123', 'script/efgh.js', () => (scriptOnload('efgh')))">
+		<button onclick="replaceScript('repscr-123', 'script/efgh.js', () => (scriptOnload('efgh')), scriptOnError )">
 			script/efgh.js
 		</button>
 	</p>
 	<h2>Replace script - remote callback</h2>
 	<p>
-		<button onclick="replaceScript('repscr-123', '', ()=>(scriptAnnounce()) )">
+		<button onclick="replaceScript('repscr-123', '', ()=>(scriptAnnounce()), scriptOnError )">
 			src attribute ''
 		</button>
-		<button onclick="replaceScript('repscr-123', 'script/abcd.js', ()=>(scriptAnnounce()) )">
+		<button onclick="replaceScript('repscr-123', 'script/abcd.js', ()=>(scriptAnnounce()), scriptOnError )">
 			script/abcd.js
 		</button>
-		<button onclick="replaceScript('repscr-123', 'script/efgh.js', ()=>(scriptAnnounce()) )">
+		<button onclick="replaceScript('repscr-123', 'script/efgh.js', ()=>(scriptAnnounce()), scriptOnError )">
 			script/efgh.js
 		</button>
 	</p>
