@@ -97,6 +97,6 @@ function scriptReadystatechange(message) {
 	log(`scriptReadystatechange: ${message}`);
 }
 
-function scriptOnError(message) {
-	log(`scriptOnError: ${message}`);
+function scriptOnError(value) {
+	log(value);
 }

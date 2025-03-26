@@ -126,7 +126,7 @@ function loadSequenceAwait(scriptUrl, counter) {
 function loadScript(url)
 {
 	log(url);
-	replaceScript('replaceable-script', url, ()=>(scriptAnnounce()));
+	replaceScript('replaceable-script', url, ()=>(scriptAnnounce()), onError );
 }
 
 
@@ -153,6 +153,6 @@ function scriptOnload(message) {
 	log(`scriptOnload: ${message}`);
 }
 
-function scriptOnError(message) {
-	log(`scriptOnError: ${message}`);
+function scriptOnError(value) {
+	log(value);
 }

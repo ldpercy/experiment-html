@@ -57,8 +57,8 @@
 	</p>
 	<h2>Replace script - remote callback</h2>
 	<p>
-		<button onclick="replaceScript('repscr-123', '', ()=>(scriptAnnounce()), scriptOnError )">
-			src attribute ''
+		<button onclick="replaceScript('repscr-123', 'script/missing.js', ()=>(scriptAnnounce()), scriptOnError )">
+			script/missing.js
 		</button>
 		<button onclick="replaceScript('repscr-123', 'script/abcd.js', ()=>(scriptAnnounce()), scriptOnError )">
 			script/abcd.js
