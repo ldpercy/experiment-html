@@ -145,14 +145,14 @@ function replaceScript(id, scriptUrl, onLoad, onError) {
 	document.getElementsByTagName('head')[0].appendChild(scriptElement);
 }
 
+//
 // local callbacks
+//
 
-/* scriptLoaded
-*/
-function scriptOnload(message) {
-	log(`scriptOnload: ${message}`);
+function scriptOnload() {
+	log(arguments);
 }
 
-function scriptOnError(value) {
-	log(value);
+function scriptOnError() {
+	log(arguments);
 }

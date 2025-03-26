@@ -8,9 +8,14 @@ document.addEventListener("DOMContentLoaded", documentDOMContentLoaded());
 
 function documentDOMContentLoaded() {
 
-	//set listeners
-	addEventListener('#button-script-abcd', 'click', (()=>{loadScript('script/abcd.js')}) );
-	addEventListener('#button-script-missing', 'click', (()=>{loadScript('script/efgh.js')}) );
+	// listeners
+	addEventListener('#button-script-abcd', 'click',
+		(()=>{loadScript('script/abcd.js')})
+	);
+
+	addEventListener('#button-script-missing', 'click',
+		(()=>{loadScript('script/efgh.js')})
+	);
 
 	//onclick="replaceScript('repscr-123', 'script/missing.js', ()=>(scriptOnload('missing')), scriptOnError )"
 
@@ -18,6 +23,12 @@ function documentDOMContentLoaded() {
 }
 
 
+
+function loadScript(url)
+{
+	//replaceScript('replaceable-script', url, genericLogger, genericLogger );
+	replaceScriptPromise('replaceable-script', url, genericLogger, genericLogger );
+}
 
 
 
@@ -56,19 +67,16 @@ log(promise1);
 
 
 
-
-
 //
 // Turn replaceScript into a promise
 //
-
 
 
 /* replaceScript
 */
 function replaceScript(id, scriptUrl, onLoad, onError) {
 
-	log(`replaceScript: ${id} ${scriptUrl} ${callback}`);
+	//log(`replaceScript: ${id} ${scriptUrl}`);
 	const scriptElement = document.createElement('script');
 
 	scriptElement.setAttribute('id', id);
@@ -86,7 +94,7 @@ function replaceScript(id, scriptUrl, onLoad, onError) {
 */
 function replaceScriptPromise(id, scriptUrl, onLoad, onError) {
 
-	return new Promise((resolve, reject) => {
+	const p = new Promise((resolve, reject) => {
 
 		const scriptElement = document.createElement('script');
 
@@ -98,23 +106,19 @@ function replaceScriptPromise(id, scriptUrl, onLoad, onError) {
 
 		document.getElementById(id).remove();
 		document.getElementsByTagName('head')[0].appendChild(scriptElement);
-
-
 	});
 
-}
-
-
-
-
-//
-// simple handlers
-//
-
-function scriptOnload(message) {
-	log(`scriptOnload: ${message}`);
-}
-
-function scriptOnError(value) {
-	log(value);
+	p
+		.then(
+			(value) => {
+				log('then');
+				log(value);
+			}
+		)
+		.catch(
+			(error) => {
+				log('reject');
+				log(error);
+			}
+		);
 }

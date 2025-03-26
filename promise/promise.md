@@ -14,11 +14,9 @@ The term 'promise'
 
 Upfront, I dislike the term 'promise'.
 
-It's a peculiarly human-values centric idea, whereas most of the analogies/metaphors we use in computing are from more prosaic sources such as science, engineering, and everyday objects.
+It's a peculiarly human-values centric idea, whereas most of the analogies/metaphors we use in computing are from more prosaic sources like science, engineering, and everyday objects.
 
 I wish it had been called something like 'contract' instead.
-
-
 
 
 
@@ -56,4 +54,4 @@ Promise
 Thenable
 --------
 
-	a thenable is an object that has a then() function
+A 'thenable' is an object that has a then() function.
