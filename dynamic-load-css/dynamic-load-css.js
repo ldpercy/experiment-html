@@ -3,7 +3,7 @@
 log = createPageLog(document.getElementById('pageLog'));
 
 
-document.addEventListener("DOMContentLoaded", documentDOMContentLoaded());
+document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
 
 function documentDOMContentLoaded() {

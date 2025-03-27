@@ -5,7 +5,7 @@ log = createPageLog(document.getElementById('pageLog'));
 goodScriptname = /^[A-Za-z0-9-]+$/;
 
 
-document.addEventListener("DOMContentLoaded", documentDOMContentLoaded());
+document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
 function documentDOMContentLoaded() {
 	console.clear();

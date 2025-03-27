@@ -4,7 +4,7 @@ log = createPageLog(document.getElementById('pageLog'));
 log('async-await: run');
 console.clear();
 
-document.addEventListener("DOMContentLoaded", documentDOMContentLoaded());
+document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
 
 function documentDOMContentLoaded() {

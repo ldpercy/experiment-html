@@ -3,7 +3,7 @@ log('event-registration.js: run');
 
 
 // Document load events
-document.addEventListener("DOMContentLoaded", documentDOMContentLoaded());	// use this mostly
+document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);	// use this mostly
 // document.addEventListener('load', log('document load'));					// not this
 
 

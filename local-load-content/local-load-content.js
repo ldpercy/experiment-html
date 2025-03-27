@@ -1,6 +1,6 @@
 
 // setup
-document.addEventListener("DOMContentLoaded", documentDOMContentLoaded());
+document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 log = createPageLog(document.getElementById('pageLog'));
 console.clear();
 
