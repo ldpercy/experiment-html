@@ -35,8 +35,30 @@ Construction
 	function rejectFunc(reason) {} // call on rejected, reason is typically an Error
 ```
 
+Basic/common structure:
 
+```javascript
+	const fooPromise = new Promise((resolve, reject) => {
+		if (value) {
+			resolve(value)
+		} else {
+			reject(error)
+		}
+	});
 
+	fooPromise
+		.then(
+			(value) => {
+				// do something with value
+			}
+		)
+		.catch(
+			(error) => {
+				// do something with error
+			}
+		);
+
+```
 
 
 Promise states
