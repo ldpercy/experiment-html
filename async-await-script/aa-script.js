@@ -1,8 +1,8 @@
-
 // setup log
-log = createPageLog(document.getElementById('pageLog'));
-log('async-await: run');
 console.clear();
+log = createPageLog(document.getElementById('pageLog'));
+log('aa-script: run');
+
 
 document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
