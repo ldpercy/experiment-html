@@ -1,7 +1,7 @@
 /* Basics
 */
 
-log('async-await2: run');
+log('simple: run');
 
 
 async function myFunction() {

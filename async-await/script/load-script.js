@@ -95,14 +95,6 @@ function loadSequenceAwait(scriptUrl, counter) {
 }/* loadSequenceAwait */
 
 
-
-
-
-
-
-
-
-
 function loadScript(url)
 {
 	log(url);
@@ -127,16 +119,15 @@ function replaceScript(id, scriptUrl, onLoad, onError) {
 
 
 
-
 //
-// replaceScriptAwait
+// replaceScript async await
 //
 
 
 
-/* replaceScriptAwait
+/* aaReplaceScript
 */
-function replaceScriptAwait(id, scriptUrl, onLoad, onError) {
+async function aaReplaceScript(id, scriptUrl, onLoad, onError) {
 
 	const replaceScriptPromise = new Promise((resolve, reject) => {
 
@@ -145,8 +136,8 @@ function replaceScriptAwait(id, scriptUrl, onLoad, onError) {
 		scriptElement.setAttribute('id', id);
 		scriptElement.setAttribute('src', scriptUrl);
 		// scriptElement.setAttribute('name', 'appendScript');
-		scriptElement.addEventListener('load', (loadEvent) => resolve(loadEvent) );
-		scriptElement.addEventListener('error', (errorEvent) => reject(errorEvent) );
+		scriptElement.addEventListener('load', (loadEvent) => resolve() ); //loadEvent
+		scriptElement.addEventListener('error', (errorEvent) => reject() ); // errorEvent
 
 		document.getElementById(id).remove();
 		document.getElementsByTagName('head')[0].appendChild(scriptElement);
@@ -165,4 +156,19 @@ function replaceScriptAwait(id, scriptUrl, onLoad, onError) {
 				log(error);
 			}
 		);
-}/* replaceScriptAwait */
+
+	return replaceScriptPromise;
+}/* aaReplaceScript */
+
+
+//handler
+async function aaLoadScript(url) {
+	log(url);
+	try {
+		//await aaReplaceScript('replaceable-script', url, ()=>(scriptAnnounce()), scriptOnError );
+		aaReplaceScript('replaceable-script', url, ()=>(scriptAnnounce()), scriptOnError );
+	}
+	catch {
+		log('aaReplaceScript failed')
+	}
+}
