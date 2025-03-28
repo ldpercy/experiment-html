@@ -6,4 +6,6 @@ document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
 function documentDOMContentLoaded() {
 	log('document DOMContentLoaded');
+
+	addEventListener('#button-test-1', 'click', asyncCall );
 }
