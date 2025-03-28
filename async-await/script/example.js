@@ -1,20 +1,23 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
 
-function resolveAfter2Seconds() {
-	return new Promise((resolve) => {
+function resolveAfterTimeout(ms) {
+	const promise = new Promise((resolve) => {
 		setTimeout(() => {
 			resolve("resolved");
-		}, 2000);
+		}, ms);
 	});
+
+	return promise;
 }
 
 async function asyncCall() {
-	console.log("calling");
-	const result = await resolveAfter2Seconds();
-	console.log(result);
+	log("calling");
+	const result = await resolveAfterTimeout(1000);
+	log(result);
 	// Expected output: "resolved"
 }
 
-// asyncCall();
+
+//
 
 
