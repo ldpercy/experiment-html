@@ -3,10 +3,12 @@ Promise
 
 https://en.wikipedia.org/wiki/Futures_and_promises
 
-
 https://javascript.info/promise-basics
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Async_JS/Promises
+
+
+I'm relatively inexperienced with promises so this is largely experimentation and learning.
 
 
 The term 'promise'
@@ -22,6 +24,8 @@ I wish it had been called something like 'contract' instead.
 
 Construction
 ------------
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise
 
 ```javascript
 	const p = new Promise(executor);
@@ -77,3 +81,15 @@ Thenable
 --------
 
 A 'thenable' is an object that has a then() function.
+
+
+
+Notes
+-----
+* `resolve` and `reject` and don't have to be called those names
+* A resolve function is required at minimum
+*
+
+### Antipatterns
+
+https://github.com/petkaantonov/bluebird/wiki/Promise-anti-patterns
