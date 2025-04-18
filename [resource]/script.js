@@ -19,8 +19,8 @@ Use:
 	mylog = createLog();
 */
 function createLog() {
-	return (value) => {
-		console.log(performance.now(), value);
+	return (...values) => {
+		console.log(performance.now(), ...values);
 	}
 }
 
@@ -34,9 +34,9 @@ Use:
 	mylog('foobar', myValue);
 */
 function createPageLog(logElement) {
-	return (value) => {
-		logElement.innerHTML += `${performance.now()}: ${value}\n`;
-		console.log(performance.now(), value);
+	return (...values) => {
+		logElement.innerHTML += `${performance.now()}: ${values.join('; ')}\n`;
+		console.log(performance.now(), ...values);
 	}
 }//createPageLog
 

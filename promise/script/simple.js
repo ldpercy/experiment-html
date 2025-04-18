@@ -20,22 +20,24 @@ log(p)
 */
 
 
-myFoo = '';
-log(myFoo);
 
-const promise1 = new Promise((resolve, reject) => {
+
+myVal = 'initial value';
+log('myVal before', myVal);
+
+const promise1 = new Promise((resolve) => {
 	setTimeout(() => {
-		resolve("foo");
-	}, 300);
+		resolve("the resolved value");
+	}, 500);
 });
 
 promise1
 	.then(
 		(value) => {
-			log(value);
+			log('new value', value);
 			// Expected output: "foo"
-			myFoo = value;
-			fooArrived()
+			myVal = value;
+			promise1Resolved()
 		}
 	)
 	.catch(
@@ -47,6 +49,6 @@ log(promise1);
 // Expected output: [object Promise]
 
 
-function fooArrived() {
-	log(myFoo);
+function promise1Resolved() {
+	log('promise1Resolved',myVal);
 }
