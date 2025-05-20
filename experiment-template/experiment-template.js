@@ -1,6 +1,6 @@
 console.clear();
 log = createPageLog(document.getElementById('pageLog'));
-log('experiment-template: run');
+log('experiment-template.js: run');
 
 document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 

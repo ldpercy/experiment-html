@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>css-nested</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../[resource]/favicon.svg">
+	<link rel="stylesheet" href="../[resource]/style.css">
+	<script defer src="../[resource]/script.js"></script>
+	<script defer src="css-nested.js"></script>
+	<style>
+		p { color: grey; }
+	</style>
+	<style id="dynStyle">
+		/* Try to fill this in dynamically */
+	</style>
+</head>
+<body>
+	<nav><a title="Up to folder" href="./">./</a> <a title="Parent folder" href="../">../</a></nav>
+
+	<h1><a href="">css-nested</a></h1>
+
+	<button onclick="modifyDynCSS();">Set dyn CSS</button>
+	<button onclick="clearDynCSS();">Clear dyn CSS</button>
+
+	<button onclick="targetDynCSS();">Target dyn CSS</button>
+
+
+	<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet ultrices nunc. Praesent tempus turpis nec neque faucibus, et faucibus ipsum tincidunt. Aenean egestas porttitor justo, quis eleifend neque pretium ut. Vestibulum sit amet sem sed libero consequat ornare sed sed enim. Aenean ac maximus tellus. Phasellus dictum est quis libero dictum suscipit. Sed id lobortis elit. Morbi dictum orci est, sit amet elementum sapien efficitur nec. Vestibulum efficitur non eros sed ultricies. Fusce molestie, dui vel vestibulum sollicitudin, massa nunc ultricies nibh, at pulvinar nunc urna a lacus.
+	</p>
+	<p>
+	Maecenas egestas lacinia quam, vel aliquam tellus volutpat quis. Phasellus mollis nunc varius nisi pharetra, ac tristique nulla mollis. Vivamus hendrerit felis vitae felis pulvinar maximus. Fusce eget lacus volutpat, semper arcu non, ornare justo. Aliquam euismod arcu libero, sodales consequat urna ultricies nec. Duis placerat felis vitae diam rutrum blandit. Etiam et dapibus lorem. Aenean lacus sapien, posuere non fermentum at, rhoncus non metus. Fusce non purus eget odio aliquet varius a dapibus purus. Curabitur semper pharetra fermentum. Ut vestibulum tempor enim suscipit hendrerit. Fusce sed sollicitudin erat. Morbi vel tellus interdum, condimentum magna in, accumsan mi. Nam egestas, diam sed molestie condimentum, purus nisi tempus leo, vel volutpat lorem neque non ante.
+	</p>
+	<div id="para3">
+		<p>
+		Praesent cursus nulla at felis semper, eu tincidunt felis iaculis. Nullam sagittis mollis convallis. Integer interdum luctus sapien, non lacinia nunc pulvinar vitae. In vel quam eget erat viverra blandit ac et nisl. Donec posuere quam sed neque auctor pulvinar. Suspendisse potenti. Vivamus non ullamcorper lectus, eget dapibus diam. Fusce et justo a enim bibendum sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum nec velit vitae nisi viverra consequat. Aenean pretium faucibus leo, at placerat nisl ullamcorper quis. Proin mollis eget quam at commodo. Nunc viverra turpis eu elit vehicula, a tempus sem consectetur.
+		</p>
+	</div>
+	<p>
+	Fusce mollis, augue in placerat mattis, lectus nisl efficitur eros, tempor fringilla lorem lacus nec dolor. Maecenas elementum purus enim, eget rutrum lacus aliquam ut. Nunc ac pretium felis, et placerat justo. Suspendisse potenti. Nulla at magna blandit, vestibulum tortor non, bibendum arcu. Vivamus quis auctor velit, eu interdum eros. Vivamus hendrerit mollis felis. Fusce venenatis elit venenatis sem dapibus, eu consequat est vestibulum. Duis vitae aliquet ligula, id tempus arcu. Mauris ut volutpat purus.
+	</p>
+	<p>
+	In in eleifend tortor, eget vehicula felis. Donec consectetur mattis porttitor. Sed mi sapien, ullamcorper vitae tristique eu, fermentum eget lectus. Proin aliquam iaculis sem vitae lobortis. Pellentesque felis sapien, mattis vitae suscipit eget, suscipit sed erat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin quis tempus eros. Mauris viverra turpis pellentesque, dapibus lacus eget, dictum ligula. Suspendisse potenti. Integer pharetra tincidunt porta. Aliquam erat volutpat. Curabitur suscipit et tellus nec convallis. Nunc nec libero ante. Curabitur nunc nulla, maximus ut eros at, laoreet feugiat nisi. Integer sapien nisi, porttitor at lacus vel, lobortis vehicula nisl.
+	</p>
+
+
+	<h2>Log:</h2>
+	<output id="pageLog"></output>
+</body>
+</html>
