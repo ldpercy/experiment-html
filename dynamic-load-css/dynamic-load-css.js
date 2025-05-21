@@ -1,11 +1,14 @@
+// dynamic-load-css.js
 
-// setup log
+console.clear();
 log = createPageLog(document.getElementById('pageLog'));
-
+log('dynamic-load-css.js: run');
 
 document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
 
+/* documentDOMContentLoaded
+*/
 function documentDOMContentLoaded() {
 	log('document DOMContentLoaded');
 
