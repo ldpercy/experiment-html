@@ -41,6 +41,11 @@ Will find out soon enough I suppose.
 
 
 
+Creating new content & styles
+-----------------------------
+
+That all works fine with existing style and html.
+What about writing brand new content?
 
 
 

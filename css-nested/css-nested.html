@@ -4,11 +4,11 @@
 	<title>css-nested</title>
 	<meta charset="utf-8">
 	<link rel="icon" href="../[resource]/favicon.svg">
-	<link rel="stylesheet" href="../[resource]/style.css">
-	<script defer src="../[resource]/script.js"></script>
-	<script defer src="css-nested.js"></script>
+	<link id="link-resource-css" rel="stylesheet" href="../[resource]/style.css">
+	<script id="script-resource-js" defer src="../[resource]/script.js"></script>
+	<script id="script-css-nested" defer src="css-nested.js"></script>
 	<style>
-		p { color: grey; }
+		p { color: grey; padding:1ex; }
 	</style>
 	<style id="dynStyle">
 		/* Try to fill this in dynamically */
@@ -21,11 +21,16 @@
 
 	<button onclick="modifyDynCSS();">Set dyn CSS</button>
 	<button onclick="clearDynCSS();">Clear dyn CSS</button>
-
 	<button onclick="targetDynCSS();">Target dyn CSS</button>
+	<br/>
+	<button onclick="addNewContent();">Add new content</button>
+	<output id="newContent">
+		<h3>New Content:</h3>
+	</output>
 
+	<iframe id="ifr" src="test.css">asdf</iframe>
 
-	<p>
+	<p id="p1">
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet ultrices nunc. Praesent tempus turpis nec neque faucibus, et faucibus ipsum tincidunt. Aenean egestas porttitor justo, quis eleifend neque pretium ut. Vestibulum sit amet sem sed libero consequat ornare sed sed enim. Aenean ac maximus tellus. Phasellus dictum est quis libero dictum suscipit. Sed id lobortis elit. Morbi dictum orci est, sit amet elementum sapien efficitur nec. Vestibulum efficitur non eros sed ultricies. Fusce molestie, dui vel vestibulum sollicitudin, massa nunc ultricies nibh, at pulvinar nunc urna a lacus.
 	</p>
 	<p>

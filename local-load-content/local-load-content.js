@@ -1,8 +1,9 @@
+// local-load-content.js
 
-// setup
-document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
-log = createPageLog(document.getElementById('pageLog'));
 console.clear();
+log = createPageLog(document.getElementById('pageLog'));
+log('local-load-content.js: run');
+document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
 
 function documentDOMContentLoaded() {
@@ -13,7 +14,6 @@ function documentDOMContentLoaded() {
 	addEventListener('#button-load-xhr', 'click',
 		(()=>{loadScript('script/efgh.js')})
 	);
-
 }
 
 

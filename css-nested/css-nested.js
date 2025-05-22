@@ -42,3 +42,36 @@ function targetDynCSS() {
 function clearDynCSS() {
 	dynStyleElement.innerHTML = '';
 }/* clearDynCSS */
+
+
+
+function getNewContent(id, css) {
+	const newContent = `
+		<div id="${id}">
+			<style>	#${id} { ${css} } </style>
+			<p>This is new content: ${new Date()}</p>
+		</div>
+	`;
+	return newContent;
+}
+
+function removeElement(id){
+	document.getElementById(id).remove();
+}
+
+
+function addNewContent() {
+	const css = `p { color:${randomRGB()}; background-color:${randomRGB()}; border:1ex ${randomRGB()}; }`;
+
+	const id = `id-${Math.round((Math.random()*255))}`;
+
+	document.getElementById('newContent').innerHTML += getNewContent(id,css);
+}
+
+
+function randomRGB() {
+	const r = Math.round((Math.random()*255));
+	const g = Math.round((Math.random()*255));
+	const b = Math.round((Math.random()*255));
+	return `rgb(${r},${g},${b})`;
+}

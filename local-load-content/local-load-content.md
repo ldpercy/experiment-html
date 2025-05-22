@@ -44,10 +44,17 @@ Anything left?
 
 Running oput of options for local reading.
 
-At present I *can* read local files with script and link tags.
+At present I *can* ~~read local files~~ load local scripts and css link tags.
 Also image tags of various kinds will probably be okay locally.
 
 There *might* be ways of looking into the content of some of those...
 (SVG for example.)
 
 And there's always the good ol iframe.
+
+
+iframe
+------
+
+I really should see what can be done with iframes as it might be one of the few options left.
+
