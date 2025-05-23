@@ -58,3 +58,40 @@ iframe
 
 I really should see what can be done with iframes as it might be one of the few options left.
 
+Frame content should be in:
+
+	iframe.contentDocument
+
+But this too is locked down by Same-origin policy when under file protocol (on ff at least).
+
+
+
+Same Origin Policy for files
+----------------------------
+
+https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#file_origins
+
+https://stackoverflow.com/questions/48313084/what-is-the-same-origin-policy-for-file-uris
+
+Same origin policy for file:// scheme? https://groups.google.com/a/chromium.org/g/blink-dev/c/0w5mxLMkrNM
+
+Define behavior for file:// documents' origin https://github.com/whatwg/html/issues/3099
+
+
+### Firefox
+Current practice in ff is to treat file URIs as having unique origins.
+
+It can be relaxed in `about:config` with:
+
+	security.fileuri.strict_origin_policy
+
+A decent description of an attack scenario here:
+
+	Treating file: URIs as unique origins - https://bugzilla.mozilla.org/show_bug.cgi?id=1500453
+
+> Setting `security.fileuri.strict_origin_policy` to false is a lot more dangerous than the current behavior... I'd be pretty loath to recommend it to anyone in good conscience.
+
+I'm fairly disinclined to set this globally.
+If there was a way to change it temporarily, say with a plugin, or only for certain folders... then maybe.
+
+
