@@ -1,13 +1,11 @@
 /* js-unload.js
 */
-console.clear();
 log = createPageLog(document.getElementById('pageLog'));
 log('js-unload.js: run');
 document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
 function documentDOMContentLoaded() {
-	log('documentDOMContentLoaded');
-	testFunction();
+	log('document.DOMContentLoaded');
 }
 
 //testFunction();
@@ -30,12 +28,3 @@ testObject = {
 	'b' : 2,
 	'c'	: 3,
 };
-
-
-function testFunction() {
-	log('This is the initial testFunction declared in overwrite-js.js');
-	log(testVariable);
-	log(testObject);
-	console.log(testObject);
-}
-
