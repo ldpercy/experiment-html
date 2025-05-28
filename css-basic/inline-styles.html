@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>inline-styles</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../[resource]/favicon.svg">
+	<link rel="stylesheet" href="../[resource]/style.css">
+	<script defer src="../[resource]/script.js"></script>
+	<script defer src="css-basic.js"></script>
+
+</head>
+<body>
+	<nav><a title="Up to folder" href="./">./</a> <a title="Parent folder" href="../">../</a></nav>
+
+	<h1><a href="">inline-styles</a></h1>
+
+	<h2>How do inline styles apply to content?</h2>
+
+	<p>
+		A paragraph, no styles yet.
+		I'll put a 'style' tag after it to change the colour.
+	</p>
+
+	<style>
+		p {color:red; }
+	</style>
+	<p>
+		Another paragraph; there's a 'style' tag just above this time, between this and the previous p tag.
+		The 'p' style applies to both paragraphs.
+	</p>
+
+	<style>
+		p {font-family:monospace;}
+	</style>
+	<p>
+		And again, this time to monospace.
+	</p>
+
+	<style>
+		p {color:green;}
+	</style>
+	<p>
+		And finally override to green.
+	</p>
+
+	<p>
+		Rightyo then.
+		There isn't anything like 'styles apply until until overridden', it doesn't work that way.
+		The inline styles probably get combined into a single stylesheet, with it's own override cascade, then applied to the document as a whole.
+		Makes sense, but haven't tried anything this basic in a <i>very</i> long time.
+	</p>
+
+	<h2>Log:</h2>
+	<output id="pageLog"></output>
+</body>
+</html>
