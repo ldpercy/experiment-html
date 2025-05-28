@@ -1,3 +1,4 @@
+console.log('common-script.js');
 
 /* URL Parameters
 */
