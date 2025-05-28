@@ -1,5 +1,5 @@
-Overwrite JS
-===========
+JS Overwrite
+============
 
 Related to the dynamic load experiment, just want to clear up what happens when you load multiple scripts that declare/assign the same values - functions, variables etc.
 

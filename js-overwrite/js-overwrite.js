@@ -1,7 +1,7 @@
 
 
 log = createPageLog(document.getElementById('pageLog'));
-log('overwrite.js: run');
+log('js-overwrite.js: run');
 
 
 document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
