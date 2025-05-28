@@ -1,3 +1,5 @@
+/* experiment-template.js
+*/
 console.clear();
 log = createPageLog(document.getElementById('pageLog'));
 log('experiment-template.js: run');

@@ -1,8 +1,8 @@
-/* js-overwrite.js
+/* js-unload.js
 */
 console.clear();
 log = createPageLog(document.getElementById('pageLog'));
-log('js-overwrite.js: run');
+log('js-unload.js: run');
 document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
 function documentDOMContentLoaded() {
