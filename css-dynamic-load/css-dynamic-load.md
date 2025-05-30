@@ -1,4 +1,4 @@
-Dynamic Load CSS
+CSS Dynamic Load
 ================
 
 Experiments in dynamically loading/changing styles.

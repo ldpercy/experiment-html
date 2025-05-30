@@ -2,7 +2,7 @@
 
 console.clear();
 log = createPageLog(document.getElementById('pageLog'));
-log('dynamic-load-css.js: run');
+log('css-dynamic-load.js: run');
 
 document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
