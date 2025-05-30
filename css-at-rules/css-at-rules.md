@@ -47,3 +47,30 @@ https://css-tricks.com/almanac/rules/n/namespace/
 Another similar-ish technique using custom elements described here:
 https://www.codingeasypeasy.com/blog/namespace-css-advanced-styling-with-scoped-selectors-a-comprehensive-guide
 
+
+@scope
+------
+
+https://developer.chrome.com/docs/css-ui/at-scope
+
+In the cascade:
+	* after specificity
+	* before order-of-appearance
+	* (2nd last)
+
+
+
+
+Naming things just got easier thanks to @scope
+https://www.youtube.com/watch?v=PkFuytYVqI8
+
+
+* can drop element scoped style tags directly into html, eg
+	<parent-element>
+		<style>
+			@scope {
+				rulesets
+			}
+		</style>
+	</parent-element>
+
