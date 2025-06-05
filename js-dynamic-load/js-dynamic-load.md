@@ -1,4 +1,4 @@
-Dynamic Load JS
+JS Dynamic Load
 ===============
 
 Experiments in dynamically loading/changing scripts.
