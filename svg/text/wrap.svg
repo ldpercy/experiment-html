@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- <rect x="0" y="0" width="96" height="96" fill="black"/> -->
+<style>
+	text {
+		text-anchor: middle;
+		dominant-baseline:middle;
+		text-align: justify;
+		white-space: pre-wrap;
+		font-family: sans-serif;
+	}
+</style>
+<!--
+🪐 🚀 ☄
+🌟 🌛 🌜
+🌞 🛰️ 👾
+👽 🛸
+ -->
+<text x="5" y="5" width="90" height="90" style="" font-size="12">
+	lorem ipsum
+	dolor
+	sit amet
+</text>
+</svg>
