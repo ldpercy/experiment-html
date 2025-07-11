@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-120 -120 240 240" preserveAspectRatio="xMidYMid meet" onload="load()">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" onload="load()">
 
 	<script>
 		<![CDATA[
@@ -28,14 +28,16 @@
 		function degrees(radians) { return 360 * radians/tau}
 
 		function getStarPath(number) {
-			const length = 100;
+			const length = 1000;
 			let path = '';
-			let angle = 0, x = 0, y = 0;
+			let x = 0, y = 0;
 			const sides = 12;
 			const divisions = 3;
 
 			//const mainAngle = tau / sides;
 			const mainAngle = tau / sides;
+
+			let angle = mainAngle/2;
 
 			const internalAngle = mainAngle / divisions;
 
@@ -49,8 +51,8 @@
 
 				const p = polarPoint(angle, length)
 
-				x = p.x;
-				y = p.y;
+				x = Math.round(p.x);
+				y = Math.round(p.y);
 				console.log(i,degrees(angle),x,y);
 
 				path  += (i===0) ? `M ${x} ${y} ` : `L ${x} ${y} `;
