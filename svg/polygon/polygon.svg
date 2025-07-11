@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-120 -120 240 240" preserveAspectRatio="xMidYMid meet" onload="load()">
+
+	<script>
+		<![CDATA[
+
+		function load() {
+			let polyPath = getPolygonPath();
+			console.log(polyPath);
+			document.getElementById('polygon').setAttribute('d',polyPath);
+		}
+
+		function getPolygonPath(number) {
+
+			const sides = 7;
+			const internalAngle = 2 * Math.PI / sides;
+			const length = 80;
+			let path = '';
+
+			for (let i=0; i < sides; i++)
+			{
+				let angle = internalAngle * i;
+				let x = length * Math.sin(angle);
+				let y = length * Math.cos(angle);
+				path  += (i===0) ? `M ${x} ${y} ` : `L ${x} ${y} `;
+			}
+
+			return `${path} Z`;
+		}
+		// ]]>
+	</script>
+
+	<style>
+		path {
+			stroke: red;
+			stroke-width: 1;
+			fill: pink;
+		}
+	</style>
+
+	<rect x="-120" y="-120" width="240" height="240" fill="silver"/>
+
+	<path id="polygon" d=""/>
+
+</svg>
