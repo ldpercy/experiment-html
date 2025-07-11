@@ -3,36 +3,55 @@
 	<script>
 		<![CDATA[
 
+		const tau = 2 * Math.PI;
+
 		function load() {
 			let starPath = getStarPath();
 			//console.log(starPath);
 			document.getElementById('star').setAttribute('d',starPath);
 		}
 
-		function getStarPath(number) {
+		function Point(x, y)
+		{
+			this.x = x;
+			this.y = y;
+		}
 
+		function polarPoint(radians, radius)
+		{
+			return new Point(
+				radius * Math.sin(radians),
+				radius * -Math.cos(radians)
+			)
+		}
+
+		function degrees(radians) { return 360 * radians/tau}
+
+		function getStarPath(number) {
+			const length = 100;
 			let path = '';
 			let angle = 0, x = 0, y = 0;
-			const sides = 4;
+			const sides = 12;
 			const divisions = 3;
 
-			const tau = 2 * Math.PI;
-
+			//const mainAngle = tau / sides;
 			const mainAngle = tau / sides;
 
 			const internalAngle = mainAngle / divisions;
 
+			console.log(mainAngle, internalAngle);
+
 			const points = sides * divisions;
 
-			const length = 30;
-
-
-			for (let i=0; i < points; i++)
+			for (let i=0; i < sides; i++)
 			{
-				angle += Math.PI - i*internalAngle;
-				console.log(angle,x,y);
-				x = length * Math.sin(angle);
-				y = length * Math.cos(angle);
+				angle += 5*mainAngle; <!--  i* -->
+
+				const p = polarPoint(angle, length)
+
+				x = p.x;
+				y = p.y;
+				console.log(i,degrees(angle),x,y);
 
 				path  += (i===0) ? `M ${x} ${y} ` : `L ${x} ${y} `;
 			}
@@ -41,25 +60,26 @@
 		}
 		// ]]>
 	</script>
-
+	<!--  -->
 	<style>
 		path {
-			stroke: red;
+			stroke: blue;
 			stroke-width: 1;
-			fill: pink;
-			fill-rule: evenodd; <!-- nonzero -->
-			stroke-dasharray: 2 7;
+			fill: #00fa;  <!-- none; -->
+			fill-rule: evenodd; <!-- evenodd, nonzero -->
+			<!-- stroke-dasharray: 2 7; -->
 			stroke-linecap: round;
 			stroke-linejoin: bevel;
 			marker-start:url(#markerStart);
 			marker-end:url(#markerEnd);
 		}
+		.origin { fill:transparent ; stroke:black }
 		marker { stroke-width:.5; }
 		.marker-start  { fill:lightgreen ; stroke:green }
 		.marker-end    { fill:pink ; stroke:red }
 	</style>
 
-	<rect x="-120" y="-120" width="240" height="240" fill="silver"/>
+	<rect x="-120" y="-120" width="240" height="240" fill="lightgrey"/>
 
 	<defs>
 		<marker id="markerStart" markerWidth="10" markerHeight="10" refX="5" refY="5">
@@ -71,6 +91,7 @@
 
 	</defs>
 
+	<circle class="origin" cx="0" cy="0" r="2"/>
 
 	<path id="star" d=""/>
 
