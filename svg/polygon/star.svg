@@ -28,7 +28,7 @@
 		function degrees(radians) { return 360 * radians/tau}
 
 		function getStarPath(number) {
-			const length = 100;
+			const length = 1000;
 			let path = '';
 			let angle = 0, x = 0, y = 0;
 			const sides = 12;
@@ -49,8 +49,8 @@
 
 				const p = polarPoint(angle, length)
 
-				x = p.x;
-				y = p.y;
+				x = Math.round(p.x);
+				y = Math.round(p.y);
 				console.log(i,degrees(angle),x,y);
 
 				path  += (i===0) ? `M ${x} ${y} ` : `L ${x} ${y} `;
