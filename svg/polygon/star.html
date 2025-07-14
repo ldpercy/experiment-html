@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>star</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="star.css"/>
+	<script defer src="../[library]/polar-coordinates.js"></script>
+	<script defer src="./star.js"></script>
+
+</head>
+<body onload="bodyOnload()">
+
+	<form id="form-star" onchange="drawStar()">
+		<label for="input-sides">sides</label>
+		<input id="input-sides" type="number" name="sides" title="sides"/>
+		<label for="input-sides">offset</label>
+		<input id="input-offset" type="number" name="offset" title="offset"/>
+	</form>
+
+
+	<output id="output">
+
+		<svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" >
+
+			<style>
+				path {
+					stroke: blue;
+					stroke-width: 1;
+					fill: #00fa;  /* none;  */
+					fill-rule: evenodd; /* evenodd, nonzero  */
+					/*  stroke-dasharray: 2 7;  */
+					stroke-linecap: round;
+					stroke-linejoin: bevel;
+					marker-start:url(#markerStart);
+					marker-end:url(#markerEnd);
+				}
+				.origin { fill:transparent ; stroke:black }
+				marker { stroke-width:.5; }
+				.marker-start  { fill:lightgreen ; stroke:green }
+				.marker-end    { fill:pink ; stroke:red }
+			</style>
+
+			<rect x="-120" y="-120" width="240" height="240" fill="lightgrey"/>
+
+			<defs>
+				<marker id="markerStart" markerWidth="10" markerHeight="10" refX="5" refY="5">
+					<circle class="marker-start" cx="5" cy="5" r="3"/>
+				</marker>
+				<marker id="markerEnd" markerWidth="10" markerHeight="10" refX="5" refY="5">
+					<rect class="marker-end" x="4" y="4" width="2" height="2"/>
+				</marker>
+
+			</defs>
+
+			<circle class="origin" cx="0" cy="0" r="2"/>
+
+			<path id="star" d=""/>
+
+		</svg>
+
+	</output>
+
+</body>
+</html>
