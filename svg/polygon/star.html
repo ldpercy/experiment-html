@@ -12,9 +12,11 @@
 
 	<form id="form-star" onchange="drawStar()">
 		<label for="input-sides">sides</label>
-		<input id="input-sides" type="number" name="sides" title="sides"/>
-		<label for="input-sides">offset</label>
-		<input id="input-offset" type="number" name="offset" title="offset"/>
+		<input id="input-sides" type="number" name="sides" title="sides" min="1"/>
+		<label for="input-offset">offset</label>
+		<input id="input-offset" type="number" name="offset" title="offset" value="1"/>
+		<label for="input-startDivision">start division</label>
+		<input id="input-startDivision" type="number" name="startDivision" title="startDivision" value="1">
 	</form>
 
 

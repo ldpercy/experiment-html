@@ -1,7 +1,8 @@
-
+/* star.js
+*/
 
 function bodyOnload() {
-	console.log('asdfasdf');
+
 	drawStar()
 }
 
@@ -10,42 +11,34 @@ function drawStar(){
 
 	const sides = document.getElementById('input-sides').value;
 	const offset = document.getElementById('input-offset').value;
+	const startDivision = document.getElementById('input-startDivision').value;
 
-	let starPath = getStarPath(sides,offset);
+	let starPath = getStarPath(sides, offset, startDivision);
 	//console.log(starPath);
 	document.getElementById('star').setAttribute('d',starPath);
 }
 
 
-
-
-function getStarPath(sides, offset) {
+function getStarPath(sides, offset, startDivision) {
 	const length = 1000;
 	let path = '';
 	let x = 0, y = 0;
-	//const sides = 12;
-	const divisions = 3;
 
-	//const mainAngle = tau / sides;
 	const mainAngle = tau / sides;
 
-	let angle = mainAngle/2;
+	const startAngle = mainAngle/startDivision;
 
-	const internalAngle = mainAngle / divisions;
-
-	console.log(mainAngle, internalAngle);
-
-	const points = sides * divisions;
+	let pointRadians = startAngle;
 
 	for (let i=0; i < sides; i++)
 	{
-		angle += offset * mainAngle;
+		pointRadians += offset * mainAngle;
 
-		const p = polarPoint(angle, length)
+		const p = polarPoint(pointRadians, length)
 
 		x = Math.round(p.x);
 		y = Math.round(p.y);
-		console.log(i,degrees(angle),x,y);
+		//console.log(i,Math.round(degrees(pointRadians)),x,y);
 
 		path  += (i===0) ? `M ${x} ${y} ` : `L ${x} ${y} `;
 	}
