@@ -16,6 +16,8 @@ form#form-star {
 	margin: 1ex;
 }
 
+hr { width:100%;  } /* border:1px dotted silver inset; */
+
 
 svg.star {
 	width: 100vw;

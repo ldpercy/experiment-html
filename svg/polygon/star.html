@@ -10,13 +10,20 @@
 </head>
 <body onload="bodyOnload()">
 
-	<form id="form-star" onchange="drawStar()">
+	<form id="form-star" onchange="redraw()">
 		<label for="input-sides">sides</label>
 		<input id="input-sides" type="number" name="sides" title="sides" min="1"/>
-		<label for="input-offset">offset</label>
-		<input id="input-offset" type="number" name="offset" title="offset" value="1"/>
+		<label for="input-pointStep">point step</label>
+		<input id="input-pointStep" type="number" name="pointStep" title="pointStep" value="1"/>
 		<label for="input-startDivision">start division</label>
 		<input id="input-startDivision" type="number" name="startDivision" title="startDivision" value="1">
+
+		<hr/>
+
+		<label for="input-copies">copies</label>
+		<input id="input-copies" type="number" name="copies" title="copies" value="1" min="0">
+		<label for="input-divisionOffset">division offset</label>
+		<input id="input-divisionOffset" type="number" name="divisionOffset" title="divisionOffset" value="0">
 	</form>
 
 
@@ -42,7 +49,7 @@
 				.marker-end    { fill:pink ; stroke:red }
 			</style>
 
-			<rect x="-120" y="-120" width="240" height="240" fill="lightgrey"/>
+			<!-- <rect x="-120" y="-120" width="240" height="240" fill="lightgrey"/> -->
 
 			<defs>
 				<marker id="markerStart" markerWidth="10" markerHeight="10" refX="5" refY="5">
@@ -51,12 +58,15 @@
 				<marker id="markerEnd" markerWidth="10" markerHeight="10" refX="5" refY="5">
 					<rect class="marker-end" x="4" y="4" width="2" height="2"/>
 				</marker>
-
 			</defs>
 
-			<circle class="origin" cx="0" cy="0" r="2"/>
+			<g id="grid">
+				<circle class="origin" cx="0" cy="0" r="5"/>
+			</g>
 
-			<path id="star" d=""/>
+			<g id="star-group">
+				<path id="star" d=""/>
+			</g>
 
 		</svg>
 
