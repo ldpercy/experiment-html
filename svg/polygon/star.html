@@ -31,29 +31,17 @@
 
 		</form>
 		<form id="form-style">
-			<label for="fillRule-nonzero">
-				<input type="radio" name="fillRule" id="fillRule-nonzero" value="nonzero">
-				nonzero
-			</label>
 
 			<label for="fillRule-evenOdd">
-				<input type="radio" name="fillRule" id="fillRule-evenOdd" value="evenodd">
-				evenodd
+				<input type="checkbox" name="fillRule" id="fillRule-evenOdd" value="evenodd" checked>
+				fill-rule: evenodd
 			</label>
 
 		</form>
 	</div>
 
-
-
 	<output id="output">
-
-		<svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" >
-
-			<style>
-
-			</style>
-
+		<svg class="star" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" >
 			<!-- <rect x="-120" y="-120" width="240" height="240" fill="lightgrey"/> -->
 
 			<defs>
@@ -69,12 +57,10 @@
 				<circle class="origin" cx="0" cy="0" r="5"/>
 			</g>
 
-			<g id="star-group">
+			<g id="star-group" class="evenodd">
 				<path id="star" d=""/>
 			</g>
-
 		</svg>
-
 	</output>
 
 </body>

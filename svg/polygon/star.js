@@ -12,11 +12,9 @@ function bodyOnload() {
 
 function updateStyle() {
 
-	const fillRule = document.querySelector('input[name="fillRule"]:checked').value;
+	//console.log('updateStyle', fillRule);
 
-	console.log('updateStyle', fillRule);
-
-	if (fillRule === 'evenodd') {
+	if (document.getElementById('fillRule-evenOdd').checked) {
 		document.getElementById('star-group').classList.add('evenodd');
 	}
 	else {
