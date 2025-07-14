@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" onload="load()">
 
+	<script href="../[library]/polar-coordinates.js"/>
 	<script>
 		<![CDATA[
 
-		const tau = 2 * Math.PI;
 
 		function load() {
 			let starPath = getStarPath();
@@ -11,21 +11,6 @@
 			document.getElementById('star').setAttribute('d',starPath);
 		}
 
-		function Point(x, y)
-		{
-			this.x = x;
-			this.y = y;
-		}
-
-		function polarPoint(radians, radius)
-		{
-			return new Point(
-				radius * Math.sin(radians),
-				radius * -Math.cos(radians)
-			)
-		}
-
-		function degrees(radians) { return 360 * radians/tau}
 
 		function getStarPath(number) {
 			const length = 1000;
