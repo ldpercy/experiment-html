@@ -14,7 +14,7 @@ function updateStyle() {
 
 	//console.log('updateStyle', fillRule);
 
-	if (document.getElementById('fillRule-evenOdd').checked) {
+	if (document.getElementById('input-fillRule-evenOdd').checked) {
 		document.getElementById('star-group').classList.add('evenodd');
 	}
 	else {
@@ -30,11 +30,11 @@ function redraw(){
 	const pointStep = document.getElementById('input-pointStep').value;
 	const startDivision = document.getElementById('input-startDivision').value;
 
-
 	const copies = document.getElementById('input-copies').value;
 	const divisionOffset = document.getElementById('input-divisionOffset').value;
+	const separatePaths = document.getElementById('input-separatePaths').checked;
 
-	const starGroup = getStarPath(sides, pointStep, startDivision, copies, divisionOffset);
+	const starGroup = getStarPath(sides, pointStep, startDivision, copies, divisionOffset, separatePaths);
 
 	//console.log(starPath);
 	document.getElementById('star-group').innerHTML = starGroup;
@@ -46,8 +46,16 @@ function drawStar(){
 } */
 
 
-function getStarPath(sides, pointStep, startDivision, copies, divisionOffset) {
+function getStarPath(
+		sides, 				// how many sides the polygon has
+		pointStep, 			// how many divisions to the next vertex
+		startDivision,		// integer divisions of the base angle to the start of the polygon
+		copies, 			// number of copies of the polygon to draw
+		divisionOffset,		// integer divisions of the base angle between the copies
+		separateCopies		// whether the copies are separate svg paths
+	) {
 	const length = 1000;
+	let result = '';
 	let path = '';
 	let x = 0, y = 0;
 
@@ -73,7 +81,21 @@ function getStarPath(sides, pointStep, startDivision, copies, divisionOffset) {
 
 			path  += (i===0) ? `M ${x} ${y} ` : `L ${x} ${y} `;
 		}
+
+		if (separateCopies) {
+			result += `<path class="star" d="${path} Z"/>`;
+			path = '';
+		}
+
 	}
 
-	return `<path class="star" d="${path} Z"/>`;
+	if (!separateCopies) {
+		result = `<path class="star" d="${path} Z"/>`;
+	}
+
+	return result;
 }
+
+
+
+

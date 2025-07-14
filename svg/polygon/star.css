@@ -34,7 +34,7 @@ svg.star {
 	path {
 		stroke: blue;
 		stroke-width: 1;
-		fill: #00f7;  /* none;  */
+		fill: #00f4;  /* none;  */
 		/* fill-rule: evenodd;  evenodd, nonzero  */
 		/*  stroke-dasharray: 2 7;  */
 		stroke-linecap: round;
