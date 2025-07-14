@@ -40,10 +40,6 @@ function redraw(){
 	document.getElementById('star-group').innerHTML = starGroup;
 }
 
-/*
-function drawStar(){
-
-} */
 
 
 function getStarPath(
@@ -86,7 +82,9 @@ function getStarPath(
 			result += `<path class="star" d="${path} Z"/>`;
 			path = '';
 		}
-
+		else {
+			path += ` Z`;
+		}
 	}
 
 	if (!separateCopies) {
