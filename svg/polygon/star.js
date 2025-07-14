@@ -3,7 +3,26 @@
 
 function bodyOnload() {
 
+	document.getElementById('form-star').addEventListener('change', redraw);
+	document.getElementById('form-style').addEventListener('change', updateStyle);
+
 	redraw();
+}
+
+
+function updateStyle() {
+
+	const fillRule = document.querySelector('input[name="fillRule"]:checked').value;
+
+	console.log('updateStyle', fillRule);
+
+	if (fillRule === 'evenodd') {
+		document.getElementById('star-group').classList.add('evenodd');
+	}
+	else {
+		document.getElementById('star-group').classList.remove('evenodd');
+	}
+
 }
 
 

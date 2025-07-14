@@ -10,23 +10,40 @@
 </head>
 <body onload="bodyOnload()">
 
-	<form id="form-star" onchange="redraw()">
-		<label for="input-sides">sides</label>
-		<input id="input-sides" type="number" name="sides" title="sides" min="1" value="3"/>
 
-		<label for="input-pointStep">point step</label>
-		<input id="input-pointStep" type="number" name="pointStep" title="pointStep" value="1"/>
+	<div class="form-group">
+		<form id="form-star">
+			<label for="input-sides">sides</label>
+			<input id="input-sides" type="number" name="sides" title="sides" min="1" value="3"/>
 
-		<label for="input-startDivision">start division</label>
-		<input id="input-startDivision" type="number" name="startDivision" title="startDivision" value="1">
+			<label for="input-pointStep">point step</label>
+			<input id="input-pointStep" type="number" name="pointStep" title="pointStep" value="1"/>
 
-		<hr/>
+			<label for="input-startDivision">start division</label>
+			<input id="input-startDivision" type="number" name="startDivision" title="startDivision" value="1">
 
-		<label for="input-copies">copies</label>
-		<input id="input-copies" type="number" name="copies" title="copies" min="0" value="1" >
-		<label for="input-divisionOffset">division offset</label>
-		<input id="input-divisionOffset" type="number" name="divisionOffset" title="divisionOffset" value="1">
-	</form>
+			<hr/>
+
+			<label for="input-copies">copies</label>
+			<input id="input-copies" type="number" name="copies" title="copies" min="0" value="1" >
+			<label for="input-divisionOffset">division offset</label>
+			<input id="input-divisionOffset" type="number" name="divisionOffset" title="divisionOffset" value="1">
+
+		</form>
+		<form id="form-style">
+			<label for="fillRule-nonzero">
+				<input type="radio" name="fillRule" id="fillRule-nonzero" value="nonzero">
+				nonzero
+			</label>
+
+			<label for="fillRule-evenOdd">
+				<input type="radio" name="fillRule" id="fillRule-evenOdd" value="evenodd">
+				evenodd
+			</label>
+
+		</form>
+	</div>
+
 
 
 	<output id="output">
@@ -34,21 +51,7 @@
 		<svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" >
 
 			<style>
-				path {
-					stroke: blue;
-					stroke-width: 1;
-					fill: #00fa;  /* none;  */
-					fill-rule: evenodd; /* evenodd, nonzero  */
-					/*  stroke-dasharray: 2 7;  */
-					stroke-linecap: round;
-					stroke-linejoin: bevel;
-					marker-start:url(#markerStart);
-					marker-end:url(#markerEnd);
-				}
-				.origin { fill:transparent ; stroke:black }
-				marker { stroke-width:.5; }
-				.marker-start  { fill:lightgreen ; stroke:green }
-				.marker-end    { fill:pink ; stroke:red }
+
 			</style>
 
 			<!-- <rect x="-120" y="-120" width="240" height="240" fill="lightgrey"/> -->
