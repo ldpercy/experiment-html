@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+
+	<style>
+		path {
+			stroke: blue;
+			stroke-width: 1;
+			fill: #00fa;  <!-- none; -->
+			fill-rule: evenodd; <!-- evenodd, nonzero -->
+			<!-- stroke-dasharray: 2 7; -->
+			stroke-linecap: round;
+			stroke-linejoin: bevel;
+			marker-start:url(#markerStart);
+			marker-end:url(#markerEnd);
+		}
+		.origin { fill:transparent ; stroke:black }
+		marker { stroke-width:.5; }
+		.marker-start  { fill:lightgreen ; stroke:green }
+		.marker-end    { fill:pink ; stroke:red }
+
+		circle {
+			stroke: cyan;
+			fill: cadetblue;
+
+		}
+
+		rect {
+			stroke: red;
+			fill: pink;
+
+		}
+
+		text {
+			fill: tan;
+			stroke: tomato;
+			font-size: 32em;
+		}
+
+		.clip {
+			clip-path: url(#clip4);
+			clip-rule: evenodd; /* for complex clip-paths */
+		}
+	</style>
+
+	<defs>
+		<clipPath id="clip1">
+			<circle cx="200" cy="50" r="450"/>
+		</clipPath>
+		<clipPath id="clip2">
+			<text x="0" y="100" >
+				CLIP
+			</text>
+		</clipPath>
+		<clipPath id="clip3">
+			<rect x="-100" y="-100" width="800" height="400"/>
+		</clipPath>
+		<clipPath id="clip4">
+			<path class="star" d="M -951 -309 L 588 809 L 0 -1000 L -588 809 L 951 -309  ZM -588 -809 L 0 1000 L 588 -809 L -951 309 L 951 309  Z Z"></path>
+		</clipPath>
+	</defs>
+
+	<g class="clip">
+		<circle cx="-100" cy="0" r="600" />
+		<rect x="0" y="100" width="600" height="800" />
+		<text x="50" y="50" >
+			clip
+		</text>
+	</g>
+
+</svg>

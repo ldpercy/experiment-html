@@ -37,17 +37,15 @@ svg.star {
 		stroke-width: 1;
 		fill: #00f4;  /* none;  */
 
+		mix-blend-mode:saturation;
+
 		/* stroke-dasharray: 2 7;  */
 		/* stroke-linecap: round; */
 		/* stroke-linejoin: bevel; */
+		/*
 		marker-start:url(#markerStart);
 		marker-end:url(#markerEnd);
-
-		mix-blend-mode:saturation;
-		/*
-		good: difference, lighten, screen
-		interesting: difference, exclusion,
- 		*/
+		*/
 	}
 
 	path:nth-of-type(2),

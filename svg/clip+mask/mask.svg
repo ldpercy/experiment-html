@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+
+	<style>
+
+		svg {
+			background-color: blanchedalmond;
+		}
+
+		path {
+			stroke: blue;
+			stroke-width: 1;
+			fill: #00fa;  <!-- none; -->
+			fill-rule: evenodd; <!-- evenodd, nonzero -->
+			<!-- stroke-dasharray: 2 7; -->
+			stroke-linecap: round;
+			stroke-linejoin: bevel;
+			marker-start:url(#markerStart);
+			marker-end:url(#markerEnd);
+		}
+		.origin { fill:transparent ; stroke:black }
+		marker { stroke-width:.5; }
+		.marker-start  { fill:lightgreen ; stroke:green }
+		.marker-end    { fill:pink ; stroke:red }
+
+		circle {
+			stroke: cyan;
+			fill: cadetblue;
+
+		}
+
+		rect {
+			stroke: red;
+			fill: pink;
+
+		}
+
+		text {
+			fill: tan;
+			stroke: tomato;
+			font-size: 50ex;
+		}
+
+		.masked {
+			mask: url(#mask1);
+		}
+
+		mask * {
+			fill:#fffa;
+		}
+	</style>
+
+	<defs>
+		<mask id="mask1">
+			<circle cx="200" cy="50" r="450"/>
+		</mask>
+		<mask id="mask2">
+			<text x="0" y="100" >
+				MASK
+			</text>
+		</mask>
+		<mask id="mask3">
+			<rect x="-100" y="-100" width="800" height="400"/>
+		</mask>
+		<mask id="mask4">
+			<path class="star" d="M -1000 0 L 500 866 L 500 -866  ZM -966 -259 L 259 966 L 707 -707  ZM -866 -500 L 0 1000 L 866 -500  ZM -707 -707 L -259 966 L 966 -259  ZM -500 -866 L -500 866 L 1000 0  ZM -259 -966 L -707 707 L 966 259  ZM 0 -1000 L -866 500 L 866 500  ZM 259 -966 L -966 259 L 707 707  Z Z"></path>
+		</mask>
+	</defs>
+
+	<g class="masked">
+		<circle cx="0" cy="0" r="300" />
+		<rect x="0" y="0" width="400" height="500" />
+		<text x="50" y="50" >
+			mask
+		</text>
+	</g>
+
+</svg>
