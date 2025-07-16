@@ -11,6 +11,7 @@
 	<p>
 	This is a github pages test.
 	Want to see which takes precedence when both this and readme.md are present.
+	Result: index.html takes precedence
 	</p>
 
 </body>
