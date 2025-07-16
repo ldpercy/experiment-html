@@ -31,30 +31,59 @@
 
 		text {
 			fill: tan;
-			stroke: tomato;
+			stroke: none;
 			font-size: 32em;
 			text-anchor: middle;
 		}
 
 		.emboss {
-			filter: url(#emboss);
+			filter: url(#emboss-top);
 		}
+
+		.shadow {
+			filter: drop-shadow(0px 40px 20px #444b);
+		}
+
+		.both {
+
+		}
+
+		.emboss-first {
+			filter:
+				url(#emboss-top)
+				drop-shadow(0px 40px 20px #444b);
+		}
+
+		.shadow-first { /* filter order matters - this one looks bad */
+			filter:
+				drop-shadow(0px 40px 20px #444b)
+				url(#emboss-top);
+		}
+
 	</style>
 
 	<defs>
-		<filter id="emboss">
+		<filter id="emboss-top">
+			<feConvolveMatrix kernelMatrix="
+				0 1 0
+				0 1 0
+				0 -1 0
+			"/>
+		</filter>
+		<filter id="emboss-topleft">
 			<feConvolveMatrix kernelMatrix="
 				1 0 0
 				0 1 0
 				0 0 -1
 			"/>
 		</filter>
+
 	</defs>
 
-	<g >
+	<g class="emboss-first">
 		<circle cx="-300" cy="0" r="600" />
 		<rect x="0" y="0" width="600" height="900" />
-		<text x="50" y="50" class="emboss">
+		<text x="50" y="50" >
 			convolve
 		</text>
 	</g>
