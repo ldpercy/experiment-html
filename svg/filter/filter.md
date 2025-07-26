@@ -17,3 +17,22 @@ Also firefox and chromium seem to disagree about filter order in some cases -- s
 * Filter order **matters** - eg shadow before emboss looks weird
 * Effects are contextual to the group - eg look at the effect of applying `emboss-first` to just the text compared to the applied to the whole group
 * There are differences in drop-shadow rendering between ff and chromium when combined with the emboss. I think chromium is wrong - it gets lighter/fainter.
+
+
+
+Shadow
+------
+
+https://css-tricks.com/adding-shadows-to-svg-icons-with-css-and-svg-filters/
+
+
+
+
+
+Composite
+---------
+
+https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/feComposite
+
+
+* over, in, atop, out, xor, lighter, arithmetic
