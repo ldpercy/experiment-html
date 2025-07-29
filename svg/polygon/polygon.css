@@ -47,7 +47,7 @@ svg.star {
 	g.show-markers path {
 		marker-start:url(#markerStart);
 		marker-end:url(#markerEnd);
-		marker-mid:url(#marker);
+		marker-mid:url(#wedge);
 	}
 
 

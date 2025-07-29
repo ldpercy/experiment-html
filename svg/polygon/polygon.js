@@ -22,15 +22,11 @@ function updateStyle() {
 	}
 
 	if (document.getElementById('input-markers').checked) {
-		console.log('asdf');
 		document.getElementById('star-group').classList.add('show-markers');
 	}
 	else {
-		console.log('zxcv');
 		document.getElementById('star-group').classList.remove('show-markers');
 	}
-
-
 }
 
 
