@@ -40,6 +40,10 @@
 				<input type="checkbox" name="fillRule-evenOdd" id="input-fillRule-evenOdd" checked>
 				fill-rule: evenodd
 			</label>
+			<label for="input-markers">
+				<input type="checkbox" name="markers" id="input-markers">
+				show markers
+			</label>
 		</form>
 	</div>
 
@@ -48,19 +52,23 @@
 			<!-- <rect x="-120" y="-120" width="240" height="240" fill="lightgrey"/> -->
 
 			<defs>
-				<marker id="markerStart" markerWidth="10" markerHeight="10" refX="5" refY="5">
-					<circle class="marker-start" cx="5" cy="5" r="3"/>
+				<marker id="markerStart" markerWidth="100" markerHeight="100" refX="0" refY="0" viewBox="-30 -30 60 60">
+					<circle class="marker-start" cx="0" cy="0" r="25"/>
 				</marker>
-				<marker id="markerEnd" markerWidth="10" markerHeight="10" refX="5" refY="5">
-					<rect class="marker-end" x="4" y="4" width="2" height="2"/>
+				<marker id="markerEnd" markerWidth="100" markerHeight="100" refX="0" refY="0" viewBox="-30 -30 60 60">
+					<rect class="marker-end" x="-10" y="-10" width="20" height="20"/>
 				</marker>
+				<marker id="marker" markerWidth="40" markerHeight="100" refX="0" refY="0" orient="auto" viewBox="-20 -50 40 100">
+					<rect class="marker-mid" x="-20" y="-50" width="40" height="100"/>
+				</marker>
+
 			</defs>
 
 			<g id="grid">
 				<circle class="origin" cx="0" cy="0" r="5"/>
 			</g>
 
-			<g id="star-group" class="evenodd">
+			<g id="star-group" class="evenodd ">
 				<path id="star" d=""/>
 			</g>
 		</svg>
