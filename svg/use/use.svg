@@ -58,7 +58,7 @@
 			<circle cx="-300" cy="0" r="300" />
 			<rect x="0" y="0" width="600" height="900" />
 			<text x="50" y="50" >
-				drop shadow
+				use
 			</text>
 		</g>
 
@@ -71,5 +71,8 @@
 	<use href="#testSvg" x="1000"  y="-200" class="inset-shadow"/>
 	<!--
 	-->
+
+	<use href="../polygon/star-12.svg" x="0" y="0" width="200" height="200"/>
+
 
 </svg>

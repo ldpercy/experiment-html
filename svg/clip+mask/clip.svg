@@ -35,6 +35,11 @@
 			font-size: 32em;
 		}
 
+
+		.shadow {
+			filter: drop-shadow(0px 40px 20px #444b);
+		}
+
 		.clip {
 			clip-path: url(#clip4);
 			clip-rule: evenodd; /* for complex clip-paths */
@@ -58,7 +63,7 @@
 		</clipPath>
 	</defs>
 
-	<g class="clip">
+	<g class="clip shadow">
 		<circle cx="-100" cy="0" r="600" />
 		<rect x="0" y="100" width="600" height="800" />
 		<text x="50" y="50" >
