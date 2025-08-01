@@ -42,11 +42,14 @@ svg.star {
 		/* stroke-dasharray: 2 7;  */
 		/* stroke-linecap: round; */
 		/* stroke-linejoin: bevel; */
-		/*
+	}
+
+	g.show-markers path {
 		marker-start:url(#markerStart);
 		marker-end:url(#markerEnd);
-		*/
+		marker-mid:url(#wedge);
 	}
+
 
 	path:nth-of-type(2),
 	path:nth-last-of-type(2)
@@ -75,9 +78,13 @@ svg.star {
 
 	/* grid & markers */
 	.origin { fill:transparent ; stroke:black }
-	marker { stroke-width:.5; }
-	.marker-start  { fill:lightgreen ; stroke:green }
-	.marker-end    { fill:pink ; stroke:red }
+	marker {
+		stroke-width: 5;
+
+		.marker-start  { fill:lightgreen ; stroke:green }
+		.marker-end    { fill:pink ; stroke:red }
+		.marker-mid    { fill:yellow ; stroke:orange }
+	}
 
 }/* svg.star */
 

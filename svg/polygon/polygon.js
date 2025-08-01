@@ -21,6 +21,12 @@ function updateStyle() {
 		document.getElementById('star-group').classList.remove('evenodd');
 	}
 
+	if (document.getElementById('input-markers').checked) {
+		document.getElementById('star-group').classList.add('show-markers');
+	}
+	else {
+		document.getElementById('star-group').classList.remove('show-markers');
+	}
 }
 
 
