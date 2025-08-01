@@ -61,14 +61,30 @@
 		<clipPath id="clip4">
 			<path class="star" d="M -951 -309 L 588 809 L 0 -1000 L -588 809 L 951 -309  ZM -588 -809 L 0 1000 L 588 -809 L -951 309 L 951 309  Z Z"></path>
 		</clipPath>
+
+		<g id="drawing" class=" shadow">
+			<circle cx="-100" cy="0" r="600" />
+			<rect x="0" y="100" width="600" height="800" />
+			<text x="50" y="50" >
+				clip
+			</text>
+		</g>
+
 	</defs>
 
-	<g class="clip shadow">
+	<!-- <g id="drawing" class=" shadow">
 		<circle cx="-100" cy="0" r="600" />
 		<rect x="0" y="100" width="600" height="800" />
 		<text x="50" y="50" >
 			clip
 		</text>
+	</g> -->
+
+	<use href="#drawing" x="-1000" class="clip"/>
+
+	<!-- <use href="#drawing" x="600" class="clip"/> -->
+	<g class="clip" >
+		<use href="#drawing" transform="translate(500)" />
 	</g>
 
 </svg>
