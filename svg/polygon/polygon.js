@@ -39,8 +39,9 @@ function redraw(){
 	const copies = document.getElementById('input-copies').value;
 	const divisionOffset = document.getElementById('input-divisionOffset').value;
 	const separatePaths = document.getElementById('input-separatePaths').checked;
+	const coordinates = document.getElementById('input-coordinates').value;
 
-	const starGroup = getStarPath(sides, pointStep, startDivision, copies, divisionOffset, separatePaths);
+	const starGroup = getStarPath(sides, pointStep, startDivision, copies, divisionOffset, separatePaths, coordinates);
 
 	//console.log(starPath);
 	document.getElementById('star-group').innerHTML = starGroup;
@@ -54,12 +55,14 @@ function getStarPath(
 		startDivision,		// integer divisions of the base angle to the start of the polygon
 		copies, 			// number of copies of the polygon to draw
 		divisionOffset,		// integer divisions of the base angle between the copies
-		separateCopies		// whether the copies are separate svg paths
+		separateCopies,		// whether the copies are separate svg paths
+		coordinates,		// absolute or relative
 	) {
 	const length = 1000;
 	let result = '';
 	let path = '';
 	let x = 0, y = 0;
+
 
 	const mainAngle = tau / sides;
 
@@ -70,6 +73,7 @@ function getStarPath(
 	for (let c=0; c < copies; c++) {
 
 		pointRadians += mainAngle/divisionOffset;
+		let lastPoint = new Point(0,0);
 
 		for (let i=0; i < sides; i++)
 		{
@@ -77,21 +81,31 @@ function getStarPath(
 
 			const p = polarPoint(pointRadians, length)
 
-			x = Math.round(p.x);
-			y = Math.round(p.y);
-			//console.log(i,Math.round(degrees(pointRadians)),x,y);
+			if (coordinates === 'relative') {
 
-			path  += (i===0) ? `M ${x} ${y} ` : `L ${x} ${y} `;
-		}
+				x = Math.round(p.x - lastPoint.x);
+				y = Math.round(p.y - lastPoint.y);
+
+				path  += (i===0) ? `M ${x} ${y} ` : `l ${x} ${y} `;
+				lastPoint = p;
+
+			} else {
+				x = Math.round(p.x);
+				y = Math.round(p.y);
+				//console.log(i,Math.round(degrees(pointRadians)),x,y);
+
+				path  += (i===0) ? `M ${x} ${y} ` : `L ${x} ${y} `;
+			}
+		}// for i
 
 		if (separateCopies) {
 			result += `<path class="star" d="${path} Z"/>`;
 			path = '';
 		}
 		else {
-			path += ` Z`;
+			path += ` Z `;
 		}
-	}
+	}// for c
 
 	if (!separateCopies) {
 		result = `<path class="star" d="${path} Z"/>`;
