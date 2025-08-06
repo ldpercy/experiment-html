@@ -32,6 +32,7 @@ function updateStyle() {
 
 function redraw(){
 
+	const length = document.getElementById('input-length').value;
 	const sides = document.getElementById('input-sides').value;
 	const pointStep = document.getElementById('input-pointStep').value;
 	const startDivision = document.getElementById('input-startDivision').value;
@@ -41,7 +42,7 @@ function redraw(){
 	const separatePaths = document.getElementById('input-copyPaths').value;
 	const coordinates = document.getElementById('input-coordinates').value;
 
-	const starGroup = getStarPath(sides, pointStep, startDivision, copies, divisionOffset, separatePaths, coordinates);
+	const starGroup = getStarPath(length, sides, pointStep, startDivision, copies, divisionOffset, separatePaths, coordinates);
 
 	//console.log(starPath);
 	document.getElementById('star-group').innerHTML = starGroup;
@@ -50,6 +51,7 @@ function redraw(){
 
 
 function getStarPath(
+		length,				// length of sides
 		sides, 				// how many sides the polygon has
 		pointStep, 			// how many divisions to the next vertex
 		startDivision,		// integer divisions of the base angle to the start of the polygon
@@ -58,11 +60,9 @@ function getStarPath(
 		copyPaths,			// combined or separate svg paths
 		coordinates,		// absolute or relative
 	) {
-	const length = 1000;
 	let result = '';
 	let path = '';
 	let x = 0, y = 0;
-
 
 	const mainAngle = tau / sides;
 

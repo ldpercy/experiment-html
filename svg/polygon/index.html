@@ -13,6 +13,19 @@
 
 	<div class="form-group">
 		<form id="form-star">
+			<label for="input-length">length</label>
+			<input id="input-length" type="number" name="length" title="length" value="1000" list="datalist-length"/>
+			<datalist id="datalist-length">
+				<option>100</option>
+				<option>200</option>
+				<option>500</option>
+				<option>1000</option>
+				<option>1200</option>
+				<option>1500</option>
+				<option>2000</option>
+				<option>5000</option>
+			</datalist>
+
 			<label for="input-sides">sides</label>
 			<input id="input-sides" type="number" name="sides" title="sides" min="1" value="3"/>
 
@@ -24,7 +37,7 @@
 
 			<label for="input-coordinates">coordinates</label>
 			<select id="input-coordinates" name="coordinates" size="2">
-				<option value="absolute">absolute</option>
+				<option value="absolute" selected>absolute</option>
 				<option value="relative">relative</option>
 			</select>
 
@@ -37,7 +50,7 @@
 
 			<label for="input-copyPaths">copy paths</label>
 			<select id="input-copyPaths" name="copyPaths" size="2">
-				<option value="combined">combined</option>
+				<option value="combined" selected>combined</option>
 				<option value="separate">separate</option>
 			</select>
 		</form>
@@ -45,7 +58,7 @@
 		<form id="form-style">
 			<label for="input-fillRule">fill rule</label>
 			<select id="input-fillRule" name="fillRule" size="2">
-				<option value="evenodd">evenodd</option>
+				<option value="evenodd" selected>evenodd</option>
 				<option value="nonzero">nonzero</option>
 			</select>
 
