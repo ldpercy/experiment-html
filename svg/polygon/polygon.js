@@ -69,11 +69,11 @@ function getStarPath(
 	const startAngle = mainAngle/startDivision;
 
 	let pointRadians = startAngle;
-
+	let lastPoint = new Point(0,0);
 	for (let c=0; c < copies; c++) {
 
 		pointRadians += mainAngle/divisionOffset;
-		let lastPoint = new Point(0,0);
+
 
 		for (let i=0; i <= sides; i++)
 		{
@@ -86,7 +86,7 @@ function getStarPath(
 				x = Math.round(p.x - lastPoint.x);
 				y = Math.round(p.y - lastPoint.y);
 
-				path  += (i===0) ? `M ${x} ${y} ` : `l ${x} ${y} `;
+				path  += (i===0) ? `m${x},${y} ` : `l${x},${y} `;
 				lastPoint = p;
 
 			} else {
@@ -94,12 +94,13 @@ function getStarPath(
 				y = Math.round(p.y);
 				//console.log(i,Math.round(degrees(pointRadians)),x,y);
 
-				path  += (i===0) ? `M ${x} ${y} ` : `L ${x} ${y} `;
+				path  += (i===0) ? `M${x},${y} ` : `L${x},${y} `;
 			}
 		}// for i
 
 		if (copyPaths === 'separate') {
-			result += `<path class="star" d="${path} Z"/>`;
+			result += `<path class="star" d="${path} z"/>`;
+			lastPoint = new Point(0,0);
 			path = '';
 		}
 		else {
@@ -108,7 +109,7 @@ function getStarPath(
 	}// for c
 
 	if (copyPaths === 'combined') {
-		result = `<path class="star" d="${path} Z"/>`;
+		result = `<path class="star" d="${path} z"/>`;
 	}
 
 	return result;
