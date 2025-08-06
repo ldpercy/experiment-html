@@ -75,7 +75,7 @@ function getStarPath(
 		pointRadians += mainAngle/divisionOffset;
 		let lastPoint = new Point(0,0);
 
-		for (let i=0; i < sides; i++)
+		for (let i=0; i <= sides; i++)
 		{
 			pointRadians += mainAngle * pointStep;
 
