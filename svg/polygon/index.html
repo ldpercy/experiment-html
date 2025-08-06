@@ -22,6 +22,12 @@
 			<label for="input-startDivision">start division</label>
 			<input id="input-startDivision" type="number" name="startDivision" title="startDivision" value="1">
 
+			<label for="input-coordinates">coordinates</label>
+			<select id="input-coordinates" name="coordinates" size="2">
+				<option value="absolute">absolute</option>
+				<option value="relative">relative</option>
+			</select>
+
 			<hr/>
 
 			<label for="input-copies">copies</label>
@@ -29,25 +35,21 @@
 			<label for="input-divisionOffset">division offset</label>
 			<input id="input-divisionOffset" type="number" name="divisionOffset" title="divisionOffset" value="1">
 
-			<label for="input-separatePaths">
-				<input type="checkbox" name="separatePaths" id="input-separatePaths" checked>
-				separate paths
-			</label>
-
-			<label for="input-coordinates">coordinates</label>
-			<select id="input-coordinates" name="coordinates" size="2">
-				<option value="absolute">absolute</option>
-				<option value="relative">relative</option>
+			<label for="input-copyPaths">copy paths</label>
+			<select id="input-copyPaths" name="copyPaths" size="2">
+				<option value="combined">combined</option>
+				<option value="separate">separate</option>
 			</select>
-
 		</form>
 
 		<form id="form-style">
-			<label for="input-fillRule-evenOdd">
-				<input type="checkbox" name="fillRule-evenOdd" id="input-fillRule-evenOdd" checked>
-				fill-rule: evenodd
-			</label>
-			<label for="input-markers">
+			<label for="input-fillRule">fill rule</label>
+			<select id="input-fillRule" name="fillRule" size="2">
+				<option value="evenodd">evenodd</option>
+				<option value="nonzero">nonzero</option>
+			</select>
+
+			<label for="input-markers" class="noafter">
 				<input type="checkbox" name="markers" id="input-markers">
 				show markers
 			</label>

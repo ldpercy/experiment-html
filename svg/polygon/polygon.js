@@ -14,7 +14,7 @@ function updateStyle() {
 
 	//console.log('updateStyle', fillRule);
 
-	if (document.getElementById('input-fillRule-evenOdd').checked) {
+	if (document.getElementById('input-fillRule').value === 'evenodd') {
 		document.getElementById('star-group').classList.add('evenodd');
 	}
 	else {
@@ -38,7 +38,7 @@ function redraw(){
 
 	const copies = document.getElementById('input-copies').value;
 	const divisionOffset = document.getElementById('input-divisionOffset').value;
-	const separatePaths = document.getElementById('input-separatePaths').checked;
+	const separatePaths = document.getElementById('input-copyPaths').value;
 	const coordinates = document.getElementById('input-coordinates').value;
 
 	const starGroup = getStarPath(sides, pointStep, startDivision, copies, divisionOffset, separatePaths, coordinates);
@@ -55,7 +55,7 @@ function getStarPath(
 		startDivision,		// integer divisions of the base angle to the start of the polygon
 		copies, 			// number of copies of the polygon to draw
 		divisionOffset,		// integer divisions of the base angle between the copies
-		separateCopies,		// whether the copies are separate svg paths
+		copyPaths,			// combined or separate svg paths
 		coordinates,		// absolute or relative
 	) {
 	const length = 1000;
@@ -98,7 +98,7 @@ function getStarPath(
 			}
 		}// for i
 
-		if (separateCopies) {
+		if (copyPaths === 'separate') {
 			result += `<path class="star" d="${path} Z"/>`;
 			path = '';
 		}
@@ -107,7 +107,7 @@ function getStarPath(
 		}
 	}// for c
 
-	if (!separateCopies) {
+	if (copyPaths === 'combined') {
 		result = `<path class="star" d="${path} Z"/>`;
 	}
 
