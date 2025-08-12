@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+
+	<style>
+		svg {
+			background:
+				linear-gradient(
+					180deg,
+					black 0%,
+					midnightblue 40%,
+					red 45%,
+					orange 50%,
+					darkgreen 55%,
+					black 100%
+				);
+		}
+		path {
+			stroke: blue;
+			stroke-width: 1;
+			fill: #00fa;  <!-- none; -->
+			fill-rule: nonzero; <!-- evenodd, nonzero -->
+			<!-- stroke-dasharray: 2 7; -->
+			stroke-linecap: round;
+			stroke-linejoin: bevel;
+			marker-start:url(#markerStart);
+			marker-end:url(#markerEnd);
+		}
+		.origin { fill:transparent ; stroke:black }
+		marker { stroke-width:.5; }
+		.marker-start  { fill:lightgreen ; stroke:green }
+		.marker-end    { fill:pink ; stroke:red }
+
+		circle {
+			stroke: cyan;
+			fill: cadetblue;
+
+		}
+
+		rect {
+			/* stroke: red; */
+			fill: royalblue;
+
+		}
+
+		text {
+			fill: tan;
+			/* stroke: tomato; */
+			font-size: 16em;
+		}
+
+
+		.shadow {
+			filter: drop-shadow(0px 40px 20px #444b);
+		}
+
+
+		.drawing {
+
+		}
+
+		.star {
+			filter: drop-shadow(0px 40px 20px #444b);
+		}
+
+
+		.clip {
+			clip-path: url(#clip4);
+			clip-rule: evenodd; /* for complex clip-paths */
+		}
+
+		.knockout {
+			mask: url(#knockout);
+		}
+
+		#knockout {
+			rect { fill: #ffff; }
+			text { fill: #000f; }
+		}
+
+	</style>
+
+	<defs>
+		<clipPath id="clip1">
+			<circle cx="200" cy="50" r="450"/>
+		</clipPath>
+		<clipPath id="clip2">
+			<text x="0" y="100" >CLIP</text>
+		</clipPath>
+		<clipPath id="clip3">
+			<rect x="-100" y="-100" width="800" height="400"/>
+		</clipPath>
+		<clipPath id="clip4">
+			<path class="star" d="M -951 -309 L 588 809 L 0 -1000 L -588 809 L 951 -309  ZM -588 -809 L 0 1000 L 588 -809 L -951 309 L 951 309  Z Z"></path>
+		</clipPath>
+
+		<g id="drawing" class=" ">
+			<circle cx="-100" cy="0" r="600" />
+			<rect x="-100" y="-300" width="1800" height="800" />
+			<text x="50" y="50" >
+				knockout
+			</text>
+		</g>
+
+		<clipPath id="clip5">
+			<!-- <rect x="0" y="-300" width="1200" height="400" /> -->
+			<text x="0" y="0" >
+				knockout
+			</text>
+		</clipPath>
+
+		<mask id="knockout">
+			<rect  x="-1000" y="-1000" width="2100" height="1600" />
+			<text  x="0" y="0" >
+				knockout
+			</text>
+		</mask>
+
+	</defs>
+
+
+	<!-- <g id="drawing" class=" shadow">
+		<circle cx="-100" cy="0" r="600" />
+		<rect x="0" y="100" width="600" height="800" />
+		<text x="50" y="50" >
+			clip
+		</text>
+	</g> -->
+
+	<!-- <use href="#drawing" x="600" class="clip"/> -->
+<!-- 	<g class="clip" >
+		<use href="#drawing" transform="translate(500)" />
+	</g> -->
+
+
+	<!-- <path class="star" id="star" d="M 500 866 L -866 -500 L 1000 0 L -866 500 L 500 -866 L 0 1000 L -500 -866 L 866 500 L -1000 0 L 866 -500 L -500 866 L 0 -1000  Z"/> -->
+
+	<!-- <rect class="drawing" x="-500" y="-500" width="1500" height="1500" /> -->
+
+	<use href="#drawing" class="knockout" x="-500"/>
+
+</svg>
