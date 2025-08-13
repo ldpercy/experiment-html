@@ -68,12 +68,12 @@
 		}
 
 		.knockout {
-			mask: url(#knockout);
+			mask: url(#knockout-text);
 		}
 
-		#knockout {
-			rect { fill: #ffff; }
-			text { fill: #000f; }
+		.knockout-mask {
+			.knockout-shapeContaining { fill: #ffff; }    /* this gets added */
+			.knockout-shapeKnockedout { fill: #000f; }  /* this gets subtracted */
 		}
 
 	</style>
@@ -107,9 +107,9 @@
 			</text>
 		</clipPath>
 
-		<mask id="knockout">
-			<rect  x="-1000" y="-1000" width="2100" height="1600" />
-			<text  x="0" y="0" >
+		<mask id="knockout-text" class="knockout-mask">
+			<rect class="knockout-shapeContaining" x="-1000" y="-1000" width="2100" height="1600" />
+			<text class="knockout-shapeKnockedout" x="0" y="0" >
 				knockout
 			</text>
 		</mask>
