@@ -36,6 +36,20 @@ svg.star {
 	width: 100vw;
 	height: 99vh;
 
+	.viewBox {
+		x: -100%;
+		y: -100%;
+		width: 200%;
+		height: 200%;
+		fill: url(#pattern-grid);
+	}
+
+	.grid {
+		stroke: teal;
+		fill:none;
+		stroke-width: 1px;
+	}
+
 	path {
 
 		stroke: #ff0;

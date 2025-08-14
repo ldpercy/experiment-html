@@ -21,12 +21,20 @@ function updateStyle() {
 		document.getElementById('star-group').classList.remove('evenodd');
 	}
 
-	if (document.getElementById('input-markers').checked) {
+	if (document.getElementById('input-showMarkers').checked) {
 		document.getElementById('star-group').classList.add('show-markers');
 	}
 	else {
 		document.getElementById('star-group').classList.remove('show-markers');
 	}
+
+	if (document.getElementById('input-showGrid').checked) {
+		document.getElementById('rect-viewBox').classList.add('viewBox');
+	}
+	else {
+		document.getElementById('rect-viewBox').classList.remove('viewBox');
+	}
+
 }
 
 
