@@ -3,6 +3,20 @@ Text
 
 
 
+Text Path
+---------
+
+**Has** to be inside a `text` element otherwise does not render:
+
+```
+	<text>
+		<textPath class="" startOffset="50%" href="#labelPath-monthName-jan">January</textPath>
+	</text>
+```
+
+
+
+
 
 Emojis
 ------
