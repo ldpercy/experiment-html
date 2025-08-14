@@ -40,7 +40,7 @@ function updateStyle() {
 
 function redraw(){
 
-	const length = document.getElementById('input-length').value;
+	const radius = document.getElementById('input-radius').value;
 	const sides = document.getElementById('input-sides').value;
 	const pointStep = document.getElementById('input-pointStep').value;
 	const startDivision = document.getElementById('input-startDivision').value;
@@ -50,7 +50,7 @@ function redraw(){
 	const separatePaths = document.getElementById('input-copyPaths').value;
 	const coordinates = document.getElementById('input-coordinates').value;
 
-	const starGroup = getStarPath(length, sides, pointStep, startDivision, copies, divisionOffset, separatePaths, coordinates);
+	const starGroup = getStarPath(radius, sides, pointStep, startDivision, copies, divisionOffset, separatePaths, coordinates);
 
 	//console.log(starPath);
 	document.getElementById('star-group').innerHTML = starGroup;
@@ -59,7 +59,7 @@ function redraw(){
 
 
 function getStarPath(
-		length,				// length of sides
+		radius,				// radius of points
 		sides, 				// how many sides the polygon has
 		pointStep, 			// how many divisions to the next vertex
 		startDivision,		// integer divisions of the base angle to the start of the polygon
@@ -87,7 +87,7 @@ function getStarPath(
 		{
 			pointRadians += mainAngle * pointStep;
 
-			const p = polarPoint(pointRadians, length)
+			const p = polarPoint(pointRadians, radius)
 
 			if (coordinates === 'relative') {
 
