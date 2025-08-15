@@ -37,12 +37,7 @@
 			fill: url(#pattern-grid);
 		}
 
-
-		.grid {
-			stroke: blue;
-			fill:none;
-			stroke-width: 1px;
-		}
+		.grid { stroke: teal; stroke-width: 1px; fill:none; }
 
 		path {
 			stroke: blue;
