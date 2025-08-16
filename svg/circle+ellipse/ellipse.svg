@@ -1,13 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
-	<title>circle</title>
+	<title>ellipse</title>
 
-	<rect class="viewBox" style="x: -100%; y: -100%; width: 200%; height: 200%; fill: url(#pattern-grid);"/>
-
-	<pattern id="pattern-grid" width="100" height="100" patternUnits="userSpaceOnUse">
-		<rect style="stroke: teal; stroke-width: 1px; fill:none;" x="0" y="0" width="100" height="100"/>
-	</pattern>
+	<g>
+		<title>viewBox</title>
+		<rect class="viewBox" style="x: -100%; y: -100%; width: 200%; height: 200%; fill: url(#pattern-grid);"/>
+		<pattern id="pattern-grid" width="100" height="100" patternUnits="userSpaceOnUse">
+			<rect class="grid" x="0" y="0" width="100" height="100"/>
+		</pattern>
+		<circle class="grid" cx="0" cy="0" r="10"/>
+	</g>
 
 	<style>
+		.grid { stroke: teal; stroke-width: 1px; fill:none; }
+
 		path {
 			stroke: blue;
 			stroke-width: 1;
@@ -19,15 +24,14 @@
 			marker-start:url(#markerStart);
 			marker-end:url(#markerEnd);
 		}
-		.origin { fill:transparent ; stroke:black }
-		marker { stroke-width:.5; }
-		.marker-start  { fill:lightgreen ; stroke:green }
-		.marker-end    { fill:pink ; stroke:red }
+
+		.red   { stroke: #f00f; fill: #f007; }
+		.green { stroke: #0f0f; fill: #0f07; }
+		.blue  { stroke: #00ff; fill: #00f7; }
 
 		circle {
 			stroke: cyan;
 			fill: cadetblue;
-
 		}
 
 		rect {
@@ -42,23 +46,37 @@
 			font-size: 32em;
 		}
 
-
 		.shadow {
 			filter: drop-shadow(0px 40px 20px #444b);
 		}
 
-		.clip {
-			clip-path: url(#clip4);
-			clip-rule: evenodd; /* for complex clip-paths */
+		ellipse {
+			fill: #ccca;
+			stroke: #cccf;
+			filter: drop-shadow(0px 40px 20px #444b);
 		}
 
-		.knockout-mask {
-
-			mask-border: 1px solid red;
-
-			.knockout-shapeContaining { fill: #ffff; }    /* this gets added */
-			.knockout-shapeKnockedout { fill: #000f; }  /* this gets subtracted */
+		.ellipse1 {
+			cx: 0px;
+			cy: -500px;
+			rx: 200px;
+			ry: 200px;
 		}
+
+		.ellipse2 {
+			cx: 0px;
+			cy: 000px;
+			rx: 400px;
+			ry: 200px;
+		}
+
+		.ellipse3 {
+			cx: 0px;
+			cy: 500px;
+			rx: 800px;
+			ry: 200px;
+		}
+
 	</style>
 
 	<defs>
@@ -92,26 +110,13 @@
 
 	</defs>
 
-	<!-- <g id="drawing" class=" shadow">
-		<circle cx="-100" cy="0" r="600" />
-		<rect x="0" y="100" width="600" height="800" />
-		<text x="50" y="50" >
-			clip
-		</text>
-	</g> -->
 
-	<!--
-	<use href="#drawing" x="-1000" class="clip"/>
+	<g class="shadow">
+		<!-- <ellipse  rx="200" ry="100" /> -->
 
-	<g class="clip" >
-		<use href="#drawing" transform="translate(500)" />
-	</g> -->
-
-
-
-	<circle class="donut shadow" cx="0" cy="0" r="600" style="mask:url(#circle-knockout)"/>
-
-
-	<ellipse rx="200" ry="100" />
+		<ellipse class="ellipse1 red" />
+		<ellipse class="ellipse2 green" />
+		<ellipse class="ellipse3 blue" />
+	</g>
 
 </svg>

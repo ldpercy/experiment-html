@@ -21,20 +21,9 @@
 			fill: pink;
 		}
 
-		.red {
-			stroke: #f00f;
-			fill: #f00a;
-		}
-
-		.green {
-			stroke: #0f0f;
-			fill: #0f0a;
-		}
-
-		.blue {
-			stroke: #00ff;
-			fill: #00fa;
-		}
+		.red   { stroke: #f00f; fill: #f00a; }
+		.green { stroke: #0f0f; fill: #0f0a; }
+		.blue  { stroke: #00ff; fill: #00fa; }
 
 		circle {
 			filter: drop-shadow(0px 40px 20px #222a);
