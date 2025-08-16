@@ -38,3 +38,9 @@ There are quirks to do with css and `use` that I'm still figuring out, but so fa
 * Positioning is done on the `use` element itself, which *can* be done through css
 
 I'm not sure I want to go fully down this path, but I'll try it out in a couple of places to get a feel for how well it works, or doesn't.
+
+
+
+z-index
+-------
+Thought i'd seen somewhere that this was being added to SVG, but not working for me (yet).
