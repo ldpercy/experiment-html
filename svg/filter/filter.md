@@ -4,6 +4,20 @@ Filter
 
 
 
+Inkscape
+--------
+
+Probably the best way to try out filters is with inkscape.
+
+	Filters -> Filter Gallery
+
+Looks like the code for these are here, plus more examples:
+
+	/usr/share/inkscape/filters/filters.svg
+	/usr/share/inkscape/examples/filters.svg
+
+
+
 Convolve matrix
 ---------------
 

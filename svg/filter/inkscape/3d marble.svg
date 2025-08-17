@@ -1,0 +1,96 @@
+
+		<defs
+			id="defs1">
+			<filter
+			inkscape:label="3D Marble"
+			inkscape:menu="Materials"
+			inkscape:menu-tooltip="3D warped marble texture"
+			height="1.0792706"
+			y="-0.039635296"
+			width="1.0634463"
+			x="-0.031723165"
+			style="color-interpolation-filters:sRGB;"
+			id="filter45">
+			<feGaussianBlur
+				stdDeviation="4"
+				result="result8"
+				id="feGaussianBlur41" />
+			<feTurbulence
+				seed="50"
+				result="result7"
+				type="turbulence"
+				numOctaves="7"
+				baseFrequency="0.01 0.01"
+				id="feTurbulence41" />
+			<feColorMatrix
+				result="result5"
+				values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1.4 0 "
+				id="feColorMatrix41" />
+			<feComposite
+				result="result6"
+				in="result5"
+				operator="in"
+				in2="result8"
+				id="feComposite41" />
+			<feDisplacementMap
+				in="result5"
+				xChannelSelector="A"
+				yChannelSelector="A"
+				scale="100"
+				result="result4"
+				in2="result6"
+				id="feDisplacementMap41" />
+			<feFlood
+				flood-opacity="1"
+				flood-color="rgb(224,224,224)"
+				id="feFlood41" />
+			<feComposite
+				result="result2"
+				operator="atop"
+				in2="result4"
+				id="feComposite42" />
+			<feComposite
+				in="result2"
+				operator="atop"
+				in2="SourceGraphic"
+				result="result9"
+				id="feComposite43" />
+			<feBlend
+				result="fbSourceGraphic"
+				mode="darken"
+				in2="result9"
+				id="feBlend43" />
+			<feGaussianBlur
+				stdDeviation="5"
+				in="fbSourceGraphic"
+				result="result0"
+				id="feGaussianBlur43" />
+			<feSpecularLighting
+				in="result0"
+				result="result1"
+				lighting-color="rgb(255,255,255)"
+				surfaceScale="8"
+				specularConstant="0.8"
+				specularExponent="30"
+				id="feSpecularLighting43">
+				<feDistantLight
+				elevation="55"
+				azimuth="235"
+				id="feDistantLight43" />
+			</feSpecularLighting>
+			<feComposite
+				in2="fbSourceGraphic"
+				in="result1"
+				result="result2"
+				operator="in"
+				id="feComposite44" />
+			<feComposite
+				in="fbSourceGraphic"
+				result="result4"
+				operator="arithmetic"
+				k2="1"
+				k3="1"
+				in2="result2"
+				id="feComposite45" />
+			</filter>
+		</defs>
