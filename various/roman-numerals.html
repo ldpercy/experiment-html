@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Roman numerals</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../[common]/favicon.svg">
+	<link rel="stylesheet" href="../[common]/common-style.css">
+	<script src="../[common]/common-script.js"></script>
+	<script>
+		console.clear();
+		console.log('experiment-template.html');
+		document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
+
+		function documentDOMContentLoaded() {
+			log = createPageLog(document.getElementById('pageLog'));
+			log('experiment-template.html: document.DOMContentLoaded');
+		}
+
+		function asRomanNumerals(number) {
+			result = '';
+			let value=number, divisor, remainder;
+			const rn = [
+				{ s: 'm', v: 1000 },
+				{ s: 'd', v: 500  },
+				{ s: 'c', v: 100  },
+				{ s: 'l', v: 50   },
+				{ s: 'x', v: 10   },
+				{ s: 'v', v: 5    },
+				{ s: 'i', v: 1    },
+			];
+
+			for (var j = 0; j < rn.length; j++) {
+				divisor = Math.floor(number/rn[j].v);
+				result += (divisor === 9||4) ? `${rn[j].s}${rn[j-1].s}` : rn[j].s.repeat(divisor);
+				number = number % rn[j].v;
+				log(divisor,result,divisor);
+			}
+
+			return result
+		}
+
+	</script>
+</head>
+<body>
+	<nav><a title="Up to folder" href="./">./</a> <a title="Parent folder" href="../">../</a></nav>
+
+	<h1><a href="">Roman numerals</a></h1>
+
+	<h2>Log:</h2>
+	<output id="pageLog"></output>
+</body>
+</html>
