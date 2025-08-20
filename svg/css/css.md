@@ -44,3 +44,9 @@ I'm not sure I want to go fully down this path, but I'll try it out in a couple 
 z-index
 -------
 Thought i'd seen somewhere that this was being added to SVG, but not working for me (yet).
+
+May have been proposed for SVG2 at some point - will try to find a reference, but for now no current implementation:
+
+https://stackoverflow.com/questions/17786618/how-to-use-z-index-in-svg-elements
+
+`use` or other programmatic techniques to reorder the document needed for now.
