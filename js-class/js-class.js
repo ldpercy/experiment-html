@@ -38,51 +38,72 @@ classMap.Foo2 = class {
 
 
 
-class ClassA {
-	constructor(desc) {
-		log("ClassA constructor")
+class MyClass {
+	// cannot have function calls in this space
+
+	name    = 'Default MyClass name';
+	desc    = 'Default MyClass desc';
+	summary = `Name: ${this.name}; Description: ${this.desc};`
+	myClassSummary = `Name: ${this.name}; Description: ${this.desc}; Additional: ${this.additional};`
+
+	constructor(name, desc, additional) {
+		log("MyClass.constructor:", this);
+		this.name = name;
 		this.desc = desc;
+		this.additional = additional;
 	}
 
-	name = 'This is class A';
-	desc = 'Default desc';
-	info = 'Some info';
-
 	reportThis() {
-		log(this);
+		log('reportThis:', this);
 	}
 
 	testMethod() {
-		log('This is testMethod in Class A');
+		log('This is testMethod in MyClass');
 	}
 
-}
+}/* MyClass */
 
-/* you can declare this class error-free, but to instantiate it a call to super() is required in the */
-class ClassB extends ClassA {
+
+
+
+class SubClass extends MyClass {
+
+	name = 'Default SubClass name';
+	subClassSummary = `Name: ${this.name}; Description: ${this.desc}; Additional: ${this.additional};`
+
 	constructor() {
 		super();	// this is required
-		log("ClassB constructor")
+		/*
+		The super call must explicitly pass parameters, or they will be undefined
+		*/
+		log("SubClass constructor")
 	}
-
-	name = 'This is class B';
 
 	testMethod() {
 		super.testMethod();
-		log('This is testMethod in Class B');
+		log('This is testMethod in SubClass');
 	}
 
-}
-
-
-ca = new ClassA('asdf');
-ca.reportThis();
-
-cb = new ClassB()
-cb.reportThis();
-
+}/* SubClass */
 
 /*
-property and method inheritance appear to work normally
+mc1 = new MyClass('MyClass 1', 'New instance of MyClass');
+mc1.reportThis();
 
-*/
+sc1 = new SubClass()
+sc1.reportThis();
+ */
+
+
+
+/* Passing arguments to super */
+
+class C1 {
+	constructor(param) {
+		this.param=param;
+		//log('this:', this);
+	}
+}
+
+class C2 extends C1 {}
+class C3 extends C2 {}
