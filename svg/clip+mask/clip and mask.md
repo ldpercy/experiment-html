@@ -47,3 +47,22 @@ Working with a mask something like this:
 ```
 The rect (white) has to be big enough or correctly shaped to cover over all of the parts to keep.
 The actual knocked-out shape is black.
+
+
+
+
+
+Shadow on clip/mask
+-------------------
+
+I haven't figured out how to do this yet.
+So far I can only get shadows that are themselves clipped.
+
+If a drawing is clipped (or masked), I want to be able to cast a shadow on the now-clipped shape.
+
+For clip I haven't found a simple/obvious way to do this yet, but there's probably a way of using a clip path twice - one for the clip and one for the shadow.
+
+Ideally though I'd like to be able to do this with a mask as well so I can do a shadow on a shape with a text knockout.
+
+There are probably also ways of doing something similar with filters, eg with the inset-shadow.
+
