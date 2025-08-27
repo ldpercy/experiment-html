@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+
+	<style>
+
+		svg {
+			background-color: blanchedalmond;
+		}
+
+		path {
+			stroke: blue;
+			stroke-width: 1;
+			fill: #00fa;  <!-- none; -->
+			fill-rule: evenodd; <!-- evenodd, nonzero -->
+			<!-- stroke-dasharray: 2 7; -->
+			stroke-linecap: round;
+			stroke-linejoin: bevel;
+			marker-start:url(#markerStart);
+			marker-end:url(#markerEnd);
+		}
+		.origin { fill:transparent ; stroke:black }
+		marker { stroke-width:.5; }
+		.marker-start  { fill:lightgreen ; stroke:green }
+		.marker-end    { fill:pink ; stroke:red }
+
+		circle {
+			stroke: cyan;
+			fill: cadetblue;
+
+		}
+
+		rect {
+			stroke: red;
+			fill: pink;
+
+		}
+
+		text {
+			fill: tan;
+			stroke: tomato;
+			font-size: 50ex;
+		}
+
+	</style>
+
+	<defs>
+
+	</defs>
+
+	<g >
+		<circle cx="0" cy="0" r="300" />
+		<rect x="0" y="0" width="400" height="500" />
+		<text x="50" y="50" >
+			mask
+		</text>
+	</g>
+
+</svg>
