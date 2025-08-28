@@ -1,9 +1,66 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" onload="run()">
+	<title>binary</title>
+	<rect class="viewBox" style="x: -100%; y: -100%; width: 200%; height: 200%; fill: url(#pattern-grid);"/>
+	<pattern id="pattern-grid" width="100" height="100" patternUnits="userSpaceOnUse">
+		<rect style="stroke: teal; stroke-width: 1px; fill:none;" x="0" y="0" width="100" height="100"/>
+	</pattern>
+	<text x="-1200" y="-1000" class="title">binary</text>
+
+
+	<script>
+		<![CDATA[
+
+		function run() {
+			draw(1,16,'output1');
+			draw(17,32,'output2');
+		}
+
+		function getBinary(number) {
+			const size = Math.ceil(Math.log2(number));
+			let body = '';
+			let className = '';
+
+			for (let i=size; i >= 0; i--) {
+				className = (number & (2**i)) ? 'on' : 'off';
+
+				body +=
+					`<circle r="${10+i*10}" id="index-${i}" data-value="${2**i}" class="${className}"/>`;
+			}
+
+			result= `
+				<g class="binary" data-number="${number}">
+					${body}
+				</g>
+			`;
+			return result;
+		}
+
+		function draw(from, to, element) {
+
+			let output = '';
+
+			for (let i=from;i<=to;i++) {
+				output += `
+					<g style="transform:translate(0px,${(i-from)*100}px)" data-number="${i}">
+						<text x="-200">${i}</text>
+						${getBinary(i)}
+					</g>
+				`;
+			}
+
+			document.getElementById(element).innerHTML = output;
+
+		}
+
+		// ]]>
+	</script>
 
 	<style>
 
-		svg {
-			background-color: blanchedalmond;
+		text.title {
+			stroke:#000a;
+			fill: #888a;
+			font-size: 32ex;
 		}
 
 		path {
@@ -36,22 +93,66 @@
 
 		text {
 			fill: tan;
-			stroke: tomato;
-			font-size: 50ex;
+			stroke: teal;
+			font-size: 10ex;
+			dominant-baseline: middle;
+		}
+
+		.binary {
+			circle {
+				stroke: blue;
+				stroke-width: 1px;
+				/* stroke: url(#half); */
+			}
+			.on {
+				fill: #77f;
+			}
+			.off {
+				fill: white;
+			}
+		}
+
+		linearGradient#half {
+			.first {
+				stop-color: blue;
+			}
+			.second {
+				stop-color: white;
+			}
+		}
+
+		#output {
+			transform: translate(0px,-1000px);
 		}
 
 	</style>
 
 	<defs>
 
+		<linearGradient id="half" x1="0%" x2="0%" y1="100%" y2="0%" >
+			<stop offset="0%" class="first"/>
+			<stop offset="50%" class="first"/>
+			<stop offset="50%" class="second"/>
+			<stop offset="100%" class="second"/>
+		</linearGradient>
+
 	</defs>
 
-	<g >
-		<circle cx="0" cy="0" r="300" />
-		<rect x="0" y="0" width="400" height="500" />
-		<text x="50" y="50" >
-			mask
-		</text>
+
+	<g id="binary" class="binary" style="transform: translate(-1000px,0px);">
+		<circle r="70" id="digit-6" data-value="64"/>
+		<circle r="60" id="digit-5" data-value="32"/>
+		<circle r="50" id="digit-4" data-value="16"/>
+		<circle r="40" id="digit-3" data-value="8"/>
+		<circle r="30" id="digit-2" data-value="4"/>
+		<circle r="20" id="digit-1" data-value="2"/>
+		<circle r="10" id="digit-0" data-value="1"/>
+	</g>
+
+	<g id="output1" style="transform: translate(0px,-800px)">
+	</g>
+
+	<g id="output2" style="transform: translate(400px,-800px)">
 	</g>
 
 </svg>
