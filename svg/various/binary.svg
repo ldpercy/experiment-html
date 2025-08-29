@@ -25,6 +25,8 @@
 
 				body +=
 					`<circle r="${10+i*10}" id="index-${i}" data-value="${2**i}" class="${className}"/>`;
+					//`<circle r="${10+i*10}" cx="${-i*10}" id="index-${i}" data-value="${2**i}" class="${className}"/>`;
+					//`<ellipse rx="${10+i*5}" ry="${10+i*10}" cx="${-i*5}" id="index-${i}" data-value="${2**i}" class="${className}"/>`;
 			}
 
 			result= `
@@ -42,7 +44,7 @@
 			for (let i=from;i<=to;i++) {
 				output += `
 					<g style="transform:translate(0px,${(i-from)*100}px)" data-number="${i}">
-						<text x="-200">${i}</text>
+						<text x="-300">${i}</text>
 						${getBinary(i)}
 					</g>
 				`;
@@ -100,15 +102,24 @@
 
 		.binary {
 			circle {
-				stroke: blue;
+				<!-- stroke: #77f; -->
 				stroke-width: 1px;
 				/* stroke: url(#half); */
+
 			}
+
+			ellipse {
+				<!-- stroke: #77f; -->
+				stroke-width: 1px;
+			}
+
 			.on {
-				fill: #77f;
+				fill: blue;
+				stroke: white;
 			}
 			.off {
 				fill: white;
+				stroke: blue;
 			}
 		}
 
@@ -152,7 +163,7 @@
 	<g id="output1" style="transform: translate(0px,-800px)">
 	</g>
 
-	<g id="output2" style="transform: translate(400px,-800px)">
+	<g id="output2" style="transform: translate(600px,-800px)">
 	</g>
 
 </svg>
