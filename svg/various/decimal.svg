@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" onload="run()">
+	<title>decimal</title>
+	<rect class="viewBox" style="x: -100%; y: -100%; width: 200%; height: 200%; fill: url(#pattern-grid);"/>
+	<pattern id="pattern-grid" width="100" height="100" patternUnits="userSpaceOnUse">
+		<rect style="stroke: teal; stroke-width: 1px; fill:none;" x="0" y="0" width="100" height="100"/>
+	</pattern>
+	<text x="-1200" y="-1000" class="title">decimal</text>
+
+
+	<script>
+		<![CDATA[
+
+		function run() {
+			draw(1,16,'output1');
+			draw(17,32,'output2');
+		}
+
+		function getBinary(number) {
+			const size = Math.ceil(Math.log2(number));
+			let body = '';
+			let className = '';
+
+			for (let i=size; i >= 0; i--) {
+				className = (number & (2**i)) ? 'on' : 'off';
+
+				body +=
+					`<circle r="${10+i*10}" id="index-${i}" data-value="${2**i}" class="${className}"/>`;
+					//`<circle r="${10+i*10}" cx="${-i*10}" id="index-${i}" data-value="${2**i}" class="${className}"/>`;
+					//`<ellipse rx="${10+i*5}" ry="${10+i*10}" cx="${-i*5}" id="index-${i}" data-value="${2**i}" class="${className}"/>`;
+			}
+
+			result= `
+				<g class="binary" data-number="${number}">
+					${body}
+				</g>
+			`;
+			return result;
+		}
+
+		function getDigit(number) {
+			const digit = number%10;
+			result= `
+				<g class="group-digit" data-digit="${digit}">
+					<rect class="rect-digit" data-digit="${digit}"/>
+					<rect class="digitLight" data-digitLight="1"/>
+					<rect class="digitLight" data-digitLight="2"/>
+					<rect class="digitLight" data-digitLight="3"/>
+					<rect class="digitLight" data-digitLight="4"/>
+					<rect class="digitLight" data-digitLight="5"/>
+					<rect class="digitLight" data-digitLight="6"/>
+					<rect class="digitLight" data-digitLight="7"/>
+					<rect class="digitLight" data-digitLight="8"/>
+					<rect class="digitLight" data-digitLight="9"/>
+				</g>
+			`;
+			return result;
+		}
+
+
+
+		function draw(from, to, element) {
+
+			let output = '';
+
+			for (let i=from;i<=to;i++) {
+				output += `
+					<g style="transform:translate(0px,${(i-from)*100}px)" data-number="${i}">
+						<text x="-300">${i}</text>
+						${getBinary(i)}
+					</g>
+				`;
+			}
+
+			document.getElementById(element).innerHTML = output;
+
+		}
+
+		// ]]>
+	</script>
+
+	<style>
+		.value-0 { --value: 0; }
+		.value-1 { --value: 1; }
+		.value-2 { --value: 2; }
+		.value-3 { --value: 3; }
+		.value-4 { --value: 4; }
+		.value-5 { --value: 5; }
+		.value-6 { --value: 6; }
+		.value-7 { --value: 7; }
+		.value-8 { --value: 8; }
+		.value-9 { --value: 9; }
+
+
+		.value-0, .value-2, .value-4, .value-6, .value-8 { --col: 0; }
+		.value-1, .value-3, .value-5, .value-7, .value-9 { --col: 1; }
+
+
+		text.title {
+			stroke:#000a;
+			fill: #888a;
+			font-size: 32ex;
+		}
+
+		path {
+			stroke: blue;
+			stroke-width: 1;
+			fill: #00fa;  <!-- none; -->
+			fill-rule: evenodd; <!-- evenodd, nonzero -->
+			<!-- stroke-dasharray: 2 7; -->
+			stroke-linecap: round;
+			stroke-linejoin: bevel;
+			marker-start:url(#markerStart);
+			marker-end:url(#markerEnd);
+		}
+		.origin { fill:transparent ; stroke:black }
+		marker { stroke-width:.5; }
+		.marker-start  { fill:lightgreen ; stroke:green }
+		.marker-end    { fill:pink ; stroke:red }
+
+		circle {
+			stroke: cyan;
+			fill: cadetblue;
+
+		}
+
+		rect {
+			stroke: red;
+			fill: pink;
+
+		}
+
+		text {
+			fill: tan;
+			stroke: teal;
+			font-size: 10ex;
+			dominant-baseline: middle;
+		}
+
+		.digit {
+			rect {
+				stroke-width: 1px;
+				width: 10px;
+				height: 10px;
+				x: calc(var(--col) *10px);
+				y: calc(var(--value) *10px);
+			}
+
+			.on {
+				fill: blue;
+				stroke: white;
+			}
+			.off {
+				fill: white;
+				stroke: blue;
+			}
+		}
+
+		linearGradient#half {
+			.first {
+				stop-color: blue;
+			}
+			.second {
+				stop-color: white;
+			}
+		}
+
+		#output {
+			transform: translate(0px,-1000px);
+		}
+
+	</style>
+
+	<defs>
+
+		<linearGradient id="half" x1="0%" x2="0%" y1="100%" y2="0%" >
+			<stop offset="0%" class="first"/>
+			<stop offset="50%" class="first"/>
+			<stop offset="50%" class="second"/>
+			<stop offset="100%" class="second"/>
+		</linearGradient>
+
+	</defs>
+
+
+	<g class="digit" data-digit="${digit}" style="transform: translate(-1000px,0px);">
+		<rect class="rect-digit" />
+		<rect class="value-0" data-value="0"/>
+		<rect class="value-1" data-value="1"/>
+		<rect class="value-2" data-value="2"/>
+		<rect class="value-3" data-value="3"/>
+		<rect class="value-4" data-value="4"/>
+		<rect class="value-5" data-value="5"/>
+		<rect class="value-6" data-value="6"/>
+		<rect class="value-7" data-value="7"/>
+		<rect class="value-8" data-value="8"/>
+		<rect class="value-9" data-value="9"/>
+	</g>
+
+	<g id="output1" style="transform: translate(0px,-800px)">
+	</g>
+
+	<g id="output2" style="transform: translate(600px,-800px)">
+	</g>
+
+</svg>
