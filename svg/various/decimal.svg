@@ -37,20 +37,40 @@
 			return result;
 		}
 
-		function getDigit(number) {
-			const digit = number%10;
+
+		function getNumber(number) {
+			const size = Math.ceil(Math.log10(number+1)) ;
+			let digits = '';
+			let digit = 0;
+			let value = number;
+			for (let i=1; i <= size; i++) {
+				digit = value % 10;
+				digits += getDigit(digit, i);
+				value = Math.floor(value/10);
+			}
+
+			var result = `
+				<g class="group-number number-${number}" data-number="${number}">
+					${digits}
+				</g>`;
+			return result;
+		}
+
+
+		function getDigit(value, place) {
 			result= `
-				<g class="group-digit" data-digit="${digit}">
-					<rect class="rect-digit" data-digit="${digit}"/>
-					<rect class="digitLight" data-digitLight="1"/>
-					<rect class="digitLight" data-digitLight="2"/>
-					<rect class="digitLight" data-digitLight="3"/>
-					<rect class="digitLight" data-digitLight="4"/>
-					<rect class="digitLight" data-digitLight="5"/>
-					<rect class="digitLight" data-digitLight="6"/>
-					<rect class="digitLight" data-digitLight="7"/>
-					<rect class="digitLight" data-digitLight="8"/>
-					<rect class="digitLight" data-digitLight="9"/>
+				<g class="group-digit place-${place} value-${value} digit-${value}" data-value="${value}" data-place="${place}">
+					<title>${value}</title>
+					<rect class="light light-0" data-value="0"/>
+					<rect class="light light-1" data-value="1"/>
+					<rect class="light light-2" data-value="2"/>
+					<rect class="light light-3" data-value="3"/>
+					<rect class="light light-4" data-value="4"/>
+					<rect class="light light-5" data-value="5"/>
+					<rect class="light light-6" data-value="6"/>
+					<rect class="light light-7" data-value="7"/>
+					<rect class="light light-8" data-value="8"/>
+					<rect class="light light-9" data-value="9"/>
 				</g>
 			`;
 			return result;
@@ -66,7 +86,7 @@
 				output += `
 					<g style="transform:translate(0px,${(i-from)*100}px)" data-number="${i}">
 						<text x="-300">${i}</text>
-						${getBinary(i)}
+						${getNumber(i)}
 					</g>
 				`;
 			}
@@ -79,6 +99,7 @@
 	</script>
 
 	<style>
+
 		.value-0 { --value: 0; }
 		.value-1 { --value: 1; }
 		.value-2 { --value: 2; }
@@ -90,9 +111,16 @@
 		.value-8 { --value: 8; }
 		.value-9 { --value: 9; }
 
-
-		.value-0, .value-2, .value-4, .value-6, .value-8 { --col: 0; }
-		.value-1, .value-3, .value-5, .value-7, .value-9 { --col: 1; }
+		.digit-0 { --digit: 0; }
+		.digit-1 { --digit: 1; }
+		.digit-2 { --digit: 2; }
+		.digit-3 { --digit: 3; }
+		.digit-4 { --digit: 4; }
+		.digit-5 { --digit: 5; }
+		.digit-6 { --digit: 6; }
+		.digit-7 { --digit: 7; }
+		.digit-8 { --digit: 8; }
+		.digit-9 { --digit: 9; }
 
 
 		text.title {
@@ -101,21 +129,6 @@
 			font-size: 32ex;
 		}
 
-		path {
-			stroke: blue;
-			stroke-width: 1;
-			fill: #00fa;  <!-- none; -->
-			fill-rule: evenodd; <!-- evenodd, nonzero -->
-			<!-- stroke-dasharray: 2 7; -->
-			stroke-linecap: round;
-			stroke-linejoin: bevel;
-			marker-start:url(#markerStart);
-			marker-end:url(#markerEnd);
-		}
-		.origin { fill:transparent ; stroke:black }
-		marker { stroke-width:.5; }
-		.marker-start  { fill:lightgreen ; stroke:green }
-		.marker-end    { fill:pink ; stroke:red }
 
 		circle {
 			stroke: cyan;
@@ -124,7 +137,7 @@
 		}
 
 		rect {
-			stroke: red;
+			stroke: blue;
 			fill: pink;
 
 		}
@@ -136,24 +149,89 @@
 			dominant-baseline: middle;
 		}
 
-		.digit {
-			rect {
-				stroke-width: 1px;
-				width: 10px;
-				height: 10px;
-				x: calc(var(--col) *10px);
-				y: calc(var(--value) *10px);
-			}
+		.group-number {
 
-			.on {
-				fill: blue;
-				stroke: white;
-			}
-			.off {
-				fill: white;
-				stroke: blue;
-			}
-		}
+			.place-0 { --place: 0; }
+			.place-1 { --place: 1; }
+			.place-2 { --place: 2; }
+			.place-3 { --place: 3; }
+			.place-4 { --place: 4; }
+			.place-5 { --place: 5; }
+			.place-6 { --place: 6; }
+			.place-7 { --place: 7; }
+			.place-8 { --place: 8; }
+			.place-9 { --place: 9; }
+
+
+			.group-digit {
+				--size: 16px;
+				--half: var(--size)/2;
+				--double: var(--size)*2;
+				--triple: var(--size)*3;
+
+				transform:
+					translate(
+						calc((var(--place) * calc(-1 * var(--triple)) ))
+						,0
+					);
+
+				.light-0 { --light: 0; }
+				.light-1 { --light: 1; }
+				.light-2 { --light: 2; }
+				.light-3 { --light: 3; }
+				.light-4 { --light: 4; }
+				.light-5 { --light: 5; }
+				.light-6 { --light: 6; }
+				.light-7 { --light: 7; }
+				.light-8 { --light: 8; }
+				.light-9 { --light: 9; }
+
+				.light-1, .light-3, .light-5, .light-7, .light-9 { --col: 0; }
+				.light-2, .light-4, .light-6, .light-8, .light-0 { --col: 1; }
+
+
+
+				rect.light:nth-child(n) {
+					--on: calc( max(0, var(--value) - var(--light)) );
+					/* --on: var(--light); */
+					fill: rgb(0, calc(var(--on)*255), 0);
+				}
+				/* rect.light:nth-child(-n+1) { --on: calc(--digit); }
+				rect.light:nth-child(-n+2) { --on: calc(--digit); } */
+
+
+				rect {
+					stroke-width: 1px;
+					width: var(--size);
+					height: var(--size);
+					x: calc(var(--col) * var(--size));
+					y: calc(-1* (var(--light) * var(--half) + (var(--col) * var(--half)))  ); /*  - (var(--col) * var(--half))  */
+
+
+					/*.value-1 { --value: 1; }
+					.value-2 { --value: 2; }
+					.value-3 { --value: 3; }
+					.value-4 { --value: 4; }
+					.value-5 { --value: 5; }
+					.value-6 { --value: 6; }
+					.value-7 { --value: 7; }
+					.value-8 { --value: 8; }
+					.value-9 { --value: 9; } */
+
+				}
+
+				.on {
+					fill: blue;
+					stroke: white;
+				}
+				.off {
+					fill: white;
+					stroke: blue;
+				}
+			}/* .group-digit */
+
+		}/* .group-number */
+
 
 		linearGradient#half {
 			.first {
