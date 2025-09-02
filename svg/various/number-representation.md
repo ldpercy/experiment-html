@@ -1,15 +1,22 @@
+Number representation
+=====================
+
+Experiments in representation of numbers.
+
+
 Decimal
-=======
-
-Experiments in representation of decimal numbers.
-
-
-Squares
 -------
+
+### Squares
 First try is pretty verbose in svg and a bit tortured in css.
 I'll try to simplify it.
 Better `attr` support would definitely help here.
 Would be good to abstract the way the digit-light mapping works to allow for plugging variants in.
+
+
+n-ary
+-----
+
 
 
 
