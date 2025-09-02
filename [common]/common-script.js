@@ -36,8 +36,8 @@ Use:
 */
 function createPageLog(logElement) {
 	return (...values) => {
-		logElement.innerHTML += `${performance.now()}: ${values.join('; ')}\n`;
-		console.log(performance.now(), ...values);
+		logElement.innerHTML += `[${performance.now()}] ${values.join(' — ')}\n`;
+		console.log(`[${performance.now()}]`, ...values);
 	}
 }//createPageLog
 
