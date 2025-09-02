@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>n-ary</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="n-ary.css"/>
+	<script defer src="../[library]/maths.js"></script>
+	<script defer src="./n-ary.js"></script>
+	<style id="style-base">
+
+	</style>
+</head>
+<body onload="bodyOnload()">
+
+	<div class="form-group">
+		<form id="form-nary">
+
+			<label for="input-base">base</label>
+			<input id="input-base" type="number" name="base" title="base" min="2" value="10"/>
+
+			<!--
+			<label for="input-pointStep">point step</label>
+			<input id="input-pointStep" type="number" name= "pointStep" title="pointStep" value="1"/>
+			-->
+
+		</form>
+	</div>
+
+
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+		<title>n-ary</title>
+		<rect class="viewBox" style="x: -100%; y: -100%; width: 200%; height: 200%; fill: url(#pattern-grid);"/>
+		<pattern id="pattern-grid" width="100" height="100" patternUnits="userSpaceOnUse">
+			<rect style="stroke: teal; stroke-width: 1px; fill:none;" x="0" y="0" width="100" height="100"/>
+		</pattern>
+		<text x="-1200" y="-1000" class="title">n-ary</text>
+
+
+
+
+		<style>
+			text.title {
+				stroke:#000a;
+				fill: #888a;
+				font-size: 32ex;
+			}
+
+
+			.value-0 { --value: 0; }
+			.value-1 { --value: 1; }
+			.value-2 { --value: 2; }
+			.value-3 { --value: 3; }
+			.value-4 { --value: 4; }
+			.value-5 { --value: 5; }
+			.value-6 { --value: 6; }
+			.value-7 { --value: 7; }
+			.value-8 { --value: 8; }
+			.value-9 { --value: 9; }
+
+			.digit-0 { --digit: 0; }
+			.digit-1 { --digit: 1; }
+			.digit-2 { --digit: 2; }
+			.digit-3 { --digit: 3; }
+			.digit-4 { --digit: 4; }
+			.digit-5 { --digit: 5; }
+			.digit-6 { --digit: 6; }
+			.digit-7 { --digit: 7; }
+			.digit-8 { --digit: 8; }
+			.digit-9 { --digit: 9; }
+
+
+
+
+
+			circle {
+				stroke: cyan;
+				fill: cadetblue;
+
+			}
+
+			rect {
+				stroke: blue;
+				fill: pink;
+
+			}
+
+			text {
+				fill: tan;
+				stroke: teal;
+				font-size: 10ex;
+				dominant-baseline: middle;
+			}
+
+			.group-number {
+
+				.place-0 { --place: 0; }
+				.place-1 { --place: 1; }
+				.place-2 { --place: 2; }
+				.place-3 { --place: 3; }
+				.place-4 { --place: 4; }
+				.place-5 { --place: 5; }
+				.place-6 { --place: 6; }
+				.place-7 { --place: 7; }
+				.place-8 { --place: 8; }
+				.place-9 { --place: 9; }
+
+
+				.group-digit {
+					--size: calc(90px / var(--base));
+					--half: var(--size)/2;
+					--double: var(--size)*2;
+					--triple: var(--size)*3;
+
+					transform:
+						translate(
+							calc((var(--place) * calc(-1 * var(--size)) ))
+							,0
+						);
+
+					.light-0 { --light: 0; }
+					.light-1 { --light: 1; }
+					.light-2 { --light: 2; }
+					.light-3 { --light: 3; }
+					.light-4 { --light: 4; }
+					.light-5 { --light: 5; }
+					.light-6 { --light: 6; }
+					.light-7 { --light: 7; }
+					.light-8 { --light: 8; }
+					.light-9 { --light: 9; }
+
+
+					rect.light:nth-child(n) {
+						--on: calc( max(0, var(--value) - var(--light)) );
+						/* --on: var(--light); */
+						fill: rgb(0, calc(var(--on)*255), 0);
+					}
+					/* rect.light:nth-child(-n+1) { --on: calc(--digit); }
+					rect.light:nth-child(-n+2) { --on: calc(--digit); } */
+
+
+					rect {
+						stroke-width: 1px;
+						width: var(--size);
+						height: var(--size);
+						x: var(--size);
+						y: calc(-1 * var(--light) * var(--size)  ); /*  - (var(--col) * var(--half))  */
+
+
+						/*.value-1 { --value: 1; }
+						.value-2 { --value: 2; }
+						.value-3 { --value: 3; }
+						.value-4 { --value: 4; }
+						.value-5 { --value: 5; }
+						.value-6 { --value: 6; }
+						.value-7 { --value: 7; }
+						.value-8 { --value: 8; }
+						.value-9 { --value: 9; } */
+
+					}
+
+					.on {
+						fill: blue;
+						stroke: white;
+					}
+					.off {
+						fill: white;
+						stroke: blue;
+					}
+				}/* .group-digit */
+
+			}/* .group-number */
+
+
+			linearGradient#half {
+				.first {
+					stop-color: blue;
+				}
+				.second {
+					stop-color: white;
+				}
+			}
+
+			#output {
+				transform: translate(0px,-1000px);
+			}
+
+		</style>
+
+		<defs></defs>
+
+
+		<g class="digit" data-digit="${digit}" style="transform: translate(-1000px,0px);">
+			<rect class="rect-digit" />
+			<rect class="value-0" data-value="0"/>
+			<rect class="value-1" data-value="1"/>
+			<rect class="value-2" data-value="2"/>
+			<rect class="value-3" data-value="3"/>
+			<rect class="value-4" data-value="4"/>
+			<rect class="value-5" data-value="5"/>
+			<rect class="value-6" data-value="6"/>
+			<rect class="value-7" data-value="7"/>
+			<rect class="value-8" data-value="8"/>
+			<rect class="value-9" data-value="9"/>
+		</g>
+
+		<g id="output1" style="transform: translate(0px,-800px)">
+		</g>
+
+		<g id="output2" style="transform: translate(600px,-800px)">
+		</g>
+
+	</svg>
+
+
+
+</body>
+</html>
