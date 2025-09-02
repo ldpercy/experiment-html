@@ -20,30 +20,17 @@
 	<script>
 
 		function toBase(base, number) {
-			//log(arguments);
 			let result = {};
-			//let ones = number % base;
-			//result[1] = ones;
-			//let remainder = number - ones;
 			let remainder = number;
 			let power = 0;
-			let position = 1;
-			let place = 0;
+			let placeKey = 0;
+			let placeVal = 0;
 			while (remainder > 0) {
-				//let place = base ** power;
-				place = base**power;
-				//log(power, place, remainder);
-				//let placeVal = Math.floor(remainder/place);
-				let placeVal = remainder % base;
-
+				placeKey = base**power;
+				placeVal = remainder % base;
+				result[placeKey] = placeVal;
 				remainder = (remainder - placeVal)/ base;
-
-				//log(placeVal);
-
-				result[place] = placeVal;
-
 				power++;
-
 			}
 			return result;
 		}
@@ -81,16 +68,17 @@
 				th += `<th>${base**h}</th>`;
 			}
 
-			for (let r=1; r<=to; r++ ) {
+			for (let row=1; row <= to; row++ ) {
 				td = '';
-				let n = toBase(base, r);
+				let number = toBase(base, row);
+
 				for (let d = size; d >= 0; d--)
 				{
-					td += `<td>${n[base**d]||'0'}</td>`;
+					td += `<td>${number[base**d]||'0'}</td>`;
 				}
 				tr += `
 					<tr>
-						<th>${r}</th>
+						<th>${row}</th>
 						${td}
 					</tr>`;
 			}
