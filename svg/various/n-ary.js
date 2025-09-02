@@ -19,6 +19,8 @@ function redraw() {
 		html { --base: ${base}; }
 	`;
 
+	nLight = (document.getElementById('input-nLight').checked);
+
 	draw(1,16, base, 'output1');
 	draw(17,32, base, 'output2');
 }
@@ -51,7 +53,9 @@ function getNumberSVG(number, base) {
 function getDigitSVG(base, value, place) {
 
 	let lights = '';
-	for (let i=0; i < base; i++) {
+	const to = (nLight) ? base: base-1;
+
+	for (let i=0; i < to; i++) {
 		lights += `<rect class="light light-${i}" data-value="${i}"/>`
 	}
 
