@@ -29,7 +29,7 @@ function redraw() {
 
 function getNumberSVG(number, base) {
 
-	nb = numberToBase(number, base);
+	const nb = (nLight) ? numberToBaseN(number, base): numberToBase(number, base) ;
 
 	const size = baseSize(base,number) ;
 	let digits = '';
