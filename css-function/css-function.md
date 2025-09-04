@@ -7,8 +7,8 @@ https://www.w3schools.com/CSSref/css_functions.php
 
 
 
-attr
-----
+attr()
+------
 
 Not very well supported yet, but potentially extremely useful for `calc`s from metadata.
 
@@ -43,3 +43,10 @@ With better `attr` implementations the classes won't be needed, resulting in som
 
 ```
 Allowing for fully arbitrary data and calcs.
+
+
+Mozilla's tracking bug for `attr()`:
+https://bugzilla.mozilla.org/show_bug.cgi?id=435426
+
+https://stackoverflow.com/questions/20490704/combine-calc-with-attr-in-css
+https://stackoverflow.com/questions/8769786/css3s-attr-doesnt-work-in-major-browsers
