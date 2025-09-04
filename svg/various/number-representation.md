@@ -16,8 +16,8 @@ Better `attr` support would definitely help here.
 Would be good to abstract the way the digit-light mapping works to allow for plugging variants in.
 
 
-n-ary
------
+Base-n (n-ary)
+--------------
 
 Some things to note about standard on-off presentation, that usually would be used for binary for example.
 
@@ -25,7 +25,7 @@ Some things to note about standard on-off presentation, that usually would be us
 
 For binary the n states are on-off.
 
-For n-ary the n states are: off, on1, on2 ... on(n-1)
+For base-n the n states are: off, on1, on2 ... on(n-1)
 Which means for example in base 5 you have 1 off an 4 ons, and the 5-ness is a bit lost.
 Someone used to thinking in number bases would get it, but maybe not the casual observer.
 
