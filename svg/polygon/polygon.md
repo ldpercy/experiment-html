@@ -16,6 +16,11 @@ I think I'll need this sometimes, so going to try a version that uses all(mostly
 Might be a bit tricker.
 
 
+Angles/lengths
+--------------
 
+It would be handy if there was an easy way of figuring out things like angles and lengths...
+
+https://en.wikipedia.org/wiki/Internal_and_external_angles
 
 

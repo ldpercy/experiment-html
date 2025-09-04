@@ -3,6 +3,8 @@ Number representation
 
 Experiments in representation of numbers.
 
+https://en.wikipedia.org/wiki/Radix
+
 
 Decimal
 -------
@@ -32,8 +34,11 @@ One way to get around this would be to show the 'n' state and don't use a zero/o
 That would indicate the n-ness more readily, but be less conventional mathematically.
 
 Systems like this might be useful for *properly* discrete numberings.
+(Some things appear discrete at first...)
 Also good for drawings and other artistic representation.
 Find out what this is called - might be related to matchstick counting.
+
+
 
 
 Principles for shaped representations
