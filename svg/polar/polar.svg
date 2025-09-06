@@ -1,8 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" onload="run()">
 	<title>polar</title>
 
-	<script href="../[library]/svg.js"/>
+	<script href="../[library]/maths.js"/>
 	<script href="../[library]/polar-coordinates.js"/>
+	<script href="../[library]/svg.js"/>
+
 
 	<g class="graphPaper">
 		<pattern id="pattern-graphPaper" width="100" height="100" patternUnits="userSpaceOnUse">
@@ -34,11 +36,15 @@
 			marker-end:url(#markerEnd);
 		}
 
+
+
 		rect, line {
 			stroke: red;
 			stroke-width: 5px;
 			fill: pink;
 		}
+
+		.point { stroke: purple; fill:pink; }
 
 		text {
 			fill: tan;
@@ -61,25 +67,53 @@
 
 		function run() {
 
-			var p1 = new PolarPoint(0, 0).toPoint();
-			var p2 = new PolarPoint(2, 400).toPoint();
+			p1 = new PolarPoint(0, 0).toPoint();
+			p2 = new PolarPoint(1, 400).toPoint();
 			const l1 = new Line(p1.x, p1.y, p2.x, p2.y);
 			const l1svg = getLine(l1)
 
 			console.log('lineLength(p1,p2):', lineLength(p1,p2));
 			console.log('lineRadian(p1,p2):', lineRadian(p1,p2));
 
-			document.getElementById('output').innerHTML += l1svg;
 
-			var p3 = new PolarPoint(0, 0).toPointPolarOffset( new PolarPoint(0,50) );
-			var p4 = new PolarPoint(0, 600).toPointPolarOffset( new PolarPoint(1,50) );
+			p3 = new PolarPoint(0, 0).toPointPolarOffset( new PolarPoint(0,0) );
+			p4 = new PolarPoint(2, 600).toPointPolarOffset( new PolarPoint(1,-100) );
 			const l2 = new Line(p3.x, p3.y, p4.x, p4.y);
 			const l2svg = getLine(l2)
 
 			console.log('lineLength(p3,p4):', lineLength(p3,p4));
 			console.log('lineRadian(p3,p4):', lineRadian(p3,p4));
 
-			document.getElementById('output').innerHTML += l2svg;
+			let output = `
+				${getPoint(p1)}
+				${getPoint(p2)}
+				${getPoint(p3)}
+				${getPoint(p4)}
+
+				${l1svg}
+				${l2svg}
+
+
+				${getPoint(rotatePoint(p2,1,p4))}
+				${getPoint(rotatePoint(p2,2,p4))}
+				${getPoint(rotatePoint(p2,3,p4))}
+				${getPoint(rotatePoint(p2,4,p4))}
+				${getPoint(rotatePoint(p2,5,p4))}
+				${getPoint(rotatePoint(p2,6,p4))}
+
+			`;
+
+			/*
+				${getPoint(rotatePoint(p2,1))}
+				${getPoint(rotatePoint(p2,2))}
+				${getPoint(rotatePoint(p2,3))}
+				${getPoint(rotatePoint(p2,4))}
+				${getPoint(rotatePoint(p2,5))}
+				${getPoint(rotatePoint(p2,6))}
+			*/
+
+
+			document.getElementById('output').innerHTML += output;
 
 		}/* run */
 

@@ -29,10 +29,10 @@ function updateStyle() {
 	}
 
 	if (document.getElementById('input-showGrid').checked) {
-		document.getElementById('rect-viewBox').classList.add('viewBox');
+		document.getElementById('group-grid').style.display = '';
 	}
 	else {
-		document.getElementById('rect-viewBox').classList.remove('viewBox');
+		document.getElementById('group-grid').style.display = 'none';
 	}
 
 }
