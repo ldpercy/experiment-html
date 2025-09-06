@@ -87,7 +87,7 @@ function getStarPath(
 		{
 			pointRadians += mainAngle * pointStep;
 
-			const p = polarPoint(pointRadians, radius)
+			const p = new PolarPoint(pointRadians, radius).toPoint();
 
 			if (coordinates === 'relative') {
 

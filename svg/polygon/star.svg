@@ -34,7 +34,7 @@
 			{
 				angle += 5*mainAngle; <!--  i* -->
 
-				const p = polarPoint(angle, length)
+				const p = new PolarPoint(angle, length).toPoint();
 
 				x = Math.round(p.x);
 				y = Math.round(p.y);
