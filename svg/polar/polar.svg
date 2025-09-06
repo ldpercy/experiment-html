@@ -80,13 +80,18 @@
 			//console.log('lineRadian(p3,p4):', lineRadian(p3,p4));
 
 			pp1 = new PolarPoint(0.5,500);
-
-			console.log(pp1);
+			cp1 = pp1.toPoint();
 
 			ppd = new PolarPoint(1,100);
-			pp2 = pp1.plus(ppd)
+			cpd = ppd.toPoint();
 
-			ppo = pp1.toPointPolarOffset(ppd);
+			pp2 = pp1.plus(ppd);
+			cp2 = cp1.plus(cpd);
+
+			console.log('pp2', pp2.toPoint()) ;
+			console.log('cp2', cp2);
+
+			//ppo = pp1.toPointPolarOffset(ppd);
 
 
 			let output = `
@@ -107,18 +112,25 @@
 				${svgPoint(pp1.plus(new PolarPoint(3,200)))} -->
 
 
-				${svgPoint(pp1.toPointPolarOffset(new PolarPoint(1,200)))}
-				${svgPoint(pp1.toPointPolarOffset(new PolarPoint(2,200)))}
-				${svgPoint(pp1.toPointPolarOffset(new PolarPoint(3,200)))}
-				${svgPoint(pp1.toPointPolarOffset(new PolarPoint(4,200)))}
-				${svgPoint(pp1.toPointPolarOffset(new PolarPoint(5,200)))}
-
-
-				<!-- ${svgPoint(ppo)} -->
+				${svgPoint(pp1.move(200,0))}
+				${svgPoint(pp1.move(100,1))}
+				${svgPoint(pp1.move(100,2))}
+				${svgPoint(pp1.move(100,3))}
+				${svgPoint(pp1.move(100,4))}
+				${svgPoint(pp1.move(100,5))}
 
 			`;
 
 			/*
+
+				${svgPoint(pp1.toPointPolarOffset(new PolarPoint(1,100)))}
+				${svgPoint(pp1.toPointPolarOffset(new PolarPoint(2,100)))}
+				${svgPoint(pp1.toPointPolarOffset(new PolarPoint(3,100)))}
+				${svgPoint(pp1.toPointPolarOffset(new PolarPoint(4,100)))}
+				${svgPoint(pp1.toPointPolarOffset(new PolarPoint(5,100)))}
+
+
+				<!-- ${svgPoint(ppo)} -->
 				<!-- p1 --> ${svgPoint(p1)}
 				<!-- p2 --> ${svgPoint(p2)}
 				<!-- p3 --> ${svgPoint(p3)}
