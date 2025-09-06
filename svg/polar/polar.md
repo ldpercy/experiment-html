@@ -29,3 +29,16 @@ Also feel like there might a couple of different ways to interpret this which co
 * the offsets are expressed in radians and radius
 
 Assuming you can do them, they'll each produce different results.
+
+
+
+Addition
+--------
+
+Related to above - need to decide how to add polar points - I currently have two competing versions that each make sense in a way of thinking.
+
+Probably I want a version that will produce equivalent results through a round trip to cartesian coordinates and back.
+
+toPointPolarOffset is really wrong I think
+
+

@@ -64,17 +64,17 @@
 
 		function run() {
 			const r1 = new Rect(-500, -500, 400, 500 , 100, 100);
-			r1svg =  getRect(r1);
+			r1svg =  svgRect(r1);
 			//console.log(r1svg);
 			document.getElementById('output').innerHTML += r1svg;
 
 			const r2 = new Rect(-100, -100, 400, 500 , 50, 90, option={padding:50});
-			r2svg =  getRectPath(r2);
+			r2svg =  svgRectPath(r2);
 			document.getElementById('output').innerHTML += r2svg;
 		}/* run */
 
 
-		function getRectPadding(rect) {
+		function svgRectPadding(rect) {
 			result = `
 				<rect
 					x="${rect.x + rect.option.padding}"
@@ -91,7 +91,7 @@
 
 
 
-		function getRectPath(rect) {
+		function svgRectPath(rect) {
 			const x = rect.x + rect.option.padding;
 			const y = rect.y + rect.option.padding;
 			const width  = rect.width - 2*rect.option.padding;
