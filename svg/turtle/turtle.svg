@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" onload="run()">
-	<title>polar</title>
+	<title>turtle</title>
 
 	<script href="../[library]/maths.js"/>
 	<script href="../[library]/geometry.js"/>
@@ -16,7 +16,7 @@
 		<circle r="10" style="stroke: teal; stroke-width: 2px; fill:none;"><title>origin</title></circle>
 	</g>
 
-	<text x="-1200" y="-1000" class="title">polar</text>
+	<text x="-1200" y="-1000" class="title">turtle</text>
 
 	<style>
 		text.title {

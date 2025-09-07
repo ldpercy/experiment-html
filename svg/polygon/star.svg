@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" onload="load()">
 
-	<script href="../[library]/polar-coordinates.js"/>
+	<script href="../[library]/maths.js"/>
+	<script href="../[library]/geometry.js"/>
 	<script>
 		<![CDATA[
 
@@ -19,8 +20,7 @@
 			const sides = 12;
 			const divisions = 3;
 
-			//const mainAngle = tau / sides;
-			const mainAngle = tau / sides;
+			const mainAngle = Math.TAU / sides;
 
 			let angle = mainAngle/2;
 

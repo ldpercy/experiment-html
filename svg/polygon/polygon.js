@@ -72,7 +72,7 @@ function getStarPath(
 	let path = '';
 	let x = 0, y = 0;
 
-	const mainAngle = tau / sides;
+	const mainAngle = Math.TAU / sides;
 
 	const startAngle = mainAngle/startDivision;
 
