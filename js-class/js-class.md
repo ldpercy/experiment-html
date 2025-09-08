@@ -1,21 +1,11 @@
 JavaScript Classes
 ==================
 
-
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions
-
-https://stackoverflow.com/questions/51674947/javascript-classes-and-this
-
-
-### Private properties
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_properties
-
-> Private properties get created by using a hash # prefix and cannot be legally referenced outside of the class.
-
+Todo:
+* When to use `static`
+* Accessor fields - get and set
+* Static initialization blocks
+* experiment with private
 
 
 Anatomy
@@ -36,14 +26,25 @@ class MyClass {								// declare MyClass into an anonymous namespace
 	summary         = `Name: ${this.name}; Description: ${this.desc};`								 // can reference vars declared in the pseudo-constructor
 	extendedSummary = `Name: ${this.name}; Description: ${this.desc}; property1: ${this.property1};` // property1 is undefined at this point
 
+	foo = ' this is foo ';
+
 	constructor(property1, property2) {
 		this.property1 = property1;
 		this.property2 = property2;
 	}
 
+	// Accessors
+
+	// A 'get' accessor cannot have parameters. ts(1054)
+	get foo() { return this.foo; }
+
+	// A 'set' accessor must have exactly one parameter. ts(1049)
+	set foo(param) { this.foo = param }
+
 	report() {
 		console.log('report:', this);
 	}
+
 
 }/* MyClass */
 ```
@@ -72,6 +73,21 @@ class SubClass extends MyClass {			// extending a class
 ```
 You can declare a subclass with a constructor that lacks a super call, but you cannot instantiate it.
 A subclass with a constructor must call super().
+
+
+
+
+
+
+
+
+Private properties
+------------------
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_properties
+
+> Private properties get created by using a hash # prefix and cannot be legally referenced outside of the class.
+
 
 
 
@@ -136,3 +152,14 @@ I guess it will probably vary a bit on situation.
 
 
 
+
+
+
+Refs
+----
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions
+
+https://stackoverflow.com/questions/51674947/javascript-classes-and-this

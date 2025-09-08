@@ -47,7 +47,7 @@ class MyClass {
 	myClassSummary = `Name: ${this.name}; Description: ${this.desc}; Additional: ${this.additional};`
 
 	constructor(name, desc, additional) {
-		log("MyClass.constructor:", this);
+		log("MyClass.constructor:"); //, this
 		this.name = name;
 		this.desc = desc;
 		this.additional = additional;
@@ -60,6 +60,22 @@ class MyClass {
 	testMethod() {
 		log('This is testMethod in MyClass');
 	}
+
+	/* Accessors
+	Not sure what getters are actually doing yet.. don't think I'm doing it right
+	Ah looks like you can't have a property *and* getter function with the same name - the property overrides the fn
+	So getters aren't all that useful for ordinary fields, but can be used for private fields, and good for complex properties.
+	*/
+
+	//foo = ' this is foo '; // cannot have a getter of this name
+	#private = 'this is a private var';
+
+	get foo() { /* return this.foo */ }
+	set foo(param) { this.foo = param; }
+
+	get private() { return this.#private; }
+	set private(param) { this.#private = param; }
+
 
 }/* MyClass */
 
@@ -86,13 +102,13 @@ class SubClass extends MyClass {
 
 }/* SubClass */
 
-/*
-mc1 = new MyClass('MyClass 1', 'New instance of MyClass');
-mc1.reportThis();
 
-sc1 = new SubClass()
-sc1.reportThis();
- */
+mc = new MyClass('MyClass 1', 'New instance of MyClass');
+//mc.reportThis();
+
+sc = new SubClass()
+//sc.reportThis();
+
 
 
 
