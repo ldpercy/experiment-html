@@ -112,7 +112,7 @@ sc = new SubClass()
 
 
 
-/* Passing arguments to super */
+/* Passing arguments to super
 
 class C1 {
 	constructor(param) {
@@ -123,3 +123,39 @@ class C1 {
 
 class C2 extends C1 {}
 class C3 extends C2 {}
+
+
+*/
+
+
+class Point {
+	constructor(x,y) {
+		this.x=x;
+		this.y=y;
+	}
+}
+
+
+class SVGChunk {
+	constructor(
+		text = '',
+		defs = ''
+	) {
+		this.text = text;
+		this.defs = defs;
+	}
+
+	add = function(svgChunk) {
+		this.text += svgChunk.text;
+		this.defs += svgChunk.defs;
+	}
+
+	/*toString = function() {
+		const result = `
+			<defs>
+				${this.defs}
+			</defs>
+			${this.text}`;
+		return result;
+	}*/
+}/* SVGChunk */

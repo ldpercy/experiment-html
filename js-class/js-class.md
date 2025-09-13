@@ -152,6 +152,15 @@ I guess it will probably vary a bit on situation.
 
 
 
+`toString` magic
+------------------
+
+It's probably not magic, but was definitely a headscratcher for me initially as I wasn't expecting it.
+
+If a `toString` method exists, it will be implicitly called under some circumstances.
+
+Actually it's probably just that we're overriding the default implementation which returns '[object Object]', so not magic at all.
+
 
 
 
