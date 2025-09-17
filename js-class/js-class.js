@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
 function documentDOMContentLoaded() {
 	log('experiment-template.js: document.DOMContentLoaded');
+
+
+	p1 = new Point(1,1);
+
 }
 
 
@@ -61,6 +65,13 @@ class MyClass {
 		log('This is testMethod in MyClass');
 	}
 
+
+	test2() {
+		log('This is test2 in MyClass');
+		this.testMethod();
+	}
+
+
 	/* Accessors
 	Not sure what getters are actually doing yet.. don't think I'm doing it right
 	Ah looks like you can't have a property *and* getter function with the same name - the property overrides the fn
@@ -113,19 +124,31 @@ sc = new SubClass()
 
 
 /* Passing arguments to super
-
-class C1 {
+*/
+class C0 {
 	constructor(param) {
 		this.param=param;
 		//log('this:', this);
 	}
+
+	f0() { log('c0.f0') }
 }
 
-class C2 extends C1 {}
-class C3 extends C2 {}
+class C1 extends C0 {
+	f0() { log('c1.f0') }
+}
+class C2 extends C1 {
+	f0() { log('c2.f0') }
+}
+class C3 extends C2 {
+	f0() { log('c3.f0') }
+}
 
+c0 = new C0();
+c1 = new C1();
+c3 = new C2();
+c3 = new C3();
 
-*/
 
 
 class Point {
@@ -133,6 +156,7 @@ class Point {
 		this.x=x;
 		this.y=y;
 	}
+	toString = function() { return 'foo'; }
 }
 
 
@@ -150,6 +174,9 @@ class SVGChunk {
 		this.defs += svgChunk.defs;
 	}
 
+
+
+
 	/*toString = function() {
 		const result = `
 			<defs>
@@ -159,3 +186,18 @@ class SVGChunk {
 		return result;
 	}*/
 }/* SVGChunk */
+
+
+
+test = function(s) {
+	//const result = `test1: ${p = new Point(1,2)}`;			// will define 'p' globally(?)
+	//const result = `test2: ${var a = new Point(1,2)}`;		// syntax error
+	//const result = `test3: ${const a = new Point(1,2)}`;		// syntax error
+	//const result = `test3: ${let a = new Point(1,2)}`;		// different error
+
+	o = {};
+	const result = `test1: ${o.p = new Point(1,2)}`;
+
+
+	return result;
+}

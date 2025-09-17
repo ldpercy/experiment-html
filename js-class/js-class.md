@@ -162,6 +162,36 @@ If a `toString` method exists, it will be implicitly called under some circumsta
 Actually it's probably just that we're overriding the default implementation which returns '[object Object]', so not magic at all.
 
 
+Classes can be constructed and stringified in one step like so:
+```
+	someOutput = `
+		<div>
+			${new MyClass(123)}
+		</div>
+	`;
+```
+But the instance will be discarded so this is little more than a glorified function call.
+This *is* allowed though:
+```
+	someOutput = `
+		<div>
+			${mc = new MyClass(123)}
+		</div>
+	`;
+```
+But `mc` becomes globally(?) scoped, and cannot be preceded by keywords like var, let or const - so like this would be a trick of limited use.
+A better variant of this that happens to work is:
+```
+	someOutput = `
+		<div>
+			${someScope.mc = new MyClass(123)}
+		</div>
+	`;
+```
+In that case you can instantiate into a given scope, and stringify at the same time.
+Still not sure why you'd want to do it all in one step, but it can be done.
+
+
 
 
 Refs
