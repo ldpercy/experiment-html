@@ -78,6 +78,10 @@
 			width: 60px; <!-- no effect -->
 		}
 
+		.marker {
+			d: path('m0,-60 L20,20 L-20 20 z');
+		}
+
 	</style>
 
 	<defs>
@@ -101,8 +105,13 @@
 		</text>
 	</g>
 
+
+
+
 	<use class="usetext1" href="#defstext1" x="100" y="100"/>
 
 	<use class="usetext2" href="#defstext2" x="100" y="100"/>
+
+	<path id="def-marker"  class="marker" d="m0,-30 L10,10 L-10 10 z"/>  <!--  -->
 
 </svg>
