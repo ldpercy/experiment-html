@@ -36,7 +36,13 @@
 				width: 5ex;
 				height: 5ex;
 				/* margin-left: attr(data-value); */
-				margin-left: calc(var(--value) *10ex);
+				/* margin-left: calc(var(--value) *10ex); */
+
+				--margin-left: calc(var(--value) *10ex);
+
+				--margin-boundary: 50ex;
+
+				margin-left: max(var(--margin-boundary), var(--margin-left));
 			}
 		}
 	</style>
