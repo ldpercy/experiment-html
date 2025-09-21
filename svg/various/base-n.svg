@@ -19,9 +19,9 @@
 
 		function getNumberSVG(number, base) {
 
-			nb = numberToBase(number, base);
+			nb = Maths.numberToBase(number, base);
 
-			const size = baseSize(base,number) ;
+			const size = Maths.baseSize(base,number) ;
 			let digits = '';
 			let digitValue = 0;
 			let value = number;

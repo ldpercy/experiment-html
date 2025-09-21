@@ -38,7 +38,7 @@
 
 				x = Math.round(p.x);
 				y = Math.round(p.y);
-				console.log(i,degrees(angle),x,y);
+				console.log(i,Maths.radiansToDegrees(angle),x,y);
 
 				path  += (i===0) ? `M ${x} ${y} ` : `L ${x} ${y} `;
 			}

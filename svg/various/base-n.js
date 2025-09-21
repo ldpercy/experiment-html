@@ -29,9 +29,9 @@ function redraw() {
 
 function getNumberSVG(number, base) {
 
-	const nb = (nLight) ? numberToBaseN(number, base): numberToBase(number, base) ;
+	const nb = (nLight) ? Maths.numberToBaseN(number, base): Maths.numberToBase(number, base) ;
 
-	const size = baseSize(base,number) ;
+	const size = Maths.baseSize(base,number) ;
 	let digits = '';
 	let digitValue = 0;
 	let value = number;
