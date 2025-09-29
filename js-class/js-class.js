@@ -12,60 +12,51 @@ function documentDOMContentLoaded() {
 
 
 
-class MyClass {
-	// cannot have function calls in this space
+class BaseClass {
+	// cannot have function calls in the initialisation area
 
-	name    = 'Default MyClass name';
-	desc    = 'Default MyClass description';
+	name    = 'Initial BaseClass name';
+	desc    = 'Initial BaseClass description';
 	summary = `Name: ${this.name}; Description: ${this.desc};`
-	myClassSummary = `Name: ${this.name}; Description: ${this.desc}; Additional: ${this.additional};`
+	//baseClassSummary = `Name: ${this.name}; Description: ${this.desc}; Additional: ${this.additional};`
 
 	constructor(name, desc, additional) {
-		log("MyClass.constructor:"); //, this
+		log("BaseClass.constructor:"); //, this
 		this.name = name;
 		this.desc = desc;
 		this.additional = additional;
 	}
 
-	reportThis() {
-		log('reportThis:', this);
+	baseClassMethod() {
+		log('This is baseClassMethod');
 	}
 
-	testMethod() {
-		log('This is testMethod in MyClass');
+	commonMethod() {
+		log('This is commonMethod in BaseClass');
+	}
+
+	baseCallCommon() {
+		log('This is baseCallCommon in BaseClass');
+		this.commonMethod();
 	}
 
 
-	test2() {
-		log('This is test2 in MyClass');
-		this.testMethod();
-	}
-
-
-	/* Accessors
-	Not sure what getters are actually doing yet.. don't think I'm doing it right
-	Ah looks like you can't have a property *and* getter function with the same name - the property overrides the fn
-	So getters aren't all that useful for ordinary fields, but can be used for private fields, and good for complex properties.
-	*/
-
-	//foo = ' this is foo '; // cannot have a getter of this name
 	#private = 'this is a private var';
-
-	get foo() { /* return this.foo */ }
-	set foo(param) { this.foo = param; }
-
 	get private() { return this.#private; }
 	set private(param) { this.#private = param; }
 
 
-}/* MyClass */
+	reportThis() { log('reportThis:', this); }
+	toString() { return this; }
+
+}/* BaseClass */
 
 
 
 
-class SubClass extends MyClass {
+class SubClass extends BaseClass {
 
-	name = 'Default SubClass name';
+	name = 'Initial SubClass name';
 	subClassSummary = `Name: ${this.name}; Description: ${this.desc}; Additional: ${this.additional};`
 
 	constructor() {
@@ -74,25 +65,39 @@ class SubClass extends MyClass {
 		log("SubClass constructor")
 	}
 
-	testMethod() {
-		super.testMethod();
-		log('This is testMethod in SubClass');
+	subClassMethod() {
+		log('This is subClassMethod');
 	}
+
+	commonMethod() {
+		//super.commonMethod();
+		log('This is commonMethod in SubClass');
+	}
+
+	subCallCommon() {
+		log('This is subCallCommon in SubClass');
+		this.commonMethod();
+	}
+
+	/*
+	If all the methods are masked by the subclass, the super never gets called.
+	*/
+
 
 }/* SubClass */
 
 
-mc = new MyClass('MyClass 1', 'New instance of MyClass');
+bc = new BaseClass('BaseClass 1', 'New instance of BaseClass');
 //mc.reportThis();
 
-sc = new SubClass()
+sc = new SubClass('SubClass 1', 'New instance of SubClass')
 //sc.reportThis();
 
 
 
 
 /* Passing arguments to super
-*/
+
 class C0 {
 	constructor(param) {
 		this.param=param;
@@ -116,5 +121,5 @@ c0 = new C0();
 c1 = new C1();
 c3 = new C2();
 c3 = new C3();
-
+*/
 

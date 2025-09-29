@@ -14,8 +14,8 @@ Anatomy
 ### Simple class
 
 ```js
-class MyClass {								// declare MyClass into an anonymous namespace
-// class namespace.MyClass {				// declare into a specific namespace
+class BaseClass {							// declare BaseClass into an anonymous namespace
+// class namespace.BaseClass {				// or declare into a specific namespace
 
 	// initialisation area
 	// cannot have function calls in this space
@@ -45,14 +45,13 @@ class MyClass {								// declare MyClass into an anonymous namespace
 		console.log('report:', this);
 	}
 
-
-}/* MyClass */
+}/* BaseClass */
 ```
 
 ### Class with extends
 
 ```js
-class SubClass extends MyClass {			// extending a class
+class SubClass extends BaseClass {			// extending a class
 
 	// initialisation area
 	// cannot have function calls in this space
@@ -74,6 +73,33 @@ class SubClass extends MyClass {			// extending a class
 You can declare a subclass with a constructor that lacks a super call, but you cannot instantiate it.
 A subclass with a constructor must call super().
 
+
+
+Name clashes
+------------
+
+You can't have a field and a method with the same name - the field ends up overriding the method:
+```js
+foo = 'This is foo';
+foo()				{ console.log('This never gets called'); return this.foo; }
+get foo()			{ console.log('This never gets called'); return this.foo; }
+set foo(value)		{ console.log('This never gets called'); this.foo = value; }
+foo = function()	{ return 'However this overwrites the field'; }
+```
+
+
+Accessors
+---------
+
+
+Naive use of getters and setters ends up being recursive:
+```js
+get foo()		{ return this.foo; }	// this is recursive
+set foo(param)	{ this.foo = param; }	// this is recursive as well
+```
+
+Accessors aren't all that useful for regular fields.
+But they are good for private fields, and for complex properties.
 
 
 
@@ -182,7 +208,7 @@ Classes can be constructed and stringified in one step like so:
 ```
 	someOutput = `
 		<div>
-			${new MyClass(123)}
+			${new ExampleClass(123)}
 		</div>
 	`;
 ```
@@ -191,7 +217,7 @@ This *is* allowed though:
 ```
 	someOutput = `
 		<div>
-			${mc = new MyClass(123)}
+			${mc = new ExampleClass(123)}
 		</div>
 	`;
 ```
@@ -200,7 +226,7 @@ A better variant of this that happens to work is:
 ```
 	someOutput = `
 		<div>
-			${someScope.mc = new MyClass(123)}
+			${someScope.mc = new ExampleClass(123)}
 		</div>
 	`;
 ```
