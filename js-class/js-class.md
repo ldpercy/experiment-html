@@ -17,13 +17,13 @@ Anatomy
 class MyClass {								// declare MyClass into an anonymous namespace
 // class namespace.MyClass {				// declare into a specific namespace
 
-	// pseudo-constructor area
+	// initialisation area
 	// cannot have function calls in this space
 	// evaluated prior to the constructor being run
 
 	name            = 'Default ClassA name';
 	desc            = 'Default ClassA desc';
-	summary         = `Name: ${this.name}; Description: ${this.desc};`								 // can reference vars declared in the pseudo-constructor
+	summary         = `Name: ${this.name}; Description: ${this.desc};`								 // can reference other vars declared in the initialisation area
 	extendedSummary = `Name: ${this.name}; Description: ${this.desc}; property1: ${this.property1};` // property1 is undefined at this point
 
 	foo = ' this is foo ';
@@ -54,13 +54,13 @@ class MyClass {								// declare MyClass into an anonymous namespace
 ```js
 class SubClass extends MyClass {			// extending a class
 
-	// pseudo-constructor area
+	// initialisation area
 	// cannot have function calls in this space
 	// evaluated prior to the constructor being run
 
 	name            = 'Default ClassA name';
 	desc            = 'Default ClassA desc';
-	summary         = `Name: ${this.name}; Description: ${this.desc};`								 // can reference vars declared in the pseudo-constructor
+	summary         = `Name: ${this.name}; Description: ${this.desc};`								 // can reference other vars declared in the initialisation area
 	extendedSummary = `Name: ${this.name}; Description: ${this.desc}; property1: ${this.property1};` // property1 is undefined at this point
 
 	constructor(property1, property2) {
@@ -77,10 +77,6 @@ A subclass with a constructor must call super().
 
 
 
-
-
-
-
 Private properties
 ------------------
 
@@ -89,6 +85,26 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Privat
 > Private properties get created by using a hash # prefix and cannot be legally referenced outside of the class.
 
 
+Constructors and setters
+------------------------
+
+Can't (yet) find any way of doing something like this:
+```js
+	i = new Foo().property = 1234;
+
+```
+Ie construction with a chained setter.
+Setter return values are seemingly ignored, so variations like the following don't work either:
+```js
+set x(x) { this.#x=x; return this; }
+```
+
+Try this instead:
+
+```js
+(p1 = new Point(2,3)).x = 22
+```
+The expression evaluates to '22' but p1 is set correctly.
 
 
 

@@ -2,43 +2,13 @@
 */
 console.clear();
 log = createPageLog(document.getElementById('pageLog'));
-log('experiment-template.js: run');
+log('js-class.js: run');
 document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
 function documentDOMContentLoaded() {
-	log('experiment-template.js: document.DOMContentLoaded');
-
-
-	p1 = new Point(1,1);
-
+	log('js-class.js: document.DOMContentLoaded');
 }
 
-
-
-/* class Foo doesn't appear in any obvious namespace like window
-
-class Foo {
-	constructor() { console.log("I'm a Class constructor") }
-	log() { console.log("I'm a Class method") }
-}
-
-const obj1 = new Foo(); // I'm a Class constructor
-obj1.log(); // I'm a Class method
-
-*/
-/*
-classMap = {};
-
-classMap.Foo1 = class {
-	constructor() { console.log("Foo1 Class constructor") }
-	log() { console.log("Foo1 Class method") }
-}
-
-classMap.Foo2 = class {
-	constructor() { console.log("Foo2 Class constructor") }
-	log() { console.log("Foo2 Class method") }
-}
- */
 
 
 
@@ -46,7 +16,7 @@ class MyClass {
 	// cannot have function calls in this space
 
 	name    = 'Default MyClass name';
-	desc    = 'Default MyClass desc';
+	desc    = 'Default MyClass description';
 	summary = `Name: ${this.name}; Description: ${this.desc};`
 	myClassSummary = `Name: ${this.name}; Description: ${this.desc}; Additional: ${this.additional};`
 
@@ -100,9 +70,7 @@ class SubClass extends MyClass {
 
 	constructor() {
 		super();	// this is required
-		/*
-		The super call must explicitly pass parameters, or they will be undefined
-		*/
+		/* The super call must explicitly pass parameters, or they will be undefined */
 		log("SubClass constructor")
 	}
 
@@ -150,54 +118,3 @@ c3 = new C2();
 c3 = new C3();
 
 
-
-class Point {
-	constructor(x,y) {
-		this.x=x;
-		this.y=y;
-	}
-	toString = function() { return 'foo'; }
-}
-
-
-class SVGChunk {
-	constructor(
-		text = '',
-		defs = ''
-	) {
-		this.text = text;
-		this.defs = defs;
-	}
-
-	add = function(svgChunk) {
-		this.text += svgChunk.text;
-		this.defs += svgChunk.defs;
-	}
-
-
-
-
-	/*toString = function() {
-		const result = `
-			<defs>
-				${this.defs}
-			</defs>
-			${this.text}`;
-		return result;
-	}*/
-}/* SVGChunk */
-
-
-
-test = function(s) {
-	//const result = `test1: ${p = new Point(1,2)}`;			// will define 'p' globally(?)
-	//const result = `test2: ${var a = new Point(1,2)}`;		// syntax error
-	//const result = `test3: ${const a = new Point(1,2)}`;		// syntax error
-	//const result = `test3: ${let a = new Point(1,2)}`;		// different error
-
-	o = {};
-	const result = `test1: ${o.p = new Point(1,2)}`;
-
-
-	return result;
-}
