@@ -110,6 +110,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Privat
 
 > Private properties get created by using a hash # prefix and cannot be legally referenced outside of the class.
 
+Using classes - JavaScript | MDN:
+> Derived classes don't have access to the parent class's private fields — this is another key aspect to JavaScript private
+fields being "hard private". Private fields are scoped to the class body itself and do not grant access to any outside
+code.
+
+
 
 Constructors and setters
 ------------------------

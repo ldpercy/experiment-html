@@ -1,5 +1,7 @@
-/* experiment-template.js
-*/
+//
+// js-class.js
+//
+
 console.clear();
 log = createPageLog(document.getElementById('pageLog'));
 log('js-class.js: run');
@@ -11,14 +13,14 @@ function documentDOMContentLoaded() {
 
 
 
-
+/* BaseClass
+*/
 class BaseClass {
-	// cannot have function calls in the initialisation area
-
 	name    = 'Initial BaseClass name';
 	desc    = 'Initial BaseClass description';
 	summary = `Name: ${this.name}; Description: ${this.desc};`
 	//baseClassSummary = `Name: ${this.name}; Description: ${this.desc}; Additional: ${this.additional};`
+	#basePrivate = 'BaseClass private';
 
 	constructor(name, desc, additional) {
 		log("BaseClass.constructor:"); //, this
@@ -27,71 +29,76 @@ class BaseClass {
 		this.additional = additional;
 	}
 
-	baseClassMethod() {
-		log('This is baseClassMethod');
-	}
+	// Accessors
 
-	commonMethod() {
-		log('This is commonMethod in BaseClass');
-	}
+	get private() { return this.#basePrivate; }
+	set private(param) { this.#basePrivate = param; }
 
+	// methods
+
+	baseClassMethod()	{	log('BaseClass.baseClassMethod');	}
+	commonMethod()		{	log('BaseClass.commonMethod');	}
 	baseCallCommon() {
 		log('This is baseCallCommon in BaseClass');
 		this.commonMethod();
 	}
 
+	this() { console.log('BaseClass this:', this); }
+	toString() {
+		const result = `
+			BaseClass.toString()
+			Name: ${this.name};
+			Description: ${this.desc};
+			#basePrivate: ${this.#basePrivate};
 
-	#private = 'this is a private var';
-	get private() { return this.#private; }
-	set private(param) { this.#private = param; }
+		`;
 
-
-	reportThis() { log('reportThis:', this); }
-	toString() { return this; }
+		//#subPrivate: ${this.#subPrivate}; // syntax error
+		return result;
+	}
 
 }/* BaseClass */
 
 
-
-
+/* SubClass
+*/
 class SubClass extends BaseClass {
-
 	name = 'Initial SubClass name';
 	subClassSummary = `Name: ${this.name}; Description: ${this.desc}; Additional: ${this.additional};`
+	#subPrivate = 'SubClass private';
 
 	constructor() {
-		super();	// this is required
-		/* The super call must explicitly pass parameters, or they will be undefined */
-		log("SubClass constructor")
+		super(...arguments);	// a super call is required
 	}
 
-	subClassMethod() {
-		log('This is subClassMethod');
-	}
-
-	commonMethod() {
-		//super.commonMethod();
-		log('This is commonMethod in SubClass');
-	}
+	subClassMethod()	{	log('SubClass.subClassMethod'); }
+	commonMethod()		{	log('SubClass.commonMethod'); 	}
 
 	subCallCommon() {
 		log('This is subCallCommon in SubClass');
 		this.commonMethod();
 	}
 
-	/*
-	If all the methods are masked by the subclass, the super never gets called.
-	*/
+	// If all the methods are masked by the subclass, the super never gets called.
 
+	this() { console.log('SubClass this:', this); }
+	toString() {
+		const result = `
+			SubClass.toString()
+			Name: ${this.name};
+			Description: ${this.desc};
+			#subPrivate: ${this.#subPrivate};
+		`;
+		// #basePrivate: ${this.#basePrivate}; // syntax error
+		return result;
+	}
+	superString() { return super.toString(); }
 
 }/* SubClass */
 
 
 bc = new BaseClass('BaseClass 1', 'New instance of BaseClass');
-//mc.reportThis();
-
 sc = new SubClass('SubClass 1', 'New instance of SubClass')
-//sc.reportThis();
 
 
 
