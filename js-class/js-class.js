@@ -19,7 +19,6 @@ class BaseClass {
 	name    = 'Initial BaseClass name';
 	desc    = 'Initial BaseClass description';
 	summary = `Name: ${this.name}; Description: ${this.desc};`
-	//baseClassSummary = `Name: ${this.name}; Description: ${this.desc}; Additional: ${this.additional};`
 	#basePrivate = 'BaseClass private';
 
 	constructor(name, desc, additional) {
@@ -42,6 +41,7 @@ class BaseClass {
 		log('This is baseCallCommon in BaseClass');
 		this.commonMethod();
 	}
+	#basePrivateMethod()	{	log('BaseClass.#basePrivateMethod');	}
 
 	this() { console.log('BaseClass this:', this); }
 	toString() {
@@ -71,13 +71,15 @@ class SubClass extends BaseClass {
 		super(...arguments);	// a super call is required
 	}
 
+	// methods
+
 	subClassMethod()	{	log('SubClass.subClassMethod'); }
 	commonMethod()		{	log('SubClass.commonMethod'); 	}
-
 	subCallCommon() {
 		log('This is subCallCommon in SubClass');
 		this.commonMethod();
 	}
+	#subPrivateMethod()	{	log('SubClass.#subPrivateMethod');	}
 
 	// If all the methods are masked by the subclass, the super never gets called.
 
