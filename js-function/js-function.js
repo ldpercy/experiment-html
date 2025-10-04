@@ -59,3 +59,18 @@ Each returns 'Window' for 'this' which is unexpected, esp for the arrow fn.
 
 
 
+function defaultTest(
+	name = 'default name',
+	description = `default desc: ${name}`
+){
+
+
+	return `${name}; ${description}`
+
+	/*
+	can a function's argument defaults use other argument defaults?
+	*/
+
+}
+
+

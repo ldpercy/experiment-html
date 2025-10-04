@@ -42,6 +42,21 @@ This appears to work just fine.
 There could be cases where you specifically want the inner class instances attached in some way to the instances of outer class... in which case no-static thing might be an approach, but there's probably better ways to do that though.
 
 
+Actually I've just found an entirely appropriate use-case for the no-static inner class constructor - constructing the inner class when you only have access to an *instance* of the outer class.
+
+In Turtle I'm using `space` instances to create new Points, and I want the code to be agnostic of the actual space being used.
+So instead of using a constructor like `new ConcreteSpace.Point()`, i want to call a constructor off the instance instead, something like:
+```
+	point = new spaceInstance.point()
+```
+
+So in this case I need an inner class constructor that isn't static.
+
+
+
+
+
+
 ### 'Quasi' Inner Class
 
 A similar kind of namespacing arrangement can be achieved by just declaring another class in the outer classes name:
@@ -66,4 +81,25 @@ There are probably a whole bunch of fiddly little details with setups like these
 Will have to try stuff out and see how it works.
 
 The main initial benefit I'm going for here though is the ability to namespace and group related classes together.
+
+
+
+
+Attaching the inner instance to the outer one
+---------------------------------------------
+
+Doing something like the following on an inner class:
+
+```js
+	Point = class {
+		constructor(name, space=this) {
+			return new PlanarSpace.Point(...arguments);
+		}
+	}/* Point */
+```
+
+Unfortunately does not bind the 'this' to the outer class instance, it's bound to the new instance's this.
+I bet there is a way to do it though...
+
+
 
