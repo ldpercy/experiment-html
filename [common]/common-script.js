@@ -42,6 +42,9 @@ function createPageLog(logElement) {
 }//createPageLog
 
 
+
+
+
 function genericLogger() {
 	log(arguments);
 }
