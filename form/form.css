@@ -5,6 +5,18 @@
 
 input[type=range] {
 
-	width:50%;
-
+	width:500px;
+	margin:0px;
 }
+
+
+datalist {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	writing-mode: vertical-lr;
+	width: 500px;
+}
+/* option {
+	padding: 0px;
+} */

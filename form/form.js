@@ -3,5 +3,5 @@
 //
 
 
-page = new HTMLPage();
+formApp = new HTMLApp();
 

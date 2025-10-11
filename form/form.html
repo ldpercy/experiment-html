@@ -18,7 +18,7 @@
 		}
 	</script> -->
 	<script defer src="../[common]/common-script.js"></script>
-	<script defer src="../[common]/HTMLPage.js"></script>
+	<script defer src="../[common]/HTMLApp.js"></script>
 	<script defer src="form.js"></script>
 </head>
 <body>
@@ -32,17 +32,19 @@
 
 
 		<input type="range" min="0" max="10" list="datalist-foo"/>
+
 		<datalist id="datalist-foo">
-			<option value="0">0</option>
-			<option value="1">+1</option>
-			<option value="2">+2</option>
-
-
+			<option value="0" label="0">0</option>
+			<option value="1" label="+1">+1</option>
+			<option value="2" label="+2">+2</option>
+			<option></option>
+			<option></option>
+			<option></option>
+			<option></option>
 			<option value="7" title="7" ></option>
 			<option>8</option>
 			<option value="9">9</option>
-
-
+			<option>10</option>
 		</datalist>
 
 
