@@ -2,14 +2,12 @@
 */
 class HTMLApp {
 
-	log;
+
 
 	constructor() {
-		this.log = createPageLog(document.getElementById('pageLog'));
-		this.log('HTMLPage constructor');
+
 		document.addEventListener('DOMContentLoaded', this.documentDOMContentLoaded.bind(this));
 		// adding a `.bind(this)` to the addEventListener gives the listener the instance 'this'
-
 	}
 
 
