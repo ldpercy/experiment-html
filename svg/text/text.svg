@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+	<title>
+		text
+	</title>
+
+
+	<style>
+		svg {
+			background:
+				repeating-linear-gradient(
+					0deg,
+					#cccc 0px,
+					#fff1 2px,
+					#fff1 100px
+				),
+				repeating-linear-gradient(
+					90deg,
+					#cccc 0px,
+					#fff1 2px,
+					#fff1 100px
+				);
+			background-position-x:0%;
+			background-position-y:0%;
+			background-attachment: fixed;
+		}
+
+		path {
+			stroke: blue;
+			stroke-width: 1;
+			fill: #00fa;  <!-- none; -->
+			fill-rule: nonzero; <!-- evenodd, nonzero -->
+			<!-- stroke-dasharray: 2 7; -->
+			stroke-linecap: round;
+			stroke-linejoin: bevel;
+			marker-start:url(#markerStart);
+			marker-end:url(#markerEnd);
+		}
+
+
+		circle {
+			stroke: cyan;
+			fill: cadetblue;
+
+		}
+
+		rect {
+			/* stroke: red; */
+			fill: royalblue;
+
+		}
+
+		#heading  {
+			fill: tan;
+			stroke: teal;
+			font-size: 16em;
+			writing-mode:initial;
+		}
+
+		text {
+			font-size: 100px;
+			writing-mode:vertical-lr ; /* horizontal-tb sideways-lr sideways-rl vertical-lr vertical-rl*/
+		}
+
+		textPath {
+			fill: pink;
+			stroke: purple;
+			font-size: 1ex;
+		}
+
+
+		.shadow {
+			filter: drop-shadow(0px 40px 20px #444b);
+		}
+
+
+	</style>
+
+	<defs>
+		<text id="heading">
+			text
+		</text>
+
+	</defs>
+
+
+	<use href="#heading"  x="-1000" y="-1000"/>
+
+	<circle x="0" y="0" r="10"/>
+
+	<text>
+		<textPath class="" startOffset="50%" href="#labelPath-monthName-jan">January</textPath>
+	</text>
+
+	<text>
+		<textPath startOffset="50%" href="#path-star">lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet</textPath>
+	</text>
+
+	<text x="0" y="0">test text</text>
+
+</svg>
