@@ -8,6 +8,7 @@ class PolygonApp extends HTMLApp {
 	name = "polygonApp";
 	info = "Polygon by ldpercy"
 
+
 	eventListeners = [
 		{
 			query: '#form-polygon',
@@ -23,9 +24,6 @@ class PolygonApp extends HTMLApp {
 
 
 	polygonChangeListener(event) {
-		//console.log('polygonChangeListener arguments', arguments);		// has normal arguments array
-		//console.log('polygonChangeListener event', event);				// receives click event
-		//console.log('polygonChangeListener this', this);				// receives button as 'this'
 		this.redraw();
 	}
 
@@ -34,28 +32,10 @@ class PolygonApp extends HTMLApp {
 	}
 
 
-
-	/*	listener: ()=>this.listenerFunction
-
-	I did the same thing in yearclock for the dynamic hand functions.
-	I'm not sure if it needs to be like this, but writing it directly as:
-
-		listener: this.listenerFunction
-
-	wasn't working for me.
-	Like this there's an extra evaluation step also.
-	Would like to find out what's going on here, and if there's a better way.
-
-	*/
-
-
-
 	documentDOMContentLoaded() {
 		super.documentDOMContentLoaded();
 		this.redraw();
 	}/* documentDOMContentLoaded */
-
-
 
 
 
@@ -80,10 +60,8 @@ class PolygonApp extends HTMLApp {
 
 
 
-
 	updateStyle() {
-
-		console.debug('polygonApp.updateStyle');
+		//console.debug('polygonApp.updateStyle');
 
 		if (document.getElementById('input-fillRule').value === 'evenodd') {
 			document.getElementById('star-group').classList.add('evenodd');
