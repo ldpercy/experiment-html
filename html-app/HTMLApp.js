@@ -2,7 +2,6 @@
 */
 class HTMLApp {
 
-	// instance = this;
 
 	name = 'HTMLApp';
 	info = 'HTMLApp by ldpercy';
@@ -45,20 +44,14 @@ class HTMLApp {
 
 
 	addEventListeners() {
-		let listenerFunction;
-		//console.debug('HTMLApp.addEventListeners', arguments, instance);
 		this.eventListeners.forEach(
 			(item) => {
 				//this.addEventListener(item.query, item.event, item.listener);
 				document.querySelectorAll(item.query).forEach((node) => {
-					//console.debug('HTMLApp.addEventListener node', node);
-					//listenerFunction = item.listener();	// this evaluation required at the moment; try to find better solution though
-					//console.debug('HTMLApp.addEventListeners listenerFunction', listenerFunction);
 					console.debug('HTMLApp.addEventListeners item.listener', item.listener);
 					node.addEventListener(
 						item.type,
-						listenerFunction.bind(this)
-						//item.listener
+						item.listener.bind(this)
 					);//addEventListener
 				}); //
 			}//item
