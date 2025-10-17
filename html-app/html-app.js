@@ -18,12 +18,12 @@ class TestApp extends HTMLApp {
 		{
 			query: '#myForm',
 			type: 'change',
-			listener: ()=>this.formChangeListener
+			listener: this.formChangeListener
 		},
 		{
 			query: '#myButton',
 			type: 'click',
-			listener: ()=>this.buttonClickListener
+			listener: this.buttonClickListener
 		},
 	];
 

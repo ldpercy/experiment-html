@@ -32,3 +32,15 @@ So it would be nice to have some options here.
 * Force the use of separate listeners/handlers - listeners could hopefully use a 'this' synonym to call instance methods
 
 
+
+
+
+Event listener registration
+---------------------------
+
+All of a sudden 'normal' listener registration is working for me... (without the function execution).
+
+Not sure what's going on - was I doing something wrong in the past?
+Was it something specific to the way I was doing things in year-clock?
+
+I'd better test this some more.
