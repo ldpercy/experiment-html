@@ -54,10 +54,11 @@ class HTMLApp {
 					//console.debug('HTMLApp.addEventListener node', node);
 					//listenerFunction = item.listener();	// this evaluation required at the moment; try to find better solution though
 					//console.debug('HTMLApp.addEventListeners listenerFunction', listenerFunction);
+					console.debug('HTMLApp.addEventListeners item.listener', item.listener);
 					node.addEventListener(
 						item.type,
-						//listenerFunction.bind(this)
-						item.listener
+						listenerFunction.bind(this)
+						//item.listener
 					);//addEventListener
 				}); //
 			}//item
