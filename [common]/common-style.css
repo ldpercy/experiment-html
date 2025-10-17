@@ -1,7 +1,20 @@
 
 html {
-	background-color: silver;
+
+	--silver-light: #bbb;
+	--silver-dark: #333;
+
+
+	--html-background-light: var(--silver-light);
+	--html-background-dark: var(--silver-dark);
+
+	--body-background-light: #fcfcfc;
+	--body-background-dark: #111111;
+
+
+	background-color: var(--html-background-light);
 }
+
 
 body {
 	margin:1em;
@@ -9,7 +22,7 @@ body {
 	border-radius:1ex;
 	font-family:sans-serif;
 	color:black;
-	background-color: white;
+	background-color: var(--body-background-light);
 }
 
 h1:first-of-type {
@@ -87,4 +100,24 @@ th {
 	background-color: silver;
 }
 
+
+
+
+html.light {
+	color-scheme: light;
+	background-color: var(--html-background-light);
+	body {
+		background-color: var(--body-background-light);
+		color: black;
+	}
+}
+
+html.dark {
+	color-scheme: dark;
+	background-color: var(--html-background-dark);
+	body {
+		background-color: var(--body-background-dark);
+		color: white;
+	}
+}
 
