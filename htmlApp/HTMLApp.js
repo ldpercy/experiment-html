@@ -2,8 +2,24 @@
 */
 class HTMLApp {
 
-	//name = 'HTMLApp';
-	//info = 'HTMLApp by ldpercy';
+	/* Example instance setup:
+	name = 'HTMLApp';
+	info = 'HTMLApp by ldpercy';
+
+	eventListeners = [
+		{
+			query: '#myForm',
+			type: 'change',
+			listener: ()=>this.formChangeListener
+		},
+		{
+			query: '#myButton',
+			type: 'click',
+			listener: ()=>this.buttonClickListener
+		},
+	];
+	*/
+
 
 	constructor() {
 		//console.debug('HTMLApp.constructor', this);
