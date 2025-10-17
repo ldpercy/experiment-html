@@ -34,11 +34,11 @@ class HTMLApp {
 				//this.addEventListener(item.query, item.event, item.listener);
 				document.querySelectorAll(item.query).forEach((node) => {
 					//console.debug('HTMLApp.addEventListener node', node);
-					listenerFunction = item.listener();	// this evaluation required at the moment; try to find better solution though
+					//listenerFunction = item.listener();	// this evaluation required at the moment; try to find better solution though
 					//console.debug('HTMLApp.addEventListeners listenerFunction', listenerFunction);
 					node.addEventListener(
 						item.type,
-						listenerFunction.bind(this)
+						item.listener.bind(this) //Function.bind(this)
 					);//addEventListener
 				});
 

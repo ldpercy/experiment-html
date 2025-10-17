@@ -12,17 +12,20 @@ class PolygonApp extends HTMLApp {
 		{
 			query: '#form-polygon',
 			type: 'change',
-			listener: ()=>this.polygonChangeListener
+			listener: this.polygonChangeListener
 		},
 		{
 			query: '#form-style',
 			type: 'change',
-			listener: ()=>this.styleChangeListener
+			listener: this.styleChangeListener
 		},
 	];
 
 
 	polygonChangeListener(event) {
+		//console.log('polygonChangeListener arguments', arguments);		// has normal arguments array
+		//console.log('polygonChangeListener event', event);				// receives click event
+		//console.log('polygonChangeListener this', this);				// receives button as 'this'
 		this.redraw();
 	}
 
@@ -57,7 +60,7 @@ class PolygonApp extends HTMLApp {
 
 
 	redraw() {
-		console.debug('polygonApp.redraw', arguments);
+		//console.debug('polygonApp.redraw', arguments);
 
 		const radius = document.getElementById('input-radius').value;
 		const sides = document.getElementById('input-sides').value;
