@@ -41,3 +41,10 @@ function genericHandler() {
 function dumbHandler() {
 	log('something happened')
 }
+
+
+function genericEventHandler() {
+	console.log('genericEventHandler-normalFunction arguments', arguments);		// has normal arguments array
+	console.log('genericEventHandler-normalFunction event', event);				// receives click event
+	console.log('genericEventHandler-normalFunction this', this);				// receives button as 'this'
+}/* genericEventHandler */

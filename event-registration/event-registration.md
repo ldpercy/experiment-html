@@ -6,6 +6,35 @@ There are a few different techniques and styles for this.
 Want to experiment with each and see what works in different circumstances.
 
 
+
+Arrow-versus-ordinary functions as event listeners
+--------------------------------------------------
+
+These are *different*:
+
+```js
+myButton.addEventListener('click',
+	function(event) {
+		console.log('nonAppButton-normalFunction arguments', arguments);		// has normal arguments array
+		console.log('nonAppButton-normalFunction event', event);				// receives click event
+		console.log('nonAppButton-normalFunction this', this);					// receives button as 'this'
+	}
+);
+
+myButton.addEventListener('click',
+	() => {
+		//console.log('nonAppButton-arrowFunction arguments', arguments);		// arguments array is undefined
+		console.log('nonAppButton-arrowFunction event', event);					// receives click event
+		console.log('nonAppButton-arrowFunction this', this);					// receives window as 'this'
+	}
+);
+```
+
+The first is more useful, so what's going on with the second?
+
+
+
+
 Document Loading
 ----------------
 
