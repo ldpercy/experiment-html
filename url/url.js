@@ -50,6 +50,15 @@ class UrlApp extends HTMLApp {
 	documentDOMContentLoaded() {
 		super.documentDOMContentLoaded();
 		this.setMode(localStorage.mode);
+
+		const url = window.location;
+
+		document.getElementById('input-url').value = url;
+
+		const urlObj = new URL(url);
+
+		console.log(urlObj);
+
 	}
 
 
