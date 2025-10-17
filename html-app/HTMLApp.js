@@ -2,11 +2,12 @@
 */
 class HTMLApp {
 
-	/* Example instance setup:
+
 	name = 'HTMLApp';
 	info = 'HTMLApp by ldpercy';
 
 	eventListeners = [
+		/* Example instance setup:
 		{
 			query: '#myForm',
 			type: 'change',
@@ -17,8 +18,9 @@ class HTMLApp {
 			type: 'click',
 			listener: ()=>this.buttonClickListener
 		},
+		*/
 	];
-	*/
+
 
 
 	constructor() {
