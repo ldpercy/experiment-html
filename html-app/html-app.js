@@ -1,10 +1,10 @@
-/* htmlApp.js
+/* html-app.js
 */
 console.clear();
 log = createPageLog(document.getElementById('pageLog'));
-log('htmlApp.js: run');
+log('html-app.js: run');
 document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
 function documentDOMContentLoaded() {
-	log('htmlApp.js: document.DOMContentLoaded');
+	log('html-app.js: document.DOMContentLoaded');
 }
