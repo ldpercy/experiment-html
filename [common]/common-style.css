@@ -4,12 +4,15 @@ html {
 	--silver-light: #bbb;
 	--silver-dark: #333;
 
+	--nearly-white: #fcfcfc;
+	--nearly-black: #111;
+
 
 	--html-background-light: var(--silver-light);
-	--html-background-dark: var(--silver-dark);
+	--body-background-light: var(--nearly-white);
 
-	--body-background-light: #fcfcfc;
-	--body-background-dark: #111111;
+	--html-background-dark: var(--nearly-black);
+	--body-background-dark: var(--silver-dark);
 
 
 	background-color: var(--html-background-light);
