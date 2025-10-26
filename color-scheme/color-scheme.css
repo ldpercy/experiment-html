@@ -1,6 +1,15 @@
 
 
 
+
+body {
+	/* --accent-color: #3daee9; */ /* firefox's accent colour */
+	/* --accent-color: #2ae; */
+
+	accent-color: var(--accent-color);
+}
+
+
 .dark {
 	color-scheme: dark;
 }
