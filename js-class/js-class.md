@@ -1,11 +1,18 @@
 JavaScript Classes
 ==================
 
-Todo:
+### Refs
+
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions
+* https://stackoverflow.com/questions/51674947/javascript-classes-and-this
+
+
+
+### Todo:
+
 * When to use `static`
-* Accessor fields - get and set
 * Static initialization blocks
-* experiment with private
 
 
 Anatomy
@@ -242,11 +249,31 @@ Still not sure why you'd want to do it all in one step, but it can be done.
 
 
 
-Refs
-----
+Method Naming
+-------------
 
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+This is mostly for my own practise, to make what certain kinds of methods do clear from their naming.
 
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions
+Mostly he confusing case that I'm running into most right now are methods that return new instances calculated from the instance.
 
-https://stackoverflow.com/questions/51674947/javascript-classes-and-this
+For example:
+
+```
+	d = new Date()
+	s = d.startOfYear() // or as an accessor without ()
+```
+
+Questions arise:
+* `startOfYear` is sort of a property, but also kind of not, so would be arguable as a getter
+* It returns a **new** instance so is it a conversion or factory method?
+* It returns the same type, so as a conversion like `toStartOfYear` looks really weird
+
+For the moment I think it probably be mostly naturally is a getter, ie 'getStartOfYear' of simply 'startOfYear'.
+But the fact that it returns a new object still irks me a little bit.
+Maybe if it was actually a proper property of the date then it would read less awkwardly to me.
+Might consider that.
+
+
+
+
+
