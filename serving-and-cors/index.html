@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" class="light">
+<head>
+	<title>Serving and CORS</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../[common]/favicon.svg">
+	<link rel="stylesheet" href="../[common]/common-style.css">
+	<link rel="stylesheet" href="index.css">
+	<!-- <script>
+		console.clear();
+		console.log('index.html');
+		document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
+
+		function documentDOMContentLoaded() {
+			log = createPageLog(document.getElementById('pageLog'));
+			log('index.html: document.DOMContentLoaded');
+		}
+	</script> -->
+	<script defer src="../[common]/HTMLApp.js"></script>
+	<script defer src="index.js"></script>
+
+
+
+	<!-- tests
+	-->
+	<script src="doesnt-exist.js"></script>
+	<!-- file:///
+	firefox			200 plus a warning
+	chromium		error (failed)net::ERR_FILE_NOT_FOUND
+	-->
+	<script type="module" src="module.js"></script>
+	<!-- file:///
+	firefox:
+		Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at file:///path/to/project/experiment-html/serving-and-cors/module.js. (Reason: CORS request not http).
+		Module source URI is not allowed in this document: “file:///path/to/project/experiment-html/serving-and-cors/module.js”.
+	chromium:
+		index.html:1 Access to script at 'file:///path/to/project/experiment-html/serving-and-cors/module.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-extension, chrome-untrusted, data, http, https, isolated-app.
+		index.html:31  GET file:///path/to/project/experiment-html/serving-and-cors/module.js net::ERR_FAILED
+	-->
+
+</head>
+<body>
+	<nav>
+		<a id="button-lightMode" href="#" title="Light mode" mode="light">🟓</a>
+		<a id="button-darkMode" href="#" title="Dark mode" mode="dark">🟒</a>
+		<a title="To folder" href="./">🖿</a>
+		<a title="Parent folder" href="../">🡅</a>
+	</nav>
+
+	<h1><a href="">Serving and CORS</a></h1>
+
+	<input type="text" id="input-url" placeholder="url">
+
+	<br/>
+
+	<!-- First three work in FF native for me, last one doesn't:
+	<img style="height:300px" src="/usr/share/icons/gnome/scalable/places/debian-swirl.svg">
+	<img style="height:300px" src="../../experiment-svg/polygon/star-12.svg">
+	<img style="height:300px" src="/home/user/Pictures/test.svg">
+	<img style="height:300px" src="~/Pictures/test.svg">
+	Chromium is a snap and has more sandboxing, only 2+3 work
+	None work under http.
+	-->
+
+	<h2>Log:</h2>
+	<output id="pageLog"></output>
+</body>
+</html>
