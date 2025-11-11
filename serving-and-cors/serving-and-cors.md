@@ -22,6 +22,9 @@ File vs http protocols
 The main benefit to this is its simplicity, you just need a local filesystem and a browser, which are pretty universal.
 Nearly all JS language features are available as well, including things like classes & localStorage.
 
+* Browser caching doesn't seem to be a problem under file protocol; it feels like everything is grabbed fresh each time, and no hard refreshes (ctrl-shift-r) are needed
+
+
 However:
 * Modern browsers treat file URIs as having unique origins
 * Many things are therefore subject to CORS restrictions, eg: XMLHttpRequest, Fetch, iframe.contentDocument, CSSStyleSheet.rules
@@ -41,6 +44,9 @@ However:
 * Proper sandboxing
 * Proper responses
 * Access to content of dynamically loaded items like stylesheets & iframes, subject to CORS rules
+
+
+NB: browser caching becomes an issue compared to file protocol - ctrl-shift-r is your best friend
 
 
 

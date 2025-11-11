@@ -41,3 +41,16 @@ I don't think there's any way to access module code outside of another module.
 
 Ie only modules can import modules, so effectively modules take over and everything becomes a module.
 
+
+
+Likewise, I suspect there isn't any way to use non-module code *inside*  in a module.
+Wait that doesn't seem right - there must still be a global namespace of some sort?
+Otherwise the whole universe would have broken when modules were brought in...
+There's something I'm missing here.
+
+
+
+
+Although:
+> Another advantage of dynamic imports is that they are always available, even in script environments. Therefore, if you have an existing `<script>` tag in your HTML
+that doesn't have type="module" , you can still reuse code distributed as modules by dynamically importing it.
