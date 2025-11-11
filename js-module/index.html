@@ -20,11 +20,26 @@
 	<script defer src="index.js"></script>
 
 
-	<script type="module" src="module.js"></script>
+	<!--
+	<script type="module" src="test/test.js"></script>
+	<script type="module" src="test/test.mjs"></script>
+	-->
 
 
-	<script type="module" src="module/test.js"></script>
-	<script type="module" src="module/test.mjs"></script>
+	<script type="module" src="abcd/module.js"></script>
+	<script type="module" src="efgh/module.js"></script>
+
+	<script type="module">
+
+		// Can you use a module function out here?
+		// not with plain <script> - 'import declarations may only appear at top level of a module'
+		// but if you add `type="module"` then yes
+
+		import { func1 } from "./abcd/module.js";
+
+		func1();
+
+	</script>
 
 
 </head>

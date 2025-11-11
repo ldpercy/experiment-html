@@ -35,5 +35,9 @@ chromium:
 Modules
 -------
 
+I don't think there's any way to access module code outside of another module.
 
+* 'import declarations may only appear at top level of a module'
+
+Ie only modules can import modules, so effectively modules take over and everything becomes a module.
 
