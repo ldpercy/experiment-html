@@ -51,5 +51,14 @@ class HTMLApp {
 	}/* addEventListeners */
 
 
+	/* getUrlParameter
+	*/
+	getUrlParameter(name)
+	{
+		return (new URL(window.location)).searchParams.get(name);
+	}
+
+
+
 
 }/* HTMLApp */

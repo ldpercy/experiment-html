@@ -60,7 +60,9 @@ class IndexApp extends HTMLApp {
 		//console.log(urlObj);
 
 
-		console.log('document.styleSheets:', document.styleSheets);
+		//console.log('document.styleSheets:', document.styleSheets);
+
+		console.log('Your protocol is:', new URL(window.location).protocol);
 
 	}
 
