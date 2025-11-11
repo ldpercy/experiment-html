@@ -41,3 +41,10 @@ I don't think there's any way to access module code outside of another module.
 
 Ie only modules can import modules, so effectively modules take over and everything becomes a module.
 
+Likewise, I suspect there isn't any way to use non-module code *inside*  in a module.
+Wait that doesn't seem right - there must still be a global namespace of some sort?
+Otherwise the whole universe would have broken when modules were brought in...
+There's something I'm missing here.
+
+
+
