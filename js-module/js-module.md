@@ -54,3 +54,36 @@ There's something I'm missing here.
 Although:
 > Another advantage of dynamic imports is that they are always available, even in script environments. Therefore, if you have an existing `<script>` tag in your HTML
 that doesn't have type="module" , you can still reuse code distributed as modules by dynamically importing it.
+
+
+
+
+
+
+Import
+------
+
+
+> The static import declaration is used to import read-only live bindings which are exported by another module. The imported bindings are called live bindings because they are updated by the module that exported the binding, but cannot be re-assigned by the importing module.
+
+
+Binding Object
+--------------
+
+If you import a module such as `import * as abcd from "./abcd/module.js"`  then console.log the alias you get something like this back:
+
+```
+Object { func1: func1(), … }
+​	func1: function func1()
+​	Symbol(Symbol.toStringTag): "Module"
+```
+
+Which I presume is the binding object.
+
+From [statements/import#namespace_import](statements/import#namespace_import):
+
+> myModule is a sealed object with null prototype
+
+See also:
+	operators/import#module_namespace_object
+

@@ -37,9 +37,16 @@
 		// not with plain <script> - 'import declarations may only appear at top level of a module'
 		// but if you add `type="module"` then yes
 
-		import { func1 } from "./abcd/module.js";
+		import * as abcd from "./abcd/module.js";
 
-		func1();
+		abcd.func1();
+
+
+		console.log(abcd);
+
+		//console.log(JSON.stringify(abcd));		// returns {}
+		//console.log(abcd.toString());				// Uncaught TypeError: abcd.toString is not a function
+
 
 	</script>
 
