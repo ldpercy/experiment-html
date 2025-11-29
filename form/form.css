@@ -20,3 +20,40 @@ datalist {
 /* option {
 	padding: 0px;
 } */
+
+
+.appearance-none {
+	* {
+		appearance: none; /* auto none */
+	}
+}
+
+
+select {
+	/* appearance: base-select; */
+	/* appearance: menulist-button; */
+}
+
+
+
+
+
+.light {
+	color-scheme: light;
+
+
+	* {
+		appearance: progress;
+	}
+
+
+}
+
+
+
+
+.dark {
+	color-scheme: dark;
+}
+
+

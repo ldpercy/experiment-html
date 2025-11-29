@@ -1,0 +1,78 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<title>button</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../[common]/favicon.svg">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../[common]/common-style.css">
+	<style>
+		::backdrop {
+		background-image: linear-gradient(
+			45deg,
+			magenta,
+			rebeccapurple,
+			dodgerblue,
+			green
+		);
+		opacity: 0.75;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>button</h1>
+
+
+	<h2>popover</h2>
+
+	<button type="button" command="show-popover" commandFor="popover-auto">
+		command="show-popover" commandFor="popover-auto"
+	</button>
+	<br/>
+	<button type="button" command="show-popover" commandFor="popover-hint">
+		command="show-popover" commandFor="popover-hint"
+	</button>
+	<br/>
+	<button type="button" command="show-popover" commandFor="popover-manual">
+		command="show-popover" commandFor="popover-manual"
+	</button>
+
+	<p id="popover-auto" popover="auto">
+		popover="auto"
+	</p>
+	<p id="popover-hint" popover="hint">
+		popover="hint"
+	</p>
+	<p id="popover-manual" popover="manual">
+		popover="manual"
+	</p>
+
+	<h2>dialog</h2>
+
+	<button type="button" command="show-modal" commandFor="dialog1">
+		command="show-modal"
+	</button>
+
+	<dialog id="dialog1"> <!-- open -->
+		<p>dialog1: Greetings, one and all!</p>
+		<form method="dialog">
+			<button>OK</button>
+		</form>
+	</dialog>
+
+
+
+	<dialog id="dialog2">
+		<p>dialog2: Greetings, one and all!</p>
+		<form method="dialog">
+			<button>OK</button>
+		</form>
+	</dialog>
+
+
+
+</body>
+</html>
+

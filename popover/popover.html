@@ -1,0 +1,92 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<title>popover</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../[common]/favicon.svg">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../[common]/common-style.css">
+	<style>
+		::backdrop {
+			background-image: linear-gradient(
+				45deg,
+				magenta,
+				rebeccapurple,
+				dodgerblue,
+				green
+			);
+			opacity: 0.75;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>popover</h1>
+
+
+	<input type="text" id="input-popoverId" placeholder="input-popoverId">
+
+	<br>
+
+	<button popovertarget="popover">
+		popover
+	</button>
+	<button popovertarget="popover-auto">
+		popover-auto
+	</button>
+	<button popovertarget="popover-hint">
+		popover-hint
+	</button>
+	<button popovertarget="popover-manual">
+		popover-manual
+	</button>
+
+
+
+	<div id="popover" popover>
+		Popover plain
+	</div>
+
+	<div id="popover-auto" popover="auto">
+		Popover auto
+	</div>
+
+	<div id="popover-hint" popover="hint">
+		Popover hint
+	</div>
+
+	<div id="popover-manual" popover="manual">
+		Popover manual
+	</div>
+
+
+	<!--
+	<button type="button" onclick="document.getElementById('dialog1').show()">
+		dialog show
+	</button>
+
+	<button type="button" onclick="document.getElementById('dialog1').showModal()">
+		dialog showModal
+	</button>
+	-->
+
+	<dialog id="dialog1" popover> <!-- open -->
+		<p>dialog1: Greetings, one and all!</p>
+		<form method="dialog">
+			<button>OK</button>
+		</form>
+	</dialog>
+
+
+	<dialog id="dialog2">
+		<p>dialog2: Greetings, one and all!</p>
+		<form method="dialog">
+			<button>OK</button>
+		</form>
+	</dialog>
+
+
+</body>
+</html>
+

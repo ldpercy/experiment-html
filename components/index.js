@@ -53,13 +53,13 @@ class IndexApp extends HTMLApp {
 		super.documentDOMContentLoaded();
 		this.setMode(localStorage.mode);
 
+
+		/*
 		const url = window.location;
-
 		document.getElementById('input-url').value = url;
-
 		const urlObj = new URL(url);
-
-		//console.log(urlObj);
+		console.log(urlObj);
+		*/
 
 
 		// console.log('document.styleSheets:', document.styleSheets);

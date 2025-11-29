@@ -46,7 +46,10 @@ However:
 * Access to content of dynamically loaded items like stylesheets & iframes, subject to CORS rules
 
 
-NB: browser caching becomes an issue compared to file protocol - ctrl-shift-r is your best friend
+Browser caching becomes an issue under http - options:
+* ctrl-shift-r - although seems to reset/avoid locastorage? - need to verify
+* Firefox: developer tools -> network -> disable cache checkbox
+* Chrome : DevTools -> Settings -> Network -> Disable cache while DevTools is open
 
 
 
