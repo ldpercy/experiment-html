@@ -64,11 +64,7 @@ class IndexApp extends HTMLApp {
 
 		// console.log('document.styleSheets:', document.styleSheets);
 
-		const protocol = new URL(window.location).protocol;
 
-		if (protocol === 'file:') {
-			alert("You are using `file:` protocol - modules won't work");
-		}
 	}
 
 
