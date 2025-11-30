@@ -55,7 +55,7 @@ export class HTMLApp {
 	*/
 	getUrlParameter(name)
 	{
-		return (new URL(window.location)).searchParams.get(name);
+		return (new URL(window.location.href)).searchParams.get(name);
 	}
 
 
