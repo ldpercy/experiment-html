@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" class="light">
+<head>
+	<title>checkJs</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../[common]/favicon.svg">
+	<link rel="stylesheet" href="../[common]/common-style.css">
+	<link rel="stylesheet" href="index.css">
+
+	<script>
+		const protocol = new URL(window.location).protocol;
+
+		if (protocol === 'file:') {
+			alert("You are using `file:` protocol - modules won't work");
+		}
+	</script>
+	<script type="module" src="index.js"></script>
+
+
+</head>
+<body>
+	<nav>
+		<a id="button-lightMode" href="#" title="Light mode" mode="light">🟓</a>
+		<a id="button-darkMode" href="#" title="Dark mode" mode="dark">🟒</a>
+		<a title="To folder" href="./">🖿</a>
+		<a title="Parent folder" href="../">🡅</a>
+	</nav>
+
+	<h1><a href="">checkJs</a></h1>
+
+	<!--
+	<input type="text" id="input-url" placeholder="url">
+	-->
+
+
+	<br/>
+
+
+	<h2>Log:</h2>
+	<output id="pageLog"></output>
+</body>
+</html>
