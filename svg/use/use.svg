@@ -1,81 +1,77 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
 
+	<rect class="viewBox" style="x: -100%; y: -100%; width: 200%; height: 200%; fill: url(#pattern-grid);"/>
+	<pattern id="pattern-grid" width="100" height="100" patternUnits="userSpaceOnUse">
+		<rect style="stroke: teal; stroke-width: 1px; fill:none;" x="0" y="0" width="100" height="100"/>
+	</pattern>
+
 	<style>
-		path {
-			stroke: blue;
-			stroke-width: 1;
-			fill: #00fa;  <!-- none; -->
-			fill-rule: evenodd; <!-- evenodd, nonzero -->
-			<!-- stroke-dasharray: 2 7; -->
-			stroke-linecap: round;
-			stroke-linejoin: bevel;
-			marker-start:url(#markerStart);
-			marker-end:url(#markerEnd);
-		}
-		.origin { fill:transparent ; stroke:black }
-		marker { stroke-width:.5; }
-		.marker-start  { fill:lightgreen ; stroke:green }
-		.marker-end    { fill:pink ; stroke:red }
-
-		circle {
-			stroke: cyan;
-			fill: cadetblue;
-
-		}
-
-		rect {
-			stroke: red;
-			fill: pink;
-		}
-
-		text {
-			fill: tan;
-			stroke: none;
-			font-size: 18em;
-			text-anchor: middle;
-		}
 
 		.css-shadow {
 			filter: drop-shadow(0px 40px 20px #444b);
 		}
 
-		.fe-shadow {
-			filter: url(#shadow1);
+		.def-item {
+
+			--prop-defItem: 123;
+
+			circle {
+				stroke: cyan;
+				<!-- fill: cadetblue; -->
+			}
+
+			rect {
+				stroke: #fa0;
+				<!-- fill: #fa7; -->
+			}
+
+			text {
+				<!-- fill: tomato; -->
+				stroke: tomato;
+				font-size: 18em;
+				text-anchor: middle;
+			}
+		}<!-- def-item -->
+
+
+		.use1 {
+			--prop-use1: 456;
+			fill: purple;
 		}
 
-		.gb {
-			filter: url(#gaussian-blur);
+		.use2 {
+			--prop-use2: 789;
 		}
 
-		.inset-shadow {
-			filter: url(#inset-shadow);
+		use:hover {
+			stroke: silver;
+			stroke-width:5px;
 		}
+
 
 	</style>
 
 	<defs>
-		<g id="testSvg" >
-			<circle cx="-300" cy="0" r="300" />
-			<rect x="0" y="0" width="600" height="900" />
-			<text x="50" y="50" >
+		<g id="testSvg" class="def-item"> <!-- class="def-item" -->
+			<circle cx="-200" cy="0" r="300" />
+			<rect x="-100" y="-200" width="700" height="400" />
+			<text x="0" y="0" >
 				use
 			</text>
 		</g>
-
 	</defs>
 
-
-	<use href="#testSvg" x="-800" y="-200" class="css-shadow" />
-	<!-- abcd
+	<!-- use1
 	-->
+	<use href="#testSvg" x="-600" y="-400" class="use1" />
 
-	<use href="#testSvg" x="800"  y="-200"/> <!--  class="inset-shadow" -->
-	<!-- efgh
+	<!-- use2
 	-->
+	<use href="#testSvg" x="600"  y="400" class="use2 css-shadow"/>
 
+
+	<!--
 	<use href="../polygon/star-12.svg#rootNode" x="0" y="0" width="200" height="200"/>
-
-
-
+ 	-->
 
 </svg>
