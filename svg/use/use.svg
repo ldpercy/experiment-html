@@ -64,15 +64,18 @@
 
 	</defs>
 
-	<use href="#testSvg" x="-1000" y="-200" class="css-shadow" />
-	<!--
+
+	<use href="#testSvg" x="-800" y="-200" class="css-shadow" />
+	<!-- abcd
 	-->
 
-	<use href="#testSvg" x="1000"  y="-200" class="inset-shadow"/>
-	<!--
+	<use href="#testSvg" x="800"  y="-200"/> <!--  class="inset-shadow" -->
+	<!-- efgh
 	-->
 
-	<use href="../polygon/star-12.svg" x="0" y="0" width="200" height="200"/>
+	<use href="../polygon/star-12.svg#rootNode" x="0" y="0" width="200" height="200"/>
+
+
 
 
 </svg>
