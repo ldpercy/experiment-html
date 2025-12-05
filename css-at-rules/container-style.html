@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>at-namespace</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../[common]/favicon.svg">
+	<link rel="stylesheet" href="../[common]/common-style.css">
+	<script defer src="../[common]/common-script.js"></script>
+
+	<!--
+	<script defer src="css-at-rules.js"></script>
+	-->
+
+	<style>
+		@namespace html "http://www.w3.org/1999/xhtml";
+
+		@namespace svg url(http://www.w3.org/2000/svg);
+
+		@namespace svgfoo "http://www.w3.org/2000/svg#foo";
+		/* @namespace svgfoo url(http://www.w3.org/2000/svg#foo); */
+
+		*|a  {
+			color:orange;
+			fill:orange;
+		}
+
+		html|a { color:teal; }
+
+		svg|a { fill:red; }
+		/*
+		svgfoo|a { fill:green; }
+		*/
+
+	</style>
+
+</head>
+<body>
+	<nav><a title="Up to folder" href="./">./</a> <a title="Parent folder" href="../">../</a></nav>
+
+	<h1><a href="">container</a></h1>
+
+	<p>
+		<a href="http://htmlatag">This is an HTML a tag</a>
+	</p>
+
+
+	<!--  -->
+
+	<!-- some regular SVG with its normal namespace:
+	-->
+	<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+	<rect x="0" y="0" width="64" height="64" fill="black"/>
+	<a href="http://normal">
+		<text x="32" y="32" style="dominant-baseline:central;text-anchor:middle;font-family:monospace;font-weight:bold;" font-size="29">html</text>
+		<!-- fill:white; -->
+	</a>
+	</svg>
+
+	<p>asdf</p>
+
+	<!-- similar SVG with a customised namespace:
+	-->
+	<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg#foo" viewBox="0 0 64 64">
+	<rect x="0" y="0" width="64" height="64" fill="black"/>
+
+	<a href="http://foo">
+		<text x="32" y="32" style="dominant-baseline:central;text-anchor:middle;font-family:monospace;font-weight:bold;" font-size="29">foo</text>
+	</a>
+	<!-- fill:white; -->
+	</svg>
+
+
+	<h2>Log:</h2>
+	<output id="pageLog"></output>
+</body>
+</html>
