@@ -1,55 +1,68 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1000 -1000 2000 2000" preserveAspectRatio="xMidYMid meet">
 	<title>use</title>
+	<view id="normal" viewBox="-1000 -1000 2000 2000"/>
+	<view id="half" viewBox="-2000 -2000 4000 4000"/>
+	<view id="double" viewBox="-500 -500 1000 1000"/>
+
 
 	<use href="../[library]/grid.svg#grid" x="0" y="0"/>
 
 
+	<!-- <circle r="10"/> -->
+
 	<style>
 		/* <![CDATA[ */
+
+		text {
+			font-size: 200px;
+			text-anchor: middle;
+			dominant-baseline: central;
+		}
 
 		.css-shadow {
 			filter: drop-shadow(0px 40px 20px #444b);
 		}
 
 		.def-item {
-
 			--prop-defItem: 123;
 
 			circle {
 				stroke: cyan;
-				/* fill: cadetblue; */
 			}
 
 			rect {
 				stroke: #fa0;
-				/* fill: #fa7;  */
 			}
 
 			text {
-				/* fill: tomato; */
 				stroke: tomato;
-				font-size: 18em;
-				text-anchor: middle;
 			}
+			polygon { stroke: purple; fill:none; }
 		}
 
 		.style1 {
 			--prop-style1: 456;
-			fill: purple;
+			fill: #b0b4;
 		}
 
 		.style2 {
 			--prop-style2: 789;
-			transform-box: content-box ; /*  content-box fill-box stroke-box border-box view-box */
-			transform-origin: 0% 0%;
+			fill: #0004;
 		}
 
-		.style2:hover {
-			scale:120%;
+
+		.hover {
+			/* transform-box: content-box fill-box stroke-box border-box view-box */
+			/* transform-box: view-box ; */
+			/* transform-origin: 0% 0%; */	/* by itself this appears to be relative to viewbox */
+			&:hover {
+				scale:125%;
+			}
+
+			transition: 0.5s ease all;
 		}
 
 		use:hover {
-			stroke: silver;
 			stroke-width:5px;
 		}
 
@@ -57,30 +70,48 @@
 	</style>
 
 
-
 	<defs>
-		<g id="def1" class="def-item" userSpaceOnUse="objectBoundingBox">
-			<circle cx="-200" cy="0" r="300" />
-			<rect x="-100" y="-200" width="700" height="400" />
+		<g id="def1" class="def-item"> <!-- userSpaceOnUse="objectBoundingBox" -->
+			<circle cx="-100" cy="0" r="300" />
+			<rect x="-200" y="-200" width="700" height="400" />
 			<text x="0" y="0" >
-				use
+				#def1
 			</text>
+			<polygon points="-10,0 0,-10 +10,0 0,+10"/>
 		</g>
+
+		<symbol id="symbol1" viewBox="-500 -300 1000 600" refX="0" refY="0" preserveAspectRatio="xMidYMid meet"> <!--   "   refX="0" refY="0" -->
+			<circle cx="200" cy="0" r="300" />
+			<rect x="-500" y="-200" width="700" height="400" />
+			<text x="0" y="0" >
+				#symbol1
+			</text>
+			<polygon points="-10,0 0,-10 +10,0 0,+10"/>
+		</symbol>
 
 	</defs>
 
+	<use id="use4" href="#symbol1" x="0" y="0" class="style2" width="500">
+		<title>use4</title>
+	</use>
 
-	<use id="use1" href="#def1" x="-900" y="-400" class="style1">
+	<use id="use0" href="#def1" x="-1000" y="0" class="style1 hover">
+		<title>use0</title>
+	</use>
+
+	<use id="use1" href="#def1" x="-1000" y="-500" class="style1 hover">
 		<title>use1</title>
 	</use>
 
-	<use id="use2" href="#def1" x="-900" y="400" class="style2 css-shadow">
+	<use id="use2" href="#def1" x="-1000" y="500" class="style2 css-shadow hover">
 		<title>use2</title>
 	</use>
 
-	<use id="use3" href="#def1" x="900" y="400" class="style2">
+	<use id="use3" href="#def1" x="1000" y="500" class="style2 hover">
 		<title>use3</title>
 	</use>
+
+
 
 
 	<!--
