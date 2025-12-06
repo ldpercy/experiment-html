@@ -3,20 +3,30 @@ Use
 
 
 * Can reuse any element with an id
-* Reference external svg file `<use href="external.svg"/>` (prob http only)
-* Reference element within external svg file `<use href="external.svg#element"/>` (prob http only)
-
+* Reference external svg file `<use href="external.svg"/>` - http only
+* Reference element within external svg file `<use href="external.svg#element"/>` - http only
+* Clones created with `use` are added as shadow dom subtrees to the use elements
 
 
 File URIs
 ---------
-Apparently not (chromium):
-```
-Unsafe attempt to load URL file:///... from frame with URL file:///... 'file:' URLs are treated as unique security origins.
-```
 
+```xml
+	<use href="../[library]/grid.svg#grid" x="0" y="0"/>
+```
 
 * firefox still seems to need the #nodeId reference in the href
+
+
+### HTTP only
+
+Firefox:
+> Security Error: Content at file:///ldpercy/experiment-svg/use/use.svg may not load data from file:///ldpercy/experiment-svg/[library]/grid.svg.
+
+Chromium:
+> Unsafe attempt to load URL file:///ldpercy/experiment-svg/[library]/grid.svg#grid from frame with URL file:///ldpercy/experiment-svg/use/use.svg. 'file:' URLs are treated as unique security origins.
+
+
 
 
 CSS

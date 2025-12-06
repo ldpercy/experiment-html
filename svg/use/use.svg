@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+	<title>use</title>
 
-	<rect class="viewBox" style="x: -100%; y: -100%; width: 200%; height: 200%; fill: url(#pattern-grid);"/>
-	<pattern id="pattern-grid" width="100" height="100" patternUnits="userSpaceOnUse">
-		<rect style="stroke: teal; stroke-width: 1px; fill:none;" x="0" y="0" width="100" height="100"/>
-	</pattern>
+	<use href="../[library]/grid.svg#grid" x="0" y="0"/>
+
 
 	<style>
+		/* <![CDATA[ */
 
 		.css-shadow {
 			filter: drop-shadow(0px 40px 20px #444b);
@@ -17,30 +17,35 @@
 
 			circle {
 				stroke: cyan;
-				<!-- fill: cadetblue; -->
+				/* fill: cadetblue; */
 			}
 
 			rect {
 				stroke: #fa0;
-				<!-- fill: #fa7; -->
+				/* fill: #fa7;  */
 			}
 
 			text {
-				<!-- fill: tomato; -->
+				/* fill: tomato; */
 				stroke: tomato;
 				font-size: 18em;
 				text-anchor: middle;
 			}
-		}<!-- def-item -->
+		}
 
-
-		.use1 {
-			--prop-use1: 456;
+		.style1 {
+			--prop-style1: 456;
 			fill: purple;
 		}
 
-		.use2 {
-			--prop-use2: 789;
+		.style2 {
+			--prop-style2: 789;
+			transform-box: content-box ; /*  content-box fill-box stroke-box border-box view-box */
+			transform-origin: 0% 0%;
+		}
+
+		.style2:hover {
+			scale:120%;
 		}
 
 		use:hover {
@@ -48,26 +53,34 @@
 			stroke-width:5px;
 		}
 
-
+		/* ]]> */
 	</style>
 
+
+
 	<defs>
-		<g id="testSvg" class="def-item"> <!-- class="def-item" -->
+		<g id="def1" class="def-item" userSpaceOnUse="objectBoundingBox">
 			<circle cx="-200" cy="0" r="300" />
 			<rect x="-100" y="-200" width="700" height="400" />
 			<text x="0" y="0" >
 				use
 			</text>
 		</g>
+
 	</defs>
 
-	<!-- use1
-	-->
-	<use href="#testSvg" x="-600" y="-400" class="use1" />
 
-	<!-- use2
-	-->
-	<use href="#testSvg" x="600"  y="400" class="use2 css-shadow"/>
+	<use id="use1" href="#def1" x="-900" y="-400" class="style1">
+		<title>use1</title>
+	</use>
+
+	<use id="use2" href="#def1" x="-900" y="400" class="style2 css-shadow">
+		<title>use2</title>
+	</use>
+
+	<use id="use3" href="#def1" x="900" y="400" class="style2">
+		<title>use3</title>
+	</use>
 
 
 	<!--
