@@ -78,16 +78,10 @@ var indexApp = new IndexApp();
 
 
 
-/**
- * @typedef Parameters
- * @property	{string}	id - an ID.
- * @property	{Date}		date
- * @property	{string}	theme
- * @property	{string}	language
- */
 
 
-/** @type {Parameters} */
+
+/** @type {FooParameters} */
 const params = {
 	id          : '1234',
 	date        : new Date(),
@@ -98,6 +92,10 @@ const params = {
 
 
 
-
-
+/** @type {NewType} */
+const foo = {
+	name: '',
+	date: new Date(),
+	description: '',
+};
 
