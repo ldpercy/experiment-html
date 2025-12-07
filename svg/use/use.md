@@ -9,10 +9,10 @@ Use
 
 
 
-Symbol and SVG
---------------
+Using symbol and svg
+--------------------
 
-These are potentially more flexible than cloning regular elements as they have extra features like viewBox and refX/refY.
+These are potentially more flexible than cloning ordinary elements as they have extra features like viewBox and refX/refY.
 
 There are some limitations though:
 * refX and refY don't appear to be widely implemented [add details]
@@ -22,6 +22,10 @@ There are some limitations though:
 I've added a couple of different `view`s, and symbols and svg uses are moving relative to view's viewBox - something really weird is going on.
 
 
+Symbol and SVG behave *very* strangely unless you specify width and height on the `<symbol>`/`<svg>` definition elements themselves.
+
+
+
 File URIs
 ---------
 
@@ -29,7 +33,8 @@ File URIs
 	<use href="../[library]/grid.svg#grid" x="0" y="0"/>
 ```
 
-* firefox still seems to need the #nodeId reference in the href
+* Firefox still seems to need the #nodeId reference in the href
+* Paths in the guest document are relative to **it**, not the host document
 
 
 ### HTTP only

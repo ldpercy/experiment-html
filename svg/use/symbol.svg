@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+	<title>symbol</title>
+	<view id="normal" viewBox="-1000 -1000 2000 2000"/>
+	<view id="half" viewBox="-2000 -2000 4000 4000"/>
+	<view id="double" viewBox="-500 -500 1000 1000"/>
+
+
+	<use href="../[library]/grid.svg#grid" x="0" y="0"/>
+	<use href="../[library]/nav.svg#nav" x="0" y="-48%"/>
+
+
+	<!-- <circle r="10"/> -->
+
+	<style>
+		/* <![CDATA[ */
+
+		text {
+			font-size: 200px;
+			text-anchor: middle;
+			dominant-baseline: central;
+		}
+
+		.css-shadow {
+			filter: drop-shadow(0px 40px 20px #444b);
+		}
+
+		.def-item {
+			--prop-defItem: 123;
+
+			circle {
+				stroke: cyan;
+			}
+
+			rect {
+				stroke: #fa0;
+			}
+
+			text {
+				stroke: tomato;
+			}
+			polygon { stroke: purple; fill:none; }
+		}
+
+		.style1 {
+			--prop-style1: 456;
+			fill: #b0b4;
+		}
+
+		.style2 {
+			--prop-style2: 789;
+			fill: #0004;
+		}
+
+
+		.zoom {
+
+
+			/* transform-origin: 0% 0%; */	/* by itself this appears to be relative to viewbox */
+
+			/* transform-box: content-box fill-box stroke-box border-box view-box */
+			/* transform-box: view-box ; */
+
+			&:hover {
+				scale:125%;
+			}
+
+			transition: 0.5s ease all;
+		}
+
+		use:hover {
+			stroke-width:5px;
+		}
+
+		/* ]]> */
+	</style>
+
+
+	<defs>
+		<!--
+			refX="0" refY="0"
+			viewBox="-500 -300 1000 600"
+		-->
+		<symbol id="symbol0" refX="0" refY="0" preserveAspectRatio="xMidYMid meet">
+			<circle cx="-100" cy="0" r="300" />
+			<rect x="-200" y="-200" width="700" height="400" />
+			<text x="0" y="0" >
+				#symbol0
+			</text>
+			<polygon points="-10,0 0,-10 +10,0 0,+10"/>
+		</symbol>
+
+		<symbol id="symbol1" viewBox="-500 -300 1000 600" refX="0" refY="0" preserveAspectRatio="xMidYMid meet"> <!-- refX="0" refY="0" -->
+			<circle cx="200" cy="0" r="300" />
+			<rect x="-500" y="-200" width="700" height="400" />
+			<text x="0" y="0" >
+				#symbol1
+			</text>
+			<polygon points="-10,0 0,-10 +10,0 0,+10"/>
+		</symbol>
+
+		<symbol id="symbol2" viewBox="-600 -200 1200 400" width="400" height="200" refX="0" refY="0" >
+			<g class="zoom">
+				<ellipse cx="0" cy="0" rx="600" ry="300" />
+				<text x="0" y="0" >
+					#symbol2
+				</text>
+				<polygon points="-10,0 0,-10 +10,0 0,+10" />
+			</g>
+		</symbol>
+
+	</defs>
+
+
+	<use id="use0" href="#symbol2" x="500" y="-500" class="style1" transform="translate(-200,-100)">
+		<title>use0</title>
+	</use>
+
+	<use id="use1" href="#symbol0" x="-1000" y="-500" class="style1 zoom">
+		<title>use1</title>
+	</use>
+
+	<use id="use2" href="#symbol1" x="-1000" y="500" class="style2 css-shadow hover">
+		<title>use2</title>
+	</use>
+
+	<use id="use3" href="#symbol1" x="1000" y="500" class="style2 zoom">
+		<title>use3</title>
+	</use>
+
+	<use id="use4" href="#symbol1" x="0" y="0" class="style2" width="500">
+		<title>use4</title>
+	</use>
+
+
+</svg>
