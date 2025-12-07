@@ -71,8 +71,30 @@ class IndexApp extends HTMLApp {
 }/* IndexApp */
 
 
-
+/** @type {IndexApp} */
 var indexApp = new IndexApp();
+
+
+
+
+
+/**
+ * @typedef Parameters
+ * @property	{string}	id - an ID.
+ * @property	{Date}		date
+ * @property	{string}	theme
+ * @property	{string}	language
+ */
+
+
+/** @type {Parameters} */
+const params = {
+	id          : '1234',
+	date        : new Date(),
+	theme       : 'foobar',
+	language    : 'Klingon',
+};
+
 
 
 
