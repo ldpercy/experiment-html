@@ -42,4 +42,12 @@ Compiler Options
 | paths 	| Specify path mapping to be computed relative to baseUrl option.|
 
 
+"strict": true
+--------------
+
+>"strict": true: This is highly recommended. It enables a suite of strict type-checking rules, including noImplicitAny, which forces you to be explicit about types instead of letting them default to any. It will make your code significantly more robust.
+
+== Hard Mode
+
+https://www.typescriptlang.org/tsconfig/#strict
 
