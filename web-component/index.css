@@ -1,8 +1,11 @@
 input[type=text] { width:40em; }
 
 
-template {
+/* template {
 	display: block;
 	border: 1px dashed red;
 }
+ */
 
+
+ h3 { color:purple; }

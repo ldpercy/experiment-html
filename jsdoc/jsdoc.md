@@ -28,3 +28,23 @@ Have to figure out what it's doing.
 
 
 
+
+
+HTML Element Typing
+-------------------
+
+This produces the type error `Property 'content' does not exist on type 'HTMLElement'.ts(2339)`:
+```js
+	let template = document.getElementById("template0");
+	let templateContent = template.content;
+```
+
+This resolves it:
+```js
+	/** @type {HTMLTemplateElement} */
+	let template = document.querySelector("#template0");
+	let templateContent = template.content;
+```
+
+Can't seem to cast `document.getElementById` in the same way.
+
