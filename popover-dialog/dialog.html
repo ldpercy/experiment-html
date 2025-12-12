@@ -9,19 +9,33 @@
 	<link rel="stylesheet" href="../[common]/common-style.css">
 	<style>
 		::backdrop {
-		background-image: linear-gradient(
-			45deg,
-			magenta,
-			rebeccapurple,
-			dodgerblue,
-			green
-		);
-		opacity: 0.75;
+			backdrop-filter: blur(10px);
+			background-image: linear-gradient(
+				45deg,
+				magenta,
+				rebeccapurple,
+				dodgerblue,
+				green
+			);
+			opacity: 0.75;
+
+		}
+
+		dialog {
+			opacity: 0.8;
+
 		}
 
 	</style>
 </head>
 <body>
+	<nav>
+		<a id="button-lightMode" href="#" title="Light mode" mode="light">🟓</a>
+		<a id="button-darkMode" href="#" title="Dark mode" mode="dark">🟒</a>
+		<a title="To folder" href="./">🖿</a>
+		<a title="Parent folder" href="../">🡅</a>
+	</nav>
+
 	<h1>dialog</h1>
 
 
