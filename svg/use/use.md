@@ -77,8 +77,23 @@ Firefox and chrome show these for use elements in their inspectors:
 ```
 
 
+### Sub-selectors for `use`  elements
 
+Trying to select subitems of a `use` doesn't appear to work  - it looks like the selector can't match anything in the shadow dom subtree.
 
+Eg applying this class to a use element:
+```css
+	.left {
+		fill:white;					/* works */
+		text { fill:white; }		/* doesn't work */
+		.text { fill:white; }		/* doesn't work */
+		--text-color: white;		/* works, if the def styles are expecting it */
+	}
+```
+
+So can really only apply basic styles directly to use element itself.
+
+Setting properties also works though, as long as the def styles are set up to read them.
 
 
 
