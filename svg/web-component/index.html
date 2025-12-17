@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="light">
 <head>
-	<title>Web Component</title>
+	<title>SVG Web Components</title>
 	<meta charset="utf-8">
 	<link rel="icon" href="../[library]/favicon.svg">
 	<link rel="stylesheet" href="../[library]/html.css">
@@ -26,70 +26,56 @@
 		<a title="Parent folder" href="../">🡅</a>
 	</nav>
 
-	<h1><a href="">Web Component</a></h1>
+	<h1><a href="">SVG Web Components</a></h1>
 
 
-	<h3>This is an h3</h3>
+	<!-- <h3>This is an h3</h3> -->
 
 
 	<template id="template0" ><!-- shadowrootmode="open" open closed -->
 		<style>
-			h3 { color:royalblue; }
+			rect { fill:royalblue; }
+			text { font-size: 100px; fill: tomato; }
 		</style>
-		<h3>Template 0</h3>
+		<rect x="-100" y="-100" width="200" height="200"/>
 		<slot name="my-text">My default text</slot>
 	</template>
 
-	<my-custom-element>
-		asdfsadf
-	</my-custom-element>
+	<!-- <div>
+		<my-custom-element>
+			asdfsadf
+		</my-custom-element>
 
-	<my-custom-element>
-		asdfsadf
-		<span slot="my-text">Let's have some different text!</span>
-	</my-custom-element>
+		<my-custom-element>
+			asdfsadf
+			<text slot="my-text" x="0" y="o" >Let's have some different text!</span>
+		</my-custom-element>
+	</div> -->
+
+	<output>
+
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1000 -1000 2000 2000" preserveAspectRatio="xMidYMid meet" width="80%" height="80%">
+			<title>svg web component</title>
+			<use href="../[library]/grid.svg#grid" x="0" y="0"/>
 
 
 
 
 
-	<!--
-	<input type="text" id="input-url" placeholder="url">
-	 -->
-	<!--
-	<table id="producttable">
-	<thead>
-		<tr>
-		<td>UPC_Code</td>
-		<td>Product_Name</td>
-		</tr>
-	</thead>
-	<tbody>
-		<! - - existing data could optionally be included here - - >
-	</tbody>
-	</table>
 
-	<template id="productrow">
-	<tr>
-		<td class="record"></td>
-		<td></td>
-	</tr>
-	</template>
- 	-->
+			<my-custom-element>
+				asdfsadf
+			</my-custom-element>
 
-	<!--
-	<template id="template1" shadowrootmode="open">
-		<h3>Template 1</h3>
-	</template>
+			<my-custom-element>
+				asdfsadf
+				<text slot="my-text" x="0" y="0">Let's have some different text!</text>
+			</my-custom-element>
 
-	<template id="template2" shadowrootmode="closed">
-		<h3>Template 2</h3>
-	</template>
 
-	<template id="template3" shadowrootmode="asdsda">
-		<h3>Template 3</h3>
-	</template>
-	-->
+		</svg>
+
+	</output>
 
 
 	<br/>

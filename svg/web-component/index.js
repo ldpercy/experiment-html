@@ -5,8 +5,8 @@ import { HTMLApp } from "../[library]/HTMLApp.module.js";
 
 
 class IndexApp extends HTMLApp {
-	name = "Experiment: Web Component";
-	info = "Experiment: Web Component";
+	name = "Experiment: SVG Web Components";
+	info = "Experiment: SVG Web Components";
 
 	eventListeners = [
 		{
