@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" class="light">
+<head>
+	<title>Web Component</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../[library]/favicon.svg">
+	<link rel="stylesheet" href="../[library]/html.css">
+	<!-- <link rel="stylesheet" href="index.css"> -->
+
+	<script>
+		const protocol = new URL(window.location).protocol;
+
+		if (protocol === 'file:') {
+			alert("You are using `file:` protocol - modules won't work");
+		}
+	</script>
+	<script type="module" src="index.js"></script>
+
+
+</head>
+<body>
+	<nav>
+		<a id="button-lightMode" href="#" title="Light mode" mode="light">🟓</a>
+		<a id="button-darkMode" href="#" title="Dark mode" mode="dark">🟒</a>
+		<a title="To folder" href="./">🖿</a>
+		<a title="Parent folder" href="../">🡅</a>
+	</nav>
+
+	<h1><a href="">Web Component</a></h1>
+
+
+	<h3>This is an h3</h3>
+
+
+	<template id="template0" ><!-- shadowrootmode="open" open closed -->
+		<style>
+			h3 { color:royalblue; }
+		</style>
+		<h3>Template 0</h3>
+		<slot name="my-text">My default text</slot>
+	</template>
+
+	<my-custom-element>
+		asdfsadf
+	</my-custom-element>
+
+	<my-custom-element>
+		asdfsadf
+		<span slot="my-text">Let's have some different text!</span>
+	</my-custom-element>
+
+
+
+
+
+	<!--
+	<input type="text" id="input-url" placeholder="url">
+	 -->
+	<!--
+	<table id="producttable">
+	<thead>
+		<tr>
+		<td>UPC_Code</td>
+		<td>Product_Name</td>
+		</tr>
+	</thead>
+	<tbody>
+		<! - - existing data could optionally be included here - - >
+	</tbody>
+	</table>
+
+	<template id="productrow">
+	<tr>
+		<td class="record"></td>
+		<td></td>
+	</tr>
+	</template>
+ 	-->
+
+	<!--
+	<template id="template1" shadowrootmode="open">
+		<h3>Template 1</h3>
+	</template>
+
+	<template id="template2" shadowrootmode="closed">
+		<h3>Template 2</h3>
+	</template>
+
+	<template id="template3" shadowrootmode="asdsda">
+		<h3>Template 3</h3>
+	</template>
+	-->
+
+
+	<br/>
+
+
+	<h2>Log:</h2>
+	<output id="pageLog"></output>
+</body>
+</html>
