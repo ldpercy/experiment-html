@@ -1,7 +1,7 @@
 /* index.js
 */
 
-import { HTMLApp } from "../[module]/HTMLApp.js";
+import { HTMLApp } from "../[common]/HTMLApp.module.js";
 
 
 class IndexApp extends HTMLApp {
@@ -89,7 +89,7 @@ class MyCustomElement extends HTMLElement {
 		let templateContent = template.content;
 		*/
 
-		/** @type {HTMLTemplateElement} */
+		/** @type { HTMLTemplateElement } */
 		let template = document.querySelector("#template0");
 		let templateContent = template.content;
 
