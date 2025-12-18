@@ -1,0 +1,21 @@
+<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
+
+	<!--
+	https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/set
+	-->
+
+	<style>
+		rect {
+			cursor: pointer;
+			fill:orange;
+		}
+		.round {
+			rx: 3px;
+			fill: green;
+		}
+	</style>
+
+	<rect id="me" x="1" y="1" width="8" height="8">
+		<set attributeName="class" to="round" begin="me.click" dur="1s" />
+	</rect>
+</svg>

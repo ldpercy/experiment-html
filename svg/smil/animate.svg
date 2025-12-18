@@ -1,0 +1,14 @@
+<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
+
+	<!--
+	https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/animate
+	-->
+
+	<rect x="1" y="1" width="8" height="8">
+		<animate
+		attributeName="rx"
+		values="0;4;0"
+		dur="8s"
+		repeatCount="indefinite" />
+	</rect>
+</svg>
