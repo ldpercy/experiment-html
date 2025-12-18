@@ -1,79 +1,80 @@
+<!-- https://developer.mozilla.org/en-US/docs/Web/SVG/Guides/Namespaces_crash_course/Example -->
 <?xml version='1.0'?>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:svg="http://www.w3.org/2000/svg">
-	<head>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg">
+<head>
 	<title>A swarm of motes</title>
-	<!-- https://developer.mozilla.org/en-US/docs/Web/SVG/Guides/Namespaces_crash_course/Example -->
 	<style>
-	<![CDATA[
-label,
-input {
-	width: 150px;
-	display: block;
-	float: left;
-	margin-bottom: 10px;
-}
-label {
-	text-align: right;
-	width: 75px;
-	padding-right: 20px;
-}
-br {
-	clear: left;
-}
-	]]>
-	</style>
-	</head>
-	<body onload='update()'>
-		<svg:svg id='display' width='400' height='300'>
-			<svg:circle id='cursor' cx='200'
-cy='150' r='7' fill='blue' fill-opacity='0.5'/>
-		</svg:svg>
-
-		<p>A swarm of motes, governed by two basic principles.
-		First, each mote tries to move towards the cursor, and
-		second each mote tries to move away from the average
-		mote position. Combined, we get this very natural
-		looking behavior.
-		</p>
-
-		<div>
-		(C) 2006 <a id='email-me' href='#'>Nick Johnson</a>
-
-		<script>
 		<![CDATA[
+		label,
+		input {
+			width: 150px;
+			display: block;
+			float: left;
+			margin-bottom: 10px;
+		}
+		label {
+			text-align: right;
+			width: 75px;
+			padding-right: 20px;
+		}
+		br {
+			clear: left;
+		}
+		]]>
+	</style>
+</head>
+<body onload='update()'>
+	<svg:svg id='display' width='400' height='300'>
+		<svg:circle id='cursor' cx='200' cy='150' r='7' fill='blue' fill-opacity='0.5'/>
+	</svg:svg>
+
+	<p>A swarm of motes, governed by two basic principles.
+	First, each mote tries to move towards the cursor, and
+	second each mote tries to move away from the average
+	mote position. Combined, we get this very natural
+	looking behavior.
+	</p>
+
+	<div>
+	(C) 2006 <a id='email-me' href='#'>Nick Johnson</a>
+
+	<script>
+		<![CDATA[
+
 			// foil spam bots
 			let email = "@riovia.net";
 			email = "nick" + email;
 			document.getElementById("email-me").href = "mailto:" + email;
+
 		]]>
-		</script>
-		This software is free for you to use in any way whatsoever,
-		and comes with no warranty at all.
-		</div>
+	</script>
+	This software is free for you to use in any way whatsoever,
+	and comes with no warranty at all.
+	</div>
 
-		<form action="" onsubmit="return false;">
-			<p>
-			<label>Number of motes:</label>
-				<input id='num_motes' value='5'/>
-				<br/>
+	<form action="" onsubmit="return false;">
+		<p>
+		<label>Number of motes:</label>
+			<input id='num_motes' value='5'/>
+			<br/>
 
-			<label>Max. Velocity:</label>
-				<input id='max_velocity' value='15'/>
-				<br/>
+		<label>Max. Velocity:</label>
+			<input id='max_velocity' value='15'/>
+			<br/>
 
-			<label>Attraction to cursor:</label>
-				<input id='attract_cursor' value='6'/>
-				<br/>
+		<label>Attraction to cursor:</label>
+			<input id='attract_cursor' value='6'/>
+			<br/>
 
-			<label>Repulsion from peers:</label>
-				<input id='repel_peer' value='5'/>
-				<br/>
-			</p>
-		</form>
+		<label>Repulsion from peers:</label>
+			<input id='repel_peer' value='5'/>
+			<br/>
+		</p>
+	</form>
 
 	<script>
-	<![CDATA[
+		<![CDATA[
+
 		// Array of motes
 		let motes;
 
@@ -282,7 +283,7 @@ cy='150' r='7' fill='blue' fill-opacity='0.5'/>
 			// And do this again in 1/100 sec
 			setTimeout(() => update(), 10);
 		}
-	]]>
+	// ]]>
 	</script>
-	</body>
+</body>
 </html>
