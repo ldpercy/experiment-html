@@ -1,10 +1,18 @@
-<!-- https://developer.mozilla.org/en-US/docs/Web/SVG/Guides/Namespaces_crash_course/Example -->
-<?xml version='1.0'?>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg">
+<!--
+	https://developer.mozilla.org/en-US/docs/Web/SVG/Guides/Namespaces_crash_course/Example
+-->
+
+<!doctype html>
+<html lang="en" class="light">
 <head>
 	<title>A swarm of motes</title>
+	<meta charset="utf-8">
 	<style>
-		<![CDATA[
+
+		svg {
+			outline:  2px dotted silver;
+		}
+
 		label,
 		input {
 			width: 150px;
@@ -20,13 +28,12 @@
 		br {
 			clear: left;
 		}
-		]]>
 	</style>
 </head>
-<body onload='update()'>
-	<svg:svg id='display' width='400' height='300'>
-		<svg:circle id='cursor' cx='200' cy='150' r='7' fill='blue' fill-opacity='0.5'/>
-	</svg:svg>
+<body onload="update()">
+	<svg id="display" width="1600" height="800">
+		<circle id='cursor' cx='200' cy='150' r='7' fill='blue' fill-opacity='0.5'/>
+	</svg>
 
 	<p>A swarm of motes, governed by two basic principles.
 	First, each mote tries to move towards the cursor, and
@@ -36,20 +43,17 @@
 	</p>
 
 	<div>
-	(C) 2006 <a id='email-me' href='#'>Nick Johnson</a>
+		(C) 2006 <a id='email-me' href='#'>Nick Johnson</a>
 
-	<script>
-		<![CDATA[
-
+		<script>
 			// foil spam bots
 			let email = "@riovia.net";
 			email = "nick" + email;
 			document.getElementById("email-me").href = "mailto:" + email;
+		</script>
 
-		]]>
-	</script>
-	This software is free for you to use in any way whatsoever,
-	and comes with no warranty at all.
+		This software is free for you to use in any way whatsoever,
+		and comes with no warranty at all.
 	</div>
 
 	<form action="" onsubmit="return false;">
@@ -73,8 +77,6 @@
 	</form>
 
 	<script>
-		<![CDATA[
-
 		// Array of motes
 		let motes;
 
@@ -95,8 +97,8 @@
 		}
 
 		// This is called by mouse move events
-		const mouse_x = 200;
-		const mouse_y = 150;
+		let mouse_x = 200;
+		let mouse_y = 150;
 		function OnMouseMove(evt) {
 			mouse_x = evt.clientX;
 			mouse_y = evt.clientY;
@@ -118,8 +120,8 @@
 				return [0, 0];
 			}
 
-			const sum_x = 0;
-			const sum_y = 0;
+			let sum_x = 0;
+			let sum_y = 0;
 			for (const mote of motes) {
 				sum_x += mote.x;
 				sum_y += mote.y;
@@ -283,7 +285,7 @@
 			// And do this again in 1/100 sec
 			setTimeout(() => update(), 10);
 		}
-	// ]]>
+
 	</script>
 </body>
 </html>
