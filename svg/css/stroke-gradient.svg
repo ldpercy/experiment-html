@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -600 2400 1200">
+	<title>stroke gradient</title>
+	<use href="../[library]/grid.svg#grid" x="0" y="0"/>
+
+	<style>
+		text {
+			font-size:150px;
+			text-anchor: middle;
+			dominant-baseline: middle;
+			font-family: serif;
+
+			/* stroke:black; */
+
+			/* These do not work:
+				stroke: linear-gradient(#e66465, #9198e5);
+				stroke: linear-gradient(45deg, blue, red);
+			 */
+		}
+
+
+		.use1 {
+			fill: silver;
+			stroke: url(#gradient-linear1);
+			stroke-width:3px;
+		}
+
+		.use2 {
+			fill: black;
+			stroke: url(#gradient-linear1);
+			stroke-width:3px;
+		}
+
+		.use3 {
+			fill: darkgrey;
+			stroke: url(#gradient-linear2);
+			stroke-width:3px;
+		}
+
+
+
+	</style>
+
+	<defs>
+		<linearGradient id="gradient-linear1" y1="0%" y2="100%" x1="0%" x2="0%">
+			<stop offset="0%" stop-color="red" stop-opacity="100%"/>
+			<stop offset="100%" stop-color="blue" stop-opacity="100%"/>
+		</linearGradient>
+		<linearGradient id="gradient-linear2" y1="0%" y2="100%" x1="0%" x2="0%">
+			<stop offset="0%" stop-color="white" stop-opacity="100%"/>
+			<stop offset="100%" stop-color="black" stop-opacity="100%"/>
+		</linearGradient>
+
+		<text id="lipsum"  class="text1">
+			lorem ipsum
+			dolor
+			sit amet
+		</text>
+	</defs>
+
+
+
+	<use id="use1" href="#lipsum" y="000" class="use1"/>
+	<use id="use2" href="#lipsum" y="200" class="use2"/>
+	<use id="use3" href="#lipsum" y="400" class="use3"/>
+
+
+</svg>
