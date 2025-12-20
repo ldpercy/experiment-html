@@ -50,3 +50,5 @@ May have been proposed for SVG2 at some point - will try to find a reference, bu
 https://stackoverflow.com/questions/17786618/how-to-use-z-index-in-svg-elements
 
 `use` or other programmatic techniques to reorder the document needed for now.
+
+See: [Element reordering](../effects/effects.md#Element%20reordering)
