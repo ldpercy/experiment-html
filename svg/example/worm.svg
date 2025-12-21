@@ -23,46 +23,53 @@
 		const degreeUnit = 360/circleDivisions;
 		const radius = 50;
 
-		var worm1;
-		iterations = 100;
-		iteration = 0;
+		var farm = [];
+		let worms = 2;
+
+		let intervalId;
+
 
 		function setup() {
-			//document.getElementById('group-elements').addEventListener('click', clickHandler);
-			wormsGroup = document.getElementById('worms');
 
-			worm1 = new Worm('worm1',20);
-
-
-
-			setInterval(
-				()=> {
-					iteration++;
-					if (iteration < iterations) {
-						animate();
-					}
-				},
-				100
-			);
+			wormFarm = document.getElementById('worm-farm');
+			document.getElementById('link-start').addEventListener('click', animationStart);
+			document.getElementById('link-stop').addEventListener('click', animationStop);
 
 
+			for (i=0; i < worms; i++)
+			{
+				farm[i] = new Worm(`worm-${i}`, 20);
+			}
 
+			console.log(farm)
 
-
-			/*for (i=1; i < 100; i++) {
-				setTimeout(
-					()=>worm1.move(),
-					1000
-				);
-			} */
+			//animationStart();
 		}
 
 
-		function animate() {
+		function animationStart() {
+			if (!intervalId) {
+				intervalId = setInterval(
+					()=> { moveWorms() },
+					100
+				);
+			}
+		}
 
-			worm1.move()
+		function moveWorms() {
+			farm.forEach(
+				(thisWorm) =>
+				{
+					//console.log(thisWorm);
+					thisWorm.move();
+				}
+			);
+		}
 
 
+		function animationStop() {
+			clearInterval(intervalId);
+			intervalId = undefined;
 		}
 
 
@@ -70,29 +77,33 @@
 		class Worm {
 			id;
 			length;
-			x = 0;
-			y = 0;
+			x = Maths.getRandomInt(page.xMin, page.xMax);
+			y = Maths.getRandomInt(page.yMin, page.yMax);;
 			direction;	// degrees
-			wormGroup;
-
+			wormBody;
 
 			constructor(id, length) {
 				this.id = id;
 				this.length = length;
 				this.direction = Maths.getRandomInt(0,circleDivisions) * degreeUnit;
 
-				wormsGroup.innerHTML += `
+				wormFarm.innerHTML += `
 					<g id="${this.id}" class="worm">
 						<circle cx="${this.x}" cy="${this.y}"/>
 					</g>
 				`;
+
+				this.wormBody = document.getElementById(id);
 				console.log(this);
-				this.wormGroup = document.getElementById(this.id);
 			}
 
 
 			move() {
 				// generate a random movement factor (-1,0,+1)
+				// generate the new coordinate
+				// wrap as necessary
+				// add the new head
+				// delete the tail (if needed)
 				const directionChange = Maths.getRandomIntInclusive(-1,1);
 				this.direction += directionChange * degreeUnit;
 				this.x += Math.cos(Maths.degreesToRadians(this.direction)) * radius;
@@ -103,29 +114,22 @@
 				this.x = wrapX(this.x);
 				this.y = wrapY(this.y);
 
-
 				//console.log(this);
-				// generate the new coordinate
-				// wrap as necessary
-				// add the new head
-				// delete the tail (if needed)
 
 
-				this.wormGroup.innerHTML += `
-					<circle cx="${this.x}" cy="${this.y}" data-direction="${this.direction}"/>
+				this.wormBody.innerHTML += `
+					<circle cx="${this.x}" cy="${this.y}"/>
 				`;
+				// data-direction="${this.direction}"
 
-				if (this.wormGroup.childElementCount > this.length)
+				console.log(this.wormBody);
+
+				if (this.wormBody.childElementCount > this.length)
 				{
-					this.wormGroup.firstElementChild.remove();
+					this.wormBody.firstElementChild.remove();
 				}
 
 			}/* move */
-
-
-
-
-
 
 		}/* Worm */
 
@@ -180,16 +184,26 @@
 			}
 		}
 
+		.controls {
+			font-size:100px;
+			text-anchor: middle;
+			fill: grey;
+		}
+
 	</style>
 
 
-	<g id="worms">
+	<g id="worm-farm">
 
 	</g>
 
-		<!-- <g id="worm" class="worm">
-			<circle class="segment" />
-		</g> -->
+
+	<g class="controls">
+		<text x="0" y="-42%">
+			<a href="#" id="link-start">start</a>
+			<a href="#" id="link-stop">stop</a>
+		</text>
+	</g>
 
 
 
