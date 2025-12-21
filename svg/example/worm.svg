@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+	<title>worm</title>
+
+	<use href="../[library]/grid.svg#grid" x="0" y="0"/>
+
+	<script href="../[library]/maths.js"></script>
+
+	<script>
+		<![CDATA[
+		document.addEventListener('DOMContentLoaded', setup);
+
+		const page = {
+			width	: 2400,
+			height	: 2400,
+			xMin	: -1200,
+			xMax	: +1200,
+			yMin	: -1200,
+			yMax	: +1200,
+			wormGroup : undefined,
+		};
+
+		const circleDivisions = 12;
+		const degreeUnit = 360/circleDivisions;
+		const radius = 50;
+
+		var worm1;
+		iterations = 100;
+		iteration = 0;
+
+		function setup() {
+			//document.getElementById('group-elements').addEventListener('click', clickHandler);
+			wormsGroup = document.getElementById('worms');
+
+			worm1 = new Worm('worm1',20);
+
+
+
+			setInterval(
+				()=> {
+					iteration++;
+					if (iteration < iterations) {
+						animate();
+					}
+				},
+				100
+			);
+
+
+
+
+
+			/*for (i=1; i < 100; i++) {
+				setTimeout(
+					()=>worm1.move(),
+					1000
+				);
+			} */
+		}
+
+
+		function animate() {
+
+			worm1.move()
+
+
+		}
+
+
+
+		class Worm {
+			id;
+			length;
+			x = 0;
+			y = 0;
+			direction;	// degrees
+			wormGroup;
+
+
+			constructor(id, length) {
+				this.id = id;
+				this.length = length;
+				this.direction = Maths.getRandomInt(0,circleDivisions) * degreeUnit;
+
+				wormsGroup.innerHTML += `
+					<g id="${this.id}" class="worm">
+						<circle cx="${this.x}" cy="${this.y}"/>
+					</g>
+				`;
+				console.log(this);
+				this.wormGroup = document.getElementById(this.id);
+			}
+
+
+			move() {
+				// generate a random movement factor (-1,0,+1)
+				const directionChange = Maths.getRandomIntInclusive(-1,1);
+				this.direction += directionChange * degreeUnit;
+				this.x += Math.cos(Maths.degreesToRadians(this.direction)) * radius;
+				this.y += Math.sin(Maths.degreesToRadians(this.direction)) * radius;
+
+				//console.log(this);
+
+				this.x = wrapX(this.x);
+				this.y = wrapY(this.y);
+
+
+				//console.log(this);
+				// generate the new coordinate
+				// wrap as necessary
+				// add the new head
+				// delete the tail (if needed)
+
+
+				this.wormGroup.innerHTML += `
+					<circle cx="${this.x}" cy="${this.y}" data-direction="${this.direction}"/>
+				`;
+
+				if (this.wormGroup.childElementCount > this.length)
+				{
+					this.wormGroup.firstElementChild.remove();
+				}
+
+			}/* move */
+
+
+
+
+
+
+		}/* Worm */
+
+
+		function wrapX(x) {
+			if (x < page.xMin ) x += page.width;
+			if (x > page.xMax ) x -= page.width;
+			return x;
+		}
+
+		function wrapY(y) {
+			if (y < page.yMin ) y += page.height;
+			if (y > page.yMax ) y -= page.height;
+			return y;
+		}
+
+
+
+		function draw(event) {
+			//console.log(event);
+			toTop(event.target);
+			//toBottom(event.target);
+		}
+
+		function toTop(element) {
+			const parentElement = element.parentElement;
+			const childElement = parentElement.removeChild(element);
+			parentElement.appendChild(childElement);
+		}
+
+
+		function toBottom(element) {
+			const parentElement = element.parentElement;
+			const childElement = parentElement.removeChild(element);
+			parentElement.insertBefore(childElement, parentElement.children[0]);
+		}
+
+
+		// ]]>
+	</script>
+
+	<style>
+
+
+		.worm {
+			filter: drop-shadow(0px 40px 20px #222a);
+			circle {
+				r: 50px;
+				stroke: pink;
+				stroke-width: 5px;
+				fill: darksalmon;
+			}
+		}
+
+	</style>
+
+
+	<g id="worms">
+
+	</g>
+
+		<!-- <g id="worm" class="worm">
+			<circle class="segment" />
+		</g> -->
+
+
+
+</svg>
