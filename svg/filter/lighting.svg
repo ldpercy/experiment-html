@@ -45,12 +45,19 @@
 	</style>
 
 	<defs>
-		<filter id="diff-light" x="0" y="0" width="100%" height="100%">
-
+		<filter id="diffuseLighting1" x="0" y="0" width="100%" height="100%">
+			<feDiffuseLighting in="SourceGraphic" lighting-color="white">
+				<fePointLight x="60" y="60" z="20" />
+			</feDiffuseLighting>
+		</filter>
+		<filter id="diffuseLighting2" x="0" y="0" width="100%" height="100%">
+			<feDiffuseLighting in="SourceGraphic" lighting-color="#3344ff">
+				<fePointLight x="60" y="60" z="20" />
+			</feDiffuseLighting>
 		</filter>
 	</defs>
 
-	<g>
+	<g filter="url(#diffuseLighting2)">
 		<circle cx="-300" cy="0" r="600" />
 		<rect x="0" y="0" width="600" height="900" />
 		<text x="50" y="50" >
