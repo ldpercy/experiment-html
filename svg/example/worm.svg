@@ -32,9 +32,8 @@
 		function setup() {
 
 			wormFarm = document.getElementById('worm-farm');
-			document.getElementById('link-start').addEventListener('click', animationStart);
-			document.getElementById('link-stop').addEventListener('click', animationStop);
-
+			document.getElementById('link-startStop').addEventListener('click', ()=> { event.preventDefault(); animationStartStop(); });	// preventDefault required otherwise shadow dom bleeds a getElementById warning
+			document.getElementById('link-forward').addEventListener('click', ()=> { event.preventDefault(); animationForward(); });
 
 			for (i=0; i < worms; i++)
 			{
@@ -47,14 +46,24 @@
 		}
 
 
-		function animationStart() {
-			if (!intervalId) {
+		function animationStartStop() {
+
+			if (intervalId) {
+				clearInterval(intervalId);
+				intervalId = undefined;
+			}
+			else {
 				intervalId = setInterval(
 					()=> { moveWorms() },
 					100
 				);
 			}
-		}
+		}/* animationStartStop */
+
+		function animationForward() {
+			moveWorms();
+		}/* animationForward */
+
 
 		function moveWorms() {
 			farm.forEach(
@@ -65,13 +74,6 @@
 				}
 			);
 		}
-
-
-		function animationStop() {
-			clearInterval(intervalId);
-			intervalId = undefined;
-		}
-
 
 
 		class Worm {
@@ -172,7 +174,7 @@
 	</script>
 
 	<style>
-
+		<![CDATA[
 
 		.worm {
 			filter: drop-shadow(0px 40px 20px #222a);
@@ -184,12 +186,15 @@
 			}
 		}
 
-		.controls {
+		.controls a {
 			font-size:100px;
 			text-anchor: middle;
-			fill: grey;
+			fill: royalblue;
+			&:hover {
+				text-decoration: underline;
+			}
 		}
-
+		]]>
 	</style>
 
 
@@ -200,8 +205,8 @@
 
 	<g class="controls">
 		<text x="0" y="-42%">
-			<a href="#" id="link-start">start</a>
-			<a href="#" id="link-stop">stop</a>
+			<a href="#" id="link-startStop">start/stop ⏯ </a>
+			<a href="#" id="link-forward">forward ⯈ </a>
 		</text>
 	</g>
 
