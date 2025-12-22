@@ -24,7 +24,7 @@
 		const radius = 50;
 
 		var farm = [];
-		let worms = 2;
+		let worms = 7;
 
 		let intervalId;
 
@@ -89,14 +89,25 @@
 				this.length = length;
 				this.direction = Maths.getRandomInt(0,circleDivisions) * degreeUnit;
 
-				wormFarm.innerHTML += `
+				/* wormFarm.innerHTML += `
 					<g id="${this.id}" class="worm">
 						<circle cx="${this.x}" cy="${this.y}"/>
 					</g>
-				`;
+				`; */
 
-				this.wormBody = document.getElementById(id);
-				console.log(this);
+				this.wormBody = document.createElementNS('http://www.w3.org/2000/svg','g');
+				this.wormBody.setAttribute('id',this.id);
+				this.wormBody.setAttribute('class','worm');
+				wormFarm.appendChild(this.wormBody);
+
+				//this.wormBody = document.getElementById(id);
+
+				const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+				c.setAttribute('cx', this.x);
+				c.setAttribute('cy', this.y);
+				this.wormBody.appendChild(c);
+
+				//console.log(this);
 			}
 
 
@@ -119,12 +130,20 @@
 				//console.log(this);
 
 
-				this.wormBody.innerHTML += `
+
+				/*this.wormBody.innerHTML += `
 					<circle cx="${this.x}" cy="${this.y}"/>
-				`;
+				`;*/
 				// data-direction="${this.direction}"
 
-				console.log(this.wormBody);
+				//console.log(`${this.id} body`, this.wormBody.innerHTML);
+
+
+				//const c = document.createElement('circle');
+				const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+				c.setAttribute('cx', this.x);
+				c.setAttribute('cy', this.y);
+				this.wormBody.appendChild(c);
 
 				if (this.wormBody.childElementCount > this.length)
 				{
@@ -176,8 +195,11 @@
 	<style>
 		<![CDATA[
 
+		.worm-farm {
+			filter: drop-shadow(0px 40px 20px #222a);		/* in FF this filter gets quite CPU expensive with large numbers of worms */
+		}
+
 		.worm {
-			filter: drop-shadow(0px 40px 20px #222a);
 			circle {
 				r: 50px;
 				stroke: pink;
@@ -198,10 +220,6 @@
 	</style>
 
 
-	<g id="worm-farm">
-
-	</g>
-
 
 	<g class="controls">
 		<text x="0" y="-42%">
@@ -210,6 +228,10 @@
 		</text>
 	</g>
 
+
+	<g id="worm-farm" class="worm-farm">
+
+	</g>
 
 
 </svg>
