@@ -44,21 +44,70 @@ class IndexApp extends HTMLApp {
 	];
 
 	documentKeydownListener(event) {
-		console.log('documentKeydownListener',event)
+		console.log('documentKeydownListener',event);
 	}
 
 	textareaKeydownListener(event) {
-		console.log('textareaKeydownListener',event)
+		console.log('textareaKeydownListener',event);
+		if (event.key === 'Escape') {
+			event.target.blur();
+		}
+		if (event.key === 'Tab') {
+			event.preventDefault();	// this stops the focus change, but doesn't print a tab character
+		}
+
+
+
 	}
 
 
 	textareaChangeListener(event) {
-		console.log('textareaChangeListener',event)
+		console.log('textareaChangeListener',event);
 	}
 
 
 
 
+	/*
+	keyFunctionMap = {
+		'd'	: doCommands,
+		'c'	: svg.clearDrawing,
+		'o'	: toOrigin,
+
+		'!'	: () => ui.showCommandSet(1),		// ! == shift-1
+		'@'	: () => ui.showCommandSet(2),		// @ == shift-2
+		'#'	: () => ui.showCommandSet(3),		// # == shift-3
+
+		'T'	: toggleTurtle,
+		'C'	: toggleCenter,
+		'R'	: toggleRotate,
+
+		'+'	: zoomIn,
+		'z'	: zoomIn,
+		'Z'	: zoomOut,
+		'-'	: zoomOut,
+
+		'?'	: ui.togglePopover,
+	};
+
+
+	documentKeyListener(event) {
+		//console.log('documentKeyListener', event);
+
+		if (keyFunctionMap[event.key]) {
+			event.preventDefault();
+			keyFunctionMap[event.key]();
+		}
+
+	}/ * documentKeyListener */
+
+
+
+
+
+	//
+	// Application
+	//
 
 
 	modeClickListener(event) {
@@ -107,5 +156,5 @@ class IndexApp extends HTMLApp {
 var indexApp = new IndexApp();
 
 
-
+var foo ="//";
 
