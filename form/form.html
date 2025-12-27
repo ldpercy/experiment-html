@@ -22,13 +22,27 @@
 	<script defer src="form.js"></script>
 </head>
 <body>
-	<nav><a title="Up to folder" href="./">./</a> <a title="Parent folder" href="../">../</a></nav>
+	<nav>
+		<a id="button-lightMode" href="#" title="Light mode" mode="light">🟓</a>
+		<a id="button-darkMode" href="#" title="Dark mode" mode="dark">🟒</a>
+		<a title="To folder" href="./">🖿</a>
+		<a title="Parent folder" href="../">🡅</a>
+	</nav>
 
 	<h1><a href="">form</a></h1>
 
 
 
+
 	<form>
+
+
+		<textarea title="this is a title attribute">
+			textarea
+
+			<a href="#foo">a link in a textarea</a>
+
+		</textarea>
 
 
 		<input type="range" min="0" max="10" list="datalist-foo"/>
@@ -51,8 +65,7 @@
 	</form>
 
 
-	<hr/>
-
+	<h2>Colour scheme - light</h2>
 	<form class="light">
 		<textarea title="this is a title attribute">textarea</textarea>
 		<br/>
@@ -79,7 +92,7 @@
 		</details>
 	</form>
 
-	<hr/>
+	<h2>Colour scheme - dark</h2>
 	<form class="dark">
 		<textarea title="this is a title attribute">textarea</textarea>
 		<br/>
