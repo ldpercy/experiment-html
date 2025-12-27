@@ -10,14 +10,14 @@ class IndexApp extends HTMLApp {
 
 	eventListeners = [
 		{
-			query: '#button-lightMode',
+			query: '#button-lightScheme',
 			type: 'click',
-			listener: this.modeClickListener
+			listener: this.schemeClickListener
 		},
 		{
-			query: '#button-darkMode',
+			query: '#button-darkScheme',
 			type: 'click',
-			listener: this.modeClickListener
+			listener: this.schemeClickListener
 		},
 		/* {
 			query: '#myForm',
@@ -29,29 +29,28 @@ class IndexApp extends HTMLApp {
 
 
 
-	modeClickListener(event) {
-		//console.log(event.target.attributes); //attributes['value']
-		const newMode = event.target.attributes['mode'].value;
-		this.setMode(newMode);
+	schemeClickListener(event) {
+		const newScheme = event.target.dataset.scheme;
+		this.setScheme(newScheme);
 	}
 
 
-	setMode(mode) {
+	setScheme(scheme) {
 		//console.log('setMode', mode);
-		if (mode === 'light')
+		if (scheme === 'light')
 		{
 			document.documentElement.classList.replace('dark','light') ;
 		}
 		else {
 			document.documentElement.classList.replace('light','dark') ;
 		}
-		localStorage.mode = mode;
+		localStorage.scheme = scheme;
 	}
 
 
 	documentDOMContentLoaded() {
 		super.documentDOMContentLoaded();
-		this.setMode(localStorage.mode);
+		this.setScheme(localStorage.scheme);
 
 
 		/*
