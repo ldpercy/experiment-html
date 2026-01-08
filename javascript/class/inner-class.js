@@ -11,14 +11,27 @@ class OuterClass {
 		this.name = name;
 	}
 
+	/* This is a syntax error:
 
-	static InnerClass = class {
+	class InnerClass {
 		name = 'initial InnerClass name';
-
 		constructor(name) {
 			this.name = name;
 		}
+	}
+	*/
+
+	// These work:
+
+	InnerClass = class {
+		name = 'InnerClass';
+		constructor(name) {	this.name = name; }
 	}/* InnerClass */
+
+	static StaticInnerClass = class {
+		name = 'StaticInnerClass';
+		constructor(name) {	this.name = name; }
+	}/* StaticInnerClass */
 
 
 }/* OuterClass */
@@ -35,8 +48,10 @@ OuterClass.QuasiInnerClass = class {
 }/* OuterClass.QuasiInnerClass */
 
 
-oc = new OuterClass('outer class');
+let oc = new OuterClass('outer class');
 
-ic = new OuterClass.InnerClass('inner class');
+let ic = new oc.InnerClass('inner class');
 
-qic = new OuterClass.QuasiInnerClass('quasi-inner class');
+let sic = new OuterClass.StaticInnerClass('static inner class');
+
+let qic = new OuterClass.QuasiInnerClass('quasi-inner class');

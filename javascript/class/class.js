@@ -1,9 +1,11 @@
 //
-// js-class.js
+//	class.js
 //
 
-console.clear();
-log = createPageLog(document.getElementById('pageLog'));
+
+
+
+let log = createPageLog(document.getElementById('pageLog'));
 log('js-class.js: run');
 document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
@@ -99,8 +101,8 @@ class SubClass extends BaseClass {
 }/* SubClass */
 
 
-bc = new BaseClass('BaseClass 1', 'New instance of BaseClass');
-sc = new SubClass('SubClass 1', 'New instance of SubClass')
+let bc = new BaseClass('BaseClass 1', 'New instance of BaseClass');
+let sc = new SubClass('SubClass 1', 'New instance of SubClass')
 
 
 
