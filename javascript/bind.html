@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>bind</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../[common]/favicon.svg">
+	<link rel="stylesheet" href="../[common]/common-style.css">
+	<script>
+		console.clear();
+		console.log('bind.html');
+		document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
+
+		function documentDOMContentLoaded() {
+			log = createPageLog(document.getElementById('pageLog'));
+			log('bind.html: document.DOMContentLoaded');
+		}
+	</script>
+	<script defer src="../[common]/common-script.js"></script>
+
+</head>
+<body>
+	<header>
+		<nav>
+			<a id="button-lightScheme" href="#" title="Light scheme" data-scheme="light">🟓</a>
+			<a id="button-darkScheme" href="#" title="Dark scheme" data-scheme="dark">🟒</a>
+			<a title="To folder" href="./">🖿</a>
+			<a title="Parent folder" href="../">🡅</a>
+		</nav>
+
+		<h1><a href="">bind</a></h1>
+	</header>
+	<p>
+		Something weird going on with 'this' binding that I want to figure out.
+	</p>
+
+	<script>
+
+		fnmap = {
+			a : f1,
+			b : f2,
+			c : f3,
+			r : report,
+		};
+
+		function f1(a,b,c)			{ return `(${a},${b},${c})`; }	// takes anonymous args
+		function f2({a,b,c})		{ return `(${a},${b},${c})`; }	// takes args named abc
+		function f3({x:a,y:b,z:c})	{ return `(${a},${b},${c})`; }	// renames xyz to abc
+
+		function report() {
+			console.log('Report this:', this);
+		}
+
+		report();			// Report this: Window http://localhost:9001/experiment-html/javascript/bind.html#
+		fnmap.r();			// Report this: Object { a: f1(a, b, c), b: f2(), c: f3(), r: report() }
+
+	</script>
+
+	<pre>
+		called raw `report` gives window as this
+		called as fnmap.r() it gives the fnmap object as this
+	</pre>
+
+	<script>
+		class Animal {
+			name;
+			constructor(name) {	this.name = name; }
+
+			fnmap = {
+				a	: f1,
+				b	: f2,
+				c	: f3,
+				r	: report,
+				r2	: report.bind(this),		// this seems to work, bit awkward though
+			};
+
+			f1(a,b,c)			{ return `(${a},${b},${c})`; }	// takes anonymous args
+			f2({a,b,c})			{ return `(${a},${b},${c})`; }	// takes args named abc
+			f3({x:a,y:b,z:c})	{ return `(${a},${b},${c})`; }	// renames xyz to abc
+			report() 			{ console.log('Report this:', this); }
+
+			callFunc(funcName) {
+				this.fnmap[funcName]();
+			}
+
+			callFuncWithBind(funcName) {
+				this.fnmap[funcName].bind(this)();			// !!! this appear to work more generally
+			}
+
+		}/* Animal */
+
+		a = new Animal('Grizz');
+		a.report();				// Report this: Object { name: "Grizz", fnmap: {…} }
+		a.fnmap.r();			// Report this: Object { a: f1(a, b, c), b: f2(), c: f3(), r: report() }
+		a.fnmap.r2();			// Report this: Object { name: "Grizz", fnmap: {…} }
+		a.callFunc('r');		// Report this: Object { a: f1(a, b, c), b: f2(), c: f3(), r: report() }
+		a.callFunc('r2');		// Report this: Object { name: "Grizz", fnmap: {…} }
+
+		a.callFuncWithBind('r');		// Report this: Object { name: "Grizz", fnmap: {…} }
+		a.callFuncWithBind('r2');		// Report this: Object { name: "Grizz", fnmap: {…} }
+
+	</script>
+
+	<pre>
+		This appears to be the more general solution:
+
+			this.fnmap[funcName].bind(this)();
+	</pre>
+
+
+	<h2>Log:</h2>
+	<output id="pageLog"></output>
+</body>
+</html>
