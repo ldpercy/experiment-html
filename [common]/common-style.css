@@ -16,17 +16,37 @@ html {
 
 
 	background-color: var(--html-background-light);
+
+
+	--javascript-color: #f7df1e;
+	--javascript-color2: #ffca28;
 }
 
 
 body {
 	margin:1em;
 	padding:1em;
-	border-radius:1ex;
+	border-radius:1em;
 	font-family:sans-serif;
 	color:black;
 	background-color: var(--body-background-light);
 }
+
+
+body>script {
+	/* scripts in the html body are displayed */
+	display: block;
+	background-color: hwb(from var(--javascript-color) h w b / 0.5);
+	border: 1px inset var(--javascript-color);
+	margin:1ex;
+	border-radius:1ex;
+	white-space-collapse: preserve;
+	font-family: monospace;
+	tab-size: 4;
+}
+
+
+
 
 h1:first-of-type {
 	margin-top:0;
