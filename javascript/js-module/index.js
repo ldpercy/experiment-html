@@ -1,12 +1,12 @@
 /* index.js
 */
 
-import { HTMLApp } from "../[common]/HTMLApp.module.js";
+import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
 
 
 class IndexApp extends HTMLApp {
 	name = "Experiment: js-module";
-	info = "Experiment: js-module";
+	appInfo = ["Experiment: js-module"];
 
 	eventListeners = [
 		{
