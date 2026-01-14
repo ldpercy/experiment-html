@@ -1,12 +1,12 @@
 /* index.js
 */
 
-import { HTMLApp } from "../[library]/HTMLApp.module.js";
+import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
 
 
 class IndexApp extends HTMLApp {
-	name = "Experiment: SVG Web Components";
-	info = "Experiment: SVG Web Components";
+
+	appInfo = ["Experiment: SVG Web Components"];
 
 	eventListeners = [
 		{

@@ -3,6 +3,9 @@
 //
 class Maths{
 
+ 	static TAU = 2 * Math.PI;
+
+
 	/* significantFigures
 	Returns a function that will call toPrecision with the supplied number of significant figures
 	*/
@@ -117,6 +120,6 @@ class Maths{
 
 
 
-Math.TAU = 2 * Math.PI;
+
 
 

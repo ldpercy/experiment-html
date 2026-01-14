@@ -2,11 +2,12 @@
 //	polygonApp.js
 //
 
+import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
 
 class PolygonApp extends HTMLApp {
 
-	name = "polygonApp";
-	info = "Polygon by ldpercy"
+
+	appInfo = ["Polygon by ldpercy"];
 
 
 	eventListeners = [
@@ -104,7 +105,7 @@ class PolygonApp extends HTMLApp {
 		let path = '';
 		let x = 0, y = 0;
 
-		const mainAngle = Math.TAU / sides;
+		const mainAngle = Maths.TAU / sides;
 
 		const startAngle = mainAngle/startDivision;
 
@@ -161,5 +162,5 @@ class PolygonApp extends HTMLApp {
 
 
 
-polygonApp = new PolygonApp();
+const polygonApp = new PolygonApp();
 
