@@ -5,16 +5,6 @@
 
 
 
-let log = createPageLog(document.getElementById('pageLog'));
-log('js-class.js: run');
-document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
-
-function documentDOMContentLoaded() {
-	log('js-class.js: document.DOMContentLoaded');
-}
-
-
-
 /* BaseClass
 */
 class BaseClass {
@@ -24,7 +14,7 @@ class BaseClass {
 	#basePrivate = 'BaseClass private';
 
 	constructor(name, desc, additional) {
-		log("BaseClass.constructor:"); //, this
+		console.log("BaseClass.constructor:"); //, this
 		this.name = name;
 		this.desc = desc;
 		this.additional = additional;
@@ -37,13 +27,13 @@ class BaseClass {
 
 	// methods
 
-	baseClassMethod()	{	log('BaseClass.baseClassMethod');	}
-	commonMethod()		{	log('BaseClass.commonMethod');	}
+	baseClassMethod()	{	console.log('BaseClass.baseClassMethod');	}
+	commonMethod()		{	console.log('BaseClass.commonMethod');	}
 	baseCallCommon() {
-		log('This is baseCallCommon in BaseClass');
+		console.log('This is baseCallCommon in BaseClass');
 		this.commonMethod();
 	}
-	#basePrivateMethod()	{	log('BaseClass.#basePrivateMethod');	}
+	#basePrivateMethod()	{	console.log('BaseClass.#basePrivateMethod');	}
 
 	this() { console.log('BaseClass this:', this); }
 	toString() {
@@ -75,13 +65,13 @@ class SubClass extends BaseClass {
 
 	// methods
 
-	subClassMethod()	{	log('SubClass.subClassMethod'); }
-	commonMethod()		{	log('SubClass.commonMethod'); 	}
+	subClassMethod()	{	console.log('SubClass.subClassMethod'); }
+	commonMethod()		{	console.log('SubClass.commonMethod'); 	}
 	subCallCommon() {
-		log('This is subCallCommon in SubClass');
+		console.log('This is subCallCommon in SubClass');
 		this.commonMethod();
 	}
-	#subPrivateMethod()	{	log('SubClass.#subPrivateMethod');	}
+	#subPrivateMethod()	{	console.log('SubClass.#subPrivateMethod');	}
 
 	// If all the methods are masked by the subclass, the super never gets called.
 
@@ -99,10 +89,6 @@ class SubClass extends BaseClass {
 	superString() { return super.toString(); }
 
 }/* SubClass */
-
-
-let bc = new BaseClass('BaseClass 1', 'New instance of BaseClass');
-let sc = new SubClass('SubClass 1', 'New instance of SubClass')
 
 
 
