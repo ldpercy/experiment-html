@@ -1,6 +1,14 @@
 Common
 ======
 
+Common experiment items.
+
+
+> [!IMPORTANT]
+> Anything of value should be moved to `html-common`
+
+
+
 
 createPageLog
 -------------

@@ -1,6 +1,9 @@
 HTML App
 ========
 
+> [!IMPORTANT]
+> Development of this has moved to `html-common`
+
 
 Going to try to combine a few common page setup features into a small class.
 
