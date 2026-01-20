@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>dom point</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../[common]/favicon.svg">
+	<link rel="stylesheet" href="../[common]/common-style.css">
+
+</head>
+<body>
+	<header>
+		<nav>
+			<a id="button-lightScheme" href="#" title="Light scheme" data-scheme="light">🟓</a>
+			<a id="button-darkScheme" href="#" title="Dark scheme" data-scheme="dark">🟒</a>
+			<a title="To folder" href="./">🖿</a>
+			<a title="Parent folder" href="../">🡅</a>
+		</nav>
+
+		<h1><a href="">dom point</a></h1>
+	</header>
+
+	<script>
+
+		/* 2D */
+		const point2D = new DOMPointReadOnly(50, 50);
+
+		/* 3D */
+		const point3D = new DOMPointReadOnly(50, 50, 25);
+
+		/* 3D with perspective */
+		const point3DPerspective = new DOMPointReadOnly(100, 100, 100, 1.0);
+
+	</script>
+
+</body>
+</html>

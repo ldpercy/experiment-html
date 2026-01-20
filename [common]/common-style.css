@@ -1,3 +1,6 @@
+@import "../[html-common]/style/script-visible.css";
+@import "../[html-common]/style/style-visible.css";
+
 
 html {
 
@@ -20,6 +23,11 @@ html {
 
 	--javascript-color: #f7df1e;
 	--javascript-color2: #ffca28;
+
+
+	--accent-colour: orangered;
+	/* background-color: hwb(from var(--css-purple) h w b / 0.4); */
+
 }
 
 

@@ -1,4 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-<rect x="0" y="0" width="64" height="64" fill="#e42"/>
-<text x="32" y="32" style="fill:white;dominant-baseline:central;text-anchor:middle;font-family:monospace;font-weight:bold;" font-size="29">html</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-32 -32 64 64">
+	<rect x="-32" y="-32" width="64" height="64" fill="#e42"/>
+	<g style="fill:none; stroke:white; stroke-width:8;">
+		<polyline points="-15,-20 -27,0 -15,20"/>
+		<polyline points="-7,29 7,-29" />
+		<polyline points="15,-20 27,0 15,20"/>
+	</g>
 </svg>
