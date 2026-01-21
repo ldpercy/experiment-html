@@ -132,19 +132,6 @@ class IndexApp extends HTMLApp {
 	documentDOMContentLoaded() {
 		super.documentDOMContentLoaded();
 		this.setScheme(localStorage.scheme);
-
-
-		/*
-		const url = window.location;
-		document.getElementById('input-url').value = url;
-		const urlObj = new URL(url);
-		console.log(urlObj);
-		*/
-
-
-		// console.log('document.styleSheets:', document.styleSheets);
-
-
 	}
 
 

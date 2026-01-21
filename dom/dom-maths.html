@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>dom maths</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../[common]/favicon.svg">
+	<link rel="stylesheet" href="../[common]/common-style.css">
+
+</head>
+<body>
+	<header>
+		<nav>
+			<a id="button-lightScheme" href="#" title="Light scheme" data-scheme="light">🟓</a>
+			<a id="button-darkScheme" href="#" title="Dark scheme" data-scheme="dark">🟒</a>
+			<a title="To folder" href="./">🖿</a>
+			<a title="Parent folder" href="../">🡅</a>
+		</nav>
+
+		<h1><a href="">dom maths</a></h1>
+	</header>
+
+	<script>
+		/* 2D */
+		const point2D = new DOMPointReadOnly(50, 50);
+
+		/* 3D */
+		const point3D = new DOMPointReadOnly(50, 50, 25);
+
+		/* 3D with perspective */
+		const point3DPerspective = new DOMPointReadOnly(100, 100, 100, 1.0);
+
+		const point = new DOMPoint(5, 4);
+		const scaleX = 2;
+		const scaleY = 3;
+		const translateX = 12;
+		const translateY = 8;
+		const angle = Math.PI / 2;
+		const matrix = new DOMMatrix([
+			Math.cos(angle) * scaleX,
+			Math.sin(angle) * scaleX,
+			-Math.sin(angle) * scaleY,
+			Math.cos(angle) * scaleY,
+			translateX,
+			translateY,
+		]);
+		const transformedPoint = point.matrixTransform(matrix);
+
+		//console.log(matrix);
+		//console.log(transformedPoint);
+		function logTransform(p,matrix) { console.dir(p, p.matrixTransform(matrix)); }
+	</script>
+
+	<pre>
+		that works rather well...
+	</pre>
+
+	<script>
+		/** @type {DOMMatrixReadOnly} */
+		identity = new DOMMatrixReadOnly([
+			1,
+			0,
+			0,
+			1,
+			0,
+			0,
+		]);
+		console.log(identity);
+		const p = new DOMPoint(12, 34);
+		logTransform(p, identity);
+
+		invertY = identity.scale(1,-1);
+		console.dir(invertY);
+
+		logTransform(p, invertY);
+
+	</script>
+
+
+
+</body>
+</html>

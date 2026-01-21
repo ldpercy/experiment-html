@@ -1,5 +1,4 @@
-@import "../[html-common]/style/script-visible.css";
-@import "../[html-common]/style/style-visible.css";
+@import "../[html-common]/style/html-visible.css";
 
 
 html {
@@ -27,6 +26,9 @@ html {
 
 	--accent-colour: orangered;
 	/* background-color: hwb(from var(--css-purple) h w b / 0.4); */
+	/* --accent: var(--accent-dark); */
+	--accent: var(--accent-colour);
+	accent-color: var(--accent-colour);
 
 }
 
@@ -38,20 +40,22 @@ body {
 	font-family:sans-serif;
 	color:black;
 	background-color: var(--body-background-light);
-}
 
-
-body>script {
-	/* scripts in the html body are displayed */
-	display: block;
-	background-color: hwb(from var(--javascript-color) h w b / 0.5);
-	border: 1px inset var(--javascript-color);
-	margin:1ex;
-	border-radius:1ex;
-	white-space-collapse: preserve;
-	font-family: monospace;
 	tab-size: 4;
 }
+
+pre {		/* treat these like markdown */
+
+	margin:1em;
+	padding:1em 0em;
+	background-color: white;
+	border-radius: 0em 1em 1em 1em;
+	border: 1px solid silver;
+}
+
+
+
+
 
 
 
