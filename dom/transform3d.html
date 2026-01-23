@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<title>transform</title>
+	<title>transform 3d</title>
 	<meta charset="utf-8">
 	<link rel="icon" href="../[common]/favicon.svg">
 	<link rel="stylesheet" href="../[common]/common-style.css">
@@ -17,24 +17,22 @@
 			<a title="Parent folder" href="../">🡅</a>
 		</nav>
 
-		<h1><a href="">transform</a></h1>
+		<h1><a href="">transform 3d</a></h1>
 	</header>
 
 	<link rel="stylesheet" href="../[html-common]/style/svg/grid.css"/>
 
-	<style contenteditable="plaintext-only" spellcheck="false">
+	<style>
 		* { transition: all ease-in 0.5s; }
 		.display {
 			display: grid;
 			grid-template-columns: 3fr 1fr;
 		}
 		svg {
-			height:stretch;
 			outline:2px dashed var(--svg-orange);
 			margin:1ex;
 			border-radius: 1ex;
 		}
-		.matrixValues { display:grid; grid-template-columns: 1fr 1fr 1fr; label { white-space: pre-line; text-align:center; }	}
 	</style>
 
 	<script type="module">
@@ -56,47 +54,20 @@
 			<g id="svgGrid" class="grid"></g>
 		</svg>
 		<form name="matrix" onchange="formOnchange()">
-			<h2>matrix values</h2>
-			<div class="matrixValues">
-			<label>
-				<input name="a" type="number" value="1" min="-5" max="5" step="0.5">
-				a - scaleX
-			</label>
-			<label>
-				<input name="b" type="number" value="0" min="-5" max="5" step="0.5">
-				b - skewY
-			</label>
-			<label>
-				<input name="c" type="number" value="0" min="-5" max="5" step="0.5">
-				c - skewX
-			</label>
-			<label>
-				<input name="d" type="number" value="1" min="-5" max="5" step="0.5">
-				d - scaleY
-			</label>
-			<label>
-				<input name="e" type="number" value="0" min="-100" max="100" step="25">
-				e - translateX
-			</label>
-			<label>
-				<input name="f" type="number" value="0" min="-100" max="100" step="25">
-				f - translateY
-			</label>
-			</div>
-
-			<h2>mutators</h2>
-
-			<label><input name="rotate" type="number" value="0" min="-180" max="180" step="15"> rotate </label>
-			<label>
-				<input type="checkbox" name="invert"> invert
-			</label>
-
+			<!--
+			<label><input name="a" type="range" value="1" min="-10" max="10"> a - scaleX</label>
+			<label><input name="b" type="range" value="0" min="-10" max="10"> b - skewY</label>
+			<label><input name="c" type="range" value="0" min="-10" max="10"> c - skewX</label>
+			<label><input name="d" type="range" value="1" min="-10" max="10"> d - scaleY</label>
+			<label><input name="e" type="range" value="0" min="-100" max="100"> e - translateX</label>
+			<label><input name="f" type="range" value="0" min="-100" max="100"> f - translateY </label>
+			 -->
 			<button type="reset" onclick="formReset()">reset</button>
 		</form>
 	</div>
 
 
-	<script contenteditable="true">
+	<script>
 		function formOnchange() {
 			//console.log('formOnchange')
 			let matrix = new DOMMatrix([
@@ -107,14 +78,7 @@
 				document.forms.matrix.e.value,
 				document.forms.matrix.f.value,
 			]);
-
-			matrix.rotateSelf(document.forms.matrix.rotate.value);
-
-			if (document.forms.matrix.invert.checked) {
-				matrix.invertSelf();
-			}
-
-			console.log(matrix);
+			console.log(matrix.toString());
 			svgGrid.setAttribute('transform', matrix.toString());
 
 		}
@@ -125,26 +89,44 @@
 		]);
 
 		function formReset() {
-			console.log('formReset', identity);
-			svgGrid.setAttribute('transform', identity);
+			console.log('formReset');
+			svgGrid.setAttribute('transform', identity.toString());
 		}
 
 
-		function rotate(degrees) {
-			const radians = (degrees/180) * Math.PI;
-			const result = new DOMMatrix([
-				Math.cos(angle) * scaleX,
-				Math.sin(angle) * scaleX,
-				-Math.sin(angle) * scaleY,
-				Math.cos(angle) * scaleY,
-				translateX,
-				translateY,
-			]);
-			return result;
-		}
 
 
+		/* 2D */
+		const point2D = new DOMPointReadOnly(50, 50);
+
+		/* 3D */
+		const point3D = new DOMPointReadOnly(50, 50, 25);
+
+		/* 3D with perspective */
+		const point3DPerspective = new DOMPointReadOnly(100, 100, 100, 1.0);
+
+		const point = new DOMPoint(5, 4);
+		const scaleX = 2;
+		const scaleY = 3;
+		const translateX = 12;
+		const translateY = 8;
+		const angle = Math.PI / 2;
+		const matrix = new DOMMatrix([
+			Math.cos(angle) * scaleX,
+			Math.sin(angle) * scaleX,
+			-Math.sin(angle) * scaleY,
+			Math.cos(angle) * scaleY,
+			translateX,
+			translateY,
+		]);
+		const transformedPoint = point.matrixTransform(matrix);
+
+		//console.log(matrix);
+		//console.log(transformedPoint);
+		function logTransform(p,matrix) { console.dir(p, p.matrixTransform(matrix)); }
 	</script>
+
+
 
 
 </body>
