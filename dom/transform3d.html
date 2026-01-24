@@ -75,22 +75,23 @@
 
 		<output>
 			<svg id="svgDoc1" viewBox="-1200 -600 2400 1200">
-				<g id="svgGrid" class="grid"></g>
+				<g>
+					<g id="svgGrid" class="grid"></g>
+					<polyline points="100,-100 400,-300 400,-100" style="stroke:red;stroke-width:10px;fill:#f007;"/>
+				</g>
 			</svg>
+			<!-- <div id="transform-element">
+				lipsum dolor sit amet
+			</div> -->
 		</output>
 		<form name="matrix" onchange="formOnchange()">
-			<h2>matrix values</h2>
-			<!--
-			<label><input name="a" type="range" value="1" min="-10" max="10"> a - scaleX</label>
-			<label><input name="b" type="range" value="0" min="-10" max="10"> b - skewY</label>
-			<label><input name="c" type="range" value="0" min="-10" max="10"> c - skewX</label>
-			<label><input name="d" type="range" value="1" min="-10" max="10"> d - scaleY</label>
-			<label><input name="e" type="range" value="0" min="-100" max="100"> e - translateX</label>
-			<label><input name="f" type="range" value="0" min="-100" max="100"> f - translateY </label>
-			-->
+
 			<h2>mutators</h2>
 
-			<label><input name="rotate" type="number" value="0" min="-180" max="180" step="15"> rotate </label>
+			<label><input name="rotateX" type="number" value="0" step="15"> rotateX </label>
+			<label><input name="rotateY" type="number" value="0" step="15"> rotateY </label>
+			<label><input name="rotateZ" type="number" value="0" step="15"> rotateZ </label>
+
 			<label>
 				<input type="checkbox" name="invert"> invert
 			</label>
@@ -101,18 +102,25 @@
 
 
 		<script>
+			const transformElement = document.getElementById('svgDoc1');
+
+
 			function formOnchange() {
 				//console.log('formOnchange')
-				let matrix = new DOMMatrix([
-					document.forms.matrix.a.value,
-					document.forms.matrix.b.value,
-					document.forms.matrix.c.value,
-					document.forms.matrix.d.value,
-					document.forms.matrix.e.value,
-					document.forms.matrix.f.value,
-				]);
-				console.log(matrix.toString());
-				svgGrid.setAttribute('transform', matrix.toString());
+				let matrix = new DOMMatrix();
+
+				matrix.rotateSelf(
+					document.forms.matrix.rotateX.value,
+					document.forms.matrix.rotateY.value,
+					document.forms.matrix.rotateZ.value,
+				);
+
+				if (document.forms.matrix.invert.checked) {
+					matrix.invertSelf();
+				}
+
+				console.log(matrix);
+				transformElement.style.setProperty('transform', matrix.toString());
 
 			}
 
@@ -123,10 +131,14 @@
 
 			function formReset() {
 				console.log('formReset');
-				svgGrid.setAttribute('transform', identity.toString());
+				transformElement.style.setProperty('transform', '');
 			}
 
 
+
+		</script>
+
+		<!--
 
 
 			/* 2D */
@@ -157,7 +169,8 @@
 			//console.log(matrix);
 			//console.log(transformedPoint);
 			function logTransform(p,matrix) { console.dir(p, p.matrixTransform(matrix)); }
-		</script>
+		-->
+
 
 	</main>
 

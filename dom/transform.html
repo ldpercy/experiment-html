@@ -27,6 +27,7 @@
 		<style contenteditable="plaintext-only" spellcheck="false" class="limit-height">
 			* { transition: all ease-in 0.5s; }
 			svg { margin:1ex; border-radius:1ex; outline:2px dashed var(--svg-orange); }
+			form { z-index:5; }
 			main {
 				display:grid;
 				style, script {
@@ -68,11 +69,14 @@
 		</script>
 		<output>
 			<svg id="svgDoc1" viewBox="-1200 -600 2400 1200">
-				<g id="svgGrid" class="grid"></g>
+				<g id="transform-group">
+					<g id="svgGrid" class="grid"></g>
+					<polyline points="100,-100 400,-300 400,-100" style="stroke:red;stroke-width:10px;fill:#f007;"/>
+				</g>
 			</svg>
 		</output>
 		<form name="matrix" onchange="formOnchange()">
-			<h2>matrix values</h2>
+			<h2>initial matrix values</h2>
 			<div class="matrixValues">
 			<label>
 				<input name="a" type="number" value="1" min="-5" max="5" step="0.5">
@@ -111,8 +115,10 @@
 		</form>
 
 
-
 		<script contenteditable="true">
+			//const transformGroup = document.getElementById('transform-group');
+			const transformGroup = document.getElementById('svgDoc1');
+
 			function formOnchange() {
 				//console.log('formOnchange')
 				let matrix = new DOMMatrix([
@@ -131,7 +137,7 @@
 				}
 
 				console.log(matrix);
-				svgGrid.setAttribute('transform', matrix.toString());
+				transformGroup.setAttribute('transform', matrix.toString());
 
 			}
 
@@ -142,7 +148,7 @@
 
 			function formReset() {
 				console.log('formReset', identity);
-				svgGrid.setAttribute('transform', identity);
+				transformGroup.setAttribute('transform', identity);
 			}
 
 
