@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>css grid</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../../[common]/favicon.svg">
+	<link rel="stylesheet" href="../../[common]/common-style.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<a id="button-lightScheme" href="#" title="Light scheme" data-scheme="light">🟓</a>
+			<a id="button-darkScheme" href="#" title="Dark scheme" data-scheme="dark">🟒</a>
+			<a title="To folder" href="./">🖿</a>
+			<a title="Parent folder" href="../">🡅</a>
+		</nav>
+
+		<h1><a href="">css grid</a></h1>
+	</header>
+
+	<style contenteditable="plaintext-only" spellcheck="false">
+
+		div		{ border: 2px solid dodgerblue; }
+		p		{ border: 2px solid plum; }
+		section	{ border: 2px solid springgreen; }
+		aside	{ border: 2px solid aqua; }
+
+		.grid-container {
+			display: grid;
+			border: 2px solid green;
+			margin:1ex;	padding:1ex; border-radius:1ex;
+			&>* { margin:inherit; padding:inherit; border-radius:inherit;	}
+
+			section {
+				grid-column-start: 1;
+				grid-column-end: 3;
+			}
+			aside { grid-column-start: 2; }
+
+		}
+
+		@media (orientation: landscape) {
+			.grid-container { grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; }
+		}
+
+		@media (orientation: portrait) {
+			.grid-container { grid-template-columns: 1fr 1fr ; }
+		}
+	</style>
+
+
+	<div class="grid-container">
+		<div>abcd</div>
+		<div>efgh</div>
+		<p>ijkl</p>
+
+		<section>mnop</section>
+		<aside>qrst</aside>
+		<div>uvwx</div>
+		<div>yz</div>
+	</div>
+
+
+	<form class="grid-container">
+		<label for="input-abcd">abcd</label>
+		<input id="input-abcd" type="text" name="text"/>
+		<label for="input-efgh">efgh</label>
+		<input id="input-efgh" type="date" name="date"/>
+		<label for="input-ijkl">ijkl</label>
+		<select id="input-ijkl" name="date">
+			<option>123</option>
+			<option>456</option>
+			<option>789</option>
+		</select>
+		<label for="input-tyui">abcd</label>
+		<input id="input-tyui" type="text" name="text"/>
+	</form>
+
+
+
+</body>
+</html>

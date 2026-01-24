@@ -53,8 +53,12 @@ pre {		/* treat these like markdown */
 	border: 1px solid silver;
 }
 
-
-
+output {
+	div		{ border: 2px solid dodgerblue; }
+	p		{ border: 2px solid plum; }
+	section	{ border: 2px solid springgreen; }
+	aside	{ border: 2px solid aqua; }
+}
 
 
 

@@ -1,12 +1,4 @@
-console.clear();
-log = createPageLog(document.getElementById('pageLog'));
-log('css-nested.js: run');
 
-document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
-
-function documentDOMContentLoaded() {
-	log('document DOMContentLoaded');
-}
 
 
 var newCSS = `
@@ -61,7 +53,7 @@ function removeElement(id){
 
 
 function addNewContent() {
-	const css = `p { color:${randomRGB()}; background-color:${randomRGB()}; border:1ex ${randomRGB()}; }`;
+	const css = `p { color:${randomRGB()}; background-color:${randomRGB()}; border:1ex dashed ${randomRGB()}; }`;
 
 	const id = `id-${Math.round((Math.random()*255))}`;
 

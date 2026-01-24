@@ -3,13 +3,21 @@
 <head>
 	<title>at-namespace</title>
 	<meta charset="utf-8">
-	<link rel="icon" href="../[common]/favicon.svg">
-	<link rel="stylesheet" href="../[common]/common-style.css">
-	<script defer src="../[common]/common-script.js"></script>
+	<link rel="icon" href="../../[common]/favicon.svg">
+	<link rel="stylesheet" href="../../[common]/common-style.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<a id="button-lightScheme" href="#" title="Light scheme" data-scheme="light">🟓</a>
+			<a id="button-darkScheme" href="#" title="Dark scheme" data-scheme="dark">🟒</a>
+			<a title="To folder" href="./">🖿</a>
+			<a title="Parent folder" href="../">🡅</a>
+		</nav>
 
-	<!--
-	<script defer src="css-at-rules.js"></script>
-	-->
+		<h1><a href="">at-namespace</a></h1>
+	</header>
+
 
 	<style>
 		@namespace html "http://www.w3.org/1999/xhtml";
@@ -33,21 +41,8 @@
 
 	</style>
 
-</head>
-<body>
-	<header>
-		<nav>
-			<a id="button-lightScheme" href="#" title="Light scheme" data-scheme="light">🟓</a>
-			<a id="button-darkScheme" href="#" title="Dark scheme" data-scheme="dark">🟒</a>
-			<a title="To folder" href="./">🖿</a>
-			<a title="Parent folder" href="../">🡅</a>
-		</nav>
-
-		<h1><a href="">at-namespace</a></h1>
-	</header>
-
 	<p>
-		<a href="http://htmlatag">This is an HTML a tag</a>
+		<a href="http://htmlatag">This is an HTML <em>a</em> tag</a>
 	</p>
 
 
@@ -77,7 +72,5 @@
 	</svg>
 
 
-	<h2>Log:</h2>
-	<output id="pageLog"></output>
 </body>
 </html>
