@@ -53,11 +53,17 @@ pre {		/* treat these like markdown */
 	border: 1px solid silver;
 }
 
-output {
-	div		{ border: 2px solid dodgerblue; }
-	p		{ border: 2px solid plum; }
-	section	{ border: 2px solid springgreen; }
-	aside	{ border: 2px solid aqua; }
+.pretty {
+	div		{ --colour: dodgerblue; }
+	p		{ --colour: plum; }
+	section	{ --colour: springgreen; }
+	aside	{ --colour: aqua; }
+
+	div, p, section, aside {
+		border: 2px solid var(--colour);
+		background-color: hwb(from var(--colour) h w b / 0.3);
+	}
+
 }
 
 

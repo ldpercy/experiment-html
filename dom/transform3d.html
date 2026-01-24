@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="../[common]/form.css">
 
 </head>
-<body>
+<body onload="formOnchange()">
 	<header>
 		<nav>
 			<a id="button-lightScheme" href="#" title="Light scheme" data-scheme="light">🟓</a>
@@ -31,7 +31,8 @@
 				margin:1ex;
 				border-radius: 1ex;
 			}
-
+			form { z-index:5; }
+			figure { filter: drop-shadow(0px 1ex 1ex grey); }
 			main {
 				display:grid;
 				grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -59,7 +60,7 @@
 			}
 		</style>
 
-		<script type="module">
+<!-- 		<script type="module">
 			import * as planar from '../[html-common]/module/PlanarSpace.js'
 			import * as svg from '../[html-common]/module/SVG.js'
 
@@ -71,19 +72,62 @@
 			const svgGrid = document.getElementById('svgGrid');
 			svgGrid.innerHTML = cartesianGrid.toString();
 
-		</script>
+		</script> -->
 
-		<output>
+		<style contenteditable="plaintext-only" spellcheck="false" class="limit-height">
+			.grid-container {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr ;
+				border: 2px solid green;
+				margin:1ex;	padding:1ex; border-radius:1ex;
+				&>* { margin:inherit; padding:inherit; border-radius:inherit;	}
+
+				section {
+					grid-column-start: 1;
+					grid-column-end: 3;
+				}
+				aside { grid-column-start: 2; }
+			}
+			.transform-element {
+				/* transform: rotateX(15deg) rotateY(10deg) rotateZ(5deg) translateX(3em); */
+				perspective: 20cm;
+				perspective-origin: 50% 50%;
+				section { transform: translateZ(4em); }
+				aside { transform: translateZ(8em); }
+
+			}
+			table.matrix {
+				table-layout: fixed;
+				margin:1em;
+				width:90%;
+				td {text-align:right;}
+			}
+		</style>
+
+		<output class="pretty">
+			<!--
 			<svg id="svgDoc1" viewBox="-1200 -600 2400 1200">
 				<g>
 					<g id="svgGrid" class="grid"></g>
 					<polyline points="100,-100 400,-300 400,-100" style="stroke:red;stroke-width:10px;fill:#f007;"/>
 				</g>
 			</svg>
-			<!-- <div id="transform-element">
-				lipsum dolor sit amet
-			</div> -->
+			-->
+			<code id="matrix-display"></code>
+			<figure>
+				<div id="transform-element" class="transform-element grid-container ">
+					<div>abcd</div>
+					<div>efgh</div>
+					<p>ijkl</p>
+
+					<section>mnop</section>
+					<aside>qrst</aside>
+					<div>uvwx</div>
+					<div>yz</div>
+				</div>
+			</figure>
 		</output>
+
 		<form name="matrix" onchange="formOnchange()">
 
 			<h2>mutators</h2>
@@ -102,12 +146,13 @@
 
 
 		<script>
-			const transformElement = document.getElementById('svgDoc1');
-
+			let matrix;
+			const transformElement = document.getElementById('transform-element');
+			const matrixDisplay = document.getElementById('matrix-display');
 
 			function formOnchange() {
 				//console.log('formOnchange')
-				let matrix = new DOMMatrix();
+				matrix = new DOMMatrix();
 
 				matrix.rotateSelf(
 					document.forms.matrix.rotateX.value,
@@ -120,23 +165,39 @@
 				}
 
 				console.log(matrix);
+				//matrixDisplay.innerHTML = matrix.toString();
+
 				transformElement.style.setProperty('transform', matrix.toString());
-
+				matrixDisplay.innerHTML = asTable(matrix);
 			}
-
-			const identity = new DOMMatrixReadOnly([
-				1, 0, 0,
-				1, 0, 0,
-			]);
 
 			function formReset() {
-				console.log('formReset');
-				transformElement.style.setProperty('transform', '');
+				//console.log('formReset');
+				matrix = new DOMMatrix();
+				transformElement.style.setProperty('transform', matrix.toString());
+				matrixDisplay.innerHTML = asTable(matrix);
 			}
 
 
+			function asTable(matrix3d) {
+				result =`
+					<table class="matrix">
+					<thead>
+						<tr><th></th><th>matrix.m1_</th><th>matrix.m2_</th><th>matrix.m3_</th><th>matrix.m4_</th></tr>
+					</thead>
+					<tr><th>matrix.m_1</th><td>${matrix.m11}</td><td>${matrix.m21}</td><td>${matrix.m31}</td><td>${matrix.m41}</td></tr>
+					<tr><th>matrix.m_2</th><td>${matrix.m12}</td><td>${matrix.m22}</td><td>${matrix.m32}</td><td>${matrix.m42}</td></tr>
+					<tr><th>matrix.m_3</th><td>${matrix.m13}</td><td>${matrix.m23}</td><td>${matrix.m33}</td><td>${matrix.m43}</td></tr>
+					<tr><th>matrix.m_4</th><td>${matrix.m14}</td><td>${matrix.m24}</td><td>${matrix.m34}</td><td>${matrix.m44}</td></tr>
+					</table>
+				`;
+				return result;
+			}
 
 		</script>
+
+
+
 
 		<!--
 

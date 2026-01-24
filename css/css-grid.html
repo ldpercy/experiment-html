@@ -3,8 +3,8 @@
 <head>
 	<title>css grid</title>
 	<meta charset="utf-8">
-	<link rel="icon" href="../../[common]/favicon.svg">
-	<link rel="stylesheet" href="../../[common]/common-style.css">
+	<link rel="icon" href="../[common]/favicon.svg">
+	<link rel="stylesheet" href="../[common]/common-style.css">
 </head>
 <body>
 	<header>
@@ -19,12 +19,6 @@
 	</header>
 
 	<style contenteditable="plaintext-only" spellcheck="false">
-
-		div		{ border: 2px solid dodgerblue; }
-		p		{ border: 2px solid plum; }
-		section	{ border: 2px solid springgreen; }
-		aside	{ border: 2px solid aqua; }
-
 		.grid-container {
 			display: grid;
 			border: 2px solid green;
@@ -40,7 +34,7 @@
 		}
 
 		@media (orientation: landscape) {
-			.grid-container { grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; }
+			.grid-container { grid-template-columns: 1fr 1fr 1fr 1fr ; }
 		}
 
 		@media (orientation: portrait) {
@@ -49,7 +43,7 @@
 	</style>
 
 
-	<div class="grid-container">
+	<div class="grid-container pretty">
 		<div>abcd</div>
 		<div>efgh</div>
 		<p>ijkl</p>
@@ -61,7 +55,7 @@
 	</div>
 
 
-	<form class="grid-container">
+	<form class="grid-container pretty">
 		<label for="input-abcd">abcd</label>
 		<input id="input-abcd" type="text" name="text"/>
 		<label for="input-efgh">efgh</label>
