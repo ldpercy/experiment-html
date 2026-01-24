@@ -1,23 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<title>css-grid</title>
+	<title>css grid</title>
 	<meta charset="utf-8">
-	<link rel="icon" href="../[common]/favicon.svg">
-	<link rel="stylesheet" href="../[common]/common-style.css">
-	<!-- <script>
-		console.clear();
-		console.log('css-grid.html');
-		document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
-
-		function documentDOMContentLoaded() {
-			log = createPageLog(document.getElementById('pageLog'));
-			log('css-grid.html: document.DOMContentLoaded');
-		}
-	</script> -->
-	<script defer src="../[common]/common-script.js"></script>
-	<script defer src="css-grid.js"></script>
-	<link rel="stylesheet" href="css-grid.css">
+	<link rel="icon" href="../../[common]/favicon.svg">
+	<link rel="stylesheet" href="../../[common]/common-style.css">
 </head>
 <body>
 	<header>
@@ -28,42 +15,68 @@
 			<a title="Parent folder" href="../">🡅</a>
 		</nav>
 
-		<h1><a href="">css-grid</a></h1>
+		<h1><a href="">css grid</a></h1>
 	</header>
 
+	<style contenteditable="plaintext-only" spellcheck="false">
 
-	<div class="container">
-		<div class="item">qwer</div>
-		<div class="item">asdf</div>
-		<div class="item">zxcv</div>
+		div		{ border: 2px solid dodgerblue; }
+		p		{ border: 2px solid plum; }
+		section	{ border: 2px solid springgreen; }
+		aside	{ border: 2px solid aqua; }
 
-		<div class="item">tyui</div>
-		<div class="item">ghjk</div>
-		<div class="item">bnm,</div>
+		.grid-container {
+			display: grid;
+			border: 2px solid green;
+			margin:1ex;	padding:1ex; border-radius:1ex;
+			&>* { margin:inherit; padding:inherit; border-radius:inherit;	}
+
+			section {
+				grid-column-start: 1;
+				grid-column-end: 3;
+			}
+			aside { grid-column-start: 2; }
+
+		}
+
+		@media (orientation: landscape) {
+			.grid-container { grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; }
+		}
+
+		@media (orientation: portrait) {
+			.grid-container { grid-template-columns: 1fr 1fr ; }
+		}
+	</style>
+
+
+	<div class="grid-container">
+		<div>abcd</div>
+		<div>efgh</div>
+		<p>ijkl</p>
+
+		<section>mnop</section>
+		<aside>qrst</aside>
+		<div>uvwx</div>
+		<div>yz</div>
 	</div>
 
 
-	<form class="container">
-		<label class="item" for="input-qwer">qwer</label>
-		<input class="item" id="input-qwer" type="text" name="text"/>
-		<label class="item" for="input-asdf">asdf</label>
-		<input class="item" id="input-asdf" type="date" name="date"/>
-		<label class="item" for="input-zxcv">zxcv</label>
-		<select class="item" id="input-zxcv" name="date">
-			<option>sdf</option>
-			<option>rfv</option>
-			<option>wsx</option>
+	<form class="grid-container">
+		<label for="input-abcd">abcd</label>
+		<input id="input-abcd" type="text" name="text"/>
+		<label for="input-efgh">efgh</label>
+		<input id="input-efgh" type="date" name="date"/>
+		<label for="input-ijkl">ijkl</label>
+		<select id="input-ijkl" name="date">
+			<option>123</option>
+			<option>456</option>
+			<option>789</option>
 		</select>
-		<label class="item" for="input-tyui">qwer</label>
-		<input class="item" id="input-tyui" type="text" name="text"/>
+		<label for="input-tyui">abcd</label>
+		<input id="input-tyui" type="text" name="text"/>
 	</form>
 
 
-	</form>
 
-
-
-	<h2>Log:</h2>
-	<output id="pageLog"></output>
 </body>
 </html>

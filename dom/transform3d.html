@@ -22,38 +22,64 @@
 
 	<link rel="stylesheet" href="../[html-common]/style/svg/grid.css"/>
 
-	<style>
-		* { transition: all ease-in 0.5s; }
-		.display {
-			display: grid;
-			grid-template-columns: 3fr 1fr;
-		}
-		svg {
-			outline:2px dashed var(--svg-orange);
-			margin:1ex;
-			border-radius: 1ex;
-		}
-	</style>
+	<main>
 
-	<script type="module">
-		import * as planar from '../[html-common]/module/PlanarSpace.js'
-		import * as svg from '../[html-common]/module/SVG.js'
+		<style contenteditable="plaintext-only" spellcheck="false" class="limit-height">
+			* { transition: all ease-in 0.5s; }
+			svg {
+				outline:2px dashed var(--svg-orange);
+				margin:1ex;
+				border-radius: 1ex;
+			}
 
-		let space = new planar.Space('simple space');
-		let box = new svg.Box(-1200,-600,2400,1200);
-		//console.log(box);
+			main {
+				display:grid;
+				grid-template-columns: 1fr 1fr 1fr 1fr;
 
-		const cartesianGrid = new svg.CartesianGrid(space, box);
-		const svgGrid = document.getElementById('svgGrid');
-		svgGrid.innerHTML = cartesianGrid.toString();
+				style, script {
+					grid-column-start: span 2;
+				}
 
-	</script>
+				.limit-height {
+					max-height:30em;
+					overflow-y: scroll;
+				}
+			}
 
-	<div class="display">
-		<svg id="svgDoc1" viewBox="-1200 -600 2400 1200">
-			<g id="svgGrid" class="grid"></g>
-		</svg>
+			@media (orientation: landscape) {
+				main { grid-template-columns: 1fr 1fr 1fr 1fr; }
+				output { grid-column-start: span 3; }
+				form { grid-column-start: span 1; }
+			}
+
+			@media (orientation: portrait) {
+				main { grid-template-columns: 1fr 1fr ; }
+				output { grid-column-start: span 2; }
+				form { grid-column-start: span 2; }
+			}
+		</style>
+
+		<script type="module">
+			import * as planar from '../[html-common]/module/PlanarSpace.js'
+			import * as svg from '../[html-common]/module/SVG.js'
+
+			let space = new planar.Space('simple space');
+			let box = new svg.Box(-1200,-600,2400,1200);
+			//console.log(box);
+
+			const cartesianGrid = new svg.CartesianGrid(space, box);
+			const svgGrid = document.getElementById('svgGrid');
+			svgGrid.innerHTML = cartesianGrid.toString();
+
+		</script>
+
+		<output>
+			<svg id="svgDoc1" viewBox="-1200 -600 2400 1200">
+				<g id="svgGrid" class="grid"></g>
+			</svg>
+		</output>
 		<form name="matrix" onchange="formOnchange()">
+			<h2>matrix values</h2>
 			<!--
 			<label><input name="a" type="range" value="1" min="-10" max="10"> a - scaleX</label>
 			<label><input name="b" type="range" value="0" min="-10" max="10"> b - skewY</label>
@@ -61,72 +87,79 @@
 			<label><input name="d" type="range" value="1" min="-10" max="10"> d - scaleY</label>
 			<label><input name="e" type="range" value="0" min="-100" max="100"> e - translateX</label>
 			<label><input name="f" type="range" value="0" min="-100" max="100"> f - translateY </label>
-			 -->
+			-->
+			<h2>mutators</h2>
+
+			<label><input name="rotate" type="number" value="0" min="-180" max="180" step="15"> rotate </label>
+			<label>
+				<input type="checkbox" name="invert"> invert
+			</label>
+
 			<button type="reset" onclick="formReset()">reset</button>
 		</form>
-	</div>
 
 
-	<script>
-		function formOnchange() {
-			//console.log('formOnchange')
-			let matrix = new DOMMatrix([
-				document.forms.matrix.a.value,
-				document.forms.matrix.b.value,
-				document.forms.matrix.c.value,
-				document.forms.matrix.d.value,
-				document.forms.matrix.e.value,
-				document.forms.matrix.f.value,
+
+		<script>
+			function formOnchange() {
+				//console.log('formOnchange')
+				let matrix = new DOMMatrix([
+					document.forms.matrix.a.value,
+					document.forms.matrix.b.value,
+					document.forms.matrix.c.value,
+					document.forms.matrix.d.value,
+					document.forms.matrix.e.value,
+					document.forms.matrix.f.value,
+				]);
+				console.log(matrix.toString());
+				svgGrid.setAttribute('transform', matrix.toString());
+
+			}
+
+			const identity = new DOMMatrixReadOnly([
+				1, 0, 0,
+				1, 0, 0,
 			]);
-			console.log(matrix.toString());
-			svgGrid.setAttribute('transform', matrix.toString());
 
-		}
-
-		const identity = new DOMMatrixReadOnly([
-			1, 0, 0,
-			1, 0, 0,
-		]);
-
-		function formReset() {
-			console.log('formReset');
-			svgGrid.setAttribute('transform', identity.toString());
-		}
+			function formReset() {
+				console.log('formReset');
+				svgGrid.setAttribute('transform', identity.toString());
+			}
 
 
 
 
-		/* 2D */
-		const point2D = new DOMPointReadOnly(50, 50);
+			/* 2D */
+			const point2D = new DOMPointReadOnly(50, 50);
 
-		/* 3D */
-		const point3D = new DOMPointReadOnly(50, 50, 25);
+			/* 3D */
+			const point3D = new DOMPointReadOnly(50, 50, 25);
 
-		/* 3D with perspective */
-		const point3DPerspective = new DOMPointReadOnly(100, 100, 100, 1.0);
+			/* 3D with perspective */
+			const point3DPerspective = new DOMPointReadOnly(100, 100, 100, 1.0);
 
-		const point = new DOMPoint(5, 4);
-		const scaleX = 2;
-		const scaleY = 3;
-		const translateX = 12;
-		const translateY = 8;
-		const angle = Math.PI / 2;
-		const matrix = new DOMMatrix([
-			Math.cos(angle) * scaleX,
-			Math.sin(angle) * scaleX,
-			-Math.sin(angle) * scaleY,
-			Math.cos(angle) * scaleY,
-			translateX,
-			translateY,
-		]);
-		const transformedPoint = point.matrixTransform(matrix);
+			const point = new DOMPoint(5, 4);
+			const scaleX = 2;
+			const scaleY = 3;
+			const translateX = 12;
+			const translateY = 8;
+			const angle = Math.PI / 2;
+			const matrix = new DOMMatrix([
+				Math.cos(angle) * scaleX,
+				Math.sin(angle) * scaleX,
+				-Math.sin(angle) * scaleY,
+				Math.cos(angle) * scaleY,
+				translateX,
+				translateY,
+			]);
+			const transformedPoint = point.matrixTransform(matrix);
 
-		//console.log(matrix);
-		//console.log(transformedPoint);
-		function logTransform(p,matrix) { console.dir(p, p.matrixTransform(matrix)); }
-	</script>
+			//console.log(matrix);
+			//console.log(transformedPoint);
+			function logTransform(p,matrix) { console.dir(p, p.matrixTransform(matrix)); }
+		</script>
 
-
+	</main>
 
 
 </body>
