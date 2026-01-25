@@ -1,16 +1,13 @@
 console.log('common-script.js');
 
-/* URL Parameters
-*/
-function getParameterByName(name)
+
+/** getUrlParameter
+ * @param {string} name
+ * @return {string}
+ */
+function getUrlParameter(name)
 {
-	const url = window.location.href
-	name = name.replace(/[\[\]]/g, "\\$&")
-	const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)")
-	const results = regex.exec(url)
-	if (!results) return null
-	if (!results[2]) return ''
-	return decodeURIComponent(results[2].replace(/\+/g, " "))
+	return (new URL(window.location.href)).searchParams.get(name);
 }
 
 

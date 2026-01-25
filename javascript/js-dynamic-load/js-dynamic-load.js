@@ -12,7 +12,7 @@ function documentDOMContentLoaded() {
 	log('document DOMContentLoaded');
 
 	// scriptname parameter
-	let scriptname = getParameterByName('scriptname');
+	let scriptname = getUrlParameter('scriptname');
 	log(`parameter-scriptname:  ${scriptname}`);
 
 	if (scriptname)

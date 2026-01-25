@@ -14,7 +14,7 @@ function documentDOMContentLoaded() {
 
 	dynamicStylesheet = document.getElementById('dynamicStylesheet');
 
-	let style = getParameterByName('style');
+	let style = getUrlParameter('style');
 
 	log(style);
 

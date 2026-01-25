@@ -11,12 +11,12 @@ ldpercy.namespace.App = class extends HTMLApp {
 		{
 			query: '#button-lightScheme',
 			type: 'click',
-			listener: this.schemeClickListener
+			listener: this.colourSchemeListener
 		},
 		{
 			query: '#button-darkScheme',
 			type: 'click',
-			listener: this.schemeClickListener
+			listener: this.colourSchemeListener
 		},
 		/* {
 			query: '#myForm',
@@ -28,28 +28,18 @@ ldpercy.namespace.App = class extends HTMLApp {
 
 
 
-	schemeClickListener(event) {
+	colourSchemeListener(event) {
 		const newScheme = event.target.dataset.scheme;
-		this.setScheme(newScheme);
+		this.setColourScheme(newScheme);
 	}
 
 
-	setScheme(scheme) {
-		//console.log('setMode', mode);
-		if (scheme === 'light')
-		{
-			document.documentElement.classList.replace('dark','light') ;
-		}
-		else {
-			document.documentElement.classList.replace('light','dark') ;
-		}
-		localStorage.scheme = scheme;
-	}
+
 
 
 	documentDOMContentLoaded() {
 		super.documentDOMContentLoaded();
-		this.setScheme(localStorage.scheme);
+		this.setColourScheme(localStorage.colourScheme);
 
 	}
 

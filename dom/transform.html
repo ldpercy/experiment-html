@@ -30,6 +30,10 @@
 			form { z-index:5; }
 			main {
 				display:grid;
+
+				margin:1ex;	border-radius:1ex;
+				&>* { margin:inherit; border-radius:inherit;	}
+
 				style, script {
 					grid-column-start: span 2;
 				}

@@ -12,12 +12,12 @@ class IndexApp extends HTMLApp {
 		{
 			query: '#button-lightScheme',
 			type: 'click',
-			listener: this.schemeClickListener
+			listener: this.colourSchemeListener
 		},
 		{
 			query: '#button-darkScheme',
 			type: 'click',
-			listener: this.schemeClickListener
+			listener: this.colourSchemeListener
 		},
 		/* {
 			query: '#myForm',
@@ -27,43 +27,15 @@ class IndexApp extends HTMLApp {
 	];
 
 
-
-
-	schemeClickListener(event) {
+	colourSchemeListener(event) {
 		const newScheme = event.target.dataset.scheme;
-		this.setScheme(newScheme);
-	}
-
-
-	setScheme(scheme) {
-		//console.log('setMode', mode);
-		if (scheme === 'light')
-		{
-			document.documentElement.classList.replace('dark','light') ;
-		}
-		else {
-			document.documentElement.classList.replace('light','dark') ;
-		}
-		localStorage.scheme = scheme;
+		this.setColourScheme(newScheme);
 	}
 
 
 	documentDOMContentLoaded() {
 		super.documentDOMContentLoaded();
-		this.setScheme(localStorage.scheme);
-
-
-		/*
-		const url = window.location;
-		document.getElementById('input-url').value = url;
-		const urlObj = new URL(url);
-		console.log(urlObj);
-		*/
-
-
-		// console.log('document.styleSheets:', document.styleSheets);
-
-
+		this.setColourScheme(localStorage.colourScheme);
 	}
 
 
