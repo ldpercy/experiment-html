@@ -33,6 +33,11 @@
 		function setColourScheme(schemeName) {
 			document.documentElement.style.setProperty('--colourScheme', schemeName);
 			document.documentElement.className = document.documentElement.className.replace(/(\bcolourScheme-\w+\b)?/,`colourScheme-${schemeName}`);
+			document.body.style.setProperty('--colourScheme', schemeName);
+		}
+
+		function setAccentColour(accentColour) {
+			document.body.style.setProperty('--accent-colour', accentColour);
 		}
 
 	</script>
@@ -42,27 +47,38 @@
 		body {
 			color-scheme: var(--colourScheme);
 			/* --accent-color: #3daee9; */ /* firefox's accent colour */
-			/* --accent-color: #2ae; */
+
+			--accent-light: hsl(from var(--accent-colour) h s 70% );
+			--accent-dark: hsl(from var(--accent-colour) h s 40% );
+
 			accent-color: var(--accent-colour);
+
+		}
+
+		span {display:inline-block; padding:1em; }
+
+		.light {
+			color-scheme: light;
+			accent-color: var(--accent-dark);
 		}
 
 		.dark {
 			color-scheme: dark;
-		}
-
-		.light {
-			color-scheme: light;
+			accent-color: var(--accent-light);
 		}
 	</style>
 
 
 	<h2>Accent-color</h2>
 
+	<input type="color" onchange="setAccentColour(this.value);">
+	<span style="background-color: var(--accent-colour);">accent colour</span>
+	<span style="background-color: var(--accent-light);">accent colour - light</span>
+	<span style="background-color: var(--accent-colour);">accent colour</span>
+	<span style="background-color: var(--accent-dark);">accent colour - dark</span>
 
-	<input type="color" onchange="document.body.style.setProperty('--accent-color', this.value);">
 
-
-	<h2>light</h2>
+	<h2>color-scheme: light</h2>
 
 	<form class="light">
 		<textarea title="this is a title attribute">textarea</textarea>
@@ -90,7 +106,7 @@
 		</details>
 	</form>
 
-	<h2>dark</h2>
+	<h2>color-scheme: dark</h2>
 	<form class="dark">
 		<textarea title="this is a title attribute">textarea</textarea>
 		<br/>
