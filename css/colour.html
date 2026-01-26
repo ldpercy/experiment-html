@@ -26,25 +26,88 @@
 	<main>
 
 		<script class="limit-height">
-
 			function setColour() {
-				const colour = document.getElementById('input-colour').value;
+				const colour = document.getElementById('input-colourText').value;
 				const divisions = document.getElementById('input-divisions').value;
 
 				document.body.style.setProperty('--colour', colour);
 				document.body.style.setProperty('--colour1', colour);
 
-				const swatches =`
+				const hslSwatches =`
 					<div>${swatchesHSL(colour, 'h', divisions)}</div>
 					<div>${swatchesHSL(colour, 's', divisions)}</div>
 					<div>${swatchesHSL(colour, 'l', divisions)}</div>
-					<div class="background-crosshatch">${swatchesHSL(colour, 'a', divisions)}</div>
+					<div>${swatchesHSL(colour, 'a', divisions)}</div>
 				`;
 
-				document.getElementById('swatchesHSL').innerHTML = swatches;
+				document.getElementById('swatchesHSL').innerHTML = hslSwatches;
+
+				const hwbSwatches =`
+					<div>${swatchesHWB(colour, 'h', divisions)}</div>
+					<div>${swatchesHWB(colour, 'w', divisions)}</div>
+					<div>${swatchesHWB(colour, 'b', divisions)}</div>
+					<div>${swatchesHWB(colour, 'a', divisions)}</div>
+				`;
+
+				document.getElementById('swatchesHWB').innerHTML = hwbSwatches;
 			}
+		</script>
+
+		<style contenteditable="plaintext-only"  class="limit-height">
+			body {
+				--colour: var(--project-colour);
+				--colour1: var(--project-colour);
+				color-scheme: var(--colourScheme);
+
+				--accent-light: hsl(from var(--colour1) h s 70% );
+				--accent-dark: hsl(from var(--colour1) h s 40% );
+
+				accent-color: var(--colour1);
+			}
+			output { grid-column-start: span 4; }
+			.swatches {
+				font-family:monospace;
+				div {
+					display: flex;
+  					justify-content: space-evenly;
+				}
+				span {
+					display:inline-block;
+					width: 100%;
+					padding:2em;
+					border-radius:1ex;
+				}
+
+			}
+		</style>
 
 
+		<output>
+			<form onchange="setColour();">
+				<h2>Colour</h2>
+				<label>
+					Colour picker
+					<input type="color" id="input-colourPicker" value="orangered" onchange="document.getElementById('input-colourText').value=this.value">
+				</label>
+				<label>
+					Colour text
+					<input type="text" id="input-colourText" value="orangered" onchange="document.getElementById('input-colourPicker').value=this.value">
+				</label>
+				<label>
+					Channel divisions
+					<input type="number" id="input-divisions" min="2" max="12" step="1" value="5">
+				</label>
+			</form>
+
+			<h3>hsl</h3>
+			<div class="swatches background-crosshatch" id="swatchesHSL"></div>
+
+			<h3>hwb</h3>
+			<div class="swatches background-crosshatch" id="swatchesHWB"></div>
+		</output>
+
+
+		<script>
 			/** swatchesHSL
 			 * @param {string} colour
 			 * @param {string} channel
@@ -75,104 +138,49 @@
 					a	= (channel === 'a')	? `${val.toFixed(3)}` : 'alpha';
 
 					colourString = `hsl(from ${colour} ${h} ${s} ${l} / ${a})`;
-					result += `<span style="background-color: ${colourString};">${colourString}</span>`; // ${channel} = ${val.toFixed(3)}
+					result += `<span style="background-color: ${colourString};">${colourString}</span>`;
 				}
 
 				return result;
-			}
+			}/* swatchesHSL */
 
+
+			/** swatchesHWB
+			 * @param {string} colour
+			 * @param {string} channel
+			 * @param {number} divisions
+			 */
+			function swatchesHWB(colour, channel, divisions) {
+				// channel = hue whiteness blackness alpha
+				let result = '';
+
+				switch(channel) {
+					case 'h': max = 360; break;
+					case 'w': max = 100; break;
+					case 'b': max = 100; break;
+					case 'a': max = 1; break;
+				}
+
+				const step = max/divisions;
+				let val = 0;
+				let h, w, b, a;
+				let colourString = '';
+
+				for (i=0; i<=divisions; i++) {
+					val = i * step;
+					h	= (channel === 'h') ? `calc(h + ${val.toFixed(2)})` : 'h';
+					w	= (channel === 'w')	? `${val.toFixed(2)}` : 'w';
+					b	= (channel === 'b')	? `${val.toFixed(2)}` : 'b';
+					a	= (channel === 'a')	? `${val.toFixed(3)}` : 'alpha';
+
+					colourString = `hwb(from ${colour} ${h} ${w} ${b} / ${a})`;
+					result += `<span style="background-color: ${colourString};">${colourString}</span>`;
+				}
+
+				return result;
+			}/* swatchesHSB */
 
 		</script>
-
-		<style contenteditable="plaintext-only"  class="limit-height">
-			body {
-				--colour: var(--project-colour);
-				--colour1: var(--project-colour);
-				color-scheme: var(--colourScheme);
-
-				--accent-light: hsl(from var(--colour1) h s 70% );
-				--accent-dark: hsl(from var(--colour1) h s 40% );
-
-				accent-color: var(--colour1);
-			}
-			output { grid-column-start: span 4; }
-			.swatches {
-				font-family:monospace;
-				div {
-					display: flex;
-  					justify-content: space-evenly;
-				}
-				span {
-					display:inline-block;
-					width: 100%;
-					/* max-width: 8em; */
-					/* height: 100%;
-					height: fit-content; */
-					padding:2em;
-					border-radius:1ex;
-				}
-
-			}
-		</style>
-
-		<output>
-		<form onchange="setColour();">
-			<h2>Colour</h2>
-			<label>
-				Colour
-				<input type="color" id="input-colour" value="orangered">
-			</label>
-			<label>
-				Channel divisions
-				<input type="number" id="input-divisions" min="2" max="12" step="1" value="5">
-			</label>
-			<br/>
-
-			<h3>hsl</h3>
-			<div class="swatches" id="swatchesHSL"></div>
-
-			<h3>hwb</h3>
-			<div class="swatches" id="swatchesHWB"></div>
-
-		</form>
-		</output>
-
-
-		<form>
-			<h2>Generic form</h2>
-
-			<textarea title="this is a title attribute">
-				lorem ipsum dolor sit amet
-			</textarea>
-			<br/>
-			<button type="button">button</button>
-			<label>
-				<input type="radio" name="radio" value="radio1" checked>
-				radio1
-			</label>
-			<label>
-				<input type="radio" name="radio" value="radio2">
-				radio2
-			</label>
-			<input type="checkbox" checked>
-			<input type="range" min="1" max="10" value="5">
-			<input type="number" min="1" max="10" value="5">
-			<input type="date">
-			<select size=3>
-				<option>option 1</option>
-				<option>option 2</option>
-				<option>option 3</option>
-				<option>option 4</option>
-			</select>
-			<input type="color">
-			<details>
-				<summary>summary</summary>
-				details
-			</details>
-		</form>
-
-
-
 
 
 	</main>
