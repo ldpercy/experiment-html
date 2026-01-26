@@ -42,10 +42,6 @@ function createPageLog(logElement) {
 
 
 
-function genericLogger() {
-	log(arguments);
-}
-
 
 /* addEventListener
 */

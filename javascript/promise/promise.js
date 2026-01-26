@@ -1,7 +1,7 @@
 
 // setup
-log = createPageLog(document.getElementById('pageLog'));
-log('async-await: run');
+
+console.log('async-await: run');
 console.clear();
 document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
@@ -22,3 +22,13 @@ function documentDOMContentLoaded() {
 	//replaceScriptPromise(id, scriptUrl, onLoad, onError)
 }
 
+
+/* addEventListener
+*/
+function addEventListener(query, eventName, listener) {
+	document.querySelectorAll(query).forEach((node) => {
+		node.addEventListener(eventName,
+			(event)=>listener(event)
+		);
+	});
+}

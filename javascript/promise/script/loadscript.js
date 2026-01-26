@@ -2,9 +2,11 @@
 
 function loadScript(url)
 {
-	//replaceScript('replaceable-script', url, genericLogger, genericLogger );
-	replaceScriptPromise('replaceable-script', url, genericLogger, genericLogger );
+	//replaceScript('replaceable-script', url );
+	replaceScriptPromise('replaceable-script', url);
 }
+
+
 
 
 
@@ -34,7 +36,7 @@ function replaceScript(id, scriptUrl, onLoad, onError) {
 
 /* replaceScriptPromise
 */
-function replaceScriptPromise(id, scriptUrl, onLoad, onError) {
+function replaceScriptPromise(id, scriptUrl) {
 
 	const replaceScriptPromise = new Promise((resolve, reject) => {
 
@@ -53,14 +55,14 @@ function replaceScriptPromise(id, scriptUrl, onLoad, onError) {
 	replaceScriptPromise
 		.then(
 			(value) => {
-				log('then');
-				log(value);
+				console.log('then');
+				console.log(value);
 			}
 		)
 		.catch(
 			(error) => {
-				log('reject');
-				log(error);
+				console.log('reject');
+				console.log(error);
 			}
 		);
 }
