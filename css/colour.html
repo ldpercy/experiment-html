@@ -11,7 +11,7 @@
 	<script src="../[common]/common-script.js"></script>
 
 </head>
-<body onload="setColour();">
+<body onload="setRandomColour();">
 	<header>
 		<nav>
 			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourScheme="light">🟓</a>
@@ -26,12 +26,19 @@
 	<main>
 
 		<script class="limit-height">
+			function setRandomColour() {
+				randomColour = randomColourHex();
+				document.getElementById('input-colourText').value = randomColour;
+				document.getElementById('input-colourPicker').value = randomColour;
+				setColour();
+			}
+
 			function setColour() {
 				const colour = document.getElementById('input-colourText').value;
 				const divisions = document.getElementById('input-divisions').value;
 
 				document.body.style.setProperty('--colour', colour);
-				document.body.style.setProperty('--colour1', colour);
+				//document.body.style.setProperty('--colour1', colour);
 
 				const hslSwatches =`
 					<div>${swatchesHSL(colour, 'h', divisions)}</div>
@@ -56,13 +63,13 @@
 		<style contenteditable="plaintext-only"  class="limit-height">
 			body {
 				--colour: var(--project-colour);
-				--colour1: var(--project-colour);
+				/* --colour1: var(--project-colour); */
 				color-scheme: var(--colourScheme);
 
 				--accent-light: hsl(from var(--colour1) h s 70% );
 				--accent-dark: hsl(from var(--colour1) h s 40% );
 
-				accent-color: var(--colour1);
+				accent-color: var(--colour);
 			}
 			output { grid-column-start: span 4; }
 			.swatches {
@@ -96,6 +103,10 @@
 				<label>
 					Channel divisions
 					<input type="number" id="input-divisions" min="2" max="12" step="1" value="5">
+				</label>
+
+				<label>
+					<button type="button" onclick="setRandomColour()">🎲 random colour</button>
 				</label>
 			</form>
 
