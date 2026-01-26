@@ -28,34 +28,15 @@
 			* { transition: all ease-in 0.5s; }
 			svg { margin:1ex; border-radius:1ex; outline:2px dashed var(--svg-orange); }
 			form { z-index:5; }
-			main {
+
+			output { grid-column-start: span 3; }
+			form { grid-column-start: span 1; }
+
+			.matrixValues {
 				display:grid;
-
-				margin:1ex;	border-radius:1ex;
-				&>* { margin:inherit; border-radius:inherit;	}
-
-				style, script {
-					grid-column-start: span 2;
-				}
-				.limit-height {
-					max-height:30em;
-					overflow-y: scroll;
-				}
+				grid-template-columns: 1fr 1fr 1fr;
+				label { white-space: pre-line; text-align:center; }
 			}
-
-			@media (orientation: landscape) {
-				main { grid-template-columns: 1fr 1fr 1fr 1fr; }
-				output { grid-column-start: span 3; }
-				form { grid-column-start: span 1; }
-			}
-
-			@media (orientation: portrait) {
-				main { grid-template-columns: 1fr 1fr ; }
-				output { grid-column-start: span 2; }
-				form { grid-column-start: span 2; }
-			}
-
-			.matrixValues { display:grid; grid-template-columns: 1fr 1fr 1fr; label { white-space: pre-line; text-align:center; }	}
 		</style>
 
 		<script type="module">

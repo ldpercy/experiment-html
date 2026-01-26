@@ -32,32 +32,16 @@
 				border-radius: 1ex;
 			}
 			form { z-index:5; }
+			output { grid-column-start: span 3; }
+			form { grid-column-start: span 1; }
+
 			figure { filter: drop-shadow(0px 1ex 1ex grey); }
-			main {
-				display:grid;
-				grid-template-columns: 1fr 1fr 1fr 1fr;
-				margin:1ex;	border-radius:1ex;
-				&>* { margin:inherit; border-radius:inherit;	}
-				style, script {
-					grid-column-start: span 2;
-				}
 
-				.limit-height {
-					max-height:30em;
-					overflow-y: scroll;
-				}
-			}
-
-			@media (orientation: landscape) {
-				main { grid-template-columns: 1fr 1fr 1fr 1fr; }
-				output { grid-column-start: span 3; }
-				form { grid-column-start: span 1; }
-			}
-
-			@media (orientation: portrait) {
-				main { grid-template-columns: 1fr 1fr ; }
-				output { grid-column-start: span 2; }
-				form { grid-column-start: span 2; }
+			table.matrix {
+				table-layout: fixed;
+				margin:1em;
+				width:90%;
+				td {text-align:right;}
 			}
 		</style>
 
@@ -97,12 +81,7 @@
 				aside { transform: translateZ(8em); }
 
 			}
-			table.matrix {
-				table-layout: fixed;
-				margin:1em;
-				width:90%;
-				td {text-align:right;}
-			}
+
 		</style>
 
 		<output class="pretty">

@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>colour</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../[common]/favicon.svg">
+	<link rel="stylesheet" href="../[common]/common-style.css">
+	<script src="../[common]/common-script.js"></script>
+
+</head>
+<body>
+	<header>
+		<nav>
+			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourScheme="light">🟓</a>
+			<a class="colourScheme-selector" href="?colourScheme=dark" title="Dark colour scheme" data-colourScheme="dark">🟒</a>
+			<a title="To folder" href="./">🖿</a>
+			<a title="Parent folder" href="../">🡅</a>
+		</nav>
+
+		<h1><a href="">colour</a></h1>
+	</header>
+
+
+	<main>
+
+		<script class="limit-height">
+			let colourScheme = getUrlParameter('scheme');
+
+			if (colourScheme) {
+				setColourScheme(colourScheme);
+			}
+
+			/** setColourScheme
+			 * @param {string} schemeName
+			 */
+			function setColourScheme(schemeName) {
+				document.documentElement.style.setProperty('--colourScheme', schemeName);
+				document.documentElement.className = document.documentElement.className.replace(/(\bcolourScheme-\w+\b)?/,`colourScheme-${schemeName}`);
+			}
+
+			function setColour(colour) {
+				document.body.style.setProperty('--colour', colour);
+				document.body.style.setProperty('--colour1', colour);
+
+
+				const swatches =`
+					<div>${swatchesHSL(colour, 'h', 5)}</div>
+					<div>${swatchesHSL(colour, 's', 5)}</div>
+					<div>${swatchesHSL(colour, 'l', 5)}</div>
+					<div>${swatchesHSL(colour, 'a', 5)}</div>
+				`;
+
+				document.getElementById('swatchesHSL').innerHTML = swatches;
+			}
+
+
+			/** swatchesHSL
+			 * @param {string} colour
+			 * @param {string} channel
+			 * @param {number} divisions
+			 */
+			function swatchesHSL(colour, channel, divisions) {
+				// channel = hue saturation lightness alpha
+				let result = '';
+
+				let max = (channel === 'h') ? 360 : 1;
+				switch(channel) {
+					case 'h': max = 360; break;
+					case 's': max = 100; break;
+					case 'l': max = 100; break;
+					case 'a': max = 1; break;
+				}
+
+				const step = max/divisions;
+				let val = 0;
+				let h, s, l, a;
+				let colourString = '';
+
+				for (i=0; i<=divisions; i++) {
+					val = i * step;
+					h	= (channel === 'h') ? `calc(h + ${val})` : 'h';
+					s	= (channel === 's')	? `${val}` : 's';
+					l	= (channel === 'l')	? `${val}` : 'l';
+					a	= (channel === 'a')	? `${val.toFixed(3)}` : 'alpha';
+
+					colourString = `hsl(from ${colour} ${h} ${s} ${l} / ${a})`;
+					result += `<span style="background-color: ${colourString};">${colourString}</span>`; // ${channel} = ${val.toFixed(3)}
+				}
+
+				return result;
+			}
+
+
+
+		</script>
+
+		<style>
+			body {
+				--colour: var(--project-colour);
+				--colour1: var(--project-colour);
+
+				color-scheme: var(--colourScheme);
+				/* --accent-color: #3daee9; */ /* firefox's accent colour */
+
+				--accent-light: hsl(from var(--colour1) h s 70% );
+				--accent-dark: hsl(from var(--colour1) h s 40% );
+
+				accent-color: var(--colour1);
+			}
+			output { grid-column-start: span 4; }
+			.swatches {
+				span {
+					display:inline-block;
+					font-family:monospace;
+					max-width: 8em;
+					min-height: 5em;
+					padding:2em;
+					border-radius:1ex;
+				}
+			}
+
+		</style>
+
+		<output>
+		<form>
+			<h2>Colour</h2>
+
+			<input type="color" value="orangered" onchange="setColour(this.value);">
+			<br/>
+
+			<h3>hsl</h3>
+			<div class="swatches" id="swatchesHSL"></div>
+
+			<h3>hwb</h3>
+			<div class="swatches" id="swatchesHWB"></div>
+
+			<!--
+			<table>
+			<thead>
+			<tr>
+				<th>values</td>
+				<th><input id="col1" type="number" min="0" max="1" step="0.1" value="0.0"/></th>
+				<th><input id="col2" type="number" min="0" max="1" step="0.1" value="0.2"/></th>
+				<th><input id="col3" type="number" min="0" max="1" step="0.1" value="0.4"/></th>
+				<th><input id="col3" type="number" min="0" max="1" step="0.1" value="0.6"/></th>
+				<th><input id="col4" type="number" min="0" max="1" step="0.1" value="0.8"/></th>
+				<th><input id="col4" type="number" min="0" max="1" step="0.1" value="1.0"/></th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr style="background-color: hsl(from var(--colour) h s l / alpha);">
+				<th>hsla</th>
+				<td style="background-color: hsl(from var(--colour) calc(h + 000) S L / alpha);">h + 000</td>
+				<td style="background-color: hsl(from var(--colour) calc(h + 090) s l / alpha);">h + 090</td>
+				<td style="background-color: hsl(from var(--colour) calc(h + 180) s l / alpha);">h + 180</td>
+				<td style="background-color: hsl(from var(--colour) calc(h + 270) s l / alpha);">h + 270</td>
+				<td style="background-color: hsl(from var(--colour) calc(h + 360) s l / alpha);">h + 360</td>
+			</tr>
+			</tbody>
+
+			</table>
+
+
+			<span style="background-color: var(--colour1);">accent colour</span>
+			<span style="background-color: var(--accent-light);">accent colour - light</span>
+			<span style="background-color: var(--colour1);">accent colour</span>
+			<span style="background-color: var(--accent-dark);">accent colour - dark</span>
+
+			<span style="background-color: hsl(from var(--colour) 0.00turn s l / alpha);">h = 0.00</span>
+			<span style="background-color: hsl(from var(--colour) 0.25turn s l / alpha);">h = 0.25</span>
+			<span style="background-color: hsl(from var(--colour) 0.50turn s l / alpha);">h = 0.50</span>
+			<span style="background-color: hsl(from var(--colour) 0.75turn s l / alpha);">h = 0.75</span>
+			<span style="background-color: hsl(from var(--colour) 1.00turn s l / alpha);">h = 1.00</span>
+ 			-->
+
+
+		</form>
+		</output>
+
+
+		<form>
+			<h2>Generic form</h2>
+
+			<textarea title="this is a title attribute">
+				lorem ipsum dolor sit amet
+			</textarea>
+			<br/>
+			<button type="button">button</button>
+			<label>
+				<input type="radio" name="radio" value="radio1" checked>
+				radio1
+			</label>
+			<label>
+				<input type="radio" name="radio" value="radio2">
+				radio2
+			</label>
+			<input type="checkbox" checked>
+			<input type="range" min="1" max="10" value="5">
+			<input type="number" min="1" max="10" value="5">
+			<input type="date">
+			<select size=3>
+				<option>option 1</option>
+				<option>option 2</option>
+				<option>option 3</option>
+				<option>option 4</option>
+			</select>
+			<input type="color">
+			<details>
+				<summary>summary</summary>
+				details
+			</details>
+		</form>
+
+
+
+
+
+	</main>
+
+</body>
+</html>
