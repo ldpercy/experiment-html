@@ -1,0 +1,35 @@
+.background-crosshatch {
+	background:
+		repeating-linear-gradient(
+			45deg,
+			#999a 0pt,
+			#999a 1pt,
+			#fff0 1pt,
+			#fff0 20pt
+		),
+		repeating-linear-gradient(
+			135deg,
+			#999a 0pt,
+			#999a 1pt,
+			#fff0 1pt,
+			#fff0 20pt
+		);
+}
+
+.background-checkerboard{
+	background:
+		repeating-linear-gradient(
+			45deg,
+			#999a 0px,
+			#999a 10px,
+			#fffa 10px,
+			#fffa 20px
+		),
+		repeating-linear-gradient(
+			135deg,
+			#999a 0px,
+			#999a 10px,
+			#fffa 10px,
+			#fffa 20px
+		);
+}

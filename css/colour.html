@@ -6,6 +6,7 @@
 	<link rel="icon" href="../[common]/favicon.svg">
 	<link rel="stylesheet" href="../[common]/common-style.css">
 	<link rel="stylesheet" href="../[common]/transition.css">
+	<link rel="stylesheet" href="../[common]/background.css">
 	<script defer src="../[common]/colourScheme-selector.js"></script>
 	<script src="../[common]/common-script.js"></script>
 
@@ -22,8 +23,6 @@
 		<h1><a href="">colour</a></h1>
 	</header>
 
-
-
 	<main>
 
 		<script class="limit-height">
@@ -39,7 +38,7 @@
 					<div>${swatchesHSL(colour, 'h', divisions)}</div>
 					<div>${swatchesHSL(colour, 's', divisions)}</div>
 					<div>${swatchesHSL(colour, 'l', divisions)}</div>
-					<div class="crosshatch">${swatchesHSL(colour, 'a', divisions)}</div>
+					<div class="background-crosshatch">${swatchesHSL(colour, 'a', divisions)}</div>
 				`;
 
 				document.getElementById('swatchesHSL').innerHTML = swatches;
@@ -114,26 +113,6 @@
 				}
 
 			}
-
-			.crosshatch {
-				background:
-					repeating-linear-gradient(
-						45deg,
-						#999a 0pt,
-						#999a 1pt,
-						#fff0 1pt,
-						#fff0 20pt
-					),
-					repeating-linear-gradient(
-						135deg,
-						#999a 0pt,
-						#999a 1pt,
-						#fff0 1pt,
-						#fff0 20pt
-					);
-			}
-
-
 		</style>
 
 		<output>
