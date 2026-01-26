@@ -1,10 +1,10 @@
 /* url.js
 */
-
+import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
 
 class UrlApp extends HTMLApp {
-	name = "UrlApp";
-	info = "UrlApp by ldpercy";
+	appName = "UrlApp";
+	appInfo = "UrlApp by ldpercy";
 
 	eventListeners = [
 		{

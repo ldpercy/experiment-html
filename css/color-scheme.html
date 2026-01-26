@@ -20,6 +20,8 @@
 		<h1><a href="">color-scheme</a></h1>
 	</header>
 
+	<main>
+
 	<script>
 		let colourScheme = getUrlParameter('scheme');
 
@@ -68,19 +70,21 @@
 		}
 	</style>
 
+	<section class="fullwidth">
+		<h2>Accent-color</h2>
 
-	<h2>Accent-color</h2>
+		<input type="color" onchange="setAccentColour(this.value);">
+		<span style="background-color: var(--accent-colour);">accent colour</span>
+		<span style="background-color: var(--accent-light);">accent colour - light</span>
+		<span style="background-color: var(--accent-colour);">accent colour</span>
+		<span style="background-color: var(--accent-dark);">accent colour - dark</span>
+	</section>
 
-	<input type="color" onchange="setAccentColour(this.value);">
-	<span style="background-color: var(--accent-colour);">accent colour</span>
-	<span style="background-color: var(--accent-light);">accent colour - light</span>
-	<span style="background-color: var(--accent-colour);">accent colour</span>
-	<span style="background-color: var(--accent-dark);">accent colour - dark</span>
 
 
-	<h2>color-scheme: light</h2>
 
 	<form class="light">
+		<h2>color-scheme: light</h2>
 		<textarea title="this is a title attribute">textarea</textarea>
 		<br/>
 		<button>button</button>
@@ -106,8 +110,9 @@
 		</details>
 	</form>
 
-	<h2>color-scheme: dark</h2>
+
 	<form class="dark">
+		<h2>color-scheme: dark</h2>
 		<textarea title="this is a title attribute">textarea</textarea>
 		<br/>
 		<button>button</button>
@@ -132,6 +137,9 @@
 			details
 		</details>
 	</form>
+
+
+	</main>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-@import "../[html-common]/style/html-visible.css";
+@import "../[html-common]/style/html-common.css";
 
 
 html {
@@ -97,6 +97,12 @@ main {
 		grid-template-columns: 1fr 1fr ;
 	}
 }
+
+
+
+/*
+**	Miscellaneous
+*/
 
 
 
