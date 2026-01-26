@@ -8,7 +8,7 @@
 	<script src="../[common]/common-script.js"></script>
 
 </head>
-<body>
+<body onload="setColour();">
 	<header>
 		<nav>
 			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourScheme="light">🟓</a>
@@ -26,9 +26,23 @@
 		<script class="limit-height">
 			let colourScheme = getUrlParameter('scheme');
 
+
+			document.querySelectorAll('.colourScheme-selector').forEach(
+				(element) => {
+					element.addEventListener(
+						'click',
+						() => {
+							event.preventDefault();
+							this.setColourScheme(event.target.dataset.colourscheme);
+						}
+					);
+				}
+			);
+
 			if (colourScheme) {
 				setColourScheme(colourScheme);
 			}
+
 
 			/** setColourScheme
 			 * @param {string} schemeName
@@ -38,16 +52,21 @@
 				document.documentElement.className = document.documentElement.className.replace(/(\bcolourScheme-\w+\b)?/,`colourScheme-${schemeName}`);
 			}
 
-			function setColour(colour) {
+			function setColour() {
+				const colour = document.getElementById('input-colour').value;
+				const divisions = document.getElementById('input-divisions').value;
+
 				document.body.style.setProperty('--colour', colour);
 				document.body.style.setProperty('--colour1', colour);
 
 
+
+
 				const swatches =`
-					<div>${swatchesHSL(colour, 'h', 5)}</div>
-					<div>${swatchesHSL(colour, 's', 5)}</div>
-					<div>${swatchesHSL(colour, 'l', 5)}</div>
-					<div>${swatchesHSL(colour, 'a', 5)}</div>
+					<div>${swatchesHSL(colour, 'h', divisions)}</div>
+					<div>${swatchesHSL(colour, 's', divisions)}</div>
+					<div>${swatchesHSL(colour, 'l', divisions)}</div>
+					<div class="crosshatch">${swatchesHSL(colour, 'a', divisions)}</div>
 				`;
 
 				document.getElementById('swatchesHSL').innerHTML = swatches;
@@ -78,9 +97,9 @@
 
 				for (i=0; i<=divisions; i++) {
 					val = i * step;
-					h	= (channel === 'h') ? `calc(h + ${val})` : 'h';
-					s	= (channel === 's')	? `${val}` : 's';
-					l	= (channel === 'l')	? `${val}` : 'l';
+					h	= (channel === 'h') ? `calc(h + ${val.toFixed(2)})` : 'h';
+					s	= (channel === 's')	? `${val.toFixed(2)}` : 's';
+					l	= (channel === 'l')	? `${val.toFixed(2)}` : 'l';
 					a	= (channel === 'a')	? `${val.toFixed(3)}` : 'alpha';
 
 					colourString = `hsl(from ${colour} ${h} ${s} ${l} / ${a})`;
@@ -91,16 +110,13 @@
 			}
 
 
-
 		</script>
 
-		<style>
+		<style contenteditable="plaintext-only"  class="limit-height">
 			body {
 				--colour: var(--project-colour);
 				--colour1: var(--project-colour);
-
 				color-scheme: var(--colourScheme);
-				/* --accent-color: #3daee9; */ /* firefox's accent colour */
 
 				--accent-light: hsl(from var(--colour1) h s 70% );
 				--accent-dark: hsl(from var(--colour1) h s 40% );
@@ -109,23 +125,55 @@
 			}
 			output { grid-column-start: span 4; }
 			.swatches {
+				font-family:monospace;
+				div {
+					display: flex;
+  					justify-content: space-evenly;
+				}
 				span {
 					display:inline-block;
-					font-family:monospace;
-					max-width: 8em;
-					min-height: 5em;
+					width: 100%;
+					/* max-width: 8em; */
+					/* height: 100%;
+					height: fit-content; */
 					padding:2em;
 					border-radius:1ex;
 				}
+
 			}
+
+			.crosshatch {
+				background:
+					repeating-linear-gradient(
+						45deg,
+						#999a 0pt,
+						#999a 1pt,
+						#fff0 1pt,
+						#fff0 20pt
+					),
+					repeating-linear-gradient(
+						135deg,
+						#999a 0pt,
+						#999a 1pt,
+						#fff0 1pt,
+						#fff0 20pt
+					);
+			}
+
 
 		</style>
 
 		<output>
-		<form>
+		<form onchange="setColour();">
 			<h2>Colour</h2>
-
-			<input type="color" value="orangered" onchange="setColour(this.value);">
+			<label>
+				Colour
+				<input type="color" id="input-colour" value="orangered">
+			</label>
+			<label>
+				Channel divisions
+				<input type="number" id="input-divisions" min="2" max="12" step="1" value="5">
+			</label>
 			<br/>
 
 			<h3>hsl</h3>
@@ -133,46 +181,6 @@
 
 			<h3>hwb</h3>
 			<div class="swatches" id="swatchesHWB"></div>
-
-			<!--
-			<table>
-			<thead>
-			<tr>
-				<th>values</td>
-				<th><input id="col1" type="number" min="0" max="1" step="0.1" value="0.0"/></th>
-				<th><input id="col2" type="number" min="0" max="1" step="0.1" value="0.2"/></th>
-				<th><input id="col3" type="number" min="0" max="1" step="0.1" value="0.4"/></th>
-				<th><input id="col3" type="number" min="0" max="1" step="0.1" value="0.6"/></th>
-				<th><input id="col4" type="number" min="0" max="1" step="0.1" value="0.8"/></th>
-				<th><input id="col4" type="number" min="0" max="1" step="0.1" value="1.0"/></th>
-			</tr>
-			</thead>
-			<tbody>
-			<tr style="background-color: hsl(from var(--colour) h s l / alpha);">
-				<th>hsla</th>
-				<td style="background-color: hsl(from var(--colour) calc(h + 000) S L / alpha);">h + 000</td>
-				<td style="background-color: hsl(from var(--colour) calc(h + 090) s l / alpha);">h + 090</td>
-				<td style="background-color: hsl(from var(--colour) calc(h + 180) s l / alpha);">h + 180</td>
-				<td style="background-color: hsl(from var(--colour) calc(h + 270) s l / alpha);">h + 270</td>
-				<td style="background-color: hsl(from var(--colour) calc(h + 360) s l / alpha);">h + 360</td>
-			</tr>
-			</tbody>
-
-			</table>
-
-
-			<span style="background-color: var(--colour1);">accent colour</span>
-			<span style="background-color: var(--accent-light);">accent colour - light</span>
-			<span style="background-color: var(--colour1);">accent colour</span>
-			<span style="background-color: var(--accent-dark);">accent colour - dark</span>
-
-			<span style="background-color: hsl(from var(--colour) 0.00turn s l / alpha);">h = 0.00</span>
-			<span style="background-color: hsl(from var(--colour) 0.25turn s l / alpha);">h = 0.25</span>
-			<span style="background-color: hsl(from var(--colour) 0.50turn s l / alpha);">h = 0.50</span>
-			<span style="background-color: hsl(from var(--colour) 0.75turn s l / alpha);">h = 0.75</span>
-			<span style="background-color: hsl(from var(--colour) 1.00turn s l / alpha);">h = 1.00</span>
- 			-->
-
 
 		</form>
 		</output>

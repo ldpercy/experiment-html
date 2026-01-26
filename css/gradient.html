@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>gradient</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../[common]/favicon.svg">
+	<link rel="stylesheet" href="../[common]/common-style.css">
+	<script src="../[common]/common-script.js"></script>
+
+</head>
+<body onload="setColour();">
+	<header>
+		<nav>
+			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourScheme="light">🟓</a>
+			<a class="colourScheme-selector" href="?colourScheme=dark" title="Dark colour scheme" data-colourScheme="dark">🟒</a>
+			<a title="To folder" href="./">🖿</a>
+			<a title="Parent folder" href="../">🡅</a>
+		</nav>
+
+		<h1><a href="">gradient</a></h1>
+	</header>
+
+
+	<main>
+		<script></script>
+
+		<style contenteditable="plaintext-only">
+			output {
+				min-height:5em;
+
+				&::before {
+					font-family: monospace;
+					display:inline-block;
+					background-color: dimgrey;
+					border-radius: 1ex 0ex;
+					margin-bottom: 2ex;
+					padding: 1ex;
+					color:white;
+					content: attr(class);
+				}
+			}
+
+			</style>
+			<style contenteditable="plaintext-only">
+				.checkerboard{
+					background:
+						repeating-linear-gradient(
+							45deg,
+							#999a 0px,
+							#999a 10px,
+							#fffa 10px,
+							#fffa 20px
+						),
+						repeating-linear-gradient(
+							135deg,
+							#999a 0px,
+							#999a 10px,
+							#fffa 10px,
+							#fffa 20px
+						);
+				}
+			</style>
+			<output class="checkerboard">
+			</output>
+
+			<style contenteditable="plaintext-only">
+			.crosshatch {
+				background:
+					repeating-linear-gradient(
+						45deg,
+						#999a 0pt,
+						#999a 1pt,
+						#fff0 1pt,
+						#fff0 20pt
+					),
+					repeating-linear-gradient(
+						135deg,
+						#999a 0pt,
+						#999a 1pt,
+						#fff0 1pt,
+						#fff0 20pt
+					);
+			}
+
+		</style>
+
+
+
+		<output class="crosshatch">
+		</output>
+
+
+
+
+	</main>
+
+</body>
+</html>

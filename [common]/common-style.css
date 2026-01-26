@@ -33,6 +33,24 @@ html {
 
 }
 
+html.colourScheme-light {
+	color-scheme: light;
+	background-color: var(--html-background-light);
+	body {
+		background-color: var(--body-background-light);
+		color: black;
+	}
+}
+
+html.colourScheme-dark {
+	color-scheme: dark;
+	background-color: var(--html-background-dark);
+	body {
+		background-color: var(--body-background-dark);
+		color: white;
+	}
+}
+
 
 body {
 	margin:1em;
@@ -46,12 +64,18 @@ body {
 }
 
 
+
+/*
+**	main grid layout
+*/
+
 main {
 	display:grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	margin:1ex;	border-radius:1ex;
-	&>* { margin:inherit; border-radius:inherit;	}
-	style, script {
+	&>* {
+		margin:inherit;
+		border-radius:inherit;
 		grid-column-start: span 2;
 	}
 
@@ -179,22 +203,4 @@ th {
 
 
 
-
-html.colourScheme-light {
-	color-scheme: light;
-	background-color: var(--html-background-light);
-	body {
-		background-color: var(--body-background-light);
-		color: black;
-	}
-}
-
-html.colourScheme-dark {
-	color-scheme: dark;
-	background-color: var(--html-background-dark);
-	body {
-		background-color: var(--body-background-dark);
-		color: white;
-	}
-}
 
