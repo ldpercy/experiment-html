@@ -5,6 +5,8 @@
 	<meta charset="utf-8">
 	<link rel="icon" href="../[common]/favicon.svg">
 	<link rel="stylesheet" href="../[common]/common-style.css">
+	<link rel="stylesheet" href="../[common]/transition.css">
+	<script defer src="../[common]/colourScheme-selector.js"></script>
 	<script src="../[common]/common-script.js"></script>
 
 </head>
@@ -21,36 +23,10 @@
 	</header>
 
 
+
 	<main>
 
 		<script class="limit-height">
-			let colourScheme = getUrlParameter('scheme');
-
-
-			document.querySelectorAll('.colourScheme-selector').forEach(
-				(element) => {
-					element.addEventListener(
-						'click',
-						() => {
-							event.preventDefault();
-							this.setColourScheme(event.target.dataset.colourscheme);
-						}
-					);
-				}
-			);
-
-			if (colourScheme) {
-				setColourScheme(colourScheme);
-			}
-
-
-			/** setColourScheme
-			 * @param {string} schemeName
-			 */
-			function setColourScheme(schemeName) {
-				document.documentElement.style.setProperty('--colourScheme', schemeName);
-				document.documentElement.className = document.documentElement.className.replace(/(\bcolourScheme-\w+\b)?/,`colourScheme-${schemeName}`);
-			}
 
 			function setColour() {
 				const colour = document.getElementById('input-colour').value;
@@ -58,9 +34,6 @@
 
 				document.body.style.setProperty('--colour', colour);
 				document.body.style.setProperty('--colour1', colour);
-
-
-
 
 				const swatches =`
 					<div>${swatchesHSL(colour, 'h', divisions)}</div>

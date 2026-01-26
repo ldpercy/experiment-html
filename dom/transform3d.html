@@ -6,21 +6,21 @@
 	<link rel="icon" href="../[common]/favicon.svg">
 	<link rel="stylesheet" href="../[common]/common-style.css">
 	<link rel="stylesheet" href="../[common]/form.css">
-
+	<script src="../[common]/common-script.js"></script>
 </head>
 <body onload="formOnchange()">
 	<header>
 		<nav>
-			<a id="button-lightScheme" href="#" title="Light scheme" data-scheme="light">🟓</a>
-			<a id="button-darkScheme" href="#" title="Dark scheme" data-scheme="dark">🟒</a>
+			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourscheme="light">🟓</a>
+			<a class="colourScheme-selector" href="?colourScheme=dark" title="Dark colour scheme" data-colourscheme="dark">🟒</a>
 			<a title="To folder" href="./">🖿</a>
 			<a title="Parent folder" href="../">🡅</a>
 		</nav>
 
 		<h1><a href="">transform 3d</a></h1>
 	</header>
-
 	<link rel="stylesheet" href="../[html-common]/style/svg/grid.css"/>
+	<script defer src="../[common]/colourScheme-selector.js"></script>
 
 	<main>
 
