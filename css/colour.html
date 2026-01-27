@@ -11,7 +11,7 @@
 	<script src="../[common]/common-script.js"></script>
 
 </head>
-<body onload="setRandomColour();">
+<body onload="loadColour();">
 	<header>
 		<nav>
 			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourScheme="light">🟓</a>
@@ -26,14 +26,22 @@
 	<main>
 
 		<script class="limit-height">
-			function setRandomColour() {
-				randomColour = randomColourHex();
-				document.getElementById('input-colourText').value = randomColour;
-				document.getElementById('input-colourChooser').value = randomColour;
-				setColour();
+			function loadColour() {
+				let colour = getUrlParameter('colour');
+				if (!colour) {
+					colour = randomColourHex();
+				}
+				setColour(colour);
 			}
 
-			function setColour() {
+			function setColour(colour) {
+				document.getElementById('input-colourText').value = colour;
+				document.getElementById('input-colourChooser').value = colour;
+				generateSwatches();
+			}
+
+
+			function generateSwatches() {
 				const colour = document.getElementById('input-colourText').value;
 				const divisions = document.getElementById('input-divisions').value;
 
@@ -88,7 +96,7 @@
 		</style>
 
 
-		<form onchange="setColour();" class="fullwidth">
+		<form onchange="generateSwatches();" class="fullwidth">
 			<h2>Settings</h2>
 			<label>
 				Colour chooser
@@ -104,7 +112,7 @@
 			</label>
 
 			<label>
-				<button type="button" onclick="setRandomColour()">🎲 random colour</button>
+				<button type="button" onclick="setColour(randomColourHex());">🎲 random colour</button>
 			</label>
 
 		</form>
@@ -130,15 +138,14 @@
 				// channel = hue saturation lightness alpha
 				let result = '';
 
-				let max = (channel === 'h') ? 360 : 1;
 				switch(channel) {
 					case 'h': max = 360; break;
 					case 's': max = 100; break;
 					case 'l': max = 100; break;
 					case 'a': max = 1; break;
 				}
-
 				const step = max/divisions;
+
 				let val = 0;
 				let h, s, l, a;
 				let colourString = '';
@@ -173,8 +180,8 @@
 					case 'b': max = 100; break;
 					case 'a': max = 1; break;
 				}
-
 				const step = max/divisions;
+
 				let val = 0;
 				let h, w, b, a;
 				let colourString = '';
