@@ -32,6 +32,7 @@
 				font-family:monospace;
 				width: 100%;
 				th { padding:2em; }
+				thead th { font-weight:bold; }
 				tbody th {
 					background-color: var(--row-colour);
 				}
@@ -47,14 +48,30 @@
 				Colour inputs
 			</label>
 			<textarea id="input-colour" spellcheck="false">
+				black
+				white
 				#663399
 				#f7df1e
 				mediumvioletred
 				orangered
 				#ffb13b
+				dodgerblue
+				plum
+				springgreen
+				aqua
+				oldlace
+				floralwhite
+				beige
 			</textarea>
 
 			<!--
+				black
+				white
+				#663399
+				#f7df1e
+				mediumvioletred
+				orangered
+				#ffb13b
 				dodgerblue
 				plum
 				springgreen
@@ -68,9 +85,12 @@
 				Calculations
 			</label>
 			<textarea id="input-calculation" spellcheck="false">
-				hsl		h s l / 0.2
 				hsl		h s 50 / 0.5
-				hwb		h w 20 / 0.5
+				hsl		h s 60 / 0.4
+				hsl		h s 65 / 0.35
+				hsl		h s 66 / 0.33
+				hsl		h s 70 / 0.3
+				hsl		h s 80 / 0.2
 			</textarea>
 			<br/>
 			<button type="button" onclick="generateSwatches()">generate swatches</button>
@@ -85,11 +105,20 @@
 			<tbody id="result-tbody" class="background-crosshatch">
 			</tbody>
 			</table>
+
+			<pre>
+				Somewhere around
+					hsl(from $colour h s 70 / 0.30)
+					hsl(from $colour h s 66 / 0.33)
+				you get pretty reliable transparent backgrounds from just about any colour input (66/33 is more memorable though).
+				Though imo these are still a bit too opaque in dark mode, and don't really carry through the lightness flavour of the original.
+				Will need some more tweaking.
+			</pre>
 		</output>
 
 
 
-		<script>
+		<script class="fullwidth">
 
 			function generateSwatches() {
 				let result = '';
@@ -113,8 +142,6 @@
 				);
 				console.log(calculationArray);
 
-
-
 				let headerCells = '';
 				let trow = '';
 				let rowCells = '';
@@ -124,7 +151,7 @@
 
 				// header
 				for (let col=0; col < calculationArray.length; col++) {
-					headerCells += `<th>${calculationArray[col].model}(from color ${calculationArray[col].calc})</th>`;
+					headerCells += `<th>${calculationArray[col].model}(from $colour ${calculationArray[col].calc})</th>`;
 				}
 				let thead = `
 					<tr>
@@ -156,45 +183,6 @@
 				}
 				document.getElementById('result-tbody').innerHTML = tbody;
 			}
-
-
-
-			/** swatchesHSL
-			 * @param {string} colour
-			 * @param {string} channel
-			 * @param {number} divisions
-			 */
-			function swatchesHSL(colour, channel, divisions) {
-				// channel = hue saturation lightness alpha
-				let result = '';
-
-				switch(channel) {
-					case 'h': max = 360; break;
-					case 's': max = 100; break;
-					case 'l': max = 100; break;
-					case 'a': max = 1; break;
-				}
-				const step = max/divisions;
-
-				let val = 0;
-				let h, s, l, a;
-				let colourString = '';
-
-				for (i=0; i<=divisions; i++) {
-					val = i * step;
-					h	= (channel === 'h') ? `calc(h + ${val.toFixed(2)})` : 'h';
-					s	= (channel === 's')	? `${val.toFixed(2)}` : 's';
-					l	= (channel === 'l')	? `${val.toFixed(2)}` : 'l';
-					a	= (channel === 'a')	? `${val.toFixed(3)}` : 'alpha';
-
-					colourString = `hsl(from ${colour} ${h} ${s} ${l} / ${a})`;
-					result += `<span style="background-color: ${colourString};">${colourString}</span>`;
-				}
-
-				return result;
-			}/* swatchesHSL */
-
-
 
 		</script>
 

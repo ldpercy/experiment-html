@@ -1,52 +1,36 @@
 @import "../[html-common]/style/html-common.css";
 
+:root {
+	--project-colour: orangered;
+}
+
 
 html {
+	--html-light: #ddd;
+	--html-dark: #000;
+	background-color: var(--html-light);
 
-	--silver-light: #bbb;
-	--silver-dark: #333;
-
-	--nearly-white: #fcfcfc;
-	--nearly-black: #111;
-
-
-	--html-background-light: var(--silver-light);
-	--body-background-light: var(--nearly-white);
-
-	--html-background-dark: var(--nearly-black);
-	--body-background-dark: var(--silver-dark);
-
-
-	background-color: var(--html-background-light);
-
-
-	--javascript-color: #f7df1e;
-	--javascript-color2: #ffca28;
-
-
-	--project-colour: orangered;
-	--accent-colour: var(--project-colour);
-	/* background-color: hwb(from var(--css-purple) h w b / 0.4); */
-	/* --accent: var(--accent-dark); */
-	--accent: var(--accent-colour);
-	accent-color: var(--accent-colour);
-
+	body {
+		--body-light: #fcfcfc;		/* nearly-white */
+		--body-dark: #222;
+		background-color: var(--body-light);
+	}
 }
 
 html.colourScheme-light {
 	color-scheme: light;
-	background-color: var(--html-background-light);
+	background-color: var(--html-light);
 	body {
-		background-color: var(--body-background-light);
+		background-color: var(--body-light);
 		color: black;
 	}
 }
 
 html.colourScheme-dark {
 	color-scheme: dark;
-	background-color: var(--html-background-dark);
+	background-color: var(--html-dark);
 	body {
-		background-color: var(--body-background-dark);
+		background-color: var(--body-dark);
 		color: white;
 	}
 }
@@ -58,9 +42,10 @@ body {
 	border-radius:1em;
 	font-family:sans-serif;
 	color:black;
-	background-color: var(--body-background-light);
-
 	tab-size: 4;
+
+	--accent-colour: var(--project-colour);
+	accent-color: var(--accent-colour);
 }
 
 
@@ -99,6 +84,21 @@ main {
 }
 
 
+/*
+** Elements & Colours
+*/
+
+
+
+pre {
+	--element-colour: black;
+}
+
+/*
+--silver-light: #bbb;
+--silver-dark: #333;
+*/
+
 
 /*
 **	Miscellaneous
@@ -107,12 +107,12 @@ main {
 
 
 pre {		/* treat these like markdown */
-
 	margin:1em;
 	padding:1em 0em;
-	background-color: white;
+	border: 1px solid var(--element-colour);
+	background-color: hsl(from var(--element-colour) h s 66 / 0.33);
 	border-radius: 0em 1em 1em 1em;
-	border: 1px solid silver;
+
 }
 
 .pretty {
@@ -218,11 +218,13 @@ body[onload] {
 
 	&::before {
 		position:relative;
-		top:-3ex;
-		left:-3ex;
+		font-size:small;
+		top:-2em;
+		left:-2em;
 		font-family: monospace;
 
-		background-color: beige;
+		background-color: hsl(from var(--javascript-yellow) h s l / 0.5); ;
+		color:dimgrey;
 		border-radius: 1em 0em;
 		margin-bottom: 1ex;
 		padding: 1ex;
