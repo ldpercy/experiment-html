@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+	<title>ellipse</title>
+
+	<g>
+		<title>viewBox</title>
+		<rect class="viewBox" style="x: -100%; y: -100%; width: 200%; height: 200%; fill: url(#pattern-grid);"/>
+		<pattern id="pattern-grid" width="100" height="100" patternUnits="userSpaceOnUse">
+			<rect class="grid" x="0" y="0" width="100" height="100"/>
+		</pattern>
+		<circle class="grid" cx="0" cy="0" r="10"/>
+	</g>
+
+	<style>
+		.grid { stroke: teal; stroke-width: 1px; fill:none; }
+
+		path {
+			stroke: blue;
+			stroke-width: 1;
+			fill: #00fa;  <!-- none; -->
+			fill-rule: evenodd; <!-- evenodd, nonzero -->
+			<!-- stroke-dasharray: 2 7; -->
+			stroke-linecap: round;
+			stroke-linejoin: bevel;
+			marker-start:url(#markerStart);
+			marker-end:url(#markerEnd);
+		}
+
+		.red   { stroke: #f00f; fill: #f007; }
+		.green { stroke: #0f0f; fill: #0f07; }
+		.blue  { stroke: #00ff; fill: #00f7; }
+
+		circle {
+			stroke: cyan;
+			fill: cadetblue;
+		}
+
+		rect {
+			stroke: red;
+			fill: pink;
+
+		}
+
+		text {
+			fill: tan;
+			stroke: tomato;
+			font-size: 32em;
+		}
+
+		.shadow {
+			filter: drop-shadow(0px 40px 20px #444b);
+		}
+
+		ellipse {
+			fill: #ccca;
+			stroke: #cccf;
+			filter: drop-shadow(0px 40px 20px #444b);
+		}
+
+		.ellipse1 {
+			cx: 0px;
+			cy: -500px;
+			rx: 200px;
+			ry: 200px;
+		}
+
+		.ellipse2 {
+			cx: 0px;
+			cy: 000px;
+			rx: 400px;
+			ry: 200px;
+		}
+
+		.ellipse3 {
+			cx: 0px;
+			cy: 500px;
+			rx: 800px;
+			ry: 200px;
+		}
+
+	</style>
+
+	<defs>
+		<clipPath id="clip-circle">
+			<circle cx="0" cy="0" r="450"/>
+		</clipPath>
+		<clipPath id="clip2">
+			<text x="0" y="100" >
+				CLIP
+			</text>
+		</clipPath>
+		<clipPath id="clip3">
+			<rect x="-100" y="-100" width="800" height="400"/>
+		</clipPath>
+		<clipPath id="clip4">
+			<path class="star" d="M -951 -309 L 588 809 L 0 -1000 L -588 809 L 951 -309  ZM -588 -809 L 0 1000 L 588 -809 L -951 309 L 951 309  Z Z"></path>
+		</clipPath>
+
+		<g id="drawing" class=" shadow">
+			<circle cx="-100" cy="0" r="600" />
+			<rect x="0" y="100" width="600" height="800" />
+			<text x="50" y="50" >
+				clip
+			</text>
+		</g>
+
+		<mask id="circle-knockout" class="knockout-mask ">
+			<circle class="knockout-shapeContaining shadow" cx="0" cy="0" r="800"/>
+			<circle class="knockout-shapeKnockedout shadow" cx="0" cy="0" r="400"/>
+		</mask>
+
+	</defs>
+
+
+	<g class="shadow">
+		<!-- <ellipse  rx="200" ry="100" /> -->
+
+		<ellipse class="ellipse1 red" />
+		<ellipse class="ellipse2 green" />
+		<ellipse class="ellipse3 blue" />
+	</g>
+
+</svg>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>🐢 Turtle</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../[library]/form.css"/>
+	<link rel="stylesheet" href="turtle.css"/>
+	<script defer src="../[library]/maths.js"></script>
+	<script defer src="../[library]/geometry.js"></script>
+	<script defer src="../[library]/turtle.js"></script>
+	<script defer src="./turtle.js"></script>
+
+</head>
+<body onload="bodyOnload()">
+
+
+	<div class="form-group">
+
+		<form id="form-turtle">
+
+			<h1>Turtle</h1>
+
+
+			<details>
+				<summary>Commands</summary>
+
+				<output id="turtle-instructions">
+					<div>left degrees,distance</div>
+					<div>right degrees,distance</div>
+					<div>bear degrees,distance</div>
+					<div>jump degrees,distance</div>
+					<div>move dx,dy</div>
+					<div>circle radius</div>
+					<div>ellipse width,height</div>
+					<div>rect width,height</div>
+					<div>marker</div>
+				</output>
+
+			</details>
+			<textarea id="input-command" type="string" name="command" title="command">right 60,500</textarea>
+			<button id="input-do" type="button">do</button>
+			<button id="input-clear" type="button">clear</button>
+			<button id="input-origin" type="button">to origin</button>
+
+			<h2>Current:</h2>
+			<output id="turtle-report"></output>
+		</form>
+
+
+		<form id="form-style">
+			<h2>Drawing</h2>
+			<label for="input-colour" class="noafter">
+				<input type="color" name="colour" id="input-colour" value="#ff0000"/>
+				colour
+			</label>
+			<label for="input-strokeWidth" class="noafter">
+				<input type="range" name="strokeWidth" id="input-strokeWidth" value="10" min="1" max="20"/>
+				stroke-width
+			</label>
+			<label for="input-showStroke" class="noafter">
+				<input type="checkbox" name="showStroke" id="input-showStroke" checked>
+				stroke
+			</label>
+			<label for="input-showTurtle" class="noafter">
+				<input type="checkbox" name="showTurtle" id="input-showTurtle" checked>
+				turtle
+			</label>
+			<label for="input-showGrid" class="noafter">
+				<input type="checkbox" name="showGrid" id="input-showGrid" checked>
+				grid
+			</label>
+			<label for="input-showMarkers" class="noafter">
+				<input type="checkbox" name="showGrid" id="input-showMarkers" checked>
+				markers
+			</label>
+
+		</form>
+	</div>
+
+	<output id="output">
+		<svg id="svg-drawing" class="drawing" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" >
+
+			<g id="group-grid" class="graphPaper">
+				<pattern id="pattern-graphPaper" width="100" height="100" patternUnits="userSpaceOnUse">
+					<rect style="stroke: teal; stroke-width: 1px; fill:none;" x="0" y="0" width="100" height="100"/>
+				</pattern>
+				<rect class="viewBox" style="x: -100%; y: -100%; width: 200%; height: 200%; stroke:none; fill: url(#pattern-graphPaper);"/>
+				<line x1="-100%" y1="0" x2="100%" y2="0" style="stroke: teal; stroke-width: 2px;"><title>x-axis</title></line>
+				<line x1="0" y1="-100%" x2="0" y2="100%" style="stroke: teal; stroke-width: 2px;"><title>y-axis</title></line>
+				<circle r="10" style="stroke: teal; stroke-width: 2px; fill:none;"><title>origin</title></circle>
+			</g>
+
+			<defs>
+				<!--
+				<marker id="wedge" markerWidth="100" markerHeight="100" refX="0" refY="60" orient="auto-start-reverse" viewBox="-20 0 40 80">
+					<path class="marker-mid" d="M 0,0 L 20 80 L -20 80 Z"/>
+				</marker>
+				-->
+				<!-- <polygon id="def-marker" points="0,-40 10,10 -10 10" class="marker"/> -->
+				<path id="def-marker" class="marker" d="m0,-30 L10,10 L-10 10 z"/>  <!--  -->
+
+
+				<g id="def-turtle" class="turtle">
+					<g class="feet">
+						<circle class="fl"/>
+						<circle class="fr"/>
+						<circle class="bl"/>
+						<circle class="br"/>
+					</g>
+					<circle class="body"/>
+					<circle class="head"/>
+					<g class="eyes">
+						<circle class="el"/>
+						<circle class="er"/>
+					</g>
+				</g>
+
+			</defs>
+
+			<g id="group-output" class="page show-marker">
+
+			</g>
+
+			<use id="icon-turtle" href="#def-turtle" class="turtle" x="0" y="0"><title id="turtle-title"></title></use>
+		</svg>
+	</output>
+
+</body>
+</html>

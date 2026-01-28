@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+	<title>
+		textPath
+	</title>
+
+
+	<style>
+		svg {
+			background:
+				repeating-linear-gradient(
+					0deg,
+					#fffa 0px,
+					#ccca 100px
+				),
+				repeating-linear-gradient(
+					90deg,
+					#fffa 0px,
+					#ccca 100px
+				);
+			background-position-x: center;
+			background-position-y: center;
+		}
+
+		path {
+			stroke: blue;
+			stroke-width: 1;
+			fill: #00fa;  <!-- none; -->
+			fill-rule: nonzero; <!-- evenodd, nonzero -->
+			<!-- stroke-dasharray: 2 7; -->
+			stroke-linecap: round;
+			stroke-linejoin: bevel;
+			marker-start:url(#markerStart);
+			marker-end:url(#markerEnd);
+		}
+
+
+		circle {
+			stroke: cyan;
+			fill: cadetblue;
+
+		}
+
+		rect {
+			/* stroke: red; */
+			fill: royalblue;
+
+		}
+
+		text  {
+			fill: tan;
+			stroke: teal;
+			font-size: 16em;
+		}
+
+		textPath {
+			fill: pink;
+			stroke: purple;
+			font-size: 1ex;
+		}
+
+
+		.shadow {
+			filter: drop-shadow(0px 40px 20px #444b);
+		}
+
+
+
+		.clip {
+			clip-path: url(#clip4);
+			clip-rule: evenodd; /* for complex clip-paths */
+		}
+
+		.knockout {
+			mask: url(#knockout-text);
+		}
+
+		.knockout-mask {
+			.knockout-shapeContaining { fill: #ffff; }    /* this gets added */
+			.knockout-shapeKnockedout { fill: #000f; }  /* this gets subtracted */
+		}
+
+	</style>
+
+	<defs>
+
+		<circle id="path1" cx="200" cy="50" r="450"/>
+		<path id="path-star" d="M -951 -309 L 588 809 L 0 -1000 L -588 809 L 951 -309  ZM -588 -809 L 0 1000 L 588 -809 L -951 309 L 951 309  Z"/>
+		<path id="path3" d="M -500,-500 L 0,500 "/>
+
+		<path id="dateLabelPath" d="
+				M -303.1 -175.0
+				A 350.0 350.0 0 0 1 303.1 -175.0"></path>
+		<path id="labelPath-monthName-jan" d="
+			M 0.000 -1110
+			A 1110 1110 0 0 1 563.2 -956.5"></path>
+
+		<clipPath id="clip2">
+			<text x="0" y="100" >CLIP</text>
+		</clipPath>
+		<clipPath id="clip3">
+			<rect x="-100" y="-100" width="800" height="400"/>
+		</clipPath>
+
+
+
+		<clipPath id="clip5">
+			<!-- <rect x="0" y="-300" width="1200" height="400" /> -->
+			<text x="0" y="0" >
+				knockout
+			</text>
+		</clipPath>
+
+		<g id="drawing" class=" ">
+			<circle cx="-100" cy="0" r="600" />
+			<rect x="-100" y="-300" width="1800" height="800" />
+			<text x="-800" y="-800" >
+				textPath
+			</text>
+		</g>
+
+		<mask id="knockout-text" class="knockout-mask">
+			<rect class="knockout-shapeContaining" x="-1000" y="-1000" width="2100" height="1600" />
+			<text class="knockout-shapeKnockedout" x="0" y="0" >
+				textPath
+			</text>
+			<textPath startOffset="50%" href="#dateLabelPath">textPath asdf</textPath>
+		</mask>
+
+	</defs>
+
+
+	<!-- <g id="drawing" class=" shadow">
+		<circle cx="-100" cy="0" r="600" />
+		<rect x="0" y="100" width="600" height="800" />
+		<text x="50" y="50" >
+			clip
+		</text>
+	</g> -->
+
+	<!-- <use href="#drawing" x="600" class="clip"/> -->
+<!-- 	<g class="clip" >
+		<use href="#drawing" transform="translate(500)" />
+	</g> -->
+
+
+	<!-- <path class="star" id="star" d="M 500 866 L -866 -500 L 1000 0 L -866 500 L 500 -866 L 0 1000 L -500 -866 L 866 500 L -1000 0 L 866 -500 L -500 866 L 0 -1000  Z"/> -->
+
+	<!-- <rect class="drawing" x="-500" y="-500" width="1500" height="1500" /> -->
+
+	<use href="#drawing"  x="-500"/>
+
+	<text>
+		<textPath class="" startOffset="50%" href="#labelPath-monthName-jan">January</textPath>
+	</text>
+
+	<text>
+		<textPath startOffset="50%" href="#path-star">lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet</textPath>
+	</text>
+
+
+
+</svg>

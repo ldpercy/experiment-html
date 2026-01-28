@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" class="light">
+<head>
+	<title>SVG Web Components</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../[library]/favicon.svg">
+	<link rel="stylesheet" href="../[library]/html.css">
+	<!-- <link rel="stylesheet" href="index.css"> -->
+
+	<script>
+		const protocol = new URL(window.location).protocol;
+
+		if (protocol === 'file:') {
+			alert("You are using `file:` protocol - modules won't work");
+		}
+	</script>
+	<script type="module" src="index.js"></script>
+
+
+</head>
+<body>
+	<nav>
+		<a id="button-lightMode" href="#" title="Light mode" mode="light">🟓</a>
+		<a id="button-darkMode" href="#" title="Dark mode" mode="dark">🟒</a>
+		<a title="To folder" href="./">🖿</a>
+		<a title="Parent folder" href="../">🡅</a>
+	</nav>
+
+	<h1><a href="">SVG Web Components</a></h1>
+
+
+	<!-- <h3>This is an h3</h3> -->
+
+
+	<template id="template0" ><!-- shadowrootmode="open" open closed -->
+		<style>
+			rect { fill:royalblue; }
+			text { font-size: 100px; fill: tomato; }
+		</style>
+		<rect x="-100" y="-100" width="200" height="200"/>
+		<slot name="my-text">My default text</slot>
+	</template>
+
+	<!-- <div>
+		<my-custom-element>
+			asdfsadf
+		</my-custom-element>
+
+		<my-custom-element>
+			asdfsadf
+			<text slot="my-text" x="0" y="o" >Let's have some different text!</span>
+		</my-custom-element>
+	</div> -->
+
+	<output>
+
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1000 -1000 2000 2000" preserveAspectRatio="xMidYMid meet" width="80%" height="80%">
+			<title>svg web component</title>
+			<use href="../[library]/grid.svg#grid" x="0" y="0"/>
+
+
+
+
+
+
+			<my-custom-element>
+				asdfsadf
+			</my-custom-element>
+
+			<my-custom-element>
+				asdfsadf
+				<text slot="my-text" x="0" y="0">Let's have some different text!</text>
+			</my-custom-element>
+
+
+		</svg>
+
+	</output>
+
+
+	<br/>
+
+
+	<h2>Log:</h2>
+	<output id="pageLog"></output>
+</body>
+</html>

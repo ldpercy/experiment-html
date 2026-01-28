@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+
+	<style>
+		path {
+			stroke: blue;
+			stroke-width: 1;
+			fill: #00fa;  <!-- none; -->
+			fill-rule: evenodd; <!-- evenodd, nonzero -->
+			<!-- stroke-dasharray: 2 7; -->
+			stroke-linecap: round;
+			stroke-linejoin: bevel;
+			marker-start:url(#markerStart);
+			marker-end:url(#markerEnd);
+		}
+		.origin { fill:transparent ; stroke:black }
+		marker { stroke-width:.5; }
+		.marker-start  { fill:lightgreen ; stroke:green }
+		.marker-end    { fill:pink ; stroke:red }
+
+		.css-shadow {
+			filter: drop-shadow(0px 40px 20px #444b);
+		}
+
+		circle {
+			stroke: cyan;
+			fill: cadetblue;
+
+		}
+
+		rect {
+			stroke: red;
+			fill: pink;
+		}
+
+		text {
+			font-size: 10em;
+			fill: tan;
+			stroke: none;
+			text-anchor: middle;
+		}
+
+		text.text1 {
+			fill: red;
+			/* font-weight: bolder; */
+			font-style: italic;
+		}
+		text.text2 {
+			font-size: 10em;
+			fill: blue;
+			/* font-style: oblique; */
+			stroke:green;
+			stroke-width: 5px;
+		}
+
+		text.text3 {
+			font-size: 10em;
+			fill: blue;
+			font-style: oblique;
+			stroke:green;
+			stroke-width: 5px;
+		}
+
+		.emoji {
+			font-style:normal;
+			stroke:none;
+		}
+
+
+	</style>
+
+	<defs>
+		<g id="testSvg" >
+			<circle cx="-300" cy="0" r="300" />
+			<rect x="0" y="0" width="600" height="900" />
+			<text x="50" y="50" >
+				use
+			</text>
+		</g>
+	</defs>
+
+	<g id="testSvg" class="css-shadow">
+		<circle cx="-300" cy="0" r="300" />
+		<rect x="0" y="0" width="600" height="900" />
+		<text id="testText" x="50" y="-400">
+			text: ☀🍃🍂🌱❄❆🌞🌡️🔥☀️🔅🔆🆒
+		</text>
+	</g>
+
+	<!-- <use href="#testText" y="300" class="text1"/> -->
+	<text x="0" y="0" class="css-shadow text1">
+		text1: ☀🍃🍂🌱❄❆🌞🌡️🔥☀️🔅🔆🆒
+	</text>
+
+	<text x="0" y="400" class="css-shadow text2">
+		text2: ☀🍃🍂🌱❄❆🌞🌡️🔥☀️🔅🔆🆒
+	</text>
+
+	<text x="0" y="800" class="css-shadow text3">
+		Mixed text <tspan class="emoji">🌞🌡️🔥</tspan> and <tspan class="emoji">🌞🌡️🔥</tspan> emojis
+	</text>
+
+
+
+</svg>

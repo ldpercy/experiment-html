@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+	<title>node order</title>
+
+	<use href="../[library]/grid.svg#grid" x="0" y="0"/>
+	<script>
+		<![CDATA[
+
+		document.addEventListener('DOMContentLoaded', setup);
+
+		function setup() {
+			document.getElementById('group-elements').addEventListener('click', clickHandler);
+		}
+
+		function clickHandler(event) {
+			//console.log(event);
+			toTop(event.target);
+			//toBottom(event.target);
+		}
+
+		function toTop(element) {
+			const parentElement = element.parentElement;
+			const childElement = parentElement.removeChild(element);
+			parentElement.appendChild(childElement);
+		}
+
+
+		function toBottom(element) {
+			const parentElement = element.parentElement;
+			const childElement = parentElement.removeChild(element);
+			parentElement.insertBefore(childElement, parentElement.children[0]);
+		}
+
+
+		// ]]>
+	</script>
+
+	<style>
+
+		text {
+			fill: tan;
+			stroke: none;
+			font-size: 18em;
+			text-anchor: middle;
+		}
+
+		rect {
+			stroke: red;
+			fill: pink;
+		}
+
+		.red   { stroke: #f00f; fill: #f00a; }
+		.green { stroke: #0f0f; fill: #0f0a; }
+		.blue  { stroke: #00ff; fill: #00fa; }
+
+		circle {
+			filter: drop-shadow(0px 40px 20px #222a);
+			r: 600px;
+			stroke-width: 2;
+		}
+
+		.circle1 {
+			cx: 0px;
+			cy: -300px;
+		}
+
+		.circle2 {
+			cx: -250px;
+			cy: 200px;
+		}
+
+		.circle3 {
+			cx: 250px;
+			cy: 200px;
+		}
+
+	</style>
+
+	<g id="group-elements">
+		<circle id="circle1" class="circle1 red" />
+		<circle id="circle2" class="circle2 green" />
+		<circle id="circle3" class="circle3 blue" />
+	</g>
+
+
+</svg>

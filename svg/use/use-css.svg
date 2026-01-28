@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1000 -1000 2000 2000" preserveAspectRatio="xMidYMid meet">
+	<title>use</title>
+	<view id="normal" viewBox="-1000 -1000 2000 2000"/>
+	<view id="half" viewBox="-2000 -2000 4000 4000"/>
+	<view id="double" viewBox="-500 -500 1000 1000"/>
+
+
+	<use href="../[library]/grid.svg#grid" x="0" y="0"/>
+
+
+	<!-- <circle r="10"/> -->
+
+	<style>
+		/* <![CDATA[ */
+
+		text {
+			font-size: 100px;
+			text-anchor: middle;
+			dominant-baseline: central;
+		}
+
+		.css-shadow {
+			filter: drop-shadow(0px 40px 20px #444b);
+		}
+
+
+		.def-group {
+			--prop-defItem: 123;
+
+
+			circle	{	stroke: cyan;	}
+			rect	{	stroke: #fa0;	}
+			text	{	stroke: tomato;	fill: var(--text-color);	}
+			polygon {	stroke: purple;	fill:none;	}
+		}/* def-group */
+
+
+		.def-group:hover {
+			/* transform-origin var(--transform-origin);
+			transform-box var(--transform-box); */
+		}
+
+
+		.top {
+			--prop-style1: 456;
+			fill: #b0b4;
+		}
+
+		.bottom {
+			--prop-style2: 789;
+			fill: #0004;
+		}
+
+
+		/* Use item sub-selectors
+		These don't appear to work  - it looks like the selector can't match anything in the shadow dom subtree
+		*/
+
+		.left {
+			/* fill:white; */					/* works */
+			/* text { fill:white; } */			/* doesn't work */
+			.text { fill:white; }				/* doesn't work */
+			--text-color: white;				/* works, if the def styles are expecting it */
+		}
+
+		.right {
+			text { fill:red; }			/* doesn't work */
+			--text-color: red;			/* works, if the def styles are expecting it */
+			/**/
+
+		}
+
+		.transform-center {
+			transform-box: content-box;
+			transform-origin: center;
+
+			--transform-box: content-box;
+			--transform-origin: center;
+		}
+
+		.hover {
+			transition: 0.5s ease all;
+			&:hover {
+				scale:120%;
+			}
+		}
+
+		/* transform-box: content-box fill-box stroke-box border-box view-box */
+		/* transform-box: view-box ; */
+		/* transform-origin: 0% 0%; */	/* by itself this appears to be relative to viewbox */
+
+		use:hover {
+			stroke-width:5px;
+		}
+
+		/* ]]> */
+	</style>
+
+
+	<defs>
+		<!-- <g id="def1" class="def-item">
+			<circle cx="-100" cy="0" r="300" />
+			<rect x="-200" y="-200" width="700" height="400" />
+			<text x="0" y="0" >
+				#def1
+			</text>
+			<polygon points="-10,0 0,-10 +10,0 0,+10"/>
+		</g> -->
+
+		<g id="def-group1" class="def-group "> <!-- transform-center - doesn't seem to pass through -->
+			<circle cx="-100" cy="0" r="200" />
+			<rect x="-200" y="-200" width="500" height="300" />
+			<text class="text" x="0" y="0" >
+				#def-group1
+			</text>
+			<polygon points="-10,0 0,-10 +10,0 0,+10"/>
+		</g>
+
+		<g id="def-group2" class="def-group">
+			<circle cx="200" cy="0" r="200" />
+			<rect x="-300" y="-100" width="500" height="200" />
+			<text class="text" x="0" y="0" >
+				#def-group2
+			</text>
+			<polygon points="-10,0 0,-10 +10,0 0,+10"/>
+		</g>
+
+
+	</defs>
+
+
+
+
+	<use id="use1" href="#def-group1" x="-400" y="-300" class="top left hover">
+		<title>use1</title>
+	</use>
+
+	<use id="use2" href="#def-group1" x="400" y="-300" class="top right hover transform-center">
+		<title>use2</title>
+	</use>
+
+	<use id="use3" href="#def-group2" x="-400" y="300" class="bottom left css-shadow hover">
+		<title>use3</title>
+	</use>
+
+	<use id="use4" href="#def-group2" x="400" y="300" class="bottom right hover">
+		<title>use4</title>
+	</use>
+
+
+
+	<g>
+		<title>Some ordinary elements</title>
+		<circle cx="-400" cy="800" r="100" class="hover transform-center"/>
+		<rect x="-100" y="700" width="400" height="200" class="hover transform-center"/>
+	</g>
+
+</svg>

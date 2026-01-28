@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+
+	<style>
+		path {
+			stroke: blue;
+			stroke-width: 1;
+			fill: #00fa;  <!-- none; -->
+			fill-rule: evenodd; <!-- evenodd, nonzero -->
+			<!-- stroke-dasharray: 2 7; -->
+			stroke-linecap: round;
+			stroke-linejoin: bevel;
+			marker-start:url(#markerStart);
+			marker-end:url(#markerEnd);
+		}
+		.origin { fill:transparent ; stroke:black }
+		marker { stroke-width:.5; }
+		.marker-start  { fill:lightgreen ; stroke:green }
+		.marker-end    { fill:pink ; stroke:red }
+
+		circle {
+			stroke: cyan;
+			fill: cadetblue;
+
+		}
+
+		rect {
+			stroke: red;
+			fill: pink;
+		}
+
+		text {
+			fill: tan;
+			stroke: none;
+			font-size: 18em;
+			text-anchor: middle;
+		}
+
+		.css-shadow {
+			filter: drop-shadow(0px 40px 20px #444b);
+		}
+
+		.fe-shadow {
+			filter: url(#shadow1);
+		}
+
+		.gb {
+			filter: url(#gaussian-blur);
+		}
+
+		.inset-shadow {
+			filter: url(#inset-shadow);
+		}
+
+	</style>
+
+	<defs>
+		<g id="testSvg" >
+			<circle cx="-300" cy="0" r="300" />
+			<rect x="0" y="0" width="600" height="900" />
+			<text x="50" y="50" >
+				drop shadow
+			</text>
+		</g>
+
+		<filter id="shadow1" color-interpolation-filters="sRGB">
+			<feDropShadow dx="-20" dy="20" stdDeviation="3" flood-opacity=".5" flood-color="red"/>
+		</filter>
+
+		<filter id="gaussian-blur">
+			<feGaussianBlur stdDeviation="0 15"/>
+		</filter>
+
+
+		<filter id="inset-shadow">
+			<!-- https://css-tricks.com/adding-shadows-to-svg-icons-with-css-and-svg-filters/
+			-->
+
+			<!-- Shadow offset -->
+			<feOffset
+				dx="0" dy="0"/>
+
+			<!-- Shadow blur -->
+			<feGaussianBlur
+				stdDeviation="20" result="offset-blur"/>
+
+			<!-- Invert drop shadow to make an inset shadow -->
+			<feComposite
+				operator="out" in="SourceGraphic" in2="offset-blur" result="inverse" />
+
+			<!-- Cut color inside shadow -->
+			<feFlood
+				flood-color="yellow" flood-opacity=".95" result="color" />
+
+			<feComposite
+				operator="in" in="color" in2="inverse" result="shadow" />
+
+			<!-- Placing shadow over element -->
+			<feComposite
+				operator="over" in="shadow" in2="SourceGraphic" />
+		</filter>
+
+	</defs>
+
+	<use href="#testSvg" x="-1000" y="-200" class="css-shadow" />
+	<!--
+	-->
+
+	<use href="#testSvg" x="1000"  y="-200" class="inset-shadow"/>
+	<!--
+	-->
+
+</svg>

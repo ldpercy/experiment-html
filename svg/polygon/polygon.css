@@ -1,0 +1,96 @@
+body {
+	margin: 0;
+	font-family: sans-serif;
+	background-color: white;
+}
+
+
+
+
+/* Star styles
+*/
+
+svg.star {
+	width: 100vw;
+	height: 99vh;
+
+	.viewBox {
+		x: -100%;
+		y: -100%;
+		width: 200%;
+		height: 200%;
+		fill: url(#pattern-grid);
+	}
+
+	.grid {
+		stroke: teal;
+		fill:none;
+		stroke-width: 1px;
+	}
+
+	path {
+
+		stroke: #ff0;
+		fill: #ff04;
+		stroke-width: 1;
+
+		/* mix-blend-mode:color; */
+
+		/* stroke-dasharray: 2 7;  */
+		/* stroke-linecap: round; */
+		/* stroke-linejoin: bevel; */
+	}
+
+	g.show-markers path {
+		marker-start:url(#markerStart);
+		marker-end:url(#markerEnd);
+		marker-mid:url(#wedge);
+	}
+
+	path:nth-of-type(4),
+	path:nth-last-of-type(4)
+	{
+		stroke: #fa0;
+		fill: #fa04;
+	}
+	path:nth-of-type(3),
+	path:nth-last-of-type(3)
+	{
+		stroke: #0f0;
+		fill: #0f04;
+	}
+	path:nth-of-type(2),
+	path:nth-last-of-type(2)
+	{
+		stroke: #f00;
+		fill: #f004;
+	}
+	path:nth-of-type(1),
+	path:nth-last-of-type(1)
+	{
+		stroke: #00f;
+		fill: #00f4;
+	}
+
+
+
+	.evenodd path {
+		fill-rule: evenodd; /* fill-rule: nonzero  */
+	}
+
+
+	/* grid & markers */
+	.origin { fill:transparent ; stroke:black }
+	marker {
+		stroke-width: 5;
+
+		.marker-start  { fill:lightgreen ; stroke:green }
+		.marker-end    { fill:pink ; stroke:red }
+		.marker-mid    { fill:yellow ; stroke:orange }
+	}
+
+}/* svg.star */
+
+
+
+

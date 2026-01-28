@@ -1,0 +1,144 @@
+/* Turtle
+*/
+
+* {
+	transition: all .1s ease-in;
+}
+
+html {
+	--silver: #bbbb;
+}
+
+summary {
+	cursor: pointer;
+}
+
+form {
+
+	#input-command {
+		height:15em;
+	}
+
+	#input-colour { width: 10ex; }
+	#input-strokeWidth  { width: 10ex; }
+
+
+	#turtle-instructions {
+		display: grid;
+		font-family: monospace;
+		font-size: 1em;
+		background-color: #fffc;
+		padding:1ex;
+		border:1px solid var(--silver);
+	}
+
+	#turtle-report {
+		font-family: monospace;
+		font-size: 1em;
+		white-space: pre;
+		background-color: #fffc;
+		padding:1ex;
+		border:1px solid var(--silver);
+	}
+}
+
+
+svg.drawing {
+	width: 100vw;
+	height: 99vh;
+
+	--turtle: #0a07;
+	--turtle-stroke: #0a0f;
+
+
+}
+
+
+
+.page {
+	--draw-colour: #f00;
+	--stroke-width: 10;
+	stroke: var(--draw-colour);
+	fill: var(--draw-colour);
+	fill-opacity: 50%;
+
+	stroke-width: var(--drawing-stroke-width);
+	stroke-linecap: round;
+	stroke-linejoin: miter;
+	paint-order: stroke;
+
+	.marker {
+		display: none;
+	}
+
+	&.show-marker .marker{
+		display:inline;
+	}
+}
+
+#def-marker {
+	--foo: 5;
+	/* --stroke-width: 10; */
+	--scale-min: 1;
+
+	--scale: max(var(--drawing-stroke-width) /5, var(--scale-min) );
+	--scale-temp: calc(var(--drawing-stroke-width) /5 );
+
+	stroke-width: 0px;
+
+	scale: var(--scale);
+
+	/* d: path('m0,-30 L10,10 L-10 10 z'); */
+
+	&:hover {
+		scale: calc(var(--scale) * 1.8);
+	}
+}
+
+use.marker {
+	--foo: 5;
+
+}
+
+
+
+
+.turtle {
+	fill: var(--turtle);
+	stroke: var(--turtle-stroke);
+	stroke-width: 3px;
+	filter: drop-shadow(0px 0px 30px #ff07);
+
+	.head { fill: var(--turtle-stroke); }
+	.feet { fill: var(--turtle-stroke); }
+	.eyes { fill: yellow; stroke:none;}
+
+	--size: 10;
+	--body: calc(var(--size) * 4px);
+	--head: calc(var(--size) * 2px);
+	--foot: calc(var(--size) * 1px);
+	--eye: calc(var(--size) * 0.5px);
+
+	--threeFifths: calc((3/5) * var(--size) * 4px);
+	--fourFifths:  calc((4/5) * var(--size) * 4px);
+
+	/* I could have done most of this with a transform... */
+
+	&:hover {
+		--size:15;
+	}
+
+	.body { r: var(--body); cx:0px; cy:0px; }
+	.head { r: var(--head); cx:0px; cy:calc(-2 * var(--head) ); }
+	.el   { r: var(--eye); cx: calc(-2 * var(--eye)); cy:calc(-1.1 * var(--body)); }
+	.er   { r: var(--eye); cx: calc(+2 * var(--eye)); cy:calc(-1.1 * var(--body)); }
+	.fl   { r: var(--foot); cx:calc(-1 * var(--fourFifths) ); cy:calc(-1 * var(--threeFifths)); }
+	.fr   { r: var(--foot); cx:calc(+1 * var(--fourFifths) ); cy:calc(-1 * var(--threeFifths)); }
+	.bl   { r: var(--foot); cx:calc(-1 * var(--threeFifths) ); cy:calc(+1 * var(--fourFifths)); }
+	.br   { r: var(--foot); cx:calc(+1 * var(--threeFifths) ); cy:calc(+1 * var(--fourFifths)); }
+}
+
+
+
+
+

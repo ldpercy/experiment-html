@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+
+	<title>marker</title>
+	<rect class="viewBox" style="x: -100%; y: -100%; width: 200%; height: 200%; fill: url(#pattern-grid);"/>
+	<pattern id="pattern-grid" width="100" height="100" patternUnits="userSpaceOnUse">
+		<rect style="stroke: teal; stroke-width: 1px; fill:none;" x="0" y="0" width="100" height="100"/>
+	</pattern>
+	<text x="-1800" y="-900" class="title">marker</text>
+
+	<style>
+		path {
+			stroke: blue;
+			stroke-width: 1;
+			fill: #00fa;  <!-- none; -->
+			marker-start:url(#markerStart);
+			marker-end:url(#markerEnd);
+		}
+
+		<!-- marker { stroke-width:.5; }
+		.marker-start  { fill:lightgreen ; stroke:green }
+		.marker-end    { fill:pink ; stroke:red } -->
+
+		.css-shadow {
+			filter: drop-shadow(0px 40px 20px #444b);
+		}
+		text.title {
+			stroke:#000a;
+			fill: #888a;
+			font-size: 32ex;
+		}
+
+		<!-- these dont work afaict:
+		.oasr   { orient: auto-start-reverse; }
+		.oa     { orient: auto; }
+		.muusou { markerUnits: userSpaceOnUse; }
+		-->
+
+		.marker path {
+			stroke-width:10px;
+			fill: pink; <!-- context-stroke; -->
+			stroke: context-stroke;
+		}
+
+		line {
+			stroke-width:10px;
+			stroke: red;
+		}
+
+		.line0 {
+			marker-start:url(#marker);
+			marker-end:url(#marker);
+		}
+		.line1 {
+			marker-start:url(#marker-oa);
+			marker-end:url(#marker-oa);
+		}
+		.line2 {
+			marker-start:url(#marker-oasr);
+			marker-end:url(#marker-oasr);
+		}
+	</style>
+
+	<defs>
+		<marker id="marker" class="marker" markerWidth="100" markerHeight="100" refX="0" refY="0" viewBox="-50 -50 100 100"  markerUnits="userSpaceOnUse">
+			<path d="m-50,-50 L50,0 L-50,50 "/>
+		</marker>
+
+		<marker id="marker-oa" class="marker-oa" markerWidth="100" markerHeight="100" refX="0" refY="0" viewBox="-50 -50 100 100" orient="auto" markerUnits="userSpaceOnUse">
+			<path d="m-50,-50 L50,0 L-50,50 "/>
+		</marker>
+
+		<marker id="marker-oasr" class="marker-oasr" markerWidth="100" markerHeight="100" refX="0" refY="0" viewBox="-50 -50 100 100" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+			<!-- triangle-right -->
+			<path d="m-50,-50 L50,0 L-50,50 "/>
+		</marker>
+
+		<marker id="axisMarker-polar" class="axis" markerWidth="100" markerHeight="100" refX="0" refY="0" viewBox="-50 -50 100 100" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+			<path d="m20,-20 L0,50 L-20,-20"/>
+		</marker>
+	</defs>
+
+	<path d="m-50,-50 L50,0 L-50,50 "/>
+
+	<line class="line0" x1="-555" y1="-666" x2="777" y2="-999"><title>line0</title></line>
+	<line class="line1" x1="-555" y1="-555" x2="777" y2="-888"><title>line1</title></line>
+	<line class="line2" x1="-555" y1="-444" x2="777" y2="-777"><title>line2</title></line>
+
+
+
+
+</svg>

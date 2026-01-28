@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+	<title>z-index</title>
+
+	<rect class="viewBox" style="x: -100%; y: -100%; width: 200%; height: 200%; fill: url(#pattern-grid);"/>
+	<pattern id="pattern-grid" width="100" height="100" patternUnits="userSpaceOnUse">
+		<rect style="stroke: teal; stroke-width: 1px; fill:none;" x="0" y="0" width="100" height="100"/>
+	</pattern>
+
+
+	<style>
+
+		text {
+			fill: tan;
+			stroke: none;
+			font-size: 18em;
+			text-anchor: middle;
+		}
+
+		rect {
+			stroke: red;
+			fill: pink;
+		}
+
+		.red   { stroke: #f00f; fill: #f00a; }
+		.green { stroke: #0f0f; fill: #0f0a; }
+		.blue  { stroke: #00ff; fill: #00fa; }
+
+		circle {
+			filter: drop-shadow(0px 40px 20px #222a);
+			r: 600px;
+			stroke-width: 2;
+		}
+
+		.circle1 {
+			cx: 0px;
+			cy: -300px;
+			z-index: 1;
+			position: relative;
+		}
+
+		.circle2 {
+			cx: -250px;
+			cy: 200px;
+			z-index: 2;
+			position: relative;
+		}
+
+		.circle3 {
+			cx: 250px;
+			cy: 200px;
+			z-index: 3;
+			position: relative;
+		}
+
+	</style>
+
+
+	<circle class="circle3 blue" />
+	<circle class="circle2 green" />
+	<circle class="circle1 red" />
+
+
+</svg>

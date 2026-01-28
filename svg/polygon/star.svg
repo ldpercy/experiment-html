@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" onload="load()">
+
+	<script href="../[library]/maths.js"/>
+	<script href="../[library]/geometry.js"/>
+	<script>
+		<![CDATA[
+
+
+		function load() {
+			let starPath = getStarPath();
+			//console.log(starPath);
+			document.getElementById('star').setAttribute('d',starPath);
+		}
+
+
+		function getStarPath(number) {
+			const length = 1000;
+			let path = '';
+			let x = 0, y = 0;
+			const sides = 12;
+			const divisions = 3;
+
+			const mainAngle = Math.TAU / sides;
+
+			let angle = mainAngle/2;
+
+			const internalAngle = mainAngle / divisions;
+
+			console.log(mainAngle, internalAngle);
+
+			const points = sides * divisions;
+
+			for (let i=0; i < sides; i++)
+			{
+				angle += 5*mainAngle; <!--  i* -->
+
+				const p = new PolarPoint(angle, length).toPoint();
+
+				x = Math.round(p.x);
+				y = Math.round(p.y);
+				console.log(i,Maths.radiansToDegrees(angle),x,y);
+
+				path  += (i===0) ? `M ${x} ${y} ` : `L ${x} ${y} `;
+			}
+
+			return `${path} Z`;
+		}
+		// ]]>
+	</script>
+	<!--  -->
+	<style>
+		path {
+			stroke: blue;
+			stroke-width: 1;
+			fill: #00fa;  <!-- none; -->
+			fill-rule: evenodd; <!-- evenodd, nonzero -->
+			<!-- stroke-dasharray: 2 7; -->
+			stroke-linecap: round;
+			stroke-linejoin: bevel;
+			marker-start:url(#markerStart);
+			marker-end:url(#markerEnd);
+		}
+		.origin { fill:transparent ; stroke:black }
+		marker { stroke-width:.5; }
+		.marker-start  { fill:lightgreen ; stroke:green }
+		.marker-end    { fill:pink ; stroke:red }
+	</style>
+
+	<rect x="-120" y="-120" width="240" height="240" fill="lightgrey"/>
+
+	<defs>
+		<marker id="markerStart" markerWidth="10" markerHeight="10" refX="5" refY="5">
+			<circle class="marker-start" cx="5" cy="5" r="3"/>
+		</marker>
+		<marker id="markerEnd" markerWidth="10" markerHeight="10" refX="5" refY="5">
+			<rect class="marker-end" x="4" y="4" width="2" height="2"/>
+		</marker>
+
+	</defs>
+
+	<circle class="origin" cx="0" cy="0" r="2"/>
+
+	<path id="star" d=""/>
+
+</svg>

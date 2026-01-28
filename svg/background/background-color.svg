@@ -1,0 +1,40 @@
+<svg width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+
+	<style>
+		svg {
+			background-color: pink;
+			fill: palegreen;
+			font-size: 20px
+		}
+
+		rect {
+			stroke:blue;
+			stroke-width:2;
+		}
+
+		rect.box { fill:transparent; }
+
+		.guideline {
+			stroke:orange;
+			stroke-width:1;
+		}
+
+		text {
+			fill: black;
+			text-anchor: middle;
+		}
+	</style>
+
+	<rect x="100" y="100" width="800" height="800" class="frame"/>
+
+
+
+	<g id="box" class="text1" transform="translate(10, 10)">
+		<rect x="0" y="0" width="100" height="100" class="box"/>
+		<text x="50" y="50">
+			String 1
+		</text>
+	</g>
+
+
+</svg>

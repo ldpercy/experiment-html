@@ -1,0 +1,126 @@
+
+html {
+
+	--silver-light: #bbb;
+	--silver-dark: #333;
+
+	--nearly-white: #fcfcfc;
+	--nearly-black: #111;
+
+
+	--html-background-light: var(--silver-light);
+	--body-background-light: var(--nearly-white);
+
+	--html-background-dark: var(--nearly-black);
+	--body-background-dark: var(--silver-dark);
+
+
+	background-color: var(--html-background-light);
+}
+
+
+body {
+	margin:1em;
+	padding:1em;
+	border-radius:1ex;
+	font-family:sans-serif;
+	color:black;
+	background-color: var(--body-background-light);
+}
+
+h1:first-of-type {
+	margin-top:0;
+}
+
+h1 {
+	border-bottom: 1px solid silver;
+}
+h2 {
+	border-bottom: 1px dotted silver;
+}
+
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+
+nav {
+	display:block;
+	float:right;
+	font-weight:bold;
+	font-size: 2em;
+}
+
+
+
+
+textarea {
+	width:90%;
+	height:auto;
+	min-height:5rlh;
+}
+
+output#pageLog {
+	display: block;
+	white-space: pre;
+	width:90%;
+	height:auto;
+	min-height:5rlh;
+	border: 1ex silver inset;
+	padding:1em;
+}
+
+
+details {
+	margin:1em 0em;
+	cursor:pointer;
+}
+summary:hover {
+	text-decoration: underline dotted;
+}
+
+
+
+/* table styles
+*/
+table {
+	border-collapse: collapse;
+	border:0.1rem solid black;
+}
+th, td {
+	padding: 0.1rem 1rem;
+	border-style: solid;
+	border-width: 0.1rem 0rem;
+	border-color: black;
+}
+th {
+	font-weight:normal;
+	background-color: silver;
+}
+
+
+
+
+html.light {
+	color-scheme: light;
+	background-color: var(--html-background-light);
+	body {
+		background-color: var(--body-background-light);
+		color: black;
+	}
+}
+
+html.dark {
+	color-scheme: dark;
+	background-color: var(--html-background-dark);
+	body {
+		background-color: var(--body-background-dark);
+		color: white;
+	}
+}
+

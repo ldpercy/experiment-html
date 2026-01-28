@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet">
+
+	<style>
+		path {
+			stroke: blue;
+			stroke-width: 1;
+			fill: #00fa;  <!-- none; -->
+			fill-rule: evenodd; <!-- evenodd, nonzero -->
+			<!-- stroke-dasharray: 2 7; -->
+			stroke-linecap: round;
+			stroke-linejoin: bevel;
+			marker-start:url(#markerStart);
+			marker-end:url(#markerEnd);
+		}
+		.origin { fill:transparent ; stroke:black }
+		marker { stroke-width:.5; }
+		.marker-start  { fill:lightgreen ; stroke:green }
+		.marker-end    { fill:pink ; stroke:red }
+
+
+		.css-shadow {
+			filter: drop-shadow(0px 40px 20px #444b);
+		}
+
+
+		circle {
+			stroke: cyan;
+			fill: cadetblue;
+		}
+
+		rect {
+			stroke: red;
+			fill: pink;
+		}
+
+		circle.circle {
+			cx: -300px;
+			cy: -300px;
+			r: 600px;
+		}
+
+		rect.rect {
+			x: -100px;
+			y: -100px;
+			width: 1000px;
+			height: 500px;
+			stroke-width:10px;
+			stroke-linejoin: bevel;
+
+		}
+
+		text {
+			fill: tan;
+			stroke: none;
+			font-size: 18em;
+			text-anchor: middle;
+		}
+
+		text.text {
+			x: -100px;
+			y: -100px;
+			fill:orange;
+		}
+
+
+		.defstext {
+			fill: yellow;
+		}
+
+		.usetext1 {
+			x: 100px;
+			y: 100px;
+		}
+
+		.usetext2 {
+			x: 200px;
+			y: 200px;
+			width: 60px; <!-- no effect -->
+		}
+
+	</style>
+
+	<defs>
+		<g id="testSvg" >
+			<circle cx="-300" cy="0" r="300" />
+			<rect x="0" y="0" width="600" height="900" />
+			<text x="50" y="50" >
+				use
+			</text>
+		</g>
+
+		<text id="defstext1" class="defstext">defs text 1</text>
+		<text id="defstext2" class="defstext">defs text 2</text>
+	</defs>
+
+	<g id="testSvg" >
+		<circle class="circle" cx="-300" cy="0" r="300" />
+		<rect class="rect" x="0" y="0" width="600" height="900" />
+		<text class="text" x="0" y="-1000">
+			path
+		</text>
+	</g>
+
+	<path
+		fill="#eee"
+		stroke="deeppink" stroke-width="20px" stroke-linejoin="round"
+		d="
+			M 150,10
+			H 500
+			B 36 h 470
+			b 72 h 470
+			b 72 h 470
+			b 72 h 470 z"
+
+	/>
+
+</svg>
