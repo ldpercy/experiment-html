@@ -70,6 +70,11 @@ main {
 	}
 }
 
+.no-grid {
+	display:unset;
+}
+
+
 @media (orientation: landscape) {
 	main {
 		grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -91,7 +96,7 @@ main {
 
 
 pre {
-	--element-colour: black;
+	--element-colour: white;
 }
 
 /*
@@ -107,11 +112,20 @@ pre {
 
 
 pre {		/* treat these like markdown */
-	margin:1em;
-	padding:1em 0em;
-	border: 1px solid var(--element-colour);
-	background-color: hsl(from var(--element-colour) h s 66 / 0.33);
-	border-radius: 0em 1em 1em 1em;
+	/* font-size:large; */
+	/* margin:1em; */
+	white-space: pre-line;
+	padding: 2em;
+	border-style: outset;
+	border-radius: 3em / 2em;
+	&::before {
+		display:block;
+		position:relative;
+		top:-1ex;
+		/* left:-1em; */
+		font-size:xx-large;
+		content: '🗨';
+	}
 
 }
 

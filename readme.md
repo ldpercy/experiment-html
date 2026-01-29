@@ -1,7 +1,9 @@
 HTML Experiment
 ===============
 
-Small experiments and tests of HTML features
+Small experiments and tests of HTML, CSS, SVG, and JavaScript
+
+
 
 
 > [!IMPORTANT]
@@ -18,3 +20,7 @@ Slightly interesting things
 * [css/perspective](./css/perspective.html)
 * [dom/transform](./dom/transform.html)
 * [dom/transform3d](./dom/transform3d.html)
+* [svg/polygon](./svg/polygon/)
+* [svg/text/baseline](./svg/text/baseline.svg)
+
+

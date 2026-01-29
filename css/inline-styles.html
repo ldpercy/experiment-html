@@ -19,6 +19,10 @@
 		<h1><a href="">inline-styles</a></h1>
 	</header>
 
+	<script defer src="../[common]/colourScheme-selector.js"></script>
+
+	<main class="no-grid">
+
 	<h2>How do inline styles apply to content?</h2>
 	<pre>
 		Inline style tags
@@ -53,10 +57,10 @@
 	</p>
 
 	<style>
-		p {font-family:monospace;}
+		p {font-family: cursive; }
 	</style>
 	<p>
-		And again, this time to monospace.
+		And again, this time to cursive.
 	</p>
 
 	<style>
@@ -72,8 +76,7 @@
 		The inline styles probably get combined into a single stylesheet, with it's own override cascade, then applied to the document as a whole.
 		Makes sense, but haven't tried anything this basic in a <i>very</i> long time.
 	</p>
+	</main>
 
-	<h2>Log:</h2>
-	<output id="pageLog"></output>
 </body>
 </html>

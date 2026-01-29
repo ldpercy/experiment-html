@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>url</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../[common]/html-experiment.svg">
+	<link rel="stylesheet" href="../[common]/common-style.css">
+
+	<script defer src="../[common]/HTMLApp.js"></script>
+
+</head>
+<body>
+	<header>
+		<nav>
+			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourscheme="light">🟓</a>
+			<a class="colourScheme-selector" href="?colourScheme=dark" title="Dark colour scheme" data-colourscheme="dark">🟒</a>
+			<a title="To folder" href="./">🖿</a>
+			<a title="Parent folder" href="../">🡅</a>
+		</nav>
+		<h1><a href="">url</a></h1>
+	</header>
+
+
+	<main>
+
+		<style>
+			input[type=text] { width:40em; }
+		</style>
+
+		<form>
+			<input type="text" id="input-url" placeholder="url">
+		</form>
+
+		<script type="module">
+			/* url.js
+			*/
+
+			import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
+
+			class UrlApp extends HTMLApp {
+				appName = "UrlApp";
+				appInfo = "UrlApp by ldpercy";
+
+				eventListeners = [
+					{
+						query: '.colourScheme-selector',
+						type: 'click',
+						listener: this.colourSchemeListener
+					},
+					/* {
+						query: '#myForm',
+						type: 'change',
+						listener: this.formChangeListener
+					}, */
+				];
+
+
+				colourSchemeListener(event) {
+					event.preventDefault();
+					const newScheme = event.target.dataset.colourscheme;
+					this.setColourScheme(newScheme);
+				}
+
+
+				documentDOMContentLoaded() {
+					super.documentDOMContentLoaded();
+					//this.setColourScheme(localStorage.colourScheme);
+
+					const url = window.location;
+
+					document.getElementById('input-url').value = url;
+
+					const urlObj = new URL(url);
+
+					console.log(urlObj);
+
+				}
+
+
+			}/* TestApp */
+
+
+
+			var urlApp = new UrlApp();
+
+
+
+
+		</script>
+
+
+
+
+	</main>
+
+</body>
+</html>

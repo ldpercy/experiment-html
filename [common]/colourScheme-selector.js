@@ -17,8 +17,9 @@ document.querySelectorAll('.colourScheme-selector').forEach(
 
 
 function setColourScheme(schemeName) {
-	document.documentElement.style.setProperty('--colourScheme', schemeName);
-	document.documentElement.className = document.documentElement.className.replace(/(\bcolourScheme-\w+\b)?/,`colourScheme-${schemeName}`);
+	//document.documentElement.style.setProperty('--colourScheme', schemeName);
+	//document.documentElement.className = document.documentElement.className.replace(/(\bcolourScheme-\w+\b)?/,`colourScheme-${schemeName}`);
+	document.documentElement.dataset.colourscheme = schemeName;
 }
 
 

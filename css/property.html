@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<title>perspective</title>
+	<title>property</title>
 	<meta charset="utf-8">
 	<link rel="icon" href="../[html-common]/favicon/css.svg">
 	<link rel="stylesheet" href="../[common]/common-style.css">
@@ -15,11 +15,9 @@
 			<a title="Parent folder" href="../">🡅</a>
 		</nav>
 
-		<h1><a href="">perspective</a></h1>
+		<h1><a href="">property</a></h1>
 	</header>
-
 	<script defer src="../[common]/colourScheme-selector.js"></script>
-
 	<main>
 
 	<style contenteditable="plaintext-only" spellcheck="false">
@@ -38,24 +36,13 @@
 			aside { grid-column-start: 2; }
 		}
 
-		output { margin-top: 10em; }
-
-		.transform-element {
-			/* transform: rotateY(90deg) translateZ(50px); */
-			transform: rotateX(15deg) rotateY(10deg) rotateZ(5deg);
-			perspective: 10cm;
-			perspective-origin: 50% 50%;
-
-			section { transform: translateZ(4em); }
-			aside { transform: translateZ(8em); }
-
-		}
 
 	</style>
 
 	<pre>
-		So far seems to be only a flattened 3d-like effect.
+		Can you select based on a css custom property???
 
+		Hmm probably not easily... a data attribute might be better.
 	</pre>
 
 	<output class="pretty fullwidth">

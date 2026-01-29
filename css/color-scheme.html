@@ -11,8 +11,8 @@
 <body>
 	<header>
 		<nav>
-			<a id="button-lightScheme" href="?scheme=light" title="Light scheme" data-scheme="light">🟓</a>
-			<a id="button-darkScheme" href="?scheme=dark" title="Dark scheme" data-scheme="dark">🟒</a>
+			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourscheme="light">🟓</a>
+			<a class="colourScheme-selector" href="?colourScheme=dark" title="Dark colour scheme" data-colourscheme="dark">🟒</a>
 			<a title="To folder" href="./">🖿</a>
 			<a title="Parent folder" href="../">🡅</a>
 		</nav>
@@ -20,22 +20,24 @@
 		<h1><a href="">color-scheme</a></h1>
 	</header>
 
+	<script defer src="../[common]/colourScheme-selector.js"></script>
 	<main>
 
 	<script>
-		let colourScheme = getUrlParameter('scheme');
+		// let colourScheme = getUrlParameter('colourScheme');
 
-		if (colourScheme) {
-			setColourScheme(colourScheme);
-		}
+		// if (colourScheme) {
+		// 	setColourScheme(colourScheme);
+		// }
 
 		/** setColourScheme
 		 * @param {string} schemeName
 		 */
 		function setColourScheme(schemeName) {
-			document.documentElement.style.setProperty('--colourScheme', schemeName);
-			document.documentElement.className = document.documentElement.className.replace(/(\bcolourScheme-\w+\b)?/,`colourScheme-${schemeName}`);
-			document.body.style.setProperty('--colourScheme', schemeName);
+			//document.documentElement.style.setProperty('--colourScheme', schemeName);
+			//document.documentElement.className = document.documentElement.className.replace(/(\bcolourScheme-\w+\b)?/,`colourScheme-${schemeName}`);
+			//document.body.style.setProperty('--colourScheme', schemeName);
+			document.documentElement.dataset.colourscheme = schemeName;
 		}
 
 		function setAccentColour(accentColour) {
@@ -93,10 +95,10 @@
 			radio1
 		</label>
 		<label>
-			<input type="radio" name="radio" value="radio2">
+			<input type="radio" name="radio" value="radio2" checked>
 			radio2
 		</label>
-		<input type="checkbox">
+		<input type="checkbox" checked>
 		<input type="range" min="1" max="10" value="5">
 		<input type="number" min="1" max="10" value="5">
 		<select>
@@ -121,10 +123,10 @@
 			radio1
 		</label>
 		<label>
-			<input type="radio" name="radio" value="radio2">
+			<input type="radio" name="radio" value="radio2" checked>
 			radio2
 		</label>
-		<input type="checkbox">
+		<input type="checkbox" checked>
 		<input type="range" min="1" max="10" value="5">
 		<input type="number" min="1" max="10" value="5">
 		<select>

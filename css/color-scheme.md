@@ -40,3 +40,26 @@ Enable dark/light mode
 ----------------------
 
 <meta name="color-scheme" content="dark light">
+
+
+
+
+Dynamic scheme changing
+-----------------------
+
+I've tried a few things so far, like setting classes on html/body and settings custom css properties, but they're both a little bit awkward.
+Scheme classes like this work:
+```html
+	<html class="colourScheme-dark">
+	...
+```
+but they're fiddly to set and replace.
+
+Css custom properties like `--colourScheme: 'dark'` seem like they might be an improvement, but I haven't been able to target them (yet) with selectors.
+
+So far it's looking like html data attributes might be the best option, eg:
+```html
+	<html data-colourscheme="dark">
+	...
+```
+They can easily be set and updated, and they're selectable in css so custom properties can be added if needed.
