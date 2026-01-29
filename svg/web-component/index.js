@@ -1,7 +1,7 @@
 /* index.js
 */
 
-import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
+import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
 
 
 class IndexApp extends HTMLApp {

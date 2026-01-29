@@ -2,7 +2,7 @@
 //	polygonApp.js
 //
 
-import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
+import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
 
 class PolygonApp extends HTMLApp {
 
