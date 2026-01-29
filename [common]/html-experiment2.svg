@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-32 -32 64 64">
+	<style>
+		polygon {
+			opacity:0.97;
+			mix-blend-mode: exclusion;
+		}
+	</style>
+	<polygon points="0,+20 -32,-32 +32,-32"  fill="#639"/>
+	<polygon points="+20,0 -32,-32 -32,+32" fill="#f7df1e"/>
+	<polygon points="-20,0 +32,-32 +32,+32" fill="#ffb13b"/>
+	<polygon points="0,-20 -32,+32 +32,+32" fill="#e42"/>
+</svg>

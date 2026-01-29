@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-32 -32 64 64">
+	<style>
+		polyline {
+			opacity:1;
+			mix-blend-mode: exclusion;
+			stroke-width:12;
+			fill:none;
+		}
+	</style>
+
+	<polyline points="-32,-24 +12,-24 +12,+12 " stroke="#639"/>
+	<polyline points="+32,+24 -12,+24 -12,-12 " stroke="#e42"/>
+	<polyline points="+24,-32 +24,+12 -12,+12 " stroke="#ffb13b"/>
+	<polyline points="-24,+32 -24,-12 +12,-12 " stroke="#f7df1e"/>
+
+</svg>
