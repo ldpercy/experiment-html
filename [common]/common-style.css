@@ -225,25 +225,10 @@ th {
 
 
 
-body[onload] {
-	/* border: 1px dashed var(--element-colour);
-	background-color: hsl(from var(--element-colour) h s l / 0.2); */
-
-
-	&::before {
-		position:relative;
-		font-size:small;
-		top:-2em;
-		left:-2em;
-		font-family: monospace;
-
-		background-color: hsl(from var(--javascript-yellow) h s l / 0.5); ;
-		color:dimgrey;
-		border-radius: 1em 0em;
-		margin-bottom: 1ex;
-		padding: 1ex;
-		/* color:white; */
-		content: 'style';
-		content: 'onload=' attr(onload);
-	}
+body[onload]::before {
+	position:absolute;
+	font-family: monospace;
+	top:0ex;
+	color: dimgrey;
+	content: 'onload=' attr(onload) ;
 }

@@ -118,6 +118,16 @@
 			you get pretty reliable transparent backgrounds from just about any colour input (66/33 is more memorable though).
 			Though imo these are still a bit too opaque in dark mode, and don't really carry through the lightness flavour of the original.
 			Will need some more tweaking.
+
+			Lightness Inversion:
+			hsl		h s calc(100 - l)
+
+			Darken:
+			hsl		h s calc(l / 2)
+
+			Lighten:
+			hsl		h s calc(l + (100 - l) / 2)
+
 		</pre>
 
 		<script class="fullwidth">
