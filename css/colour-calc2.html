@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Colour calc 2</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../[html-common]/favicon/css.svg">
+	<link rel="stylesheet" href="../[common]/common-style.css">
+	<link rel="stylesheet" href="../[common]/transition.css">
+	<link rel="stylesheet" href="../[common]/background.css">
+	<script defer src="../[common]/colourScheme-selector.js"></script>
+	<script src="../[common]/common-script.js"></script>
+
+</head>
+<body onload="generateSwatches();">
+	<header>
+		<nav>
+			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourScheme="light">🟓</a>
+			<a class="colourScheme-selector" href="?colourScheme=dark" title="Dark colour scheme" data-colourScheme="dark">🟒</a>
+			<a title="To folder" href="./">🖿</a>
+			<a title="Parent folder" href="../">🡅</a>
+		</nav>
+
+		<h1><a href="">Colour calc 2</a></h1>
+	</header>
+
+	<main>
+
+		<style contenteditable="plaintext-only" >
+			form {
+				display:grid;
+				grid-template-columns: 1fr 1fr;
+				h2 {
+					grid-column-start: span 2;
+				}
+				tab-size:1;
+			}
+
+			label { display:block; }
+			output table {
+				font-family:monospace;
+					border-collapse: separate;
+					border-spacing: 0ex;
+				width: 100%;
+				border: transparent;
+				th { padding:2em; text-align: center; border: transparent; }
+				thead th { font-weight:bold; }
+				tbody th {
+					background-color: var(--row-colour);
+					color: hsl(from var(--row-colour) h 0 calc(100 - l));
+				}
+				td { text-align: center; }
+			}
+		</style>
+
+
+		<form onchange="generateSwatches();" class="fullwidth">
+			<h2>Settings</h2>
+
+			<label for="input-colour">
+				Colour inputs
+				<textarea id="input-colour" spellcheck="false">
+					black
+					white
+					#f7df1e
+					#ffb13b
+					rebeccapurple
+					navy
+					bisque
+				</textarea>
+			</label>
+
+			<label for="input-calc">
+				Colour calculations
+				<textarea id="input-calc" spellcheck="false">
+					[
+						{
+							"text"       : "hsl    h 0 calc(100 - l)",
+							"background" : "hsl    h s 50 / 0.5",
+							"border"     : "hsl    h s 50 / 0.8"
+						}
+					]
+				</textarea><!-- beware - JSON barfs on tabs in strings... -->
+			</label>
+
+			<button type="button" onclick="generateSwatches()">generate swatches</button>
+		</form>
+
+
+		<output class="fullwidth">
+			<h3>Calculation results</h3>
+			<table class="swatches ">
+			<thead id="result-thead">
+			</thead>
+			<tbody id="result-tbody" class="background-crosshatch">
+			</tbody>
+			</table>
+
+
+		</output>
+
+		<pre>
+			Somewhere around:
+
+				hsl(from $colour h s 70 / 0.30)
+				hsl(from $colour h s 66 / 0.33)
+
+			you get pretty reliable transparent backgrounds from just about any colour input (66/33 is more memorable though).
+			Though imo these are still a bit too opaque in dark mode, and don't really carry through the lightness flavour of the original.
+			Will need some more tweaking.
+
+			Lightness Inversion:
+			hsl		h s calc(100 - l)
+
+			Darken:
+			hsl		h s calc(l / 2)
+
+			Lighten:
+			hsl		h s calc(l + (100 - l) / 2)
+
+		</pre>
+
+		<script class="fullwidth">
+
+			function generateSwatches() {
+				let result = '';
+				const colourText = document.getElementById('input-colour').value.trim();
+				const colourArray = colourText.split('\n').map((element)=>element.trim());
+				console.log(colourArray);
+
+
+				const calculationText = document.getElementById('input-calc').value.trim();
+				const calculationArray = JSON.parse(calculationText);
+				console.log(calculationArray);
+
+				let headerCells = '';
+				let trow = '';
+				let rowCells = '';
+				let tbody = '';
+				let colourCalc = '';
+
+
+				// header
+				for (let col=0; col < calculationArray.length; col++) {
+					headerCells +=
+						`<th>${JSON.stringify(calculationArray[col])}</th>`;
+				}
+				let thead = `
+					<tr>
+						<th></th>
+						${headerCells}
+					</tr>
+				`;
+				document.getElementById('result-thead').innerHTML = thead;
+
+
+				// body
+				for (let row=0; row < colourArray.length; row++) {
+					rowCells  = '';
+
+					for (let col=0; col < calculationArray.length; col++) {
+
+						let styleText = `
+							color: ${getColourExpression(colourArray[row], calculationArray[col].text)};
+							background: ${getColourExpression(colourArray[row], calculationArray[col].background)};
+							border: ${getColourExpression(colourArray[row], calculationArray[col].border)} 1ex solid;
+						`;
+
+						/* let text = getColourExpression(colourArray[row], calculationArray[col].text);
+						let background = getColourExpression(colourArray[row], calculationArray[col].background); //`${calculationArray[col].model}(from ${colourArray[row]} ${calculationArray[col].calc})`;
+						let border = getColourExpression(colourArray[row], calculationArray[col].border); */
+
+						rowCells += `
+							<td style="${styleText}">
+								${styleText}
+							</td>
+						`;
+					}
+					trow = `
+						<tr style="--row-colour:${colourArray[row]}">
+							<th>${colourArray[row]}</th>
+							${rowCells}
+						</tr>
+					`;
+
+					tbody += trow;
+				}
+				document.getElementById('result-tbody').innerHTML = tbody;
+			}
+
+
+			function getColourExpression(colour, calcString) {
+
+				const match = calcString.match(/\s*(\w+)\s+(.*)/);
+				//console.log('match',match);
+				const colourModel = match[1];
+				const colourCalc = match[2];
+
+				result = `${colourModel}(from ${colour} ${colourCalc})`;
+				return result;
+			}
+
+
+/*
+			function getCalculations(calculationText) {
+				const result = calculationText.trim().split('\n').map(
+					(calcLine) => {
+						let match = calcLine.match(/\s*(\w+)\s+(.*)/);
+						//console.log('match',match);
+						let item = {
+							colourModel : match[1],
+							colourCalc : match[2],
+						}
+						item.calcText = `${item.colourModel}(from $colour ${item.colourCalc})`;
+						//return calcLine.trim();
+						return item;
+					}
+				);
+				return result;
+			} */
+
+		</script>
+
+
+	</main>
+
+</body>
+</html>

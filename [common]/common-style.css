@@ -178,9 +178,12 @@ nav {
 
 
 textarea {
-	width:90%;
-	height:auto;
-	min-height:5rlh;
+
+	width:95% ;
+	width:stretch;		/* not working in firefox??? */
+	display:block;
+	height: fit-content;
+	min-height:7rlh;
 }
 
 output#pageLog {
@@ -232,3 +235,5 @@ body[onload]::before {
 	color: dimgrey;
 	content: 'onload=' attr(onload) ;
 }
+
+

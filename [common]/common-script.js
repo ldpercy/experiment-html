@@ -1,4 +1,4 @@
-console.log('common-script.js');
+//console.log('common-script.js');
 
 
 /** getUrlParameter
