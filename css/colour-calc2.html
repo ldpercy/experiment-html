@@ -25,7 +25,106 @@
 
 	<main>
 
+
+		<form onchange="generateSwatches();" class="fullwidth">
+			<h2>Settings</h2>
+
+			<label for="input-colour">
+				Colour inputs
+				<textarea id="input-colour" spellcheck="false">
+					var(--text-colour)
+					var(--project-colour)
+					mediumvioletred
+
+					red
+					blue
+					green
+					#f7df1e
+					#ffb13b
+					rebeccapurple
+					navy
+					bisque
+					black
+					white
+				</textarea>
+			</label>
+
+			<label for="input-colourExpression">
+				Colour expressions
+				<textarea id="input-colourExpression" spellcheck="false">
+					[
+						{
+							"text"       : "hsl( from var(--row-colour)    h s calc(sign(l - 51) * -100))",
+							"background" : "hsl( from var(--row-colour)    h s l / 1)",
+							"border"     : "hsl( from var(--row-colour)    h s 50 / 0.5)"
+						},
+						{
+							"text"       : "hsl( from var(--row-colour)    h s calc(sign(l - 51) * -100))",
+							"background" : "hsl( from var(--row-colour)    h s l / var(--alpha75))",
+							"border"     : "hsl( from var(--row-colour)    h s 50 / 1)"
+						},
+						{
+							"text"       : "var(--text-colour)",
+							"background" : "hsl( from var(--row-colour)    h s l / var(--alpha50))",
+							"border"     : "hsl( from var(--row-colour)    h s 50 / 1)"
+						},
+						{
+							"text"       : "var(--text-colour)",
+							"background" : "hsl( from var(--row-colour)    h s l / var(--alpha25))",
+							"border"     : "hsl( from var(--row-colour)    h s 50 / 1)"
+						}
+					]
+				</textarea><!-- beware - JSON barfs on tabs in strings... -->
+			</label>
+
+			<button type="button" onclick="generateSwatches()">generate swatches</button>
+		</form>
+
+
+		<output class="fullwidth">
+			<h3>Generated swatches</h3>
+			<table class="swatches ">
+			<thead id="result-thead">
+			</thead>
+			<tbody id="result-tbody" class="background-crosshatch">
+			</tbody>
+			</table>
+		</output>
+
+		<pre>
+			Text
+			----
+			Against solid backgrounds this works:
+
+				hsl    h s calc(sign(l - 51) * -100)
+
+			Against transparent bacgkrounds will depend on the colour scheme.
+			At around 0.75 alpha dark-scheme contrast suffers.
+			So the actual text-colour will need to be a function of the alpha and a threshold.
+
+
+
+			Lightness Inversion:
+			hsl		h s calc(100 - l)
+
+			Darken:
+			hsl		h s calc(l / 2)
+
+			Lighten:
+			hsl		h s calc(l + (100 - l) / 2)
+
+		</pre>
+
+
+
+
+
 		<style contenteditable="plaintext-only" >
+			:root {
+				--alpha25: 0.25;
+				--alpha50: 0.50;
+				--alpha75: 0.75;
+			}
 			form {
 				display:grid;
 				grid-template-columns: 1fr 1fr;
@@ -42,82 +141,16 @@
 					border-spacing: 0ex;
 				width: 100%;
 				border: transparent;
-				th { padding:2em; text-align: center; border: transparent; }
-				thead th { font-weight:bold; }
+				th { padding:1em; text-align: center; border: transparent; font-size:large; }
+				td { padding:1em; }
 				tbody th {
 					background-color: var(--row-colour);
-					color: hsl(from var(--row-colour) h 0 calc(100 - l));
+					color: hsl(from var(--row-colour) h 0 calc(sign(l - 51) * -100));
 				}
-				td { text-align: center; }
+				/* td { text-align: center; } */
 			}
 		</style>
 
-
-		<form onchange="generateSwatches();" class="fullwidth">
-			<h2>Settings</h2>
-
-			<label for="input-colour">
-				Colour inputs
-				<textarea id="input-colour" spellcheck="false">
-					black
-					white
-					#f7df1e
-					#ffb13b
-					rebeccapurple
-					navy
-					bisque
-				</textarea>
-			</label>
-
-			<label for="input-calc">
-				Colour calculations
-				<textarea id="input-calc" spellcheck="false">
-					[
-						{
-							"text"       : "hsl    h 0 calc(100 - l)",
-							"background" : "hsl    h s 50 / 0.5",
-							"border"     : "hsl    h s 50 / 0.8"
-						}
-					]
-				</textarea><!-- beware - JSON barfs on tabs in strings... -->
-			</label>
-
-			<button type="button" onclick="generateSwatches()">generate swatches</button>
-		</form>
-
-
-		<output class="fullwidth">
-			<h3>Calculation results</h3>
-			<table class="swatches ">
-			<thead id="result-thead">
-			</thead>
-			<tbody id="result-tbody" class="background-crosshatch">
-			</tbody>
-			</table>
-
-
-		</output>
-
-		<pre>
-			Somewhere around:
-
-				hsl(from $colour h s 70 / 0.30)
-				hsl(from $colour h s 66 / 0.33)
-
-			you get pretty reliable transparent backgrounds from just about any colour input (66/33 is more memorable though).
-			Though imo these are still a bit too opaque in dark mode, and don't really carry through the lightness flavour of the original.
-			Will need some more tweaking.
-
-			Lightness Inversion:
-			hsl		h s calc(100 - l)
-
-			Darken:
-			hsl		h s calc(l / 2)
-
-			Lighten:
-			hsl		h s calc(l + (100 - l) / 2)
-
-		</pre>
 
 		<script class="fullwidth">
 
@@ -128,9 +161,9 @@
 				console.log(colourArray);
 
 
-				const calculationText = document.getElementById('input-calc').value.trim();
-				const calculationArray = JSON.parse(calculationText);
-				console.log(calculationArray);
+				const expressionText = document.getElementById('input-colourExpression').value.trim();
+				const expressionArray = JSON.parse(expressionText);
+				console.log(expressionArray);
 
 				let headerCells = '';
 				let trow = '';
@@ -140,9 +173,9 @@
 
 
 				// header
-				for (let col=0; col < calculationArray.length; col++) {
+				for (let col=0; col < expressionArray.length; col++) {
 					headerCells +=
-						`<th>${JSON.stringify(calculationArray[col])}</th>`;
+						`<th>${JSON.stringify(expressionArray[col]).replaceAll(',',',</br>')}</th>`;
 				}
 				let thead = `
 					<tr>
@@ -157,21 +190,17 @@
 				for (let row=0; row < colourArray.length; row++) {
 					rowCells  = '';
 
-					for (let col=0; col < calculationArray.length; col++) {
+					for (let col=0; col < expressionArray.length; col++) {
 
 						let styleText = `
-							color: ${getColourExpression(colourArray[row], calculationArray[col].text)};
-							background: ${getColourExpression(colourArray[row], calculationArray[col].background)};
-							border: ${getColourExpression(colourArray[row], calculationArray[col].border)} 1ex solid;
+							color: ${expressionArray[col].text};
+							background: ${expressionArray[col].background};
+							border: ${expressionArray[col].border} 1ex solid;
 						`;
-
-						/* let text = getColourExpression(colourArray[row], calculationArray[col].text);
-						let background = getColourExpression(colourArray[row], calculationArray[col].background); //`${calculationArray[col].model}(from ${colourArray[row]} ${calculationArray[col].calc})`;
-						let border = getColourExpression(colourArray[row], calculationArray[col].border); */
 
 						rowCells += `
 							<td style="${styleText}">
-								${styleText}
+								${styleText.replaceAll(';',';</br>')}
 							</td>
 						`;
 					}
@@ -199,24 +228,6 @@
 				return result;
 			}
 
-
-/*
-			function getCalculations(calculationText) {
-				const result = calculationText.trim().split('\n').map(
-					(calcLine) => {
-						let match = calcLine.match(/\s*(\w+)\s+(.*)/);
-						//console.log('match',match);
-						let item = {
-							colourModel : match[1],
-							colourCalc : match[2],
-						}
-						item.calcText = `${item.colourModel}(from $colour ${item.colourCalc})`;
-						//return calcLine.trim();
-						return item;
-					}
-				);
-				return result;
-			} */
 
 		</script>
 

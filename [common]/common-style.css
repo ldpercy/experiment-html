@@ -8,32 +8,39 @@
 html {
 	--html-light: #ddd;
 	--html-dark: #000;
+
+	--text-light: black;
+	--text-dark: white;
+	--text-colour: var(--text-light);
+
 	background-color: var(--html-light);
 
 	body {
 		--body-light: #fcfcfc;		/* nearly-white */
 		--body-dark: #222;
 		background-color: var(--body-light);
+		color: var(--text-colour);
 	}
 }
 
-html.colourScheme-light {
+html[data-colourscheme=light] {
 	color-scheme: light;
+	--text-colour: var(--text-light);
 	background-color: var(--html-light);
 	body {
 		background-color: var(--body-light);
-		color: black;
 	}
 }
 
-html.colourScheme-dark {
+html[data-colourscheme=dark] {
 	color-scheme: dark;
+	--text-colour: var(--text-dark);
 	background-color: var(--html-dark);
 	body {
 		background-color: var(--body-dark);
-		color: white;
 	}
 }
+
 
 
 body {

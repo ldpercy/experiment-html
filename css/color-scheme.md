@@ -63,3 +63,8 @@ So far it's looking like html data attributes might be the best option, eg:
 	...
 ```
 They can easily be set and updated, and they're selectable in css so custom properties can be added if needed.
+
+
+
+
+
