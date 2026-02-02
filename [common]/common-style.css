@@ -6,24 +6,18 @@
 
 
 html {
-	--html-light: #ddd;
-	--html-dark: #000;
 
 	--text-light: black;
 	--text-dark: white;
 	--text-colour: var(--text-light);
 
-	background-color: var(--html-light);
-
 	body {
-		--body-light: #fcfcfc;		/* nearly-white */
-		--body-dark: #222;
-		background-color: var(--body-light);
+
 		color: var(--text-colour);
 	}
 }
 
-html[data-colourscheme=light] {
+/* html[data-colourscheme=light] {
 	color-scheme: light;
 	--text-colour: var(--text-light);
 	background-color: var(--html-light);
@@ -40,7 +34,7 @@ html[data-colourscheme=dark] {
 		background-color: var(--body-dark);
 	}
 }
-
+ */
 
 
 body {
@@ -48,7 +42,6 @@ body {
 	padding:1em;
 	border-radius:1em;
 	font-family:sans-serif;
-	color:black;
 	tab-size: 4;
 
 	--accent-colour: var(--project-colour);
@@ -100,30 +93,10 @@ main {
 ** Elements & Colours
 */
 
-
-
-pre {
-	--element-colour: white;
-}
-
-/*
---silver-light: #bbb;
---silver-dark: #333;
-*/
-
-
-/*
-**	Miscellaneous
-*/
-
-
-
 pre {		/* treat these like markdown */
-	/* font-size:large; */
-	/* margin:1em; */
+	--element-colour: whitesmoke;
 	white-space: pre-line;
 	padding: 2em;
-	border-style: outset;
 	border-radius: 3em / 2em;
 	&::before {
 		display:block;
@@ -133,8 +106,16 @@ pre {		/* treat these like markdown */
 		font-size:xx-large;
 		content: '🗨';
 	}
-
 }
+
+
+/*
+**	Miscellaneous
+*/
+
+
+
+
 
 .pretty {
 	div		{ --colour: dodgerblue; }

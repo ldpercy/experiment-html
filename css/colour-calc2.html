@@ -32,20 +32,24 @@
 			<label for="input-colour">
 				Colour inputs
 				<textarea id="input-colour" spellcheck="false">
-					var(--text-colour)
-					var(--project-colour)
-					mediumvioletred
-
 					red
 					blue
 					green
-					#f7df1e
-					#ffb13b
+					yellow
+					lime
+					cyan
+					hotpink
 					rebeccapurple
+					mediumvioletred
 					navy
 					bisque
 					black
+					dimgrey
+					grey
+					lightgrey
 					white
+					var(--project-colour)
+					var(--text-colour)
 				</textarea>
 			</label>
 
@@ -54,24 +58,24 @@
 				<textarea id="input-colourExpression" spellcheck="false">
 					[
 						{
-							"text"       : "hsl( from var(--row-colour)    h s calc(sign(l - 51) * -100))",
+							"color"      : "lab( from var(--row-colour)    calc(sign(l - 70) * -100) 0 0 / 1)",
 							"background" : "hsl( from var(--row-colour)    h s l / 1)",
-							"border"     : "hsl( from var(--row-colour)    h s 50 / 0.5)"
+							"border"     : "hsl( from var(--row-colour)    h s l / var(--border-alpha))"
 						},
 						{
-							"text"       : "hsl( from var(--row-colour)    h s calc(sign(l - 51) * -100))",
+							"color"      : "lab( from var(--row-colour)    calc(sign(l - 70) * -100) 0 0 / 1)",
 							"background" : "hsl( from var(--row-colour)    h s l / var(--alpha75))",
-							"border"     : "hsl( from var(--row-colour)    h s 50 / 1)"
+							"border"     : "hsl( from var(--row-colour)    h s l / var(--border-alpha))"
 						},
 						{
-							"text"       : "var(--text-colour)",
+							"color"      : "var(--text-colour)",
 							"background" : "hsl( from var(--row-colour)    h s l / var(--alpha50))",
-							"border"     : "hsl( from var(--row-colour)    h s 50 / 1)"
+							"border"     : "hsl( from var(--row-colour)    h s l / var(--border-alpha))"
 						},
 						{
-							"text"       : "var(--text-colour)",
+							"color"      : "var(--text-colour)",
 							"background" : "hsl( from var(--row-colour)    h s l / var(--alpha25))",
-							"border"     : "hsl( from var(--row-colour)    h s 50 / 1)"
+							"border"     : "hsl( from var(--row-colour)    h s l / var(--border-alpha))"
 						}
 					]
 				</textarea><!-- beware - JSON barfs on tabs in strings... -->
@@ -94,15 +98,14 @@
 		<pre>
 			Text
 			----
-			Against solid backgrounds this works:
+			Against solid backgrounds this works fairly well:
 
-				hsl    h s calc(sign(l - 51) * -100)
+				hsl( from --colour    h s calc(sign(l - 51) * -100)) )
 
-			Against transparent bacgkrounds will depend on the colour scheme.
-			At around 0.75 alpha dark-scheme contrast suffers.
-			So the actual text-colour will need to be a function of the alpha and a threshold.
+			But doesn't work for some lighter and mid-tone colours like lime, cyan, and yellow.
+			Lab colour space might work better in these circumstances.
 
-
+				lab( from var(--row-colour)    calc(sign(l - 70) * -100) 0 0 / 1)
 
 			Lightness Inversion:
 			hsl		h s calc(100 - l)
@@ -124,6 +127,7 @@
 				--alpha25: 0.25;
 				--alpha50: 0.50;
 				--alpha75: 0.75;
+				--border-alpha: 0.8;
 			}
 			form {
 				display:grid;
@@ -142,12 +146,11 @@
 				width: 100%;
 				border: transparent;
 				th { padding:1em; text-align: center; border: transparent; font-size:large; }
-				td { padding:1em; }
 				tbody th {
 					background-color: var(--row-colour);
-					color: hsl(from var(--row-colour) h 0 calc(sign(l - 51) * -100));
+					color: lab( from var(--row-colour)    calc(sign(l - 70) * -100) 0 0 / 1);
 				}
-				/* td { text-align: center; } */
+				tbody td { padding:1em; border: 1ex solid; border-radius:1ex; }
 			}
 		</style>
 
@@ -158,12 +161,12 @@
 				let result = '';
 				const colourText = document.getElementById('input-colour').value.trim();
 				const colourArray = colourText.split('\n').map((element)=>element.trim());
-				console.log(colourArray);
+				//console.log(colourArray);
 
 
 				const expressionText = document.getElementById('input-colourExpression').value.trim();
 				const expressionArray = JSON.parse(expressionText);
-				console.log(expressionArray);
+				//console.log(expressionArray);
 
 				let headerCells = '';
 				let trow = '';
@@ -193,9 +196,9 @@
 					for (let col=0; col < expressionArray.length; col++) {
 
 						let styleText = `
-							color: ${expressionArray[col].text};
+							color: ${expressionArray[col].color};
 							background: ${expressionArray[col].background};
-							border: ${expressionArray[col].border} 1ex solid;
+							border-color: ${expressionArray[col].border};
 						`;
 
 						rowCells += `
@@ -217,7 +220,7 @@
 			}
 
 
-			function getColourExpression(colour, calcString) {
+			/* function getColourExpression(colour, calcString) {
 
 				const match = calcString.match(/\s*(\w+)\s+(.*)/);
 				//console.log('match',match);
@@ -226,7 +229,7 @@
 
 				result = `${colourModel}(from ${colour} ${colourCalc})`;
 				return result;
-			}
+			} */
 
 
 		</script>

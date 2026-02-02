@@ -2,6 +2,24 @@ Colour
 ======
 
 
+Grey
+----
+	grey is darker than darkgrey????
+
+
+Colour Model
+------------
+
+I can't (yet) find anything like a queryable colour model in the web apis.
+Eg something where you can create a colour object and read out its values in a particular colour system.
+
+https://developer.mozilla.org/en-US/docs/Web/API/CSS_Typed_OM_API
+https://developer.mozilla.org/en-US/docs/Web/API/Houdini_APIs
+
+
+
+
+
 Dynamic text colour
 -------------------
 
@@ -10,7 +28,9 @@ Trying to get something to automatically set text colour based on the element, s
 This works pretty well for solid backgrounds for generating black or white text:
 
 ```css
-	color: hsl(from var(--element-colour) h s calc(sign(l - 51) * -100));
+	selector {
+		color: hsl(from var(--element-colour) h s calc(sign(l - 51) * -100));
+	}
 ```
 
 That one is pretty simple, it's really just a function of one input, the element lightness.
@@ -27,3 +47,16 @@ With some crossover threshold tbd.
 
 
 Think I can probably replace the original colour-calc with colour-calc2 as well.
+
+
+
+Ahh... the HSL version doesn't work well for some lighter colours like yellow, cyan and lime.
+This version using the Lab colour model is better:
+
+```css
+	selector {
+		color: 	lab( from var(--element-colour)    calc(sign(l - 70) * -100) 0 0 / 1);
+	}
+```
+The exact threshold of Lab lightness I'm not sure about yet.
+
