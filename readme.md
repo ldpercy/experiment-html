@@ -24,3 +24,16 @@ Slightly interesting things
 * [svg/text/baseline](./svg/text/baseline.svg)
 
 
+
+
+
+Todo
+----
+
+* CSS colour model/api etc
+* Parent selector - 'has'
+* 3d transform experiments
+* dynamic/automatic/contextual colours for text
+*
+
+
