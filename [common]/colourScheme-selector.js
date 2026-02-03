@@ -23,7 +23,7 @@ function setColourScheme(schemeName) {
 }
 
 
-let colourScheme = getUrlParameter('colourScheme');
+let colourScheme = (new URL(window.location.href)).searchParams.get('colourScheme');
 
 
 if (colourScheme) {
