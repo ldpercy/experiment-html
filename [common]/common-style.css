@@ -5,54 +5,12 @@
 }
 
 
-html {
-
-	--text-light: black;
-	--text-dark: white;
-	--text-colour: var(--text-light);
-
-	body {
-
-		color: var(--text-colour);
-	}
-}
-
-/* html[data-colourscheme=light] {
-	color-scheme: light;
-	--text-colour: var(--text-light);
-	background-color: var(--html-light);
-	body {
-		background-color: var(--body-light);
-	}
-}
-
-html[data-colourscheme=dark] {
-	color-scheme: dark;
-	--text-colour: var(--text-dark);
-	background-color: var(--html-dark);
-	body {
-		background-color: var(--body-dark);
-	}
-}
- */
-
-
-body {
-	margin:1em;
-	padding:1em;
-	border-radius:1em;
-	font-family:sans-serif;
-	tab-size: 4;
-
-	--accent-colour: var(--project-colour);
-	accent-color: var(--accent-colour);
-}
-
-
 
 /*
 **	main grid layout
 */
+
+
 
 main {
 	display:grid;
@@ -106,6 +64,13 @@ pre {		/* treat these like markdown */
 		font-size:xx-large;
 		content: '🗨';
 	}
+
+	q {
+		display:inline-block;
+		padding:1em;
+		margin:1em;
+		white-space: pre-line;
+	}
 }
 
 
@@ -132,15 +97,11 @@ pre {		/* treat these like markdown */
 
 
 
-
-
-h1:first-of-type {
-	margin-top:0;
+header h1::before {
+	content: url("../favicon.svg");
 }
 
-h1 {
-	border-bottom: 1px solid silver;
-}
+
 h2 {
 	border-bottom: 1px dotted silver;
 }
@@ -155,12 +116,7 @@ a:hover {
 }
 
 
-nav {
-	display:block;
-	float:right;
-	font-weight:bold;
-	font-size: 2em;
-}
+
 
 
 

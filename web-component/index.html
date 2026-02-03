@@ -7,6 +7,21 @@
 	<link rel="stylesheet" href="../[common]/common-style.css">
 	<link rel="stylesheet" href="index.css">
 
+
+
+</head>
+<body>
+	<header>
+		<h1><a href="">Web Component</a></h1>
+		<nav>
+			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourscheme="light">🟓</a>
+			<a class="colourScheme-selector" href="?colourScheme=dark" title="Dark colour scheme" data-colourscheme="dark">🟒</a>
+			<a title="To folder" href="./">🖿</a>
+			<a title="Parent folder" href="../">🡅</a>
+		</nav>
+	</header>
+	<main>
+
 	<script>
 		const protocol = new URL(window.location).protocol;
 
@@ -16,18 +31,20 @@
 	</script>
 	<script type="module" src="index.js"></script>
 
+	<style>
+		input[type=text] { width:40em; }
 
-</head>
-<body>
-	<header>
-		<nav>
-			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourscheme="light">🟓</a>
-			<a class="colourScheme-selector" href="?colourScheme=dark" title="Dark colour scheme" data-colourscheme="dark">🟒</a>
-			<a title="To folder" href="./">🖿</a>
-			<a title="Parent folder" href="../">🡅</a>
-		</nav>
-		<h1><a href="">Web Component</a></h1>
-	</header>
+
+		/* template {
+			display: block;
+			border: 1px dashed red;
+		}
+		*/
+
+
+		h3 { color:purple; }
+
+	</style>
 
 	<h3>This is an h3</h3>
 
@@ -94,6 +111,6 @@
 
 	<br/>
 
-
+	</main>
 </body>
 </html>

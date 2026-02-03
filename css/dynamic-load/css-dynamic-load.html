@@ -3,12 +3,26 @@
 <head>
 	<title>CSS Dynamic Load</title>
 	<meta charset="utf-8">
-	<link rel="icon" href="../[html-common]/favicon/css.svg">
+	<link rel="icon" href="../../favicon.svg">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- external -->
-	<link rel="stylesheet" href="../[common]/common-style.css">
-	<script defer src="../[common]/common-script.js"></script>
+	<link rel="stylesheet" href="../../[common]/common-style.css">
+	<script defer src="../../[common]/common-script.js"></script>
+
+
+</head>
+<body>
+	<header>
+		<h1><a href="">CSS Dynamic Load</a></h1>
+		<nav>
+			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourscheme="light">🟓</a>
+			<a class="colourScheme-selector" href="?colourScheme=dark" title="Dark colour scheme" data-colourscheme="dark">🟒</a>
+			<a title="To folder" href="./">🖿</a>
+			<a title="Parent folder" href="../">🡅</a>
+		</nav>
+	</header>
+
 
 	<!-- core -->
 	<script defer src="css-dynamic-load.js"></script>
@@ -16,18 +30,6 @@
 	<!-- reloadable -->
 	<link id="dynamicStylesheet" rel="stylesheet" href="">
 
-</head>
-<body>
-	<header>
-		<nav>
-			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourscheme="light">🟓</a>
-			<a class="colourScheme-selector" href="?colourScheme=dark" title="Dark colour scheme" data-colourscheme="dark">🟒</a>
-			<a title="To folder" href="./">🖿</a>
-			<a title="Parent folder" href="../">🡅</a>
-		</nav>
-
-		<h1><a href="">CSS Dynamic Load</a></h1>
-	</header>
 
 	<h2>Load page with folder:</h2>
 	<p>

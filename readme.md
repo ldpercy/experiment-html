@@ -1,14 +1,19 @@
 HTML Experiment
 ===============
 
-Small experiments and tests of HTML, CSS, SVG, and JavaScript
-
-
+Experiments and tests of HTML, CSS, SVG, and JavaScript
 
 
 > [!IMPORTANT]
 > Anything reusable should be moved to `html-common`
 
+
+
+Experiments might be:
+* horribly broken
+* really dumb
+* incomplete
+* quite old
 
 
 
@@ -34,6 +39,7 @@ Todo
 * Parent selector - 'has'
 * 3d transform experiments
 * dynamic/automatic/contextual colours for text
-*
+* See if there's a way to collapse the single extra spaces that sometimes get added just from formatting, eg `<h1>	<a ...`
+
 
 

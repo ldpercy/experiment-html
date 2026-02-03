@@ -10,72 +10,18 @@
 </head>
 <body>
 	<header>
+		<h1><a href="">map</a></h1>
 		<nav>
 			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourscheme="light">🟓</a>
 			<a class="colourScheme-selector" href="?colourScheme=dark" title="Dark colour scheme" data-colourscheme="dark">🟒</a>
 			<a title="To folder" href="./">🖿</a>
 			<a title="Parent folder" href="../">🡅</a>
 		</nav>
-
-		<h1><a href="">map</a></h1>
 	</header>
 
 	<main>
 
 	<script>
-
-		class Point3d1 {
-
-			constructor(x,y,z)
-			//constructor({x,y,z})
-			{
-				log(arguments);
-				this.x = x;
-				this.y = y;
-				this.z = z;
-				//this.report();
-			}
-
-			report = function() { return `(${this.x},${this.y},${this.z})`; }
-
-		}/* Point3d */
-
-
-		class Point3d2 {
-
-			//constructor(x,y,z)
-			constructor({x,y,z})
-			//constructor({x:x,y:y,z:z})
-			{
-				log(arguments);
-				this.x = x;
-				this.y = y;
-				this.z = z;
-				//this.report();
-			}
-
-			report = function() { return `(${this.x},${this.y},${this.z})`; }
-
-		}/* Point3d */
-
-
-
-		/*
-		p1 = new Point3d1(1,2,3)
-
-		o2 = { x:4, y:5, z:6 }
-
-		p1.report()
-
-		p2 = new Point3d2({x:2,y:3,z:4})
-		p2.report()
-
-		*/
-
-		function f1(a,b,c)			{ return `(${a},${b},${c})`; }	// takes anonymous args
-		function f2({a,b,c})		{ return `(${a},${b},${c})`; }	// takes args named abc
-		function f3({x:a,y:b,z:c})	{ return `(${a},${b},${c})`; }	// renames xyz to abc
-
 
 
 		// Not sure yet how to type a map properly...
