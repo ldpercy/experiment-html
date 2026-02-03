@@ -3,6 +3,9 @@ HTML Experiment
 
 Experiments and tests of HTML, CSS, SVG, and JavaScript
 
+<p align="center">
+	<img width="15%" src="./favicon.svg" alt="HTML Experiment" title="HTML Experiment"/>
+</p>
 
 > [!IMPORTANT]
 > Anything reusable should be moved to `html-common`
