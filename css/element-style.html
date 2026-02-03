@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Element style</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../favicon.svg">
+	<link rel="stylesheet" href="../[common]/common-style.css">
+	<link rel="stylesheet" href="../[common]/transition.css">
+	<script defer src="../[common]/colourScheme-selector.js"></script>
+</head>
+<body>
+	<header>
+		<h1><a href="">Element style</a></h1>
+		<nav>
+			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourScheme="light">🟓</a>
+			<a class="colourScheme-selector" href="?colourScheme=dark" title="Dark colour scheme" data-colourScheme="dark">🟒</a>
+			<a title="To folder" href="./">🖿</a>
+			<a title="Parent folder" href="../">🡅</a>
+		</nav>
+	</header>
+
+
+	<main>
+		<script>
+			// asdf
+		</script>
+
+		<style contenteditable="plaintext-only">
+
+				main {
+					script, style {
+						grid-column-start: span 2;
+					}
+					&>* {
+					margin:inherit;
+					border-radius:inherit;
+					grid-column-start: span 1;
+	}
+				}
+
+
+				div		{ --colour: dodgerblue; }
+				p		{ --colour: plum; }
+				section	{ --colour: springgreen; }
+				aside	{ --colour: aqua; }
+
+				div, p, section, aside {
+					border: 2px solid var(--colour);
+					background-color: hwb(from var(--colour) h w b / 0.3);
+				}
+
+		</style>
+
+		<a>a</a>
+		<abbr>abbr</abbr>
+		<address>address</address>
+		<area>area</area>
+		<article>article</article>
+		<aside>aside</aside>
+		<audio>audio</audio>
+		<b>b</b>
+		<bdi>bdi</bdi>
+		<bdo>bdo</bdo>
+		<canvas>canvas</canvas>
+		<caption>caption</caption>
+		<code>code</code>
+		<cite>cite</cite>
+		<data>data</data>
+		<defn>defn</defn>
+		<del>del</del>
+		<details>details</details>
+		<dialog>dialog</dialog>
+		<div>div</div>
+		<em>em</em>
+		<embed>embed</embed>
+		<fencedframe>fencedframe</fencedframe>
+		<form>form</form>
+		<i>i</i>
+		<iframe>iframe</iframe>
+		<ins>ins</ins>
+		<hr>hr</hr>
+		<kbd>kbd</kbd>
+		<map>map</map>
+		<mark>mark</mark>
+		<math>math</math>
+		<noscript>noscript</noscript>
+		<object>object</object>
+		<output>output</output>
+		<p>p</p>
+		<picture>picture</picture>
+		<pre>pre</pre>
+		<q>q</q>
+		<rp>rp</rp>
+		<rt>rt</rt>
+		<s>s</s>
+		<samp>samp</samp>
+		<search>search</search>
+		<section>section</section>
+		<slot>slot</slot>
+		<source>source</source>
+		<span>span</span>
+		<strong>strong</strong>
+		<sub>sub</sub>
+		<summary>summary</summary>
+		<sup>sup</sup>
+		<svg>svg</svg>
+		<table>table</table>
+		<template>template</template>
+		<time>time</time>
+		<track>track</track>
+		<u>u</u>
+		<var>var</var>
+		<video>video</video>
+		<wbr>wbr</wbr>
+
+	</main>
+
+</body>
+</html>
