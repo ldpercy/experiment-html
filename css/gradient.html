@@ -22,25 +22,7 @@
 
 	<main>
 		<script>
-			document.querySelectorAll('.colourScheme-selector').forEach(
-				(element) => {
-					element.addEventListener(
-						'click',
-						() => {
-							event.preventDefault();
-							this.setColourScheme(event.target.dataset.colourscheme);
-						}
-					);
-				}
-			);
-
-			/** setColourScheme
-			 * @param {string} schemeName
-			 */
-			function setColourScheme(schemeName) {
-				document.documentElement.style.setProperty('--colourScheme', schemeName);
-				document.documentElement.className = document.documentElement.className.replace(/(\bcolourScheme-\w+\b)?/,`colourScheme-${schemeName}`);
-			}
+			// asdf
 		</script>
 
 		<style contenteditable="plaintext-only">

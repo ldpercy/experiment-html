@@ -9,12 +9,7 @@ ldpercy.namespace.App = class extends HTMLApp {
 
 	eventListeners = [
 		{
-			query: '#button-lightScheme',
-			type: 'click',
-			listener: this.colourSchemeListener
-		},
-		{
-			query: '#button-darkScheme',
+			query: '.colourScheme-selector',
 			type: 'click',
 			listener: this.colourSchemeListener
 		},
@@ -29,8 +24,9 @@ ldpercy.namespace.App = class extends HTMLApp {
 
 
 	colourSchemeListener(event) {
-		const newScheme = event.target.dataset.scheme;
-		this.setColourScheme(newScheme);
+		//console.log('colourSchemeListener', event.target.dataset);
+		event.preventDefault();
+		this.setColourScheme(event.target.dataset.colourscheme);
 	}
 
 
@@ -60,7 +56,7 @@ foo1.bar = class {}
 // class foo1.asdf {}		// doesn't work?
 // class foo1['asdf'] {}	// doesn't work either
 
-foo2 = class {}
+const foo2 = class {}
 foo2.name = "foo2";
 foo2.bar = class {}
 

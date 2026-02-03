@@ -1,15 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<title>JSDoc</title>
+	<title>JS Module</title>
 	<meta charset="utf-8">
 	<link rel="icon" href="../../[html-common]/favicon/javascript.svg">
 	<link rel="stylesheet" href="../../[common]/common-style.css">
-
 </head>
 <body>
 	<header>
-		<h1><a href="">JSDoc</a></h1>
+		<h1><a href="">JS Module</a></h1>
 		<nav>
 			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourscheme="light">🟓</a>
 			<a class="colourScheme-selector" href="?colourScheme=dark" title="Dark colour scheme" data-colourscheme="dark">🟒</a>
@@ -18,10 +17,13 @@
 		</nav>
 	</header>
 
-	<!--
 	<input type="text" id="input-url" placeholder="url">
-	 -->
-	<link rel="stylesheet" href="index.css">
+
+
+	<main>
+	<style>
+		input[type=text] { width:40em; }
+	</style>
 
 	<script>
 		const protocol = new URL(window.location).protocol;
@@ -30,13 +32,39 @@
 			alert("You are using `file:` protocol - modules won't work");
 		}
 	</script>
+
 	<script type="module" src="index.js"></script>
 
 
+	<!--
+	<script type="module" src="test/test.js"></script>
+	<script type="module" src="test/test.mjs"></script>
+	-->
 
 
-	<br/>
+	<script type="module" src="abcd/module.js"></script>
+	<script type="module" src="efgh/module.js"></script>
 
+	<script type="module">
+
+		// Can you use a module function out here?
+		// not with plain <script> - 'import declarations may only appear at top level of a module'
+		// but if you add `type="module"` then yes
+
+		import * as abcd from "./abcd/module.js";
+
+		abcd.func1();
+
+
+		console.log(abcd);
+
+		//console.log(JSON.stringify(abcd));		// returns {}
+		//console.log(abcd.toString());				// Uncaught TypeError: abcd.toString is not a function
+
+
+	</script>
+
+	</main>
 
 	<h2>Log:</h2>
 	<output id="pageLog"></output>
