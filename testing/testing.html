@@ -20,8 +20,29 @@
 	</header>
 
 	<main>
+		<script type="module" class="fullwidth">
+			import * as test from './testing.js';
+			import * as predicate from './predicate.js';
+
+			console.log(predicate.areEqual(1+1,3-1));
 
 
+
+
+
+			console.log(predicate.allEqual([]));
+			console.log(predicate.allEqual([1]));
+			console.log(predicate.allEqual([true]));
+			console.log(predicate.allEqual([false]));
+			console.log(predicate.allEqual([1,2]));
+			console.log(predicate.allEqual([1,2-1]));
+
+
+		</script>
+
+
+
+		<!--
 		<script type="module" class="fullwidth">
 			import * as ps from '../[html-common]/module/PlanarSpace.js'
 
@@ -71,6 +92,7 @@
 			console.groupEnd();
 
 		</script>
+		 -->
 
 	</main>
 

@@ -1,10 +1,10 @@
 
 
-/** equalityTest
- * @typedef {Object} EqualityTest
- * @param {any}	expression
- * @param {any}	expectedValue
+
+
+/**
+ *
  */
+export function predicateAll(predicate ) {
 
-
-
+}
