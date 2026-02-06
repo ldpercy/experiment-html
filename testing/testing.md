@@ -23,3 +23,10 @@ A single test will be:
 eg
 	[1,2]
 
+
+
+jsdoc
+-----
+
+I want to be able to declare a predicate function type, but not sure how to partial type or similar in jsdoc.
+
