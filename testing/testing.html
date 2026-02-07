@@ -48,12 +48,17 @@
 		<script type="module" class="fullwidth">
 			import * as ps from '../[html-common]/module/PlanarSpace.js'
 
+
 			console.group('default planar space');
 				let dps = new ps.Space('default planar space', ps.defaultSpaceSettings);
 				console.log('dps', dps);
 
 				let p1 = dps.newPoint('p1');
 				p1.setCartesian(100,100);
+
+				console.info(dps.newPoint('').setCartesian(100,100));
+
+
 				//console.log('p1', p1);
 				//console.log('p1.angle', p1.angle);
 				//console.log('p1.radius', p1.radius);
@@ -65,6 +70,17 @@
 				console.assert((p1.angle.degrees === 135), 'Angle not equal to 45');
 				p1.setCartesian(-100,-100);
 				console.assert((p1.angle.degrees === -135), 'Angle not equal to -45');
+
+				test.testArray(
+					predicate.allEqual,
+					[
+						[(new Point( 100, 100)).degrees, 45],
+						[(new Point( 100,-100)).degrees, 135],
+						[(new Point(-100, 100)).degrees, -45],
+						[(new Point(-100,-100)).degrees, -135],
+					]
+				);
+
 
 			console.groupEnd();
 
