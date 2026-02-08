@@ -1,9 +1,31 @@
 :root {
 
 
-	/*
-	grey is darker than darkgrey????
+	/* 	grey is darker than darkgrey???? 	*/
+
+
+
+	/* rgb
 	*/
+	--rgb-black      : rgb(0, 0, 0);
+	--rgb-dimgrey    : rgb(105, 105, 105);
+	--rgb-grey       : rgb(128, 128, 128);
+	--rgb-lightgrey  : rgb(212, 212, 212);
+	--rgb-whitesmoke : rgb(245, 245, 245);
+	--rgb-white      : rgb(255, 255, 255);
+
+	--rgb-red     : rgb(255, 0, 0);
+	--rgb-maroon  : rgb(128, 0, 0);
+	--rgb-yellow  : rgb(255, 255, 0);
+	--rgb-olive   : rgb(128, 128, 0);
+	--rgb-lime    : rgb(0, 255, 0);
+	--rgb-green   : rgb(0, 128, 0);
+	--rgb-cyan    : rgb(0, 255, 255);
+	--rgb-teal    : rgb(0, 128, 128);
+	--rgb-blue    : rgb(0, 0, 255);
+	--rgb-navy    : rgb(0, 0, 128);
+	--rgb-magenta : rgb(255, 0, 255);
+	--rgb-purple  : rgb(128, 0, 128);
 
 
 	/* hsl
