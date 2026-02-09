@@ -45,7 +45,8 @@ Todo
 * See if there's a way to collapse the single extra spaces that sometimes get added just from formatting, eg `<h1>	<a ...`
 * CSS `grey` is darker than `darkgrey` ????
 * JSDoc partial typing - see if there are ways to declare generic types that only specify certain items of a type signature, eg *just* the return type of a function - and be able to mix these partials together a bit like interfaces
-* Revisit named function arguments and options for only specifying certain parameters, leaving others as defaults - I've done this before, need to review
+* Revisit named function arguments and options for only specifying certain parameters, leaving others as defaults - I've done this before, need to review.
+	Turns out you can omit arguments with `undefined` to get the defaults...
 
 
 

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<title>destructuring</title>
+	<title>Destructuring</title>
 	<meta charset="utf-8">
 	<link rel="icon" href="../favicon.svg">
 	<link rel="stylesheet" href="../[common]/common-style.css">
@@ -11,7 +11,7 @@
 </head>
 <body>
 	<header>
-		<h1><a href="">destructuring</a></h1>
+		<h1><a href="">Destructuring</a></h1>
 		<nav>
 			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourscheme="light">🟓</a>
 			<a class="colourScheme-selector" href="?colourScheme=dark" title="Dark colour scheme" data-colourscheme="dark">🟒</a>
@@ -26,65 +26,90 @@
 
 	<script>
 
-		class Point3d1 {
-
-			constructor(x,y,z)
-			//constructor({x,y,z})
-			{
-				log(arguments);
+		class Point {				// how i'd usually write it
+			constructor(x,y,z) {
 				this.x = x;
 				this.y = y;
 				this.z = z;
-				//this.report();
 			}
-
-			report = function() { return `(${this.x},${this.y},${this.z})`; }
-
-		}/* Point3d */
+		}/* Point */
 
 
-		class Point3d2 {
-
-			//constructor(x,y,z)
-			constructor({x,y,z})
-			//constructor({x:x,y:y,z:z})
-			{
-				log(arguments);
+		class Point1 {
+			constructor({x,y,z}) {
 				this.x = x;
 				this.y = y;
 				this.z = z;
-				//this.report();
 			}
-
-			report = function() { return `(${this.x},${this.y},${this.z})`; }
-
-		}/* Point3d */
+		}/* Point1 */
 
 
+		class Point2 {
+			constructor({x:x,y:y,z:z}) {
+				this.x = x;
+				this.y = y;
+				this.z = z;
+			}
+		}/* Point2 */
 
-		/*
-		p1 = new Point3d1(1,2,3)
+
+		p = new Point(1,2,3);
+		//console.dir(p);
 
 		o2 = { x:4, y:5, z:6 }
 
-		p1.report()
+		p1 = new Point1({x:2,y:3,z:4})
+		//console.dir(p1);
 
-		p2 = new Point3d2({x:2,y:3,z:4})
-		p2.report()
+	</script>
 
+	<pre>
+		Want to revisit to see if this can be useful for partially specifying arguments for functions and constructors, especially when defaults are available.
+	</pre>
+
+
+	<script>
+		// A 'regular' function; takes anonymous args as an array-like object:
+		function f(a='aaa', b='bbb', c='ccc')	{
+			//typeof arguments,
+			console.log(arguments);
+			console.log(`${a},${b},${c}`);
+		}
+		console.group('f(a,b,c)');
+
+			f('efgh','ijkl');
+			f('abcd', null,'hijk');
+			f('abcd', undefined, 'hijk');			// AHA!! so this is how you do it, have wanted this for ages....
+
+
+			f(b='1234');	// I think this is just an assignment with a side-effect
+			f({b:'1234'});	// passes obj as arg0
+
+		console.groupEnd();
+
+
+
+		console.group('f1({a,b,c})');
+		/*
+		// takes args named a,b,c:
+		function f1({a,b,c})		{ console.log(arguments); return `f1(a,b,c): ${a},${b},${c}`; }
+		console.log(f1('defg','hijk'));
+		// called like this all of f1's arguments are undefined -
 		*/
+		console.groupEnd();
 
-		function f1(a,b,c)			{ return `(${a},${b},${c})`; }	// takes anonymous args
-		function f2({a,b,c})		{ return `(${a},${b},${c})`; }	// takes args named abc
-		function f3({x:a,y:b,z:c})	{ return `(${a},${b},${c})`; }	// renames xyz to abc
+		console.group('f2({x:a,y:b,z:c})');
+		/*
+		// renames xyz to abc:
+		function f2({x:a,y:b,z:c})	{ console.log(arguments); return `f2(a,b,c): ${a},${b},${c}`; }
+		console.log(f2('foobar'));
+		*/
+		console.groupEnd();
 
 	</script>
 
 
 
 	</main>
-
-
-
 </body>
 </html>
