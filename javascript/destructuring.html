@@ -60,27 +60,40 @@
 
 		p1 = new Point1({x:2,y:3,z:4})
 		//console.dir(p1);
-
 	</script>
 
 	<pre>
 		Want to revisit to see if this can be useful for partially specifying arguments for functions and constructors, especially when defaults are available.
 	</pre>
-
-
 	<script>
-		// A 'regular' function; takes anonymous args as an array-like object:
-		function f(a='aaa', b='bbb', c='ccc')	{
-			//typeof arguments,
-			console.log(arguments);
-			console.log(`${a},${b},${c}`);
+		function argString(argumentObject) {
+			const result = [...argumentObject].map(
+				(element) => {
+					if (element === null) {
+						return 'null';
+					}
+					else if (element === undefined) {
+						return 'undefined';
+					}
+					else return (typeof element === 'string') ? `'${element}'` : element;
+				}
+			);
+			return result;
 		}
-		console.group('f(a,b,c)');
+	</script>
 
-			f('efgh','ijkl');
-			f('abcd', null,'hijk');
-			f('abcd', undefined, 'hijk');			// AHA!! so this is how you do it, have wanted this for ages....
+	<script class="fullwidth">
 
+		console.group('f(a,b,c) - ordinary function, takes anonymous args as an array-like object');
+
+			function f(a='aaa', b='bbb', c='ccc')	{
+				console.log(`f(${argString(arguments)}):  ${a},${b},${c}`);
+			}
+
+			f();
+			f(1234,'ijkl');
+			f(1234, null,'hijk');
+			f(1234, undefined, 'hijk');		// AHA!! so this is how you do it, have wanted this for ages....
 
 			f(b='1234');	// I think this is just an assignment with a side-effect
 			f({b:'1234'});	// passes obj as arg0
@@ -89,24 +102,64 @@
 
 
 
-		console.group('f1({a,b,c})');
-		/*
-		// takes args named a,b,c:
-		function f1({a,b,c})		{ console.log(arguments); return `f1(a,b,c): ${a},${b},${c}`; }
-		console.log(f1('defg','hijk'));
-		// called like this all of f1's arguments are undefined -
-		*/
+		console.group('f1({a,b,c}) - takes args named a,b,c');
+
+			// f1({a,b,c}) - takes args named a,b,c
+			function f1({a,b,c}) {
+				console.log(`f1(${argString(arguments)}): ${a},${b},${c}`);
+			}
+
+			//f1();					// [chr] Uncaught TypeError: Cannot destructure property 'a' of 'undefined' as it is undefined.
+			f1(1234);
+			f1(1234,'abcd');		// called like this all of f1's arguments are undefined
+			f1({b:'abcd'});
+
 		console.groupEnd();
 
-		console.group('f2({x:a,y:b,z:c})');
-		/*
-		// renames xyz to abc:
-		function f2({x:a,y:b,z:c})	{ console.log(arguments); return `f2(a,b,c): ${a},${b},${c}`; }
-		console.log(f2('foobar'));
-		*/
+
+
+		console.group('f11({a,b,c}={}) - args named a,b,c  - with a default to prevent destructure failures');
+			function f11({a,b,c} = {}) { console.log(`f11(${argString(arguments)}): ${a},${b},${c}`); }
+
+			f11();
 		console.groupEnd();
+
+
+
+		console.group('f2({x:a,y:b,z:c}) - renames x,y,z to a,b,c');
+			function f2({x:a,y:b,z:c})	{
+				console.log(`f2(${argString(arguments)}): ${a},${b},${c}`);
+			}
+
+			f2('foobar');
+			f2({b:'abcd'});
+			f2({x:'efgh'});
+		console.groupEnd();
+
+
+
+		console.group('f3(a,{b,c}) - mixed regular and destructured args');
+
+			function f3(a, {b,c}={}) {			// NB default
+				//console.log('asdf');
+				console.log(`f3(${argString(arguments)}): ${a},${b},${c}`);
+			}
+
+			f3('foobar');
+			// [ff] Uncaught TypeError: (destructured parameter) is undefined
+			// [chr] Uncaught TypeError: Cannot destructure property 'b' of 'undefined' as it is undefined.
+
+			f3('foo','bar');
+			// f3({b:'abcd'});
+			// f3({x:'efgh'});
+
+		console.groupEnd();
+
+
 
 	</script>
+
+
 
 
 

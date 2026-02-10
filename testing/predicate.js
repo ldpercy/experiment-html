@@ -39,5 +39,24 @@ export function allEqual(expressionArray) {
 }
 
 
+/** excepts
+ *
+ * I highly doubt this will work... might need an eval or wrap or some other strategy
+ *
+ * @param {any}	expression
+ * @return {boolean}
+ */
+export function excepts(expression) {
 
+	let result = false;
+
+	try {
+		expression;
+	}
+	catch(e) {
+		result = true
+	}
+
+	return result;
+}
 

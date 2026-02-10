@@ -40,8 +40,37 @@
 				]
 			);
 
+
+			test.testArray(
+				predicate.excepts,
+				[
+					1+2,
+					1/0,
+					//f1(), nope
+				]
+			);
+
+
 		</script>
 
+
+
+		<script>
+			function f1({a,b,c}) {
+				console.log(`f1(${argString(arguments)}): ${a},${b},${c}`);
+			}
+
+			//f1();					// [chr] Uncaught TypeError: Cannot destructure property 'a' of 'undefined' as it is undefined.
+
+
+			try {
+				f1();
+			}
+			catch(exception){
+				console.log(exception);  // this exception appears at the top of the console stack
+			}
+
+		</script>
 
 
 		<!--

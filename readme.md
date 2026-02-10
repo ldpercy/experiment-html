@@ -47,6 +47,7 @@ Todo
 * JSDoc partial typing - see if there are ways to declare generic types that only specify certain items of a type signature, eg *just* the return type of a function - and be able to mix these partials together a bit like interfaces
 * Revisit named function arguments and options for only specifying certain parameters, leaving others as defaults - I've done this before, need to review.
 	Turns out you can omit arguments with `undefined` to get the defaults...
-
+* Grid layout - see if there's an simpler way of making grid items go full-width
+* Testing that code excepts
 
 

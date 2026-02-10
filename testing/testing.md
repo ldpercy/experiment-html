@@ -28,5 +28,19 @@ eg
 jsdoc
 -----
 
-I want to be able to declare a predicate function type, but not sure how to partial type or similar in jsdoc.
+I want to be able to declare a predicate function type, only specifying it's return type.
+Not sure how to partially type like this or similar in jsdoc.
+
+
+
+
+
+
+Testing for code that should except
+-----------------------------------
+Can this be done in a not-too-complicated way?
+Not sure, but I don't think evaluation of expressions can be delayed until we're inside the predicate function...?
+Might have to wrap the declarations in this case.
+Have to try some things.
+
 
