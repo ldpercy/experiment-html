@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Exception</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../favicon.svg">
+	<link rel="stylesheet" href="../[common]/common-style.css">
+
+	<script defer src="../[common]/common-script.js"></script>
+
+</head>
+<body>
+	<header>
+		<h1><a href="">Exception</a></h1>
+		<nav>
+			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourscheme="light">🟓</a>
+			<a class="colourScheme-selector" href="?colourScheme=dark" title="Dark colour scheme" data-colourscheme="dark">🟒</a>
+			<a title="To folder" href="./">🖿</a>
+			<a title="Parent folder" href="../">🡅</a>
+		</nav>
+	</header>
+
+
+	<main>
+
+	<script>
+
+		function test() {
+			console.log('... test');
+			return 'test return';
+		}
+
+	</script>
+
+
+	<script>
+
+		// throw;	// Uncaught SyntaxError: throw statement is missing an expression
+
+
+		// throw 1;
+		// throw true;
+		// throw false;
+		// throw 'foobar';
+
+		const foo = "asdf"
+		//throw foo;
+
+		// throw test;		// throws the function reference
+		throw test();
+
+
+
+
+
+
+	</script>
+
+
+
+
+	</main>
+</body>
+</html>

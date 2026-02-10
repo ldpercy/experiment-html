@@ -7,20 +7,28 @@
  * @param {array} array
  */
 export function testArray(predicate, array) {
-
-	let result = true;
+	//let result = true;
 	console.log('predicate:', predicate.name);
 
-	array.forEach(
+	const result = array.map(
 		(element) => {
-			if (predicate(element))
-			{
-				console.log('true', element);
-			}
-			else {
-				console.log('false:', element);
-			}
+			const elementResult = {
+				result : predicate(element),
+				test   : element,
+			};
+
+			return elementResult ;
+			// if (predicate(element))
+			// {
+			// 	console.log('true', element);
+			// }
+			// else {
+			// 	console.log('false:', element);
+			// }
 		}
 	);
+
+	console.dir(result);
+
 	return result;
 }/* testArray */

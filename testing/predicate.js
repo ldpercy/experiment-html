@@ -39,24 +39,28 @@ export function allEqual(expressionArray) {
 }
 
 
-/** excepts
+/** functionExcepts
  *
  * I highly doubt this will work... might need an eval or wrap or some other strategy
  *
- * @param {any}	expression
+ * @param {function} func
  * @return {boolean}
  */
-export function excepts(expression) {
-
+export function functionExcepts(func) {
 	let result = false;
+	let exc = undefined;
+	let e  = undefined;
 
 	try {
-		expression;
+		func();
 	}
 	catch(e) {
+		exc = e;
 		result = true
 	}
 
+	//console.log(func, result, e);
+
 	return result;
-}
+}/* functionExcepts */
 
