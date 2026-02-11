@@ -102,3 +102,6 @@ If there's a way to type rest parameters then maybe...?
 
 
 
+Refs
+----
+https://stackoverflow.com/questions/78478711/jsdoc-intellisense-when-using-script-tags
