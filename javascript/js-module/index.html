@@ -20,21 +20,15 @@
 
 	<input type="text" id="input-url" placeholder="url">
 
+	<script src="../../[common]/protocol-check.js"></script>
+	<script type="module" src="index.js"></script>
 
 	<main>
 	<style>
 		input[type=text] { width:40em; }
 	</style>
 
-	<script>
-		const protocol = new URL(window.location).protocol;
 
-		if (protocol === 'file:') {
-			alert("You are using `file:` protocol - modules won't work");
-		}
-	</script>
-
-	<script type="module" src="index.js"></script>
 
 
 	<!--

@@ -22,13 +22,7 @@
 	</header>
 	<main>
 
-	<script>
-		const protocol = new URL(window.location).protocol;
-
-		if (protocol === 'file:') {
-			alert("You are using `file:` protocol - modules won't work");
-		}
-	</script>
+	<script src="../[common]/protocol-check.js"></script>
 	<script type="module" src="index.js"></script>
 
 	<style>

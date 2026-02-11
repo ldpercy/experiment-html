@@ -6,17 +6,6 @@
 	<link rel="icon" href="../favicon.svg">
 	<link rel="stylesheet" href="../[common]/common-style.css">
 	<link rel="stylesheet" href="index.css">
-
-	<script>
-		const protocol = new URL(window.location).protocol;
-
-		if (protocol === 'file:') {
-			alert("You are using `file:` protocol - modules won't work");
-		}
-	</script>
-	<script type="module" src="index.js"></script>
-
-
 </head>
 <body>
 	<header>
@@ -28,6 +17,10 @@
 			<a title="Parent folder" href="../">🡅</a>
 		</nav>
 	</header>
+
+
+	<script src="../[common]/protocol-check.js"></script>
+	<script type="module" src="index.js"></script>
 
 
 	<input type="text" id="input-text" placeholder="input-text">

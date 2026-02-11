@@ -38,12 +38,6 @@ class IndexApp extends HTMLApp {
 		this.setColourScheme(localStorage.colourScheme);
 
 		// console.log('document.styleSheets:', document.styleSheets);
-
-		const protocol = new URL(window.location.href).protocol;
-
-		if (protocol === 'file:') {
-			alert("You are using `file:` protocol - modules won't work");
-		}
 	}
 
 
