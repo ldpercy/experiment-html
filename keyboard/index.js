@@ -24,15 +24,8 @@ class IndexApp extends HTMLApp {
 			type: 'change',
 			listener: this.textareaChangeListener
 		},
-
-
 		{
-			query: '#button-lightScheme',
-			type: 'click',
-			listener: this.colourSchemeListener
-		},
-		{
-			query: '#button-darkScheme',
+			query: '.colourScheme-selector',
 			type: 'click',
 			listener: this.colourSchemeListener
 		},
@@ -42,6 +35,11 @@ class IndexApp extends HTMLApp {
 			listener: this.formChangeListener
 		}, */
 	];
+
+
+
+
+
 
 	documentKeydownListener(event) {
 		console.log('documentKeydownListener',event);
@@ -111,11 +109,9 @@ class IndexApp extends HTMLApp {
 
 
 	colourSchemeListener(event) {
-		const newScheme = event.target.dataset.scheme;
-		this.setColourScheme(newScheme);
+		event.preventDefault();
+		this.setColourScheme(event.target.dataset.colourscheme);
 	}
-
-
 
 
 

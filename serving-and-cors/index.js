@@ -8,12 +8,7 @@ class IndexApp extends HTMLApp {
 
 	eventListeners = [
 		{
-			query: '#button-lightScheme',
-			type: 'click',
-			listener: this.colourSchemeListener
-		},
-		{
-			query: '#button-darkScheme',
+			query: '.colourScheme-selector',
 			type: 'click',
 			listener: this.colourSchemeListener
 		},
@@ -26,10 +21,9 @@ class IndexApp extends HTMLApp {
 
 
 
-
 	colourSchemeListener(event) {
-		const newScheme = event.target.dataset.scheme;
-		this.setColourScheme(newScheme);
+		event.preventDefault();
+		this.setColourScheme(event.target.dataset.colourscheme);
 	}
 
 
@@ -40,9 +34,9 @@ class IndexApp extends HTMLApp {
 		super.documentDOMContentLoaded();
 		this.setColourScheme(localStorage.colourScheme);
 
-		const url = window.location;
+		const url = window.location.href;
 
-		document.getElementById('input-url').value = url;
+		//document.getElementById('input-url').value = url;
 
 		const urlObj = new URL(url);
 
@@ -51,7 +45,7 @@ class IndexApp extends HTMLApp {
 
 		//console.log('document.styleSheets:', document.styleSheets);
 
-		console.log('Your protocol is:', new URL(window.location).protocol);
+		console.log('Your protocol is:', new URL(window.location.href).protocol);
 
 	}
 

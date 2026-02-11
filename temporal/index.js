@@ -10,12 +10,7 @@ class IndexApp extends HTMLApp {
 
 	eventListeners = [
 		{
-			query: '#button-lightScheme',
-			type: 'click',
-			listener: this.colourSchemeListener
-		},
-		{
-			query: '#button-darkScheme',
+			query: '.colourScheme-selector',
 			type: 'click',
 			listener: this.colourSchemeListener
 		},
@@ -30,8 +25,8 @@ class IndexApp extends HTMLApp {
 
 
 	colourSchemeListener(event) {
-		const newScheme = event.target.dataset.scheme;
-		this.setColourScheme(newScheme);
+		event.preventDefault();
+		this.setColourScheme(event.target.dataset.colourscheme);
 	}
 
 
@@ -44,7 +39,7 @@ class IndexApp extends HTMLApp {
 
 		// console.log('document.styleSheets:', document.styleSheets);
 
-		const protocol = new URL(window.location).protocol;
+		const protocol = new URL(window.location.href).protocol;
 
 		if (protocol === 'file:') {
 			alert("You are using `file:` protocol - modules won't work");
