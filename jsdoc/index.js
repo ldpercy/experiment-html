@@ -22,33 +22,15 @@ class IndexApp extends HTMLApp {
 	];
 
 
-
-
 	colourSchemeListener(event) {
 		event.preventDefault();
 		this.setColourScheme(event.target.dataset.colourscheme);
 	}
 
 
-
-
-
 	documentDOMContentLoaded() {
 		super.documentDOMContentLoaded();
 		this.setColourScheme(localStorage.colourScheme);
-
-
-		/*
-		const url = window.location;
-		document.getElementById('input-url').value = url;
-		const urlObj = new URL(url);
-		console.log(urlObj);
-		*/
-
-
-		// console.log('document.styleSheets:', document.styleSheets);
-
-
 	}
 
 
@@ -57,29 +39,4 @@ class IndexApp extends HTMLApp {
 
 /** @type {IndexApp} */
 var indexApp = new IndexApp();
-
-
-
-
-
-
-
-
-/** @type {FooParameters} */
-const params = {
-	id          : '1234',
-	date        : new Date(),
-	theme       : 'foobar',
-	language    : 'Klingon',
-};
-
-
-
-
-/** @type {NewType} */
-const foo = {
-	name: '',
-	date: new Date(),
-	description: '',
-};
 

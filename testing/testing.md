@@ -44,3 +44,12 @@ Might have to wrap the declarations in this case.
 Have to try some things.
 
 
+Test categories
+---------------
+* equality
+* equivalence - to some specified level
+* greater/less than a specified comparator
+* typeof
+* instanceof
+* exceptions
+*

@@ -49,5 +49,10 @@ Todo
 	Turns out you can omit arguments with `undefined` to get the defaults...
 * Grid layout - see if there's an simpler way of making grid items go full-width
 * Testing that code excepts
+* See if there's a way to turn on jsdoc typechecking for inline `<script></script>` within html
+* See if there's a way to type the whole of a function's arguments object, not just individual parameters
+* See if @interface typing can be applied to non-class objects
+* Look for other duck/mixin typing options
+* Find out where the root/base context of jsconfig+checkJs typechecking is
 
 

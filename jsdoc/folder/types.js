@@ -14,4 +14,15 @@
  * @property	{string}	name
  * @property	{Date}		date
  * @property	{string}	description
-  */
+ */
+
+
+
+/**
+ * @typedef TestFunction
+ *
+ * @type function
+ */
+
+
+

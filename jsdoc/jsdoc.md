@@ -3,8 +3,9 @@ JSDoc
 
 https://jsdoc.app/
 
+https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html
 
-
+https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html
 
 
 
@@ -27,7 +28,17 @@ Over in yearclock though, didn't find the subfolder type.
 Have to figure out what it's doing.
 
 
+See: https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#import
 
+
+### Root content???
+Also, type checking sometimes appears to include files that aren't imported or included in any way.
+I'll get duplicate type warnings across files that don't yet seem to be implicated with one another.
+Not sure from where the compiler/checker sets it root context to start building the type catalog.
+Might be from the nearest `jsconfig` file?
+
+Certainly seem to be able to turn it off at folder level with a `"checkJs": false`.
+Will keep experimenting.
 
 
 HTML Element Typing
@@ -47,4 +58,47 @@ This resolves it:
 ```
 
 Can't seem to cast `document.getElementById` in the same way.
+
+
+
+
+
+
+Function typing
+---------------
+
+This doesn't do what I'd have wanted it to do:
+```js
+	/** foo1
+	 * @type {function}
+	 */
+	function foo1() {
+		const result = `foo`;
+		return result;
+	}
+```
+I think it wants to type the return instead.
+
+
+
+
+
+
+
+### 'Partial' function types?
+
+Not sure of the correct terminology for this yet, might end up being an interface instead.
+
+What I want it to be able to *partly* type a set of functions according to their return type only.
+
+For instance I have a bunch of testing-type functions that I all want to return booleans, but dont' want to constrain their input args at all (initially at least).
+
+I could just add `@returns {boolean}` to them all, but in this case i want the semantics of declaring the function to be of, or implement, a particular type.
+
+Not sure how to do this yet, or even if this a good approach.
+
+One possibility I thought of would be to say that the arguments object is an array of `any`, but don't know if there's any way of typing the *whole* arguments object, rather than individual items.
+If there's a way to type rest parameters then maybe...?
+
+
 

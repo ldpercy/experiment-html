@@ -24,11 +24,38 @@
 	<main>
 
 
+		<script>
+			// Plain scripts like this don't automatically get typechecked
+
+			/**
+			 * @returns {boolean}
+			 * @param {number} a
+			 */
+			function foo1(a = "abcd") {
+				return `foo: ${a}`;
+			}
+
+		</script>
 
 
+		<script type="module">
+			// Nor does this
+			// Would quite like if there was a way to check inline scripts like these
 
 
-	<br/>
+			/**
+			 * @returns {boolean}
+			 * @param {number} a
+			 */
+			function foo2(a = "abcd") {
+				return `foo: ${a}`;
+			}
+
+			foo2();
+
+		</script>
+
+
 
 	</main>
 

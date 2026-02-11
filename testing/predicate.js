@@ -64,3 +64,9 @@ export function functionExcepts(func) {
 	return result;
 }/* functionExcepts */
 
+
+
+
+/*
+export function isFunction
+ */
