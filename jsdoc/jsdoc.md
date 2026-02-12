@@ -16,6 +16,8 @@ Should try to find out what and how...
 
 But for now, JSDoc is being parsed and I can apply and check types.
 
+https://stackoverflow.com/questions/78478711/jsdoc-intellisense-when-using-script-tags
+
 
 
 Type resolution
@@ -39,6 +41,24 @@ Might be from the nearest `jsconfig` file?
 
 Certainly seem to be able to turn it off at folder level with a `"checkJs": false`.
 Will keep experimenting.
+
+
+TypeChecking in HTML files
+--------------------------
+
+Eg within `<script> </script>` tags.
+
+This is something I'd like, but mainly only for my experiment code where I normally use it.
+
+Can't find anything solid yet.
+
+Appears like you can configure file names, but I think only for generating documentation:
+https://jsdoc.app/about-configuring-jsdoc.html#specifying-input-files
+
+
+If it turns out it flat-out can't be done, I'll move anything important into script files for checking.
+This will probably be more critical in html-common.
+
 
 
 HTML Element Typing
@@ -102,6 +122,3 @@ If there's a way to type rest parameters then maybe...?
 
 
 
-Refs
-----
-https://stackoverflow.com/questions/78478711/jsdoc-intellisense-when-using-script-tags

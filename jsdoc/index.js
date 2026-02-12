@@ -5,8 +5,8 @@ import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
 
 
 class IndexApp extends HTMLApp {
-	name = "Experiment: JSDoc";
-	appInfo = ["Experiment: JSDoc"];
+	name = "JSDoc";
+	appInfo = ["HTMLApp: JSDoc"];
 
 	eventListeners = [
 		{
