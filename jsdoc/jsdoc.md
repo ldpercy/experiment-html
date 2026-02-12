@@ -43,6 +43,29 @@ Certainly seem to be able to turn it off at folder level with a `"checkJs": fals
 Will keep experimenting.
 
 
+### Identifier collisions, modules and namespacing
+Eg:
+```
+	Duplicate identifier 'Base0'.ts(2300)
+	subclass-constructor-super.js(14, 7): 'Base0' was also declared here.
+```
+
+If the compiler interprets files as modules then the namespaces are separated - a single `export` in a file will do this and prevent the name collision warnings.
+For example you can just add this to a file:
+```js
+	export {}
+```
+
+There's probably a JSDoc way of doing this too - should be `@module` you'd think, but not working for me:
+```js
+	/**
+	* @module foo
+	*/
+```
+
+
+
+
 TypeChecking in HTML files
 --------------------------
 

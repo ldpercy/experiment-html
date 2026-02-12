@@ -89,10 +89,10 @@ export class SubclassABCD extends BaseClass {
 	//
 	//	method overrides - noTypeNoParamNoReturn
 	//
-	/**   */					noTypeNoParamNoReturn1(p) { }					// with no typing changing the param list is fine
-	/**   */					noTypeNoParamNoReturn2() { return true }		// with no typing changing the return value is fine
-	/** @param {any} p */		noTypeNoParamNoReturn3(p) {  }					// Specifying parameters breaks the method signature
-	/** @return {boolean} p */	noTypeNoParamNoReturn4() { return false; }		// However you *can* specify a return type here... seems inconsistent
+	/**   */					noTypeNoParamNoReturn1(p) { }					// With no typing changing the param list is fine
+	/**   */					noTypeNoParamNoReturn2()  { return false; }		// With no typing changing the return value is fine
+	/** @param {any} p */		noTypeNoParamNoReturn3(p) { }					// Specifying params breaks the method signature
+	/** @return {boolean} p */	noTypeNoParamNoReturn4()  { return false; }		// However you *can* specify a return type here... seems inconsistent
 
 
 	//
