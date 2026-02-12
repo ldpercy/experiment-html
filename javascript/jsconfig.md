@@ -1,20 +1,25 @@
 jsconfig
 ========
 
+> [!IMPORTANT]
+> Make sure `compilerOptions` in jsconfig are set to something modern or you can get really confusing and outdated errors
+
+
 * https://code.visualstudio.com/docs/languages/jsconfig
 * https://junkangworld.com/blog/unlock-project-wide-jsdoc-in-vscode-the-1-fix-for-2025
 
 
 
-I'm curious about the possibility of using jsdoc for some opt-in typechecking.
+I've started using jsconfig & JSDoc for typechecking.
 
-
-I've read this can be done in vscode by adding a `jsconfig.json` file:
+Set these in the project root `jsconfig.json` file - keep them up to date, or you can get really frustratingly annoying errors:
 
 ```js
 {
 	"compilerOptions": {
 		"checkJs": true,
+		"target": "es2024", // es6, es2024
+		"module": "es2022"
 	}
 }
 ```
@@ -31,8 +36,8 @@ Compiler Options
 
 | Option 	| Description	|
 |-----------|---------------|
-| noLib 		| Do not include the default library file (lib.d.ts)|
-|target 	| Specifies which default library (lib.d.ts) to use. The values are "ES3", "ES5", "ES6", "ES2015", "ES2016", "ES2017", "ES2018", "ES2019", "ES2020", "ES2021", "ES2022", "ES2023", "ESNext".
+| noLib 	| Do not include the default library file (lib.d.ts) |
+| target 	| Specifies which default library (lib.d.ts) to use. The values are "ES3", "ES5", "ES6", "ES2015", "ES2016", "ES2017", "ES2018", "ES2019", "ES2020", "ES2021", "ES2022", "ES2023", "ESNext".
 | module 	| Specifies the module system, when generating module code. The values are "AMD", "CommonJS", "ES2015", "ES2020", "ES2022", "ES6", "Node16", "NodeNext", "ESNext", "None", "System", "UMD".
 | moduleResolution 	| Specifies how modules are resolved for imports. The values are "Node", "Classic", "Node16", "NodeNext", "Bundler".|
 | checkJs 	| Enable type checking on JavaScript files.

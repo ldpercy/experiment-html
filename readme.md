@@ -32,6 +32,22 @@ Slightly interesting things
 * [svg/text/baseline](./svg/text/baseline.svg)
 
 
+jsconfig & JSDoc
+----------------
+
+> [!IMPORTANT]
+> Make sure `compilerOptions` in jsconfig are set to something modern or you can get really confusing and outdated errors
+
+I'm using `jsconfig.json` to turn on typechecking, currently with the following settings - keep these updated to the latest:
+
+```js
+	"compilerOptions": {
+		"checkJs": true,
+		"target": "es2024",
+		"module": "es2022"
+	}
+```
+
 
 
 

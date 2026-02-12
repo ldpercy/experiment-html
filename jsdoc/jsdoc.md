@@ -8,6 +8,9 @@ https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html
 https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html
 
 
+> [!IMPORTANT]
+> Make sure compilerOptions in jsconfig are set to something modern or you can get really confusing and outdated errors
+
 
 VSCode
 ------
