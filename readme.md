@@ -38,21 +38,20 @@ Slightly interesting things
 Todo
 ----
 
-* CSS colour model/api etc
-* Parent selector - 'has'
-* 3d transform experiments
-* dynamic/automatic/contextual colours for text
-* See if there's a way to collapse the single extra spaces that sometimes get added just from formatting, eg `<h1>	<a ...`
-* CSS `grey` is darker than `darkgrey` ????
 * JSDoc partial typing - see if there are ways to declare generic types that only specify certain items of a type signature, eg *just* the return type of a function - and be able to mix these partials together a bit like interfaces
-* Revisit named function arguments and options for only specifying certain parameters, leaving others as defaults - I've done this before, need to review.
-	Turns out you can omit arguments with `undefined` to get the defaults...
-* Grid layout - see if there's an simpler way of making grid items go full-width
-* Testing that code excepts
-* See if there's a way to turn on jsdoc typechecking for inline `<script></script>` within html - nothing found so far
 * See if there's a way to type the whole of a function's arguments object, not just individual parameters
 * See if @interface typing can be applied to non-class objects
 * Look for other duck/mixin typing options
+* Grid layout - see if there's an simpler way of making grid items go full-width
+* Testing that code excepts
 * Find out where the root/base context of jsconfig+checkJs typechecking is
-
+* See if there's a way to turn on jsdoc typechecking for inline `<script></script>` within html - nothing found so far
+* Revisit named function arguments and options for only specifying certain parameters, leaving others as defaults - I've done this before, need to review.
+	Turns out you can omit arguments with `undefined` to get the defaults...
+* Parent selector - 'has'
+* 3d transform experiments
+* dynamic/automatic/contextual colours for text
+* CSS colour model/api etc
+* See if there's a way to collapse the single extra spaces that sometimes get added just from formatting, eg `<h1>	<a ...`
+* CSS `grey` is darker than `darkgrey` ????
 
