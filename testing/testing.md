@@ -25,13 +25,14 @@ eg
 
 
 
-jsdoc
------
+Predicate typing in jsdoc
+-------------------------
 
-I want to be able to declare a predicate function type, only specifying it's return type.
-Not sure how to partially type like this or similar in jsdoc.
+I want to be able to declare a predicate function type, eg only specifying it's return type (for now).
+Not sure how to partially type a function like this (or similar) in jsdoc, or if it's even possible.
+(The `partial` utility type isn't what I want here.)
 
-
+It might end up easier from a typing perspective to write the predicates as small classes instead.
 
 
 
