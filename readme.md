@@ -7,7 +7,7 @@ Experiments and tests of HTML, CSS, SVG, and JavaScript
 	<img width="15%" src="./favicon.svg" alt="HTML Experiment" title="HTML Experiment"/>
 </p>
 
-> [!IMPORTANT]
+> [!NOTE]
 > Anything reusable should be moved to `html-common`
 
 
@@ -58,16 +58,16 @@ Todo
 * See if there's a way to type the whole of a function's arguments object, not just individual parameters
 * See if @interface typing can be applied to non-class objects
 * Look for other duck/mixin typing options
-* Grid layout - see if there's an simpler way of making grid items go full-width
-* Testing that code excepts
 * Find out where the root/base context of jsconfig+checkJs typechecking is
 * See if there's a way to turn on jsdoc typechecking for inline `<script></script>` within html - nothing found so far
 * Revisit named function arguments and options for only specifying certain parameters, leaving others as defaults - I've done this before, need to review.
 	Turns out you can omit arguments with `undefined` to get the defaults...
-* Parent selector - 'has'
-* 3d transform experiments
-* dynamic/automatic/contextual colours for text
+* Testing - simple code testing eg equality, exceptions, typeof testing that code excepts
 * CSS colour model/api etc
-* See if there's a way to collapse the single extra spaces that sometimes get added just from formatting, eg `<h1>	<a ...`
 * CSS `grey` is darker than `darkgrey` ????
+* dynamic/automatic/contextual colours for text
+* Parent selector - 'has'
+* See if there's a way to collapse the single extra spaces that sometimes get added just from formatting, eg `<h1>	<a ...`
+* Grid layout - see if there's an simpler way of making grid items go full-width
+* 3d transform experiments
 

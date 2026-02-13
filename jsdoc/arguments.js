@@ -1,7 +1,8 @@
 //
 //	arguments object
 //
-//	Make sure the compiler options are set to something modern
+//	WARNING:
+//	Make sure the compiler options are set to something modern, otherwise some of these fail
 //	"target": "es2024", // es6, es2024
 
 

@@ -26,7 +26,11 @@ And notice that you've been using the wrong compiler settings... sigh.
 
 Now I've got to go back and re-run a bunch of trials.
 
-
+Just to be clear, spreading the arguments object into an array *does* work, but only passes typechecks with recent compiler targets.
+This allows for a handy way of calling similarly signatured functions, eg calling `super` in a subclass constructor:
+```js
+	super([...arguments]);		// This is fine with a recent compiler target
+```
 
 
 
@@ -39,8 +43,9 @@ Looks like `{object}` will take just about anything - pretty obvious now that i 
 For testing purposes I sometimes need to force a type incompatibility so looking for notable examples of each.
 Some might only work in one direction also.
 
+See: [type-compatibility.js](type-compatibility.js)
 
-* Argument of type 'any[]' is not assignable to parameter of type 'number'.ts(2345)
+
 
 
 

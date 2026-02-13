@@ -81,8 +81,8 @@ export class SubclassABCD extends BaseClass {
 	constructor() {
 		//super();					//	Expected 1 arguments, but got 0.ts(2554)
 		//super(arguments);			//	Argument of type 'IArguments' is not assignable to parameter of type 'string'.ts(2345)
-		//super(...arguments);		//	A spread argument must either have a tuple type or be passed to a rest parameter.ts(2556)	;	Type 'IArguments' is not an array type.ts(2461)
-		//super([...arguments]);	//	Argument of type 'any[]' is not assignable to parameter of type 'string'.ts(2345)			;	Type 'IArguments' is not an array type.ts(2461)
+		//super(...arguments);		//	A spread argument must either have a tuple type or be passed to a rest parameter.ts(2556)
+		//super([...arguments]);	//	Argument of type 'any[]' is not assignable to parameter of type 'number'.ts(2345)
 		super(arguments[0]);		// This one works for this particular case
 	}
 

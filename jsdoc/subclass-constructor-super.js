@@ -1,12 +1,14 @@
 //
-// Subclass constructor super call
+//	Subclass constructor super call
 //
-// The super call is mandatory in a subclass constructor
+// The super call is mandatory in a subclass constructor:
+//	Constructors for derived classes must contain a 'super' call.ts(2377)
 //
-// Trying out a few different super call shorthands - many fail, but some can be made to work in some circumstances
+//	Trying out a few different super call shorthands - many fail, but some can be made to work in some circumstances
 //
 
 export {}	// here so that the compiler interprets the file as a module to prevent name collisions
+
 
 
 // No types, no params:
@@ -20,8 +22,8 @@ class Sub0 extends Base0 {
 	constructor() {
 		super();					// This is fine
 		//super(arguments);			//	Expected 0 arguments, but got 1.ts(2554)
-		//super(...arguments);		//	A spread argument must either have a tuple type or be passed to a rest parameter.ts(2556)	;	Type 'IArguments' is not an array type.ts(2461)
-		//super([...arguments]);	//	Expected 0 arguments, but got 1.ts(2554)			;	Type 'IArguments' is not an array type.ts(2461)
+		//super(...arguments);		//	A spread argument must either have a tuple type or be passed to a rest parameter.ts(2556)
+		//super([...arguments]);	//	Expected 0 arguments, but got 1.ts(2554)
 		//super(arguments[0]);		//	Expected 0 arguments, but got 1.ts(2554)
 	}
 
@@ -47,9 +49,9 @@ class Sub1 extends Base1 {
 
 	constructor() {
 		super();					// This is fine
-		//super(arguments);			//	Argument of type 'IArguments' is not assignable to parameter of type 'string'.ts(2345)
-		//super(...arguments);		//	A spread argument must either have a tuple type or be passed to a rest parameter.ts(2556)	;	Type 'IArguments' is not an array type.ts(2461)
-		//super([...arguments]);	//	Argument of type 'any[]' is not assignable to parameter of type 'string'.ts(2345)			;	Type 'IArguments' is not an array type.ts(2461)
+		//super(arguments);			// Typechecks okay, but might not be doing what you want
+		//super(...arguments);		//	A spread argument must either have a tuple type or be passed to a rest parameter.ts(2556)
+		//super([...arguments]);	// This is fine with a recent compiler target
 		//super(arguments[0]);		// This one works for this particular case
 	}
 
@@ -78,8 +80,8 @@ class SubS0 extends BaseS {
 	constructor() {
 		//super();					//	Expected 1 arguments, but got 0.ts(2554)
 		//super(arguments);			//	Argument of type 'IArguments' is not assignable to parameter of type 'string'.ts(2345)
-		//super(...arguments);		//	A spread argument must either have a tuple type or be passed to a rest parameter.ts(2556)	;	Type 'IArguments' is not an array type.ts(2461)
-		//super([...arguments]);	//	Argument of type 'any[]' is not assignable to parameter of type 'string'.ts(2345)			;	Type 'IArguments' is not an array type.ts(2461)
+		//super(...arguments);		//	A spread argument must either have a tuple type or be passed to a rest parameter.ts(2556)
+		//super([...arguments]);	//	Argument of type 'any[]' is not assignable to parameter of type 'string'.ts(2345)
 		super(arguments[0]);		// This one works for this particular case
 	}
 
@@ -93,11 +95,11 @@ class SubS1 extends BaseS {
 
 	constructor(s) {	// similar to above
 		//super();					//	Expected 1 arguments, but got 0.ts(2554)
-		//super(s);					// This is fine
+		super(s);					// This is fine
 		//super(arguments);			//	Argument of type 'IArguments' is not assignable to parameter of type 'string'.ts(2345)
-		//super(...arguments);		//	A spread argument must either have a tuple type or be passed to a rest parameter.ts(2556)	;	Type 'IArguments' is not an array type.ts(2461)
-		//super([...arguments]);	//	Argument of type 'any[]' is not assignable to parameter of type 'string'.ts(2345)			;	Type 'IArguments' is not an array type.ts(2461)
-		super(arguments[0]);		// This is also fine
+		//super(...arguments);		//	A spread argument must either have a tuple type or be passed to a rest parameter.ts(2556)
+		//super([...arguments]);	//	Argument of type 'any[]' is not assignable to parameter of type 'string'.ts(2345)
+		//super(arguments[0]);		// This is also fine
 	}
 
 }/* SubS1 */
