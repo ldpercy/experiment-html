@@ -5,8 +5,27 @@ Notes about type rules in general.
 
 
 
-Arguments
----------
+Allow a function to accept derived classes
+------------------------------------------
+
+You'd think this would be straightforward, but maybe not.
+Plus my brain is mushing out right now.
+Interfaces, LSP... ?
+Back to basics.
+
+```js
+	/**
+	 * @param {BaseClass} instance // want this to accept subclass instances as well...
+	 */
+	function funcAcceptsInstance( instance ) {
+		console.log('instance:', instance);
+	}/* funcAcceptsInstance */
+```
+
+
+
+Spreading the arguments object
+------------------------------
 
 Very cranky about this.
 
@@ -22,7 +41,7 @@ Until you try the first two...
 	// or
 	const args = Array.from(arguments);			// Property 'from' does not exist on type 'ArrayConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2015' or later.ts(2550)
 ```
-And notice that you've been using the wrong compiler settings... sigh.
+And notice that you've been using the __wrong compiler settings__... sigh.
 
 Now I've got to go back and re-run a bunch of trials.
 
@@ -65,6 +84,19 @@ Actually still experimenting - like everything, I think it *depends*.
 
 
 I'm not sure there's any kind of strict relationship between the constructor signatures of base & derived classes.
+
+
+
+Note this example in the TS docs:
+https://www.typescriptlang.org/docs/handbook/2/classes.html#overriding-methods
+
+> It’s important that a derived class follow its base class contract.
+> What if Derived didn’t follow Base’s contract?
+> // Make this parameter required
+> If we compiled this code despite the error, this sample would then crash:
+> // Crashes because "name" will be undefined
+
+So looks like you *can* change the signature in a method override, but only in a type-compatible way.
 
 
 

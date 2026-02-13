@@ -1,14 +1,20 @@
+//
+//	predicate classes
+//
+
+/*
+Not having much success typing predicate functions in a flexible way, so going to try them as small classes instead and see how that works out.
+*/
+
+
+export {
+	Predicate, Equal
+}
 
 
 
+// Perhaps should be an interface instead - not sure yet
 
-/* * predicate
- *
- * I'm not sure in jsdoc how to define a partial function signature like this:
- *
- * @typedef {function} Predicate
- * @returns {boolean}
- */
 class Predicate {
 	constructor() {}
 
@@ -23,23 +29,24 @@ class Predicate {
 
 class Equal extends Predicate {
 
-	constructor() {
-		super();
-	}
-
 	/**
 	 * @param {any}	expression1
 	 * @param {any}	expression2
-	 * @return {boolean}
 	 */
-	test(expression1, expression2) {					// Compiler doesn't like this  - I thought you could do it???
-		return (expression1 === expression2);
+	constructor(expression1, expression2) {
+		super();
+		this.expression1 = expression1;
+		this.expression2 = expression2;
 	}
 
+	/**
+	 * @return {boolean}
+	 */
+	test() {
+		return (this.expression1 === this.expression2);
+	}
 
 }/* Equal */
-
-
 
 
 
@@ -83,6 +90,3 @@ export function functionExcepts(func) {
 
 
 
-export {
-	Equal
-};
