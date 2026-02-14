@@ -1,8 +1,11 @@
 jsconfig
 ========
 
+* https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html
 * https://code.visualstudio.com/docs/languages/jsconfig
 * https://junkangworld.com/blog/unlock-project-wide-jsdoc-in-vscode-the-1-fix-for-2025
+
+
 
 
 I've started using jsconfig & JSDoc for typechecking. Introducing the config file to a directory adds red squigglies to js files, *and* anything implicated such as imported modules.

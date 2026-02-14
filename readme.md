@@ -54,6 +54,7 @@ I'm using `jsconfig.json` to turn on typechecking, currently with the following 
 Todo
 ----
 
+* This expression is not constructable. Type 'Predicate' has no construct signatures.ts(2351)
 * Derived subclass as function parameter?
 * JSDoc partial typing - see if there are ways to declare generic types that only specify certain items of a type signature, eg *just* the return type of a function - and be able to mix these partials together a bit like interfaces
 * See if there's a way to type the whole of a function's arguments object, not just individual parameters

@@ -1,6 +1,12 @@
 Namespace
 =========
 
+
+See also: https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html#classes-functions-and-object-literals-are-namespaces
+
+
+
+
 Having more ideas about using js classes as namespaces generally, want to try one or two things.
 
 In Turtle I've started grouping things into class-based namespaces, and I'm about to start doing the same thing to year-clock, but that one is more complicated.

@@ -10,13 +10,16 @@ import * as predicate from './predicate-class.js';
  * @param {array} expressionArray
  */
 export function testExpressionArray( predicate, expressionArray ) {
-	console.log('predicate:', predicate);
+	console.log('predicate:', typeof predicate, predicate);
+
 
 	const result = expressionArray.map(
 		(element) => {
 			console.log(element);
 
-			let test = new predicate(element)
+			let test = new predicate;					// This expression is not constructable. Type 'Predicate' has no construct signatures.ts(2351)
+			//let test = new predicate(element);
+
 			/*
 			const elementResult = {
 				result : predicate(element),

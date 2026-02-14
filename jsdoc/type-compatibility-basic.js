@@ -1,9 +1,16 @@
 //
-//	Type compatibility
+//	Type compatibility - basic types
 //
 //	Type errors in here are intensional
 //
-console.info('type-compatibility.js')
+/*
+https://www.typescriptlang.org/docs/handbook/basic-types.html
+https://www.typescriptlang.org/docs/handbook/2/everyday-types.html
+*/
+
+export {};
+console.info('type-compatibility-basic.js')
+function clog(p) { console.log(typeof p, p) }
 
 
 console.groupCollapsed('acceptsAny');
@@ -11,7 +18,7 @@ console.groupCollapsed('acceptsAny');
 	/**
 	 * @param {any}	a
 	 */
-	function acceptsAny(a) { console.log(a) }
+	function acceptsAny(a) { clog(a) }
 
 	acceptsAny();
 	acceptsAny(1234);
@@ -21,6 +28,7 @@ console.groupCollapsed('acceptsAny');
 	acceptsAny(undefined);
 	acceptsAny(null);
 	acceptsAny(NaN);
+	acceptsAny(()=>{});
 
 	// All clear here
 
@@ -33,7 +41,7 @@ console.groupCollapsed('acceptsUnknown');
 	/**
 	 * @param {unknown}	u
 	 */
-	function acceptsUnknown(u) { console.log(u) }
+	function acceptsUnknown(u) { clog(u) }
 
 	acceptsUnknown();
 	acceptsUnknown(1234);
@@ -43,6 +51,7 @@ console.groupCollapsed('acceptsUnknown');
 	acceptsUnknown(undefined);
 	acceptsUnknown(null);
 	acceptsUnknown(NaN);
+	acceptsUnknown(()=>{});
 
 	// All clear here as well
 
@@ -56,7 +65,7 @@ console.groupCollapsed('acceptsObject');
 	/**
 	 * @param {object}	obj
 	 */
-	function acceptsObject(obj) { console.log(obj) }
+	function acceptsObject(obj) { clog(obj) }
 
 	acceptsObject();					// interesting that this is fine
 	acceptsObject(1234);
@@ -66,6 +75,7 @@ console.groupCollapsed('acceptsObject');
 	acceptsObject(undefined);
 	acceptsObject(null);
 	acceptsObject(NaN);
+	acceptsObject(()=>{});
 
 	// Looks like {object} will take just about anything - wonder if there's anything it actually won't accept? Maybe not... synonymous with 'any'?
 
@@ -79,9 +89,9 @@ console.groupCollapsed('acceptsBoolean');
 	/**
 	 * @param {boolean}	b
 	 */
-	function acceptsBoolean(b) { console.log(b) }
+	function acceptsBoolean(b) { clog(b) }
 
-	acceptsBoolean();						// Expected at least 1 arguments, but got 0.ts(2555)
+	acceptsBoolean();						// Expected 1 arguments, but got 0.ts(2554)
 	acceptsBoolean(1234);					// Argument of type 'number' is not assignable to parameter of type 'boolean'.ts(2345)
 	acceptsBoolean('Hello');				// Argument of type 'string' is not assignable to parameter of type 'boolean'.ts(2345)
 	acceptsBoolean(['an array']);			// Argument of type 'string[]' is not assignable to parameter of type 'boolean'.ts(2345)
@@ -89,6 +99,7 @@ console.groupCollapsed('acceptsBoolean');
 	acceptsBoolean(undefined);
 	acceptsBoolean(null);
 	acceptsBoolean(NaN);					// Argument of type 'number' is not assignable to parameter of type 'boolean'.ts(2345)
+	acceptsBoolean(()=>{});					// Argument of type '() => void' is not assignable to parameter of type 'boolean'.ts(2345)
 
 console.groupEnd();
 
@@ -99,9 +110,9 @@ console.groupCollapsed('acceptsNumber');
 	/**
 	 * @param {number}	n
 	 */
-	function acceptsNumber(n) { console.log(n) }
+	function acceptsNumber(n) { clog(n) }
 
-	acceptsNumber();						// Expected at least 1 arguments, but got 0.ts(2555)
+	acceptsNumber();						// Expected 1 arguments, but got 0.ts(2554)
 	acceptsNumber(1234);
 	acceptsNumber('Hello');					// Argument of type 'string' is not assignable to parameter of type 'number'.ts(2345)
 	acceptsNumber(['an array']);			// Argument of type 'string[]' is not assignable to parameter of type 'number'.ts(2345)
@@ -109,6 +120,7 @@ console.groupCollapsed('acceptsNumber');
 	acceptsNumber(undefined);
 	acceptsNumber(null);
 	acceptsNumber(NaN);						// NaN is a number... chortle
+	acceptsNumber(()=>{});					// Argument of type '() => void' is not assignable to parameter of type 'number'.ts(2345)
 
 console.groupEnd();
 
@@ -119,9 +131,9 @@ console.groupCollapsed('acceptsString');
 	/**
 	 * @param {string}	s
 	 */
-	function acceptsString(s) { console.log(s) }
+	function acceptsString(s) { clog(s) }
 
-	acceptsString();						// Expected at least 1 arguments, but got 0.ts(2555)
+	acceptsString();						// Expected 1 arguments, but got 0.ts(2554)
 	acceptsString(1234);					// Argument of type 'number' is not assignable to parameter of type 'string'.ts(2345)
 	acceptsString('Hello');
 	acceptsString(['an array']);			// Argument of type 'string[]' is not assignable to parameter of type 'string'.ts(2345)
@@ -129,6 +141,28 @@ console.groupCollapsed('acceptsString');
 	acceptsString(undefined);
 	acceptsString(null);
 	acceptsString(NaN);						// Argument of type 'number' is not assignable to parameter of type 'string'.ts(2345)
+	acceptsString(()=>{});					// Argument of type '() => void' is not assignable to parameter of type 'string'.ts(2345)
 
 console.groupEnd();
 
+
+
+
+console.groupCollapsed('acceptsFunction');
+
+	/**
+	 * @param {function}	p
+	 */
+	function acceptsFunction(p) { clog(p) }
+
+	acceptsFunction();						// Expected 1 arguments, but got 0.ts(2554)
+	acceptsFunction(1234);					// Argument of type 'number' is not assignable to parameter of type 'Function'.ts(2345)
+	acceptsFunction('Hello');				// Argument of type 'string' is not assignable to parameter of type 'Function'.ts(2345)
+	acceptsFunction(['an array']);			// Argument of type 'string[]' is not assignable to parameter of type 'Function'.
+	acceptsFunction({i:'an object'});		// Object literal may only specify known properties, and 'i' does not exist in type 'Function'.ts(2353)
+	acceptsFunction(undefined);
+	acceptsFunction(null);
+	acceptsFunction(NaN);					// Argument of type 'number' is not assignable to parameter of type 'Function'.ts(2345)
+	acceptsFunction(()=>{});
+
+console.groupEnd();

@@ -3,6 +3,9 @@ Typing
 
 Notes about type rules in general.
 
+https://www.typescriptlang.org/docs/handbook/basic-types.html
+https://www.typescriptlang.org/docs/handbook/2/everyday-types.html
+
 
 
 Allow a function to accept derived classes
