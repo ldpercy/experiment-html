@@ -2,11 +2,11 @@
 // testing
 //
 
-import * as predicate from './predicate-class.js';
+import * as Predicate from './predicate-class.js';
 
 
 /** testExpressionArray
- * @param {predicate.Predicate} predicate
+ * @param {Predicate.Predicate} predicate
  * @param {array} expressionArray
  */
 export function testExpressionArray( predicate, expressionArray ) {

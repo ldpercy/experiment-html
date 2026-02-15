@@ -8,6 +8,36 @@ https://www.typescriptlang.org/docs/handbook/2/everyday-types.html
 
 
 
+
+
+Dynamically instantiating classes
+---------------------------------
+There's something funny going on here....
+At first I thought it was an issue with imports/exports because I was trying to instantiate a class from another module, but I can generate this error in entirely self-contained js code.
+
+```js
+/** createInstanceOf
+ * {any}, {object}		- fine
+ * {unknown}			- This expression is not constructable. Type '{}' has no construct signatures.ts(2351)
+ * {function}			- This expression is not constructable. Type 'Function' has no construct signatures.ts(2351)
+ * {SomeClass}			- This expression is not constructable. Type 'SomeClass' has no construct signatures.ts(2351)
+ *
+ * @param {any} c
+ */
+function createInstanceOf(c) {
+	let result = new c;			// The errors are here on `c`: This expression is not constructable. Type '....' has no construct signatures.ts(2351)
+	return result;
+}
+```
+
+These all run okay, it's *just* an issue with typechecking & red squigglies.
+
+
+
+https://www.typescriptlang.org/docs/handbook/2/functions.html#construct-signatures
+
+
+
 Allow a function to accept derived classes
 ------------------------------------------
 

@@ -24,10 +24,10 @@ Something fundamental I'm missing here perhaps.
 
 
 
-/* Predicate
+/* Test
 Base class
 */
-class Predicate {
+class Test {
 	constructor() {}
 
 	/**
@@ -36,14 +36,14 @@ class Predicate {
 	 */
 	test() { return false;	}
 
-}/* Predicate */
+}/* Test */
 
 
 
-/* PredicateABCD
+/* TestABCD
 Adds extra param typing to a function override
 */
-export class PredicateABCD extends Predicate {
+export class TestABCD extends Test {
 
 	constructor() {
 		super();
@@ -58,14 +58,14 @@ export class PredicateABCD extends Predicate {
 		return (expression1 === expression2);
 	}
 
-}/* PredicateABCD */
+}/* TestABCD */
 
 
 
-/* PredicateEFGH
+/* TestEFGH
 Omits param typing from the function override
 */
-export class PredicateEFGH extends Predicate {
+export class TestEFGH extends Test {
 
 	constructor() {
 		super();
@@ -82,14 +82,14 @@ export class PredicateEFGH extends Predicate {
 		return (expression1 === expression2);
 	}
 
-}/* PredicateEFGH */
+}/* TestEFGH */
 
 
 
-/* PredicateIJKL
+/* TestIJKL
 Move params to the constructor instead, seems to type okay...
 */
-export class PredicateIJKL extends Predicate {
+export class TestIJKL extends Test {
 
 	/**
 	 * @param {any}	expression1				// Seems okay to do it in the constructor though
@@ -108,7 +108,7 @@ export class PredicateIJKL extends Predicate {
 		return (this.expression1 === this.expression2);
 	}
 
-}/* PredicateIJKL */
+}/* TestIJKL */
 
 
 
