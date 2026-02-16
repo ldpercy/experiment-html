@@ -16,7 +16,13 @@ export {
 // Perhaps should be an interface instead - not sure yet
 
 class Predicate {
-	constructor() {}
+	/** @param {any} expression */
+	constructor(expression) {
+		this.expression = expression;
+	}
+
+	///** @param {any} expression */
+	//set expression(expression) { this.expression = expression; }
 
 	/**
 	 * @abstract
@@ -29,21 +35,19 @@ class Predicate {
 
 class Equal extends Predicate {
 
-	/**
-	 * @param {any}	expression1
-	 * @param {any}	expression2
-	 */
-	constructor(expression1, expression2) {
-		super();
-		this.expression1 = expression1;
-		this.expression2 = expression2;
+	/** @param {any} expression */
+	constructor(expression) {
+		super([...arguments]);
 	}
 
 	/**
 	 * @return {boolean}
 	 */
 	test() {
-		return (this.expression1 === this.expression2);
+		const result = this.expression.every(
+			(expression) => { return expression === this.expression[0] }
+		);
+		return result;
 	}
 
 }/* Equal */
