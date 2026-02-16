@@ -1,0 +1,37 @@
+Task
+====
+
+
+Meta
+----
+So far most of the experiments in here have been pretty small and self-contained, and I've left markdown docs around the place to summarise findings.
+And sometimes while figuring things out I've also added brief-ish trains of thought.
+Some experiments are starting to get more involved though and will need better tracking, so setting this folder up like I've done in other projects.
+
+Won't do branch-merge-release here though - this project will stay all trunk development - so 'done' tasks will probably end up grouped by date.
+When html-common gets into release cadence some tasks will be moved over to there.
+
+
+
+Todo
+----
+* "Layout was forced before the page was fully loaded. If stylesheets are not yet loaded this may cause a flash of unstyled content."
+* "This expression is not constructable. Type '....' has no construct signatures.ts(2351)"
+* Derived subclass as function parameter?
+* JSDoc partial typing - see if there are ways to declare generic types that only specify certain items of a type signature, eg *just* the return type of a function - and be able to mix these partials together a bit like interfaces
+* See if there's a way to type the whole of a function's arguments object, not just individual parameters
+* See if @interface typing can be applied to non-class objects
+* Look for other duck/mixin typing options
+* Find out where the root/base context of jsconfig+checkJs typechecking is
+* See if there's a way to turn on jsdoc typechecking for inline `<script></script>` within html - nothing found so far
+* Revisit named function arguments and options for only specifying certain parameters, leaving others as defaults - I've done this before, need to review.
+	Turns out you can omit arguments with `undefined` to get the defaults...
+* Testing - simple code testing eg equality, exceptions, typeof testing that code excepts
+* CSS colour model/api etc
+* CSS `grey` is darker than `darkgrey` ????
+* dynamic/automatic/contextual colours for text
+* Parent selector - 'has'
+* See if there's a way to collapse the single extra spaces that sometimes get added just from formatting, eg `<h1>	<a ...`
+* Grid layout - see if there's an simpler way of making grid items go full-width
+* 3d transform experiments
+

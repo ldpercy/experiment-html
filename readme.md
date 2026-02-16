@@ -35,9 +35,6 @@ Slightly interesting things
 jsconfig & JSDoc
 ----------------
 
-> [!IMPORTANT]
-> Make sure `compilerOptions` in jsconfig are set to something modern or you can get really confusing and outdated errors
-
 I'm using `jsconfig.json` to turn on typechecking, currently with the following settings - keep these updated to the latest:
 
 ```js
@@ -48,28 +45,18 @@ I'm using `jsconfig.json` to turn on typechecking, currently with the following 
 	}
 ```
 
+> [!IMPORTANT]
+> Make sure `compilerOptions` in jsconfig are set to something modern or you can get really confusing and outdated errors
 
 
+Tasks
+-----
 
-Todo
-----
+Details in [the task folder]([task]).
 
-* This expression is not constructable. Type 'Predicate' has no construct signatures.ts(2351)
-* Derived subclass as function parameter?
-* JSDoc partial typing - see if there are ways to declare generic types that only specify certain items of a type signature, eg *just* the return type of a function - and be able to mix these partials together a bit like interfaces
-* See if there's a way to type the whole of a function's arguments object, not just individual parameters
-* See if @interface typing can be applied to non-class objects
-* Look for other duck/mixin typing options
-* Find out where the root/base context of jsconfig+checkJs typechecking is
-* See if there's a way to turn on jsdoc typechecking for inline `<script></script>` within html - nothing found so far
-* Revisit named function arguments and options for only specifying certain parameters, leaving others as defaults - I've done this before, need to review.
-	Turns out you can omit arguments with `undefined` to get the defaults...
-* Testing - simple code testing eg equality, exceptions, typeof testing that code excepts
-* CSS colour model/api etc
-* CSS `grey` is darker than `darkgrey` ????
-* dynamic/automatic/contextual colours for text
-* Parent selector - 'has'
-* See if there's a way to collapse the single extra spaces that sometimes get added just from formatting, eg `<h1>	<a ...`
-* Grid layout - see if there's an simpler way of making grid items go full-width
-* 3d transform experiments
-
+Currently working on:
+* A small testing library
+* JSDoc typing & type safety in general
+* CSS colour calculation experiments
+* 2D and 3D transformations with the DOM and CSS
+* Temporal API
