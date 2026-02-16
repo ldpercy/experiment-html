@@ -206,6 +206,12 @@ And should add a comparator to `Equal` as well - there might be weird js coercio
 Much more likely to occur in '==' than '===' though.
 Better to make it clear what we're testing against.
 
+### Add Comparator
+
+Works.
+Okay this is getting a little bit somewhere now.
+
+Will start looking to rationalising and building out.
 
 
 

@@ -8,10 +8,11 @@ Summaries/findings can stay in here.
 
 Test categories
 ---------------
-* equality
+* equality -  IsStrictlyEqual, IsLooselyEqual
 * equivalence - to some specified level
 * greater/less than a specified comparator
 * typeof
 * instanceof
 * exceptions
+* Deep equality?
 * ???

@@ -9,8 +9,11 @@ Not having much success typing predicate functions in a flexible way, so going t
 
 export {
 	Predicate,
-	Equal,
-	Excepts
+	AllEqual,
+	EqualTo,
+	GreaterThan,
+	LessThan,
+	Excepts,
 }
 
 
@@ -35,7 +38,11 @@ class Predicate {
 
 
 
-class Equal extends Predicate {
+
+
+
+
+class AllEqual extends Predicate {
 
 	/** @param {any} expression */
 	constructor(expression) {
@@ -52,18 +59,45 @@ class Equal extends Predicate {
 		return result;
 	}
 
-}/* Equal */
+}/* AllEqual */
 
 
+
+class EqualTo extends Predicate {
+
+	/**
+	 * @param {any} comparator
+	 * @param {any} [expression]
+	 */
+	constructor(comparator, expression) {
+		super(expression);
+		this.comparator = comparator;
+	}
+
+	/** test
+	 * @return {boolean}
+	 */
+	test() {
+		const result = this.expression.every(
+			(expression) => { return expression === this.comparator}
+		);
+		return result;
+	}
+
+}/* EqualTo */
 
 
 
 
 class GreaterThan extends Predicate {
 
-	/** @param {any} expression */
-	constructor(expression) {
-		super([...arguments]);
+	/**
+	 * @param {any} comparator
+	 * @param {any} [expression]
+	 */
+	constructor(comparator, expression) {
+		super(expression);
+		this.comparator = comparator;
 	}
 
 	/** test
@@ -71,14 +105,37 @@ class GreaterThan extends Predicate {
 	 */
 	test() {
 		const result = this.expression.every(
-			(expression) => { return expression === this.expression[0] }		// Not sure if there are any weird js circumstances where equality might work between items but not against [0] or vice-versa
+			(expression) => { return expression > this.comparator}
 		);
 		return result;
 	}
 
-}/* Equal */
+}/* GreaterThan */
 
 
+
+class LessThan extends Predicate {
+
+	/**
+	 * @param {any} comparator
+	 * @param {any} [expression]
+	 */
+	constructor(comparator, expression) {
+		super(expression);
+		this.comparator = comparator;
+	}
+
+	/** test
+	 * @return {boolean}
+	 */
+	test() {
+		const result = this.expression.every(
+			(expression) => { return expression < this.comparator}
+		);
+		return result;
+	}
+
+}/* LessThan */
 
 
 
