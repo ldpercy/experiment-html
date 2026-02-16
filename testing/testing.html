@@ -22,11 +22,12 @@
 	<main>
 		<script type="module" class="fullwidth">
 			import * as test from './testing.js';
-			import * as predicate from './predicate-class.js';
+			import * as predicate from './predicate.js';
 
 			//console.log(predicate.areEqual(1+1,3-1));
 
-			const allEqualTest = test.testExpressionArray(
+			test.groupTest(
+				'AllEqual',
 				new predicate.AllEqual(),
 				[
 					[],
@@ -41,11 +42,10 @@
 					[typeof (()=>{}), 'function']
 				]
 			);
-			console.dir(allEqualTest);
 
 
-
-			const equalToTest = test.testExpressionArray(
+			test.groupTest(
+				'EqualTo',
 				new predicate.EqualTo(5),
 				[
 					[0],
@@ -56,10 +56,10 @@
 					[false],
 				]
 			);
-			console.dir(equalToTest);
 
 
-			const greaterThanTest = test.testExpressionArray(
+			test.groupTest(
+				'GreaterThan',
 				new predicate.GreaterThan(5),
 				[
 					[0],
@@ -70,13 +70,23 @@
 					[false],
 				]
 			);
-			console.dir(greaterThanTest);
+
+			test.groupTest(
+				'LessThan',
+				new predicate.LessThan(5),
+				[
+					[0],
+					[1],
+					[5],
+					[6],
+					[true],
+					[false],
+				]
+			);
 
 
-
-
-
-			const exceptionTest = test.testExpressionArray(
+			test.groupTest(
+				'Excepts',
 				new predicate.Excepts(),
 				[
 					1+2,
@@ -93,10 +103,8 @@
 					//f1(),						// can't do this - it excepts immediately and isn't caught by the testing function
 				]
 			);
-		console.dir(exceptionTest);
 
 		</script>
-
 
 
 		<script>
@@ -111,7 +119,9 @@
 				return `f1(${argString(arguments)}): ${a},${b},${c}`;
 			}
 
-			f1();					// [chr] Uncaught TypeError: Cannot destructure property 'a' of 'undefined' as it is undefined.
+			//f1();
+			// 	[chr] Uncaught TypeError: Cannot destructure property 'a' of 'undefined' as it is undefined.
+			//	[ff] Uncaught TypeError: (destructured parameter) is undefined
 
 			/*
 			try {

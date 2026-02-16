@@ -215,5 +215,62 @@ Will start looking to rationalising and building out.
 
 
 
+Tests and results
+-----------------
+
+```js
+test {
+	[desc]
+	predicate = AllTrue;
+
+	test = IndividualTrial || Test[]
+
+	// if the
+
+
+
+	TrialSet = {
+		predicate,
+		ExpressionArray
+	}
+
+
+	{
+		predicate
+		expression[	],
+		value[]
+	}
+
+	result[] {
+		expression
+		pass
+	}
+
+	pass = result.every((element) => { element.pass === true })
+}
+```
+
+If the expression array or whatever it ends up being called can itself contain other tests, then I can use the same predicate arrangement to test whether the tests themselves pass by predicating that they all come back true.
+
+Not sure though yet if this idea is really elegant or too clever.
+Will have to try getting some of this going first, then see if it could work.
+It might be easier to predicate that separately.
+The default predicate for testing could be 'AllTrue'.
+Brain currently knotted up trying to figure out how best to nest/recurse this - need to clear my head and return to.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
