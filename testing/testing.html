@@ -41,36 +41,37 @@
 					[typeof (()=>{}), 'function']
 				]
 			);
-
 			console.dir(equalityTest);
 
 
-			// test.testArray(
-			// 	predicate.functionExcepts,
-			// 	[
-			// 		1+2,
-			// 		1/0,
-			// 		()=>{ return 1+1; },
-			// 		throwsException,
-			// 		()=>throwsException()
-			// 		// f1,
-			// 		// () => f1,
-			// 		// () => f1(),
-			// 		// () => f1({}),
-			// 		//f1(), nope - special case for this one I think
-
-			// 	]
-			// );
-
+			const exceptionTest = test.testExpressionArray(
+				new predicate.Excepts(),
+				[
+					1+2,
+					1/0,
+					()=>{ return 1+1; },
+					()=>{ throw 'an exception'; },
+					throwsException,
+					//throwsException(),		// can't do this - this excepts immediately and isn't caught by the testing function
+					()=>throwsException(),
+					f1,
+					() => f1,
+					() => f1(),
+					() => f1({}),
+					//f1(),						// can't do this - this excepts immediately and isn't caught by the testing function
+				]
+			);
+		console.dir(exceptionTest);
 
 		</script>
 
 
-		<!--
+
 		<script>
+			// helpers
 
 			function throwsException() {
-				throw 'throwsException';
+				throw 'this is an exception';
 			}
 
 			function f1({a,b,c}) {
@@ -78,7 +79,7 @@
 				return `f1(${argString(arguments)}): ${a},${b},${c}`;
 			}
 
-			//f1();					// [chr] Uncaught TypeError: Cannot destructure property 'a' of 'undefined' as it is undefined.
+			f1();					// [chr] Uncaught TypeError: Cannot destructure property 'a' of 'undefined' as it is undefined.
 
 			/*
 			try {
@@ -90,7 +91,7 @@
 			*/
 
 		</script>
-		 -->
+
 
 
 		<!--

@@ -8,7 +8,9 @@ Not having much success typing predicate functions in a flexible way, so going t
 
 
 export {
-	Predicate, Equal
+	Predicate,
+	Equal,
+	Excepts
 }
 
 
@@ -24,7 +26,7 @@ class Predicate {
 	///** @param {any} expression */
 	//set expression(expression) { this.expression = expression; }
 
-	/**
+	/** test
 	 * @abstract
 	 * @returns {boolean}
 	 */
@@ -40,12 +42,12 @@ class Equal extends Predicate {
 		super([...arguments]);
 	}
 
-	/**
+	/** test
 	 * @return {boolean}
 	 */
 	test() {
 		const result = this.expression.every(
-			(expression) => { return expression === this.expression[0] }
+			(expression) => { return expression === this.expression[0] }		// Not sure if there are any weird js circumstances where equality might work between items but not against [0] or vice-versa
 		);
 		return result;
 	}
@@ -54,43 +56,67 @@ class Equal extends Predicate {
 
 
 
-/**
- * @param {Array<any>}	expressionArray
- * @return {boolean}
- */
-export function allEqual(expressionArray) {
-	const result = expressionArray.every(
-		(expression) => { return expression === expressionArray[0] }
-	);
-	return result;
-}
 
 
-/** functionExcepts
- *
- * I highly doubt this will work... might need an eval or wrap or some other strategy
- *
- * @param {function} func
- * @return {boolean}
- */
-export function functionExcepts(func) {
-	let result = false;
-	let exc = undefined;
-	let e  = undefined;
 
-	try {
-		func();
-	}
-	catch(e) {
-		exc = e;
-		result = true
+class GreaterThan extends Predicate {
+
+	/** @param {any} expression */
+	constructor(expression) {
+		super([...arguments]);
 	}
 
-	//console.log(func, result, e);
+	/** test
+	 * @return {boolean}
+	 */
+	test() {
+		const result = this.expression.every(
+			(expression) => { return expression === this.expression[0] }		// Not sure if there are any weird js circumstances where equality might work between items but not against [0] or vice-versa
+		);
+		return result;
+	}
 
-	return result;
-}/* functionExcepts */
+}/* Equal */
 
 
+
+
+
+
+
+
+
+
+class Excepts extends Predicate {
+	/** @param {any} expression */
+	constructor(expression) {
+		super([...arguments]);
+	}
+
+	/** test
+	 * @return {boolean}
+	 */
+	test() {
+		let result = false;
+
+		if (typeof this.expression === 'function') {
+
+			try {
+				this.expression();
+			}
+			catch(exception) {
+				//exc = e;
+				result = true
+			}
+		}
+		else {
+			// it's not a function, we can't execute it
+		}
+
+		return result;
+	}
+
+
+}/* Excepts */
 
 

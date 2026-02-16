@@ -170,9 +170,9 @@ https://www.typescriptlang.org/docs/handbook/2/functions.html#construct-signatur
 
 
 I still want to get to the bottom of this; I feel like I'm on the cusp of something about type safety-safety in general.
-But for the particular case of dynamic class instantiation (and the case where I wanted to use it) I think the better alternative will be
 
-
+But for the particular case of dynamic class instantiation (and the case where I wanted to use it) I think the better alternative will be to concretely instantiate the class outside the function and pass in the instance instead.
+Dynamic class instantiation could have some non-trivial typing issues that need to be solved with generics or similar.
 
 
 
@@ -180,5 +180,34 @@ Aside into typing and safety
 ----------------------------
 ... Okay have had an interesting diversion going into more detail about jsdoc & typing in general.
 I still haven't figured out if it's possible to partly type a function yet - starting to feel like it might be a pretty weak form type of type safety (if any at all).
-So have gone further with the predicate as classes thing - there are quirks there too
+So have gone further with the predicate as classes thing - though there are quirks there too.
+
+Still not sure if I'm thinking about *any* of this correctly though...
+The way I've currently got the predicate classes, they could maybe just go back to being written as functions?
+Nah not sure about that either. Need to write some more, and look at again.
+
+
+More tests
+----------
+
+Rightyo then lets just write some more first and see where we stand.
+
+### Exceptions
+
+As best I can tell so far testing expressions for exceptions *have* to be tested as functions, otherwise they except immediately before theey can be caught by the testing setup.
+
+### Greater than / less than
+
+Might change my mind, but for now I'll do them similar to 'Equals' in that they're tested against the zeroth.
+
+Actually that won't work (elegantly) - if they're all tested against [0] then that will include [0] which will be false, so the whole thing will be.
+Will need a comparator.
+And should add a comparator to `Equal` as well - there might be weird js coercion cases where things could end up equal in some comparisons but not others.
+Much more likely to occur in '==' than '===' though.
+Better to make it clear what we're testing against.
+
+
+
+
+
 
