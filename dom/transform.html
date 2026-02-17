@@ -43,7 +43,8 @@
 			import * as planar from '../[html-common]/module/PlanarSpace.js'
 			import * as svg from '../[html-common]/module/SVG.js'
 
-			let space = new planar.Space('simple space');
+			let space = new planar.Space(undefined,'simple space');
+			console.log(space);
 			let box = new svg.Box(-1200,-600,2400,1200);
 			//console.log(box);
 
