@@ -6,45 +6,16 @@ import * as predicateLibrary from './predicate.js';
 export { Test }
 
 
-/** testExpressionArray
- * @param {predicateLibrary.Predicate} predicate
- * @param {array} expressionArray
- * @return {TestResult}
- */
-export function testExpressionArray( predicate, expressionArray ) {
-	console.log('predicate:', typeof predicate, predicate);
-
-	/** @type {TestResult} */
-	const result = {}
-
-	result.test = expressionArray.map(
-		(element) => {
-			//console.log(element);
-
-			//let test = new predicate;					// This expression is not constructable. Type 'Predicate' has no construct signatures.ts(2351)
-			//let test = new predicate();
-
-			predicate.expression = element;
-			const elementResult = {
-				result : predicate.test(),
-				test   : element,
-			};
-
-			return elementResult ;
-		}
-	);
-
-	return result;
-}/* testExpressionArray */
 
 
 
 
-/** groupTest
+
+/* * groupTest
  * @param {string} desc
  * @param {predicateLibrary.Predicate} predicate
  * @param {array} expressionArray
- */
+ * /
 export function groupTest(desc, predicate, expressionArray) {
 	//console.debug(arguments);
 
@@ -58,7 +29,7 @@ export function groupTest(desc, predicate, expressionArray) {
 	console.dir(test.result);
 	console.log(`%c ${passFail(test.pass)}`, consoleStyle);
 	console.groupEnd();
-}/* groupTest */
+}/ * groupTest */
 
 
 /** @param {boolean} b */
@@ -156,6 +127,20 @@ class Test {
 		const result = this.#result.every((expression) => { expression.predicate === true });	// this is still a 'none false' condition
 		return result;
 	}
+
+
+	toConsole() {
+		this.run();
+		const consoleStyle = `color:${(this.pass) ? 'green' : 'red'};`  ;
+
+		console.groupCollapsed(`%c [${passFail(this.pass)}] ${this.desc}`, consoleStyle);
+		console.log('predicate:', this.predicate.constructor.name);
+		console.dir(this.result);
+		console.log(`%c ${passFail(this.pass)}`, consoleStyle);
+		console.groupEnd();
+
+	}/* toConsole */
+
 
 
 }/* Test */

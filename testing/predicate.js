@@ -71,7 +71,7 @@ class NoneFalse extends Predicate {
 
 See:	https://en.wikipedia.org/wiki/Vacuous_truth#In_computer_programming
 
-This is my go at a stronger assertion than 'every' provides - try to find some reference or antecedent.
+This is my go at a stronger assertion than 'every' provides - try to find some reference or precedent.
 
 */
 class AllTrue extends Predicate {

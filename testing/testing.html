@@ -25,13 +25,13 @@
 			import * as predicate from './predicate.js';
 
 
-			test.groupTest(
+			new test.Test(
 				'empty test'
-			);
+			).toConsole();
 			// Empty tests pass:	https://en.wikipedia.org/wiki/Vacuous_truth#In_computer_programming
 
 
-			test.groupTest(
+			new test.Test(
 				'All equal test',
 				new predicate.AllEqual(),
 				[
@@ -46,11 +46,11 @@
 					[1,1,1,1],
 					[typeof (()=>{}), 'function']
 				]
-			);
+			).toConsole();
 
 
 
-			test.groupTest(
+			new test.Test(
 				'Equal to test',
 				new predicate.EqualTo(5),
 				[
@@ -61,10 +61,10 @@
 					[true],
 					[false],
 				]
-			);
+			).toConsole();
 
 
-			test.groupTest(
+			new test.Test(
 				'Greater than test',
 				new predicate.GreaterThan(5),
 				[
@@ -75,9 +75,9 @@
 					[true],
 					[false],
 				]
-			);
+			).toConsole();
 
-			test.groupTest(
+			new test.Test(
 				'Less than test',
 				new predicate.LessThan(5),
 				[
@@ -88,10 +88,10 @@
 					[true],
 					[false],
 				]
-			);
+			).toConsole();
 
 
-			test.groupTest(
+			new test.Test(
 				'Excepts test',
 				new predicate.Excepts(),
 				[
@@ -108,7 +108,7 @@
 					() => f1({}),
 					//f1(),						// can't do this - it excepts immediately and isn't caught by the testing function
 				]
-			);
+			).toConsole();
 
 		</script>
 
@@ -141,74 +141,6 @@
 		</script>
 
 
-
-		<!--
-		<script type="module" class="fullwidth">
-			import * as ps from '../[html-common]/module/PlanarSpace.js'
-
-
-			console.group('default planar space');
-				let dps = new ps.Space('default planar space', ps.defaultSpaceSettings);
-				console.log('dps', dps);
-
-				let p1 = dps.newPoint('p1');
-				p1.setCartesian(100,100);
-
-				console.info(dps.newPoint('').setCartesian(100,100));
-
-
-				//console.log('p1', p1);
-				//console.log('p1.angle', p1.angle);
-				//console.log('p1.radius', p1.radius);
-				p1.setCartesian(100,100);
-				console.assert((p1.angle.degrees === 45), 'Angle not equal to 45');
-				p1.setCartesian(-100,100);
-				console.assert((p1.angle.degrees === -45), 'Angle not equal to -45');
-				p1.setCartesian(100,-100);
-				console.assert((p1.angle.degrees === 135), 'Angle not equal to 45');
-				p1.setCartesian(-100,-100);
-				console.assert((p1.angle.degrees === -135), 'Angle not equal to -45');
-
-				test.testArray(
-					predicate.allEqual,
-					[
-						[(new Point( 100, 100)).degrees, 45],
-						[(new Point( 100,-100)).degrees, 135],
-						[(new Point(-100, 100)).degrees, -45],
-						[(new Point(-100,-100)).degrees, -135],
-					]
-				);
-
-
-			console.groupEnd();
-
-
-			console.group('configured planar space');
-				let setting = {polarAxis:'x', polarDirection: 'anticlockwise'};
-				let cps = new ps.Space('configured planar space', setting);
-				console.log('cps', cps);
-
-				let p2 = cps.newPoint('p2');
-				p2.setCartesian(15,20);
-				console.log('p2', p2);
-				console.log('p2.angle', p2.angle);
-				console.log('p2.radius', p2.radius);
-
-				p1.setCartesian(100,100);
-				console.assert((p1.angle.degrees === 45), `Angle not equal to 45: ${p1.angle.degrees}`);
-
-				p1.setCartesian(-100,100);
-				console.assert((p1.angle.degrees === 135), `Angle not equal to 135: ${p1.angle.degrees}`);
-
-				p1.setCartesian(100,-100);
-				console.assert((p1.angle.degrees === -45), `Angle not equal to -45: ${p1.angle.degrees}`);
-				p1.setCartesian(-100,-100);
-				console.assert((p1.angle.degrees === -135), `Angle not equal to -135: ${p1.angle.degrees}`);
-
-			console.groupEnd();
-
-		</script>
-		 -->
 
 	</main>
 

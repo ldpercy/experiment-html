@@ -291,3 +291,9 @@ The predicates are also currently using `every` so the same "none false" is appl
 Again, have a stare at and see if this sufficient, or needs to be made stronger into "all true".
 
 
+Try out for planar space tests
+------------------------------
+
+I reckon a few back-and-forth rounds of revisions will be needed here while I work more stuff out.
+
+So I'm going to take the asserts I had written for planar space over to tests and see what they look like.
