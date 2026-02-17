@@ -74,29 +74,6 @@ pre {		/* treat these like markdown */
 }
 
 
-/*
-**	Miscellaneous
-*/
-
-
-
-
-
-.pretty {
-	div		{ --colour: dodgerblue; }
-	p		{ --colour: plum; }
-	section	{ --colour: springgreen; }
-	aside	{ --colour: aqua; }
-
-	div, p, section, aside {
-		border: 2px solid var(--colour);
-		background-color: hwb(from var(--colour) h w b / 0.3);
-	}
-
-}
-
-
-
 header h1::before {
 	content: url("../favicon.svg");
 }
@@ -114,10 +91,6 @@ a {
 a:hover {
 	text-decoration: underline;
 }
-
-
-
-
 
 
 
@@ -180,4 +153,40 @@ body[onload]::before {
 	content: 'onload=' attr(onload) ;
 }
 
+
+
+
+
+/*
+**	Miscellaneous
+*/
+
+
+
+
+
+.pretty {
+	div		{ --colour: dodgerblue; }
+	p		{ --colour: plum; }
+	section	{ --colour: springgreen; }
+	aside	{ --colour: aqua; }
+
+	div, p, section, aside {
+		border: 2px solid var(--colour);
+		background-color: hwb(from var(--colour) h w b / 0.3);
+	}
+
+}
+
+
+[type=disabled] {
+	background:
+		repeating-linear-gradient(
+			135deg,
+			#999a 0px,
+			#999a 10px,
+			#fffa 10px,
+			#fffa 20px
+		);
+}
 
