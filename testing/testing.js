@@ -2,11 +2,12 @@
 // testing
 //
 
-import * as predicate from './predicate.js';
+import * as predicateLibrary from './predicate.js';
+export { Test }
 
 
 /** testExpressionArray
- * @param {predicate.Predicate} predicate
+ * @param {predicateLibrary.Predicate} predicate
  * @param {array} expressionArray
  * @return {TestResult}
  */
@@ -41,7 +42,7 @@ export function testExpressionArray( predicate, expressionArray ) {
 
 /** groupTest
  * @param {string} desc
- * @param {predicate.Predicate} predicate
+ * @param {predicateLibrary.Predicate} predicate
  * @param {array} expressionArray
  */
 export function groupTest(desc, predicate, expressionArray) {
@@ -93,29 +94,56 @@ export function testArray(predicate, array) {
 
 class Test {
 
-	/** {array<TestResult>|boolean} */
-	predicate;
-	expression;
-	test;
+	/** @type {string} */ 						desc;
+	/** @type {predicateLibrary.Predicate} */	predicate;
+	/** @type {Array<any>}*/					expressionArray;
+	/** @type {Array<any>} */					#result;
+	/**	@type {boolean} */						#pass;
 
 
+	/**
+	 * @param {string} 						desc
+	 * @param {predicateLibrary.Predicate} 	predicate
+	 * @param {Array<any>}					expressionArray
+	 */
+	constructor(
+			desc = '',
+			predicate = new predicateLibrary.NoneFalse(),
+			expressionArray=[]) {
+		this.desc = desc;
+		this.predicate = predicate;
+		this.expressionArray = expressionArray;
+	}
 
-	constructor() {}
+	get result() { return this.#result; }
+
+	get summary() { return ``}
 
 
+	run() {
+
+		this.#result = this.expressionArray.map(
+			(expression) => {
+
+				this.predicate.expression = expression;
+				const expressionResult = {
+					predicate	: this.predicate.test(),
+					expression	: `${expression}`,
+				};
+
+				return expressionResult ;
+			}
+		);
+		return this.#result;
+	}/* run */
+
+	/** @return {boolean} */
 	get pass() {
-		let result;
- 		if (typeof this.test === 'boolean') {
-			result = this.test;
-		}
-		else {
-			result = this.test.every((element) => { element.pass === true })
-		}
+		const result = this.#result.every((expression) => { expression.predicate === true });	// this is still a 'none false' condition
 		return result;
 	}
 
 
-
-}/* TestResult */
+}/* Test */
 
 

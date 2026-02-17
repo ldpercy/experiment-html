@@ -258,19 +258,36 @@ It might be easier to predicate that separately.
 The default predicate for testing could be 'AllTrue'.
 Brain currently knotted up trying to figure out how best to nest/recurse this - need to clear my head and return to.
 
+Lets get the non-recursive one in shape first.
 
 
 
+Some thoughts while I'm hacking on this:
+* Not sure yet whether the predicates still need to be classes - need to stare at them again
+* Should I merge the predicates into the one module to sidestep 'predicate' var/bind naming issues?
+* Having the predicates run the tests still looks awkward (at least the way I have it now) - that might need to be rejigged
+* Should an empty test pass or fail?? I think the criterion should be 'all true' rather than 'no false', and an empty test can't be 'all true'
 
 
+### Empty tests, `every` & vacuous truths
 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
 
+> true unless callbackFn returns a falsy value for an array element, in which case false is immediately returned.
 
+> every acts like the "for all" quantifier in mathematics. In particular, for an empty array, it returns true. (It is vacuously true that all elements of the empty set satisfy any given condition.)
 
+Herm. Okay, unusual, not what I was expecting.
+It's "none false" - something in the array *has* to be false otherwise `every` returns true.
+Don't feel like boxing with set theorists so I'll go with their findings.
+An empty test passes.
 
+https://en.wikipedia.org/wiki/Vacuous_truth#In_computer_programming
 
+I wonder though, if there's an established term or condition for "all true" - feel like it has reason to exist as well as a stronger assertion.
 
-
-
+**Also note to self:**
+The predicates are also currently using `every` so the same "none false" is applying there as well.
+Again, have a stare at and see if this sufficient, or needs to be made stronger into "all true".
 
 

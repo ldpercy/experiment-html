@@ -24,9 +24,19 @@
 			import * as test from './testing.js';
 			import * as predicate from './predicate.js';
 
-			//console.log(predicate.areEqual(1+1,3-1));
 
-			test.groupTest(
+			console.info('t0: null test');
+			let t0 = new test.Test(
+				'null test'
+			);
+			console.log(t0);
+			console.log(t0.run());
+			console.log(t0.pass);			// Empty tests pass:	https://en.wikipedia.org/wiki/Vacuous_truth#In_computer_programming
+
+
+
+			console.info('t1: all equal');
+			let t1 = new test.Test(
 				'AllEqual',
 				new predicate.AllEqual(),
 				[
@@ -42,67 +52,71 @@
 					[typeof (()=>{}), 'function']
 				]
 			);
+			console.log(t1.run());
+			console.log(t1.pass);
 
 
-			test.groupTest(
-				'EqualTo',
-				new predicate.EqualTo(5),
-				[
-					[0],
-					[1],
-					[5],
-					[6],
-					[true],
-					[false],
-				]
-			);
 
 
-			test.groupTest(
-				'GreaterThan',
-				new predicate.GreaterThan(5),
-				[
-					[0],
-					[1],
-					[5],
-					[6],
-					[true],
-					[false],
-				]
-			);
-
-			test.groupTest(
-				'LessThan',
-				new predicate.LessThan(5),
-				[
-					[0],
-					[1],
-					[5],
-					[6],
-					[true],
-					[false],
-				]
-			);
+			// test.groupTest(
+			// 	'EqualTo',
+			// 	new predicate.EqualTo(5),
+			// 	[
+			// 		[0],
+			// 		[1],
+			// 		[5],
+			// 		[6],
+			// 		[true],
+			// 		[false],
+			// 	]
+			// );
 
 
-			test.groupTest(
-				'Excepts',
-				new predicate.Excepts(),
-				[
-					1+2,
-					1/0,
-					()=>{ return 1+1; },
-					()=>{ throw 'an exception'; },
-					throwsException,
-					//throwsException(),		// can't do this - it excepts immediately and isn't caught by the testing function
-					()=>throwsException(),
-					f1,
-					() => f1,
-					() => f1(),
-					() => f1({}),
-					//f1(),						// can't do this - it excepts immediately and isn't caught by the testing function
-				]
-			);
+			// test.groupTest(
+			// 	'GreaterThan',
+			// 	new predicate.GreaterThan(5),
+			// 	[
+			// 		[0],
+			// 		[1],
+			// 		[5],
+			// 		[6],
+			// 		[true],
+			// 		[false],
+			// 	]
+			// );
+
+			// test.groupTest(
+			// 	'LessThan',
+			// 	new predicate.LessThan(5),
+			// 	[
+			// 		[0],
+			// 		[1],
+			// 		[5],
+			// 		[6],
+			// 		[true],
+			// 		[false],
+			// 	]
+			// );
+
+
+			// test.groupTest(
+			// 	'Excepts',
+			// 	new predicate.Excepts(),
+			// 	[
+			// 		1+2,
+			// 		1/0,
+			// 		()=>{ return 1+1; },
+			// 		()=>{ throw 'an exception'; },
+			// 		throwsException,
+			// 		//throwsException(),		// can't do this - it excepts immediately and isn't caught by the testing function
+			// 		()=>throwsException(),
+			// 		f1,
+			// 		() => f1,
+			// 		() => f1(),
+			// 		() => f1({}),
+			// 		//f1(),						// can't do this - it excepts immediately and isn't caught by the testing function
+			// 	]
+			// );
 
 		</script>
 

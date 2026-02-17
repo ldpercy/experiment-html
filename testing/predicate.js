@@ -9,6 +9,8 @@ Not having much success typing predicate functions in a flexible way, so going t
 
 export {
 	Predicate,
+	NoneFalse,
+	AllTrue,
 	AllEqual,
 	EqualTo,
 	GreaterThan,
@@ -39,8 +41,12 @@ class Predicate {
 
 
 
+/* NoneFalse
 
-class AllTrue extends Predicate {
+See:	https://en.wikipedia.org/wiki/Vacuous_truth#In_computer_programming
+
+*/
+class NoneFalse extends Predicate {
 
 	/** @param {any} expression */
 	constructor(expression) {
@@ -52,14 +58,41 @@ class AllTrue extends Predicate {
 	 */
 	test() {
 		const result = this.expression.every(
-			(expression) => { return expression === this.expression[0] }		// Not sure if there are any weird js circumstances where equality might work between items but not against [0] or vice-versa
+			(expression) => { return expression === true }
 		);
 		return result;
 	}
 
-}/* AllEqual */
+}/* NoneFalse */
 
 
+
+/* AllTrue
+
+See:	https://en.wikipedia.org/wiki/Vacuous_truth#In_computer_programming
+
+This is my go at a stronger assertion than 'every' provides - try to find some reference or antecedent.
+
+*/
+class AllTrue extends Predicate {
+
+	/** @param {any} expression */
+	constructor(expression) {
+		super([...arguments]);
+	}
+
+	/** test
+	 * @return {boolean}
+	 */
+	test() {
+		console.debug('AllTrue:', this.expression.length);
+		const result = this.expression.length && this.expression.every(
+			(expression) => { return expression === true }
+		);
+		return result;
+	}
+
+}/* AllTrue */
 
 
 
