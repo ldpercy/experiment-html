@@ -58,65 +58,65 @@
 
 
 
-			// test.groupTest(
-			// 	'EqualTo',
-			// 	new predicate.EqualTo(5),
-			// 	[
-			// 		[0],
-			// 		[1],
-			// 		[5],
-			// 		[6],
-			// 		[true],
-			// 		[false],
-			// 	]
-			// );
+			test.groupTest(
+				'Equal To',
+				new predicate.EqualTo(5),
+				[
+					[0],
+					[1],
+					[5],
+					[6],
+					[true],
+					[false],
+				]
+			);
 
 
-			// test.groupTest(
-			// 	'GreaterThan',
-			// 	new predicate.GreaterThan(5),
-			// 	[
-			// 		[0],
-			// 		[1],
-			// 		[5],
-			// 		[6],
-			// 		[true],
-			// 		[false],
-			// 	]
-			// );
+			test.groupTest(
+				'GreaterThan',
+				new predicate.GreaterThan(5),
+				[
+					[0],
+					[1],
+					[5],
+					[6],
+					[true],
+					[false],
+				]
+			);
 
-			// test.groupTest(
-			// 	'LessThan',
-			// 	new predicate.LessThan(5),
-			// 	[
-			// 		[0],
-			// 		[1],
-			// 		[5],
-			// 		[6],
-			// 		[true],
-			// 		[false],
-			// 	]
-			// );
+			test.groupTest(
+				'LessThan',
+				new predicate.LessThan(5),
+				[
+					[0],
+					[1],
+					[5],
+					[6],
+					[true],
+					[false],
+				]
+			);
 
 
-			// test.groupTest(
-			// 	'Excepts',
-			// 	new predicate.Excepts(),
-			// 	[
-			// 		1+2,
-			// 		1/0,
-			// 		()=>{ return 1+1; },
-			// 		()=>{ throw 'an exception'; },
-			// 		throwsException,
-			// 		//throwsException(),		// can't do this - it excepts immediately and isn't caught by the testing function
-			// 		()=>throwsException(),
-			// 		f1,
-			// 		() => f1,
-			// 		() => f1(),
-			// 		() => f1({}),
-			// 		//f1(),						// can't do this - it excepts immediately and isn't caught by the testing function
-			// 	]
-			// );
+			test.groupTest(
+				'Excepts',
+				new predicate.Excepts(),
+				[
+					1+2,
+					1/0,
+					()=>{ return 1+1; },
+					()=>{ throw 'an exception'; },
+					throwsException,
+					//throwsException(),		// can't do this - it excepts immediately and isn't caught by the testing function
+					()=>throwsException(),
+					f1,
+					() => f1,
+					() => f1(),
+					() => f1({}),
+					//f1(),						// can't do this - it excepts immediately and isn't caught by the testing function
+				]
+			);
 
 		</script>
 

@@ -46,14 +46,19 @@ export function testExpressionArray( predicate, expressionArray ) {
  * @param {array} expressionArray
  */
 export function groupTest(desc, predicate, expressionArray) {
-	const testResult = testExpressionArray(predicate, expressionArray);
-	console.groupCollapsed(desc);
-	console.dir(testResult);
+	const test = new Test(desc, predicate, expressionArray);
+	test.run();
+	console.groupCollapsed(`[${passFail(test.pass)}] ${desc}`);
+	console.dir(test.result);
+	console.log(passFail(test.pass));
 	console.groupEnd();
 }/* groupTest */
 
 
-
+/** @param {boolean} b */
+function passFail(b){
+	return (b) ? 'pass' : 'fail';
+}
 
 
 /* * testArray
