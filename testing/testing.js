@@ -46,11 +46,17 @@ export function testExpressionArray( predicate, expressionArray ) {
  * @param {array} expressionArray
  */
 export function groupTest(desc, predicate, expressionArray) {
+	//console.debug(arguments);
+
 	const test = new Test(desc, predicate, expressionArray);
 	test.run();
-	console.groupCollapsed(`[${passFail(test.pass)}] ${desc}`);
+
+	const consoleStyle = `color:${(test.pass) ? 'green' : 'red'};`  ;
+
+	console.groupCollapsed(`%c [${passFail(test.pass)}] ${desc}`, consoleStyle);
+	console.log('predicate:', test.predicate.constructor.name);
 	console.dir(test.result);
-	console.log(passFail(test.pass));
+	console.log(`%c ${passFail(test.pass)}`, consoleStyle);
 	console.groupEnd();
 }/* groupTest */
 
@@ -59,6 +65,9 @@ export function groupTest(desc, predicate, expressionArray) {
 function passFail(b){
 	return (b) ? 'pass' : 'fail';
 }
+
+
+
 
 
 /* * testArray

@@ -25,19 +25,14 @@
 			import * as predicate from './predicate.js';
 
 
-			console.info('t0: null test');
-			let t0 = new test.Test(
-				'null test'
+			test.groupTest(
+				'empty test'
 			);
-			console.log(t0);
-			console.log(t0.run());
-			console.log(t0.pass);			// Empty tests pass:	https://en.wikipedia.org/wiki/Vacuous_truth#In_computer_programming
+			// Empty tests pass:	https://en.wikipedia.org/wiki/Vacuous_truth#In_computer_programming
 
 
-
-			console.info('t1: all equal');
-			let t1 = new test.Test(
-				'AllEqual',
+			test.groupTest(
+				'All equal test',
 				new predicate.AllEqual(),
 				[
 					[],
@@ -52,14 +47,11 @@
 					[typeof (()=>{}), 'function']
 				]
 			);
-			console.log(t1.run());
-			console.log(t1.pass);
-
 
 
 
 			test.groupTest(
-				'Equal To',
+				'Equal to test',
 				new predicate.EqualTo(5),
 				[
 					[0],
@@ -73,7 +65,7 @@
 
 
 			test.groupTest(
-				'GreaterThan',
+				'Greater than test',
 				new predicate.GreaterThan(5),
 				[
 					[0],
@@ -86,7 +78,7 @@
 			);
 
 			test.groupTest(
-				'LessThan',
+				'Less than test',
 				new predicate.LessThan(5),
 				[
 					[0],
@@ -100,7 +92,7 @@
 
 
 			test.groupTest(
-				'Excepts',
+				'Excepts test',
 				new predicate.Excepts(),
 				[
 					1+2,
