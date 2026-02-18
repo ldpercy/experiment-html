@@ -106,7 +106,7 @@ class Test {
 
 
 	run() {
-
+		//console.debug(this.desc,'.run');
 		this.#result = this.expressionArray.map(
 			(expression) => {
 
@@ -124,7 +124,9 @@ class Test {
 
 	/** @return {boolean} */
 	get pass() {
-		const result = this.#result.every((expression) => { expression.predicate === true });	// this is still a 'none false' condition
+		const result = this.#result.every(						// this is still a 'none false' condition
+			(item) => { return item.predicate === true; }
+		);
 		return result;
 	}
 
@@ -133,7 +135,7 @@ class Test {
 		this.run();
 		const consoleStyle = `color:${(this.pass) ? 'green' : 'red'};`  ;
 
-		console.groupCollapsed(`%c [${passFail(this.pass)}] ${this.desc}`, consoleStyle);
+		console.group(`%c [${passFail(this.pass)}] ${this.desc}`, consoleStyle);
 		console.log('predicate:', this.predicate.constructor.name);
 		console.dir(this.result);
 		console.log(`%c ${passFail(this.pass)}`, consoleStyle);

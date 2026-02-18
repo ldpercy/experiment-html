@@ -46,6 +46,7 @@ class BaseClass {							// declare BaseClass into an anonymous namespace
 	get foo() { return this.foo; }
 
 	// A 'set' accessor must have exactly one parameter. ts(1049)
+	// Setters cannot return a value.ts(2408)
 	set foo(param) { this.foo = param }
 
 	report() {
@@ -97,6 +98,11 @@ foo = function()	{ return 'However this overwrites the field'; }
 
 Accessors
 ---------
+
+* A 'get' accessor cannot have parameters. ts(1054)
+* A 'get' accessor must return a value.ts(2378)
+* A 'set' accessor must have exactly one parameter. ts(1049)
+* Setters cannot return a value.ts(2408)
 
 
 Naive use of getters and setters ends up being recursive:
