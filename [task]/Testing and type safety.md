@@ -296,4 +296,10 @@ Try out for planar space tests
 
 I reckon a few back-and-forth rounds of revisions will be needed here while I work more stuff out.
 
-So I'm going to take the asserts I had written for planar space over to tests and see what they look like.
+So I'm going to take the asserts I had written for planar space and convert to tests and see what they look like.
+
+Some things are starting to work now.
+
+Probably can move development of this over to html-common.
+
+

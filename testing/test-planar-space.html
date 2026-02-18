@@ -91,13 +91,16 @@
 
 			console.groupCollapsed('Setup configured planar space - conventional geometry');
 				let setting = {polarAxis:'x', polarDirection: 'anticlockwise'};
-				let cps = new ps.Space('configured planar space', setting);
+				let cps = new ps.Space(setting, 'Planar space using maths conventions');
 				console.log('cps', cps);
 
 				let p2 = cps.newPoint().setCartesian(15,20);
 				console.log('p2', p2);
-				console.log('p2.angle', p2.angle);
-				console.log('p2.radius', p2.radius);
+
+				p2.setCartesian(100,100);
+				console.log('p2.cartesian', p2.cartesian);
+				console.log('p2.polar.angle', p2.polar.angle);
+
 
 			console.groupEnd();
 
