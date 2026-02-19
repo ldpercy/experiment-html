@@ -36,18 +36,18 @@
 			console.groupEnd();
 
 
-			const pst1 = new test.Test(
-				'Default cartesian quadrant test',
-				new predicate.AllEqual(),
-				[
-					//[	p1.setCartesian(123,456).polar.angle.degrees,	789],
-					[	45,		p1.setCartesian(100,100).polar.angle.degrees],
-					[	-45,	p1.setCartesian(-100,100).polar.angle.degrees],
-					[	135,	p1.setCartesian(100,-100).polar.angle.degrees],
-					[	-135,	p1.setCartesian(-100,-100).polar.angle.degrees]
-				]
-			);
-			pst1.toConsole();
+			// const pst1 = new test.Test(
+			// 	'Default cartesian quadrant test',
+			// 	new predicate.AllEqual(),
+			// 	[
+			// 		//[	p1.setCartesian(123,456).polar.angle.degrees,	789],
+			// 		[	45,		p1.setCartesian(100,100).polar.angle.degrees],
+			// 		[	-45,	p1.setCartesian(-100,100).polar.angle.degrees],
+			// 		[	135,	p1.setCartesian(100,-100).polar.angle.degrees],
+			// 		[	-135,	p1.setCartesian(-100,-100).polar.angle.degrees]
+			// 	]
+			// );
+			// pst1.toConsole();
 
 
 
@@ -63,25 +63,45 @@
 			console.groupEnd();
 
 
-			const pst2 = new test.Test(
-				'Conventional geometry quadrant test',
-				new predicate.AllEqual(),
-				[
-					[	0,		p2.setCartesian(100,0).polar.angle.degrees],
-					[	45,		p2.setCartesian(100,100).polar.angle.degrees],
-					[	90,		p2.setCartesian(0,100).polar.angle.degrees],
-					[	135,	p2.setCartesian(-100,100).polar.angle.degrees],
-					[	-45,	p2.setCartesian(100,-100).polar.angle.degrees],
-					[	-90,	p2.setCartesian(0,-100).polar.angle.degrees],
-					[	-135,	p2.setCartesian(-100,-100).polar.angle.degrees]
-				]
-			);
-			pst2.toConsole();
+			// const pst2 = new test.Test(
+			// 	'Conventional geometry quadrant test',
+			// 	new predicate.AllEqual(),
+			// 	[
+			// 		[	0,		p2.setCartesian(100,0).polar.angle.degrees],
+			// 		[	45,		p2.setCartesian(100,100).polar.angle.degrees],
+			// 		[	90,		p2.setCartesian(0,100).polar.angle.degrees],
+			// 		[	135,	p2.setCartesian(-100,100).polar.angle.degrees],
+			// 		[	-45,	p2.setCartesian(100,-100).polar.angle.degrees],
+			// 		[	-90,	p2.setCartesian(0,-100).polar.angle.degrees],
+			// 		[	-135,	p2.setCartesian(-100,-100).polar.angle.degrees]
+			// 	]
+			// );
+			// pst2.toConsole();
 
 
 
 		</script>
 
+
+		<script>
+
+			function mat2 (x,y) { return Math.atan2(y,x); }
+			//console.log(f);
+
+
+			console.dir(
+				[
+					[	0,		mat2(100,0)],
+					[	45,		mat2(100,100)],
+					[	90,		mat2(0,100)],
+					[	135,	mat2(-100,100)],
+					[	-45,	mat2(100,-100)],
+					[	-90,	mat2(0,-100)],
+					[	-135,	mat2(-100,-100)]
+				]
+			);
+
+		</script>
 
 	</main>
 

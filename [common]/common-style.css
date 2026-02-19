@@ -180,6 +180,8 @@ body[onload]::before {
 
 
 [type=disabled] {
+	max-height: 12em;
+	overflow-y: scroll;
 	background:
 		repeating-linear-gradient(
 			135deg,

@@ -191,7 +191,7 @@ class Angle {
 			case 'degrees'      : this.degrees = number; break;
 			case 'radians'      : this.radians = number; break;
 			case 'radiansPi'    : this.radiansPi = number; break;
-			case 'radiansTau'   : this.radiansTau = numbber; break;
+			case 'radiansTau'   : this.radiansTau = number; break;
 		}
 	}
 
