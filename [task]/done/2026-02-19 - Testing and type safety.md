@@ -4,6 +4,11 @@ Testing and type safety
 Trying to get a little testing library off the ground.
 
 
+```
+2026-02-19		Wrapped & done
+```
+
+
 
 Prologue meta/aside
 -------------------
@@ -169,7 +174,7 @@ These all run okay, it's *just* an issue with typechecking & red squigglies.
 https://www.typescriptlang.org/docs/handbook/2/functions.html#construct-signatures
 
 
-I still want to get to the bottom of this; I feel like I'm on the cusp of something about type safety-safety in general.
+I still want to get to the bottom of this; I feel like I'm on the cusp of something about type safety in general.
 
 But for the particular case of dynamic class instantiation (and the case where I wanted to use it) I think the better alternative will be to concretely instantiate the class outside the function and pass in the instance instead.
 Dynamic class instantiation could have some non-trivial typing issues that need to be solved with generics or similar.
@@ -300,6 +305,22 @@ So I'm going to take the asserts I had written for planar space and convert to t
 
 Some things are starting to work now.
 
-Probably can move development of this over to html-common.
+Probably can move development of this over to html-common pretty soon.
 
+
+Wrapup
+======
+
+I'm going to wrap this as an experiment here and the testing code over to html-common where it can be developed with a release cycle.
+Further typing work can get new tasks.
+
+* Have a tiny little testing library going - not out of the nest yet, but needs to be in html-common
+* Have the following predicates so far:	NoneFalse, AllTrue, AllEqual, EqualTo, GreaterThan, LessThan, Excepts
+* Still working out some typing rules, particularly for classes
+* Dynamically instantiating classes type-safely isn't all that simple
+* Discovery: empty tests should pass
+
+Future work:
+* More typing experiments, esp for classes
+* `html-common` Get nested tests going
 

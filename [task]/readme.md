@@ -24,14 +24,35 @@ Todo
 * Look for other duck/mixin typing options
 * Find out where the root/base context of jsconfig+checkJs typechecking is
 * See if there's a way to turn on jsdoc typechecking for inline `<script></script>` within html - nothing found so far
-* Revisit named function arguments and options for only specifying certain parameters, leaving others as defaults - I've done this before, need to review.
-	Turns out you can omit arguments with `undefined` to get the defaults...
-* Testing - simple code testing eg equality, exceptions, typeof testing that code excepts
 * CSS colour model/api etc
-* CSS `grey` is darker than `darkgrey` ????
 * dynamic/automatic/contextual colours for text
 * Parent selector - 'has'
 * See if there's a way to collapse the single extra spaces that sometimes get added just from formatting, eg `<h1>	<a ...`
 * Grid layout - see if there's an simpler way of making grid items go full-width
 * 3d transform experiments
+
+
+
+### Done
+* Testing - simple code testing eg equality, exceptions, typeof testing that code excepts - moved to `html-common`
+* Function arguments can be omitted to accept defaults with `undefined`
+* CSS `grey` is darker than `darkgrey` for historical reasons - websearch for the whole story
+
+
+
+Experimental/tentative patterns
+-------------------------------
+
+### Custom setters that return `this` for chaining
+
+	setCoord(x,y) { this.x = x; this.y = y; return this; }
+
+> A 'set' accessor must have exactly one parameter.ts(1049)
+> Setters cannot return a value.ts(2408)
+
+Stock js setters can only have one param, and cannot return anything so they can't be chained.
+
+In some places I'm writing custom setters that accept more parameters, and return `this` to allow for chaining.
+I'm not sure if i want to go boots-and-all with this yet, but trying it out in a few spots; makes some testing code a bit easier for example.
+
 
