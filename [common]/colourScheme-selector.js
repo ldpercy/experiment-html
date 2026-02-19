@@ -1,4 +1,6 @@
-
+//
+//	Moved to:	[html-common]/script/colourScheme-selector.js
+//
 
 document.querySelectorAll('.colourScheme-selector').forEach(
 	(element) => {
