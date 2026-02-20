@@ -15,6 +15,7 @@ When html-common gets into release cadence some tasks will be moved over to ther
 
 Todo
 ----
+* CSS generated content: can any items be made conditional? Also see if there are any implementations for the "six yet-to-be implemented CSS functions including content(), string(), and leader(), and the three `target` functions"
 * "Layout was forced before the page was fully loaded. If stylesheets are not yet loaded this may cause a flash of unstyled content."
 * "This expression is not constructable. Type '....' has no construct signatures.ts(2351)"
 * Derived subclass as function parameter?
@@ -23,12 +24,12 @@ Todo
 * See if @interface typing can be applied to non-class objects
 * Look for other duck/mixin typing options
 * Find out where the root/base context of jsconfig+checkJs typechecking is
-* See if there's a way to turn on jsdoc typechecking for inline `<script></script>` within html - nothing found so far
+* !important - See if there's a way to turn on jsdoc typechecking for inline `<script></script>` tags within html - nothing found so far
 * CSS colour model/api etc
 * dynamic/automatic/contextual colours for text
 * Parent selector - 'has'
 * See if there's a way to collapse the single extra spaces that sometimes get added just from formatting, eg `<h1>	<a ...`
-* Grid layout - see if there's an simpler way of making grid items go full-width
+* Grid layout - see if there's a simple way of making grid items go full-width without knowing the column count
 * 3d transform experiments
 
 

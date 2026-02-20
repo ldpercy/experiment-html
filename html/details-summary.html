@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<link rel="icon" href="../favicon.svg">
 	<link rel="stylesheet" href="../[common]/common-style.css">
-
+	<script type="module" src="../[html-common]/script/colourScheme-selector.js"></script>
 </head>
 <body>
 	<header>
@@ -20,10 +20,36 @@
 	<main>
 	<style>
 		details>details { margin:2em; }
+		details {
+			--element-colour: dodgerblue;
+		}
 	</style>
 
 	<details>
-		<summary>summary</summary>
+		<summary>basic setup</summary>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla ligula feugiat suscipit fusce erat morbi euismod malesuada tempor. Fames ornare porttitor nostra pretium libero viverra et eget feugiat vestibulum finibus ad lobortis ornare risus. Fusce rhoncus luctus mollis habitasse inceptos eros scelerisque nisi. Vehicula laoreet posuere dignissim suscipit et tincidunt elementum ut praesent feugiat consectetur potenti sem nam. Justo leo condimentum libero ligula rutrum.</p>
+		<p>Quam purus ultrices platea neque quam imperdiet mattis vel laoreet. Nullam senectus cubilia sapien primis maximus cras suspendisse hac donec.</p>
+		<p>Dapibus ultrices lacus morbi mauris nisi purus maecenas platea sapien lacus libero sagittis integer. Himenaeos ultricies urna sem habitasse vestibulum. Metus nullam conubia platea interdum rutrum nisi lectus aliquet elementum nibh egestas donec senectus pellentesque. Iaculis porta tincidunt nullam libero luctus iaculis rhoncus potenti cubilia aenean.</p>
+		<p>Ad duis tincidunt arcu himenaeos egestas ligula bibendum adipiscing ullamcorper. Aenean litora ex vestibulum aliquet cras blandit sociosqu potenti. Morbi morbi arcu dictumst id posuere vestibulum ut quam semper fames. Ligula dapibus enim mauris himenaeos fames rutrum sed vel justo scelerisque. At vehicula habitasse leo egestas et placerat etiam velit cursus.</p>
+
+	</details>
+
+
+	<details open>
+		<summary>with open attribute</summary>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla ligula feugiat suscipit fusce erat morbi euismod malesuada tempor. Fames ornare porttitor nostra pretium libero viverra et eget feugiat vestibulum finibus ad lobortis ornare risus. Fusce rhoncus luctus mollis habitasse inceptos eros scelerisque nisi. Vehicula laoreet posuere dignissim suscipit et tincidunt elementum ut praesent feugiat consectetur potenti sem nam. Justo leo condimentum libero ligula rutrum.</p>
+		<p>Quam purus ultrices platea neque quam imperdiet mattis vel laoreet. Nullam senectus cubilia sapien primis maximus cras suspendisse hac donec.</p>
+		<p>Dapibus ultrices lacus morbi mauris nisi purus maecenas platea sapien lacus libero sagittis integer. Himenaeos ultricies urna sem habitasse vestibulum. Metus nullam conubia platea interdum rutrum nisi lectus aliquet elementum nibh egestas donec senectus pellentesque. Iaculis porta tincidunt nullam libero luctus iaculis rhoncus potenti cubilia aenean.</p>
+		<p>Ad duis tincidunt arcu himenaeos egestas ligula bibendum adipiscing ullamcorper. Aenean litora ex vestibulum aliquet cras blandit sociosqu potenti. Morbi morbi arcu dictumst id posuere vestibulum ut quam semper fames. Ligula dapibus enim mauris himenaeos fames rutrum sed vel justo scelerisque. At vehicula habitasse leo egestas et placerat etiam velit cursus.</p>
+
+	</details>
+
+
+
+	<details>
+		<summary>nested</summary>
 
 		<details>
 			<summary>summary</summary>
@@ -41,6 +67,8 @@
 		<p>Ad duis tincidunt arcu himenaeos egestas ligula bibendum adipiscing ullamcorper. Aenean litora ex vestibulum aliquet cras blandit sociosqu potenti. Morbi morbi arcu dictumst id posuere vestibulum ut quam semper fames. Ligula dapibus enim mauris himenaeos fames rutrum sed vel justo scelerisque. At vehicula habitasse leo egestas et placerat etiam velit cursus.</p>
 
 	</details>
+
+
 
 	</main>
 </body>
