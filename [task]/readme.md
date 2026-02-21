@@ -24,7 +24,6 @@ Todo
 * See if @interface typing can be applied to non-class objects
 * Look for other duck/mixin typing options
 * Find out where the root/base context of jsconfig+checkJs typechecking is
-* !important - See if there's a way to turn on jsdoc typechecking for inline `<script></script>` tags within html - nothing found so far
 * CSS colour model/api etc
 * dynamic/automatic/contextual colours for text
 * Parent selector - 'has'
@@ -34,7 +33,15 @@ Todo
 
 
 
-### Done
+#### !important - Turn on jsdoc typechecking for inline `<script></script>` tags within html
+
+I found some more references to this and some open vscode issues that looks related - add details.
+
+
+
+
+Done
+----
 * Testing - simple code testing eg equality, exceptions, typeof testing that code excepts - moved to `html-common`
 * Function arguments can be omitted to accept defaults with `undefined`
 * CSS `grey` is darker than `darkgrey` for historical reasons - websearch for the whole story
