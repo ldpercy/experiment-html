@@ -2,9 +2,19 @@ Colour
 ======
 
 
-Grey
-----
-	grey is darker than darkgrey????
+CSS named colours 'grey' and 'darkgrey'
+---------------------------------------
+
+> [!WARNING]
+> CSS `darkgrey` is *lighter* than `grey` for historical reasons
+
+```css
+	--rgb-grey				: rgb(128, 128, 128);
+	--rgb-darkgrey			: rgb(169, 169, 169);
+
+	--hex-grey				: #808080;
+	--hex-darkgrey			: #a9a9a9;
+```
 
 
 Colour Model

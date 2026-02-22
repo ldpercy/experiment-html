@@ -1,89 +1,140 @@
 :root {
 
 
-	/* 	grey is darker than darkgrey???? 	*/
+	/* hex
+	*/
+	--hex-black				: #000000;
+	--hex-dimgrey			: #696969;
+	--hex-grey				: #808080;
+	--hex-darkgrey			: #a9a9a9;		/* Note: CSS 'darkgrey' is lighter than 'grey' for historical reasons */
+	--hex-lightgrey			: #d3d3d3;
+	--hex-whitesmoke		: #f5f5f5;
+	--hex-white				: #ffffff;
+
+	--hex-red				: #ff0000;
+	--hex-maroon			: #800000;
+	--hex-yellow			: #ffff00;
+	--hex-olive				: #808000;
+	--hex-lime				: #00ff00;
+	--hex-green				: #008000;
+	--hex-cyan				: #00ffff;
+	--hex-teal				: #008080;
+	--hex-blue				: #0000ff;
+	--hex-navy				: #000080;
+	--hex-magenta			: #ff00ff;
+	--hex-purple			: #800080;
 
 
 
 	/* rgb
 	*/
-	--rgb-black      : rgb(0, 0, 0);
-	--rgb-dimgrey    : rgb(105, 105, 105);
-	--rgb-grey       : rgb(128, 128, 128);
-	--rgb-lightgrey  : rgb(212, 212, 212);
-	--rgb-whitesmoke : rgb(245, 245, 245);
-	--rgb-white      : rgb(255, 255, 255);
+	--rgb-black				: rgb(0, 0, 0);
+	--rgb-dimgrey			: rgb(105, 105, 105);
+	--rgb-grey				: rgb(128, 128, 128);
+	--rgb-darkgrey			: rgb(169, 169, 169);
+	--rgb-lightgrey			: rgb(212, 212, 212);
+	--rgb-whitesmoke		: rgb(245, 245, 245);
+	--rgb-white				: rgb(255, 255, 255);
 
-	--rgb-red     : rgb(255, 0, 0);
-	--rgb-maroon  : rgb(128, 0, 0);
-	--rgb-yellow  : rgb(255, 255, 0);
-	--rgb-olive   : rgb(128, 128, 0);
-	--rgb-lime    : rgb(0, 255, 0);
-	--rgb-green   : rgb(0, 128, 0);
-	--rgb-cyan    : rgb(0, 255, 255);
-	--rgb-teal    : rgb(0, 128, 128);
-	--rgb-blue    : rgb(0, 0, 255);
-	--rgb-navy    : rgb(0, 0, 128);
-	--rgb-magenta : rgb(255, 0, 255);
-	--rgb-purple  : rgb(128, 0, 128);
+	--rgb-red				: rgb(255, 0, 0);
+	--rgb-maroon			: rgb(128, 0, 0);
+	--rgb-yellow			: rgb(255, 255, 0);
+	--rgb-olive				: rgb(128, 128, 0);
+	--rgb-lime				: rgb(0, 255, 0);
+	--rgb-green				: rgb(0, 128, 0);
+	--rgb-cyan				: rgb(0, 255, 255);
+	--rgb-teal				: rgb(0, 128, 128);
+	--rgb-blue				: rgb(0, 0, 255);
+	--rgb-navy				: rgb(0, 0, 128);
+	--rgb-magenta			: rgb(255, 0, 255);
+	--rgb-purple			: rgb(128, 0, 128);
 
 
 	/* hsl
 	*/
-	--hsl-black     : hsl(0, 0%, 0%);
-	--hsl-dimgrey   : hsl(0, 0%, 41%);
-	--hsl-grey      : hsl(0, 0%, 50%);
-	--hsl-lightgrey : hsl(0, 0%, 83%);
-	--hsl-white     : hsl(0, 0%, 100%);
+	--hsl-black				: hsl(0, 0%, 0%);
+	--hsl-dimgrey			: hsl(0, 0%, 41%);
+	--hsl-grey				: hsl(0, 0%, 50%);
+	--hsl-lightgrey			: hsl(0, 0%, 83%);
+	--hsl-white				: hsl(0, 0%, 100%);
 
-	--hsl-red     : hsl(0, 100%, 50%);
-	--hsl-yellow  : hsl(60, 100%, 50%);
-	--hsl-lime    : hsl(120, 100%, 50%);
-	--hsl-green   : hsl(120, 100%, 25%);
-	--hsl-cyan    : hsl(180, 100%, 50%);
-	--hsl-blue    : hsl(240, 100%, 50%);
-	--hsl-magenta : hsl(300, 100%, 50%);
+	--hsl-red				: hsl(0, 100%, 50%);
+	--hsl-yellow			: hsl(60, 100%, 50%);
+	--hsl-lime				: hsl(120, 100%, 50%);
+	--hsl-green				: hsl(120, 100%, 25%);
+	--hsl-cyan				: hsl(180, 100%, 50%);
+	--hsl-blue				: hsl(240, 100%, 50%);
+	--hsl-magenta			: hsl(300, 100%, 50%);
 
 
 	/* hwb
 	*/
-	--hwb-black     : hwb(0 0% 100%);
-	--hwb-dimgrey   : hwb(0 41% 59%);
-	--hwb-grey      : hwb(0 50% 50%);
-	--hwb-lightgrey : hwb(0 83% 17%);
-	--hwb-white     : hwb(0 100% 0%);
+	--hwb-black				: hwb(0 0% 100%);
+	--hwb-dimgrey			: hwb(0 41% 59%);
+	--hwb-grey				: hwb(0 50% 50%);
+	--hwb-lightgrey			: hwb(0 83% 17%);
+	--hwb-white				: hwb(0 100% 0%);
 
-	--hwb-red     : hwb(0 0% 0%);
-	--hwb-yellow  : hwb(60 0% 0%);
-	--hwb-lime    : hwb(120 0% 0%);
-	--hwb-green   : hwb(120 0% 50%);
-	--hwb-cyan    : hwb(180 0% 0%);
-	--hwb-blue    : hwb(240 0% 0%);
-	--hwb-magenta : hwb(300 0% 0%);
+	--hwb-red				: hwb(0 0% 0%);
+	--hwb-yellow			: hwb(60 0% 0%);
+	--hwb-lime				: hwb(120 0% 0%);
+	--hwb-green				: hwb(120 0% 50%);
+	--hwb-cyan				: hwb(180 0% 0%);
+	--hwb-blue				: hwb(240 0% 0%);
+	--hwb-magenta			: hwb(300 0% 0%);
 
 
 	/* lab
 	*/
-	--lab-black     : lab(0% 0 0);
-	--lab-dimgrey   : lab(44.41% 0 -0.01);
-	--lab-grey      : lab(53.59% 0 -0.01);
-	--lab-lightgrey : lab(84.91% 0 -0.01);
-	--lab-white     : lab(100% 0.01 -0.01);
+	--lab-black				: lab(0% 0 0);
+	--lab-dimgrey			: lab(44.41% 0 -0.01);
+	--lab-grey				: lab(53.59% 0 -0.01);
+	--lab-lightgrey			: lab(84.91% 0 -0.01);
+	--lab-white				: lab(100% 0.01 -0.01);
 
-	--lab-red     : lab(53.23% 80.11 67.22);
-	--lab-yellow  : lab(97.14% -21.56 94.48);
-	--lab-lime    : lab(87.74% -86.18 83.18);
-	--lab-green   : lab(46.23% -51.7 49.9);
-	--lab-cyan    : lab(91.12% -48.08 -14.14);
-	--lab-blue    : lab(32.3% 79.2 -107.86);
-	--lab-magenta : lab(60.32% 98.25 -60.84);
+	--lab-red				: lab(53.23% 80.11 67.22);
+	--lab-maroon			: lab(25.53% 48.06 38.06);
+	--lab-yellow			: lab(97.14% -21.56 94.48);
+	--lab-olive				: lab(51.87% -12.93 56.68);
+	--lab-lime				: lab(87.74% -86.18 83.18);
+	--lab-green				: lab(46.23% -51.7 49.9);
+	--lab-cyan				: lab(91.12% -48.08 -14.14);
+	--lab-teal				: lab(48.26% -28.84 -8.48);
+	--lab-blue				: lab(32.3% 79.2 -107.86);
+	--lab-navy				: lab(12.98% 47.51 -64.7);
+	--lab-magenta			: lab(60.32% 98.25 -60.84);
+	--lab-purple			: lab(29.78% 58.94 -36.5);
 
-	--lab-orangered     : lab(57.57% 67.8 68.97);
-	--lab-deeppink      : lab(55.95% 84.56 -5.71);
-	--lab-hotpink       : lab(65.48% 64.25 -10.66);
-	--lab-darkturquoise : lab(75.29% -40.04 -13.52);
-	--lab-deepskyblue   : lab(72.55% -17.65 -42.55);
-	--lab-dodgerblue    : lab(59.38% 9.97 -63.39);
-	--lab-greenyellow   : lab(91.96% -52.48 81.87);
+	--lab-orangered			: lab(57.57% 67.8 68.97);
+	--lab-deeppink			: lab(55.95% 84.56 -5.71);
+	--lab-hotpink			: lab(65.48% 64.25 -10.66);
+	--lab-darkturquoise		: lab(75.29% -40.04 -13.52);
+	--lab-deepskyblue		: lab(72.55% -17.65 -42.55);
+	--lab-dodgerblue		: lab(59.38% 9.97 -63.39);
+	--lab-greenyellow		: lab(91.96% -52.48 81.87);
+
+
+
+	/* lch
+	*/
+	--lch-black				: lch(0% 0 0);
+	--lch-dimgrey			: lch(44.41% 0.01 296.81);
+	--lch-grey				: lch(53.59% 0.01 296.81);
+	--lch-lightgrey			: lch(84.91% 0.01 296.81);
+	--lch-white				: lch(100% 0.01 296.81);
+
+	--lch-red				: lch(53.23% 104.58 40);
+	--lch-maroon			: lch(25.53% 61.3 38.38);
+	--lch-yellow			: lch(97.14% 96.91 102.85);
+	--lch-olive				: lch(51.87% 58.13 102.85);
+	--lch-lime				: lch(87.74% 119.78 136.02);
+	--lch-green				: lch(46.23% 71.85 136.02);
+	--lch-cyan				: lch(91.12% 50.12 196.39);
+	--lch-teal				: lch(48.26% 30.06 196.39);
+	--lch-blue				: lch(32.3% 133.82 306.29);
+	--lch-navy				: lch(12.98% 80.27 306.29);
+	--lch-magenta			: lch(60.32% 115.57 328.23);
+	--lch-purple			: lch(29.78% 69.33 328.23);
+
 
 }
