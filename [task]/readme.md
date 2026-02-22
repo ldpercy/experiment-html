@@ -35,9 +35,11 @@ Todo
 
 #### !important - Turn on jsdoc typechecking for inline `<script></script>` tags within html
 
-I found some more references to this and some open vscode issues that looks related - add details.
+I found some references to this and some open vscode issues that look related:
 
-
+* https://stackoverflow.com/questions/79769526/is-there-a-way-for-jsdoc-comments-to-be-visible-in-html-files
+* https://github.com/microsoft/vscode/issues/26338
+* https://github.com/microsoft/vscode/issues/114115
 
 
 Done
