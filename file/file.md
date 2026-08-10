@@ -6,6 +6,24 @@ File
 
 
 
+
+Server-side file read
+---------------------
+
+Via imports:
+```js
+	// static, ff only at the moment
+	import fileContent from './filename.txt' with { type:'text' };
+
+	// dynamic, ff only only at the moment
+	const fileContent = (await import(`./${fileName}`, { with: { type:'text' }})).default;
+```
+
+Fetch:
+> To read server-side files, use `fetch()`, with CORS permission if reading cross-origin.
+
+
+
 File upload and file download/save
 ----------------------------------
 
@@ -15,10 +33,6 @@ Files that get selected/uploaded via things like file pickers can be manipulated
 
 I'll have to think a bit more about this.
 Once a file is saved I can probably maintain a handle?
-
-
-
-
 
 
 
