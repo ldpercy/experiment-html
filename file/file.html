@@ -9,16 +9,6 @@
 	<script type="module" src="../[html-common]/script/colourScheme-selector.js"></script>
 </head>
 <body>
-	<!-- <header>
-		<h1><a href="">File</a></h1>
-		<nav>
-			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourscheme="light" data-colourschemespecial="rainbow">🟓</a>
-			<a class="colourScheme-selector" href="?colourScheme=dark" title="Dark colour scheme" data-colourscheme="dark" data-colourschemespecial="disco">🟒</a>
-			<a title="To folder" href="./">🖿</a>
-			<a title="Parent folder" href="../">🡅</a>
-		</nav>
-	</header> -->
-
 	<page-header>
 		<span slot="h1">File</span>
 	</page-header>
@@ -31,7 +21,17 @@
 		</style>
 
 
-		<form name="form-fileinput">
+		<form name="read">
+			<h2>read</h2>
+
+			<input type="text" name="filePath" value="./file.md">
+
+			<textarea name="textarea-fileRead"></textarea>
+
+		</form>
+
+
+		<form name="fileInput">
 			<h2>input</h2>
 
 
@@ -123,7 +123,7 @@
 				console.log(writableStream);
 
 
-				const filecontent = document.forms['form-fileinput']['input-textarea'].value;
+				const filecontent = document.forms['fileInput']['input-textarea'].value;
 
 				// write our file
 				await writableStream.write(filecontent);
@@ -182,7 +182,7 @@
 
 					console.log('event.target.files[0].file()', fileObj);
 
-					//document.forms['form-fileinput']['input-textarea'].value = fileObj.text();
+					//document.forms['fileInput']['input-textarea'].value = fileObj.text();
 					//console.log(fileObj.text());		// ugh promise
 
 
@@ -193,7 +193,7 @@
 						() => {
 							// this will then display a text file
 							//content.innerText = reader.result;
-							document.forms['form-fileinput']['input-textarea'].value = reader.result;
+							document.forms['fileInput']['input-textarea'].value = reader.result;
 						},
 						false,
 					);
