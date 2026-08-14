@@ -2,6 +2,6 @@
 	"compilerOptions": {
 		"checkJs": true,
 		"target": "esnext", // es6, es2024
-		"module": "es2022"
+		"module": "esnext"
 	}
 }

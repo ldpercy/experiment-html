@@ -15,6 +15,7 @@ When html-common gets into release cadence some tasks will be moved over to ther
 
 Todo
 ----
+* `file`			Need a neat function for file reading. Have started with import:text, prob change to fetch
 * `web components`	find out more about so-called "html web components", ie those *without* shadow dom
 * `web components`	are slotted items part of the regular dom, and can they be styled normally?
 * `PWA`				start experimenting with PWAs https://en.wikipedia.org/wiki/Progressive_web_app
