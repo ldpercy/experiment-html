@@ -13,6 +13,8 @@
 		<span slot="h1">File</span>
 	</page-header>
 
+	<script type="module" src="./file.js"></script>
+
 	<main>
 
 		<style contenteditable="plaintext-only">
@@ -21,27 +23,23 @@
 		</style>
 
 
-		<form name="read">
-			<h2>read</h2>
+		<form name="fileRead">
+			<h2>File read</h2>
 
-			<input type="text" name="filePath" value="./file.md">
+			<input type="text" name="filePath" value="./file.md" class="full-width">
 
-			<textarea name="textarea-fileRead"></textarea>
-
+			<textarea name="fileContent" class="full-width"></textarea>
 		</form>
 
 
 		<form name="fileInput">
 			<h2>input</h2>
 
+			<input type="file" name="fileinput" id="input-fileinput" class="full-width">
 
-			<input type="file" name="fileinput" id="input-fileinput">
-
-
-			<textarea name="input-textarea">
+			<textarea name="input-textarea" class="full-width">
 				file content goes here
 			</textarea>
-
 		</form>
 
 

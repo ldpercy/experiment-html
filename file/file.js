@@ -25,6 +25,58 @@ export async function readFileContent(filePath) {
 
 
 
+
+async function filePathChange() {
+
+	const filePath = document.forms['fileRead']['filePath'].value;
+	console.log('filePathChange:',filePath);
+
+	const fileContent = await readFileContent(filePath);		// import version
+
+	//const fileContent = fetchFile(filePath);		// fetch version
+
+	document.forms['fileRead']['fileContent'].value = fileContent;
+}
+
+
+
+function documentDOMContentLoaded() {
+
+	document.forms['fileRead']['filePath'].addEventListener('change', filePathChange);
+
+}/* documentDOMContentLoaded */
+
+document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
+
+
+
+
+// fetch version??
+
+function fetchFile(filePath) {
+	let result = null;
+	fetch(filePath)
+		.then(
+			(response) => {
+				console.log(response);
+				return response.text();
+			}
+		)
+		.then(
+			(text) => {
+				result = text;
+			}
+		)
+		.catch(
+			(e) => console.error(e)
+		);
+		console.log('fetchFile', filePath, result);
+	return result;
+}
+
+
+
+
 /*	examples from
 ** https://stackoverflow.com/questions/14446447/how-can-i-read-a-local-text-file-in-the-browser
 
@@ -47,9 +99,9 @@ fetch('file.txt')
 //
 
 const logFileText = async file => {
-    const response = await fetch(file)
-    const text = await response.text()
-    console.log(text)
+	const response = await fetch(file)
+	const text = await response.text()
+	console.log(text)
 }
 
 logFileText('file.txt')

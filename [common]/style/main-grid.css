@@ -5,18 +5,16 @@
 main {
 	display:grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
+	--grid-columns: 4;
+	.full-width { grid-column-start: span var(--grid-columns); }
+
 	margin:1ex;
 	border-radius:1ex;
-
 
 	&>* {
 		margin:inherit;
 		/* border-radius:inherit; */
 		grid-column-start: span 2;
-	}
-
-	.full-width {
-		grid-column-start: span 4;
 	}
 
 	.limit-height {
@@ -33,6 +31,7 @@ main {
 @media (orientation: landscape) {
 	main {
 		grid-template-columns: 1fr 1fr 1fr 1fr;
+		--grid-columns: 4;
 		&>* { grid-column-start: span 2; }
 	}
 }
@@ -40,5 +39,6 @@ main {
 @media (orientation: portrait) {
 	main {
 		grid-template-columns: 1fr 1fr ;
+		--grid-columns: 2;
 	}
 }
