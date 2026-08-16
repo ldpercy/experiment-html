@@ -2,15 +2,6 @@ Task
 ====
 
 
-Meta
-----
-So far most of the experiments in here have been pretty small and self-contained, and I've left markdown docs around the place to summarise findings.
-And sometimes while figuring things out I've also added brief-ish trains of thought.
-Some experiments are starting to get more involved though and will need better tracking, so setting this folder up like I've done in other projects.
-
-Won't do branch-merge-release here though - this project will stay all trunk development - so 'done' tasks will probably end up grouped by date.
-When html-common gets into release cadence some tasks will be moved over to there.
-
 
 
 Todo
@@ -34,6 +25,7 @@ Todo
 * `css`			"Layout was forced before the page was fully loaded. If stylesheets are not yet loaded this may cause a flash of unstyled content."
 * `js`			"This expression is not constructable. Type '....' has no construct signatures.ts(2351)"
 * `js`			Derived subclass as function parameter?
+* `js,jsdoc`	[JSDoc typechecking for inline scripts](<jsdoc typechecking for inline scripts.md>)
 * `jsdoc,ts`	Correct typing for HTMLFormElement.elements / HTMLFormControlsCollection items
 * `jsdoc,ts`	correct type for a dynamically imported module
 * `jsdoc,ts`	partial typing - see if there are ways to declare generic types that only specify certain items of a type signature, eg *just* the return type of a function - and be able to mix these partials together a bit like interfaces
@@ -55,14 +47,6 @@ Todo
 * `svg`			Look into stroke gradients
 * `svg`			Dig a limit more into 'stroke-miterlimit'
 
-
-### !important - jsdoc typechecking for inline `<script></script>` tags within html
-
-Found some references to this and some open vscode issues that look related:
-
-* https://stackoverflow.com/questions/79769526/is-there-a-way-for-jsdoc-comments-to-be-visible-in-html-files
-* https://github.com/microsoft/vscode/issues/26338
-* https://github.com/microsoft/vscode/issues/114115
 
 
 
@@ -98,4 +82,15 @@ Stock js setters can only have one param, and cannot return anything so they can
 In some places I'm writing custom setters that accept more parameters, and return `this` to allow for chaining.
 I'm not sure if i want to go boots-and-all with this yet, but trying it out in a few spots; makes some testing code a bit easier for example.
 
+
+
+
+Meta
+----
+So far most of the experiments in here have been pretty small and self-contained, and I've left markdown docs around the place to summarise findings.
+And sometimes while figuring things out I've also added brief-ish trains of thought.
+Some experiments are starting to get more involved though and will need better tracking, so setting this folder up like I've done in other projects.
+
+Won't do branch-merge-release here though - this project will stay all trunk development - so 'done' tasks will probably end up grouped by date.
+When html-common gets into release cadence some tasks will be moved over to there.
 

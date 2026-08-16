@@ -31,7 +31,7 @@
 
 	<main>
 
-	<form id="output" onchange="updateOutput()">
+	<form name="main">
 
 		<label>String:</label>
 		<input type="text" id="input-string" value="abc">
@@ -42,7 +42,10 @@
 
 		<!-- <label>Width:</label>
 		<input type="number" id="input-width" value="5" min="1" required> -->
-		<button type="button" onclick="updateOutput()">update</button>
+		<button type="button" name="button-setPermutations">generate set permutations</button>
+
+		<button type="button" name="button-arrayPermutations">generate array permutations</button>
+
 	</form>
 
 	<style contenteditable="plaintext-only">
@@ -109,21 +112,17 @@
 			return result;
 		}
 
+
+		function documentDOMContentLoaded() {
+
+			document.forms['main']['button-setPermutations'].addEventListener('click', updateOutput);
+			document.forms['main']['button-arrayPermutations'].addEventListener('click', updateOutput);
+
+		}/* documentDOMContentLoaded */
+
+		document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
+
 	</script>
-
-
-
-
-
-	<!--
-	<section>
-
-		<h1><a href="">asdasd</a></h1>
-		<a href=""><h1>asdasd</h1></a>
-
-	</section>
-	-->
-
 
 
 	</main>

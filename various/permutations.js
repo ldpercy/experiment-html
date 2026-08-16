@@ -94,14 +94,14 @@ function factorial(number) {
 
 /** permutationsOfArray
  * @param {array} array
- * @returns {Set}
+ * @returns {array<array>}
  */
 function permutationsOfArray(array) {
 	// do this...
-	let result = new Set();	// set of arrays
+	let result = [];	// set of arrays
 
 	if (array.length === 1) {
-		result.add(array);
+		result.push(array);
 	}
 	else if (array.length > 1) {
 		//

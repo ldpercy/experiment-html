@@ -1,16 +1,11 @@
 HTML Experiment
 ===============
 
-Experiments and tests of HTML, CSS, SVG, and JavaScript
+`HTML` `CSS` `SVG` `JavaScript` `🍦JS` `DOM` `JSDoc`
 
 <p align="center">
 	<img width="15%" src="./favicon.svg" alt="HTML Experiment" title="HTML Experiment"/>
 </p>
-
-> [!NOTE]
-> Anything reusable should be moved to `html-common`
-
-
 
 Experiments might be:
 * horribly broken
@@ -19,9 +14,11 @@ Experiments might be:
 * quite old
 
 
-
 Slightly interesting things
 ---------------------------
+
+> [!NOTE]
+> Anything reusable should be moved to `html-common`
 
 * [demo/polygon](./demo/polygon/)
 * [css/colour](./css/colour.html)
@@ -35,18 +32,19 @@ Slightly interesting things
 jsconfig & JSDoc
 ----------------
 
-I'm using `jsconfig.json` to turn on typechecking, currently with the following settings - keep these updated to the latest:
+JavaScript typechecking is enabled in `./jsconfig.json` with the following settings:
 
 ```js
 	"compilerOptions": {
 		"checkJs": true,
 		"target": "esnext",
-		"module": "es2022"
+		"module": "esnext"
 	}
 ```
+However this currently only works for `.js` files - see [jsdoc typechecking for inline scripts](<[task]/jsdoc typechecking for inline scripts.md>).
 
 > [!IMPORTANT]
-> Make sure `compilerOptions` in jsconfig are set to something modern or you can get really confusing and outdated errors
+> Make sure the `compilerOptions` are set to something modern or you can get really confusing and outdated errors
 
 *Some* information about library levels here:
 https://www.typescriptlang.org/tsconfig#high-level-libraries
@@ -55,7 +53,7 @@ https://www.typescriptlang.org/tsconfig#high-level-libraries
 Tasks
 -----
 
-Details in [the task folder]([task]).
+Details in [the task folder](./[task]/todo.md).
 
 Currently working on:
 * A small testing library
