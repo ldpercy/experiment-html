@@ -3,12 +3,12 @@
 */
 
 
-/** readFileContent
+/** importFile
  * @param {string} filePath
  * @returns {Promise<string>}
  */
-export async function readFileContent(filePath) {
-
+export async function importFile(filePath) {
+	//console.log(textImport);
 	let result = undefined;
 
 	try {
@@ -17,23 +17,70 @@ export async function readFileContent(filePath) {
 		result = textImport.default;
 	}
 	catch {
-		console.log(`readFileContent: cannot read "${filePath}"`);
+		console.log(`importFile: cannot read "${filePath}"`);
 	}
 
 	return result;
-}/* readFileContent */
+}/* importFile */
+
+
+
+/** fetchFile
+ * @param {string} filePath
+ * @returns {Promise<string>}
+ */
+async function fetchFile(filePath) {
+	let result = undefined;
+	//let result = ;
+
+	// fetch(filePath)
+	// 	.then(
+	// 		(response) => {
+	// 			//console.log(response);
+	// 			console.log(response.text());
+	// 			return response.text();
+	// 		}
+	// 	)
+	// 	.then(
+	// 		(text) => {
+	// 			result = text;
+	// 		}
+	// 	)
+	// 	.catch(
+	// 		(e) => console.error(e)
+	// 	);
+	// 	console.log('fetchFile', filePath, result);
+
+	const response = await fetch(filePath);
+	//console.log(textImport);
+
+	if (response.ok) {
+		result = response.text();
+	} else {
+		console.log(`fetchFile: cannot read "${filePath}"`);
+	}
+
+	return result;
+}/* fetchFile */
 
 
 
 
-async function filePathChange() {
+/**
+ * @param {string} method
+ */
+async function doFileRead(method = 'fetch') {
 
 	const filePath = document.forms['fileRead']['filePath'].value;
-	console.log('filePathChange:',filePath);
+	console.log('doFileRead:', method, filePath);
 
-	const fileContent = await readFileContent(filePath);		// import version
+	let fileContent;
+	if (method === 'import') {
+		fileContent = await importFile(filePath);		// import version
+	} else {
+		fileContent = await fetchFile(filePath);		// fetch version
+	}
 
-	//const fileContent = fetchFile(filePath);		// fetch version
 
 	document.forms['fileRead']['fileContent'].value = fileContent;
 }
@@ -42,7 +89,9 @@ async function filePathChange() {
 
 function documentDOMContentLoaded() {
 
-	document.forms['fileRead']['filePath'].addEventListener('change', filePathChange);
+	//document.forms['fileRead']['filePath'].addEventListener('change', filePathChange);
+	document.forms['fileRead']['button-readImport'].addEventListener('click', ()=>doFileRead('import'));
+	document.forms['fileRead']['button-readFetch'].addEventListener('click', ()=>doFileRead('fetch'));
 
 }/* documentDOMContentLoaded */
 
@@ -50,29 +99,6 @@ document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
 
 
-
-// fetch version??
-
-function fetchFile(filePath) {
-	let result = null;
-	fetch(filePath)
-		.then(
-			(response) => {
-				console.log(response);
-				return response.text();
-			}
-		)
-		.then(
-			(text) => {
-				result = text;
-			}
-		)
-		.catch(
-			(e) => console.error(e)
-		);
-		console.log('fetchFile', filePath, result);
-	return result;
-}
 
 
 

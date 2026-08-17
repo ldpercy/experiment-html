@@ -10,17 +10,46 @@ File
 Server-side file read
 ---------------------
 
-Via imports:
+Two techniques at the moment, fetch and import.
+Fetch has been around for ages, and works everywhere.
+
+Import is meant for js files, but using the 'with' option can be used for json and css.
+In firefox at the moment you can also import with `type:'text'` for a general file reader.
+
+Each uses different semantics for the requested resource, fetch represents a http request/response; import follows module resolution rules.
+
+Still working out the details, and whether either works out better for certain kinds of tasks.
+
+I suspect for well-known local payloads like json import might work out better?
+Will experiment.
+
+
+### Fetch
+> To read server-side files, use `fetch()`, with CORS permission if reading cross-origin.
+
 ```js
-	// static, ff only at the moment
+	const response = await fetch(resource);
+	//console.log(textImport);
+
+	if (response.ok) {
+		result = response.text();
+	} else {
+		console.log(`fetchFile: cannot read "${resource}"`);
+	}
+```
+
+
+### Import
+
+
+```js
+	// static, 'text' is ff only at the moment
 	import fileContent from './filename.txt' with { type:'text' };
 
-	// dynamic, ff only only at the moment
+	// dynamic, 'text' is ff only only at the moment
 	const fileContent = (await import(`./${fileName}`, { with: { type:'text' }})).default;
 ```
 
-Fetch:
-> To read server-side files, use `fetch()`, with CORS permission if reading cross-origin.
 
 
 
