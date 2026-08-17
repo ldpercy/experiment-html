@@ -87,15 +87,7 @@ async function doFileRead(method = 'fetch') {
 
 
 
-function documentDOMContentLoaded() {
 
-	//document.forms['fileRead']['filePath'].addEventListener('change', filePathChange);
-	document.forms['fileRead']['button-readImport'].addEventListener('click', ()=>doFileRead('import'));
-	document.forms['fileRead']['button-readFetch'].addEventListener('click', ()=>doFileRead('fetch'));
-
-}/* documentDOMContentLoaded */
-
-document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
 
 

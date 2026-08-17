@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>File read</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../favicon.svg">
+	<script type="module" src="../[common]/module.js"></script>
+	<link rel="stylesheet" href="../[common]/style.css">
+	<script type="module" src="../[html-common]/script/colourScheme-selector.js"></script>
+</head>
+<body>
+	<page-header>
+		<span slot="h1">File read</span>
+	</page-header>
+
+	<script type="module" src="./file.js"></script>
+
+	<main>
+
+
+
+		<form name="fileFetch">
+			<h2>File fetch</h2>
+
+			<input type="text" name="filePath" value="./file.md" class="full-width">
+
+			<textarea name="fileContent" class="full-width"></textarea>
+
+			<button type="button" name="button-readFetch">Fetch file</button>
+		</form>
+
+
+		<form name="fileImport">
+			<h2>Import file</h2>
+
+			<input type="text" name="filePath" value="./file.md" class="full-width">
+
+			<textarea name="fileContent" class="full-width"></textarea>
+
+			<button type="button" name="button-readImport">Import file</button>
+		</form>
+
+
+
+
+		<script>
+			function documentDOMContentLoaded() {
+
+				//document.forms['fileRead']['filePath'].addEventListener('change', filePathChange);
+				document.forms['fileFetch']['button-readFetch'].addEventListener('click', ()=>doFileRead('fetch'));
+				document.forms['fileImport']['button-readImport'].addEventListener('click', ()=>doFileRead('import'));
+
+
+			}/* documentDOMContentLoaded */
+
+			document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
+
+
+
+		</script>
+
+
+
+	</main>
+
+
+</body>
+</html>
