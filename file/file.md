@@ -24,6 +24,20 @@ I suspect for well-known local payloads like json import might work out better?
 Will experiment.
 
 
+### https://jakearchibald.com/2025/importing-vs-fetching-json/
+
+> When you import a module (be it JS, WASM, CSS, or JSON), it's cached for the lifetime of the environment (e.g. a page or worker), even if the result is a network or parsing failure.
+
+> But if you're doing something like:
+>
+>	const { default: results } = await import('/api/search?q=whatever', {with: { type: 'json' },});
+>
+> …then you have a memory leak, because each set of search results will live in the module graph for the life of the page. That isn't the case with fetch(), where returned objects can be garbage collected once they're out of reference.
+
+> It makes sense to use JSON module imports for local static JSON resources where you need all/most of the data within.
+
+
+
 ### Fetch
 > To read server-side files, use `fetch()`, with CORS permission if reading cross-origin.
 
