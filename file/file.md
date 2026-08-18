@@ -13,7 +13,7 @@ Server-side file read
 Two techniques at the moment, fetch and import.
 Fetch has been around for ages, and works everywhere.
 
-Import is meant for js files, but using the 'with' option can be used for json and css.
+Import is usually used for js modules, but the 'with' option allows for json and css (& more).
 In firefox at the moment you can also import with `type:'text'` for a general file reader.
 
 Each uses different semantics for the requested resource, fetch represents a http request/response; import follows module resolution rules.
@@ -30,7 +30,7 @@ Will experiment.
 
 > But if you're doing something like:
 >
->	const { default: results } = await import('/api/search?q=whatever', {with: { type: 'json' },});
+>		const { default: results } = await import('/api/search?q=whatever', {with: { type: 'json' },});
 >
 > …then you have a memory leak, because each set of search results will live in the module graph for the life of the page. That isn't the case with fetch(), where returned objects can be garbage collected once they're out of reference.
 
