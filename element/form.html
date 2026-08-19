@@ -28,6 +28,35 @@
 
 		</style>
 
+		<form name="select">
+
+
+			<select size="15">
+				<option>plain option</option>
+				<optgroup>empty optgroup 1</optgroup>
+				<optgroup label="empty optgroup 2">empty optgroup 2</optgroup>
+
+				<optgroup label="normal optgroup">
+					<option>option in normal optgroup</option>
+				</optgroup>
+
+
+				<optgroup label="optgroup with nesting">
+					<option>option in root optgroup </option>
+					<optgroup label="nested optgroup">
+						<option>option in nested optgroup</option>
+					</optgroup>
+				</optgroup>
+
+
+
+			</select>
+
+
+		</form>
+
+
+
 		<form name="myform">
 			<label>min and max only:</label>
 			<input type="number" min="1" max="9" value="5"/>
