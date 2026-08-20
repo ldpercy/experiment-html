@@ -6,29 +6,30 @@ Task
 
 Todo
 ----
-* `file`			Need a neat function for file reading. Have started with import:text, prob change to fetch
+* `async`			Revamp the async-await experiment, really need to dig in here, especially dependent sequences of awaits
+* `file`			Continue file read experiments with fetch & import
 * `web components`	find out more about so-called "html web components", ie those *without* shadow dom
 * `web components`	are slotted items part of the regular dom, and can they be styled normally?
 * `PWA`				start experimenting with PWAs https://en.wikipedia.org/wiki/Progressive_web_app
 * `chrome`			"[Violation] Forced reflow while executing JavaScript took <N>ms" - seeing this in turtle
-* `css`			dig more into viewport and container lengths, also how they work in svg
-* `svg`			a way to get the box coordinates of the visible svg render area, not just the viewbox
-* `html,css`	review viewport terminology for visible, hidden areas et al
-* `css`			@supports condition for newer functions like sibling-index() -- try some of the ideas here: https://stackoverflow.com/questions/77441227/how-to-detect-css-functions-support like `CSS.supports()`
-* `api`			Return to Temporal
-* `dom`			Refresher: document.querySelector vs getElementById - they return different types/interfaces i think & the former is easier to cast
-* `js`			import with: css, json & soon text https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import/with
-* `js`			modules: a way to export "*" ? (I don't think this can be done)
-* `js`			identifiers: unicode categories ID_Start & ID_Continue
-* `testing`		Revisit test grouping/nesting
-* `css` 		generated content: can any items be made conditional? Also see if there are any implementations for the "six yet-to-be implemented CSS functions including content(), string(), and leader(), and the three `target` functions"
-* `css`			"Layout was forced before the page was fully loaded. If stylesheets are not yet loaded this may cause a flash of unstyled content."
-* `js`			"This expression is not constructable. Type '....' has no construct signatures.ts(2351)"
-* `js`			Derived subclass as function parameter?
-* `js,jsdoc`	[JSDoc typechecking for inline scripts](<jsdoc typechecking for inline scripts.md>)
-* `jsdoc,ts`	Correct typing for HTMLFormElement.elements / HTMLFormControlsCollection items
-* `jsdoc,ts`	correct type for a dynamically imported module
-* `jsdoc,ts`	partial typing - see if there are ways to declare generic types that only specify certain items of a type signature, eg *just* the return type of a function - and be able to mix these partials together a bit like interfaces
+* `css`				dig more into viewport and container lengths, also how they work in svg
+* `svg`				a way to get the box coordinates of the visible svg render area, not just the viewbox
+* `html,css`		review viewport terminology for visible, hidden areas et al
+* `css`				@supports condition for newer functions like sibling-index() -- try some of the ideas here: https://stackoverflow.com/questions/77441227/how-to-detect-css-functions-support like `CSS.supports()`
+* `api`				Return to Temporal
+* `dom`				Refresher: document.querySelector vs getElementById - they return different types/interfaces i think & the former is easier to cast
+* `js`				import with: css, json & soon text https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import/with
+* `js`				modules: a way to export "*" ? (I don't think this can be done)
+* `js`				identifiers: unicode categories ID_Start & ID_Continue
+* `testing`			Revisit test grouping/nesting
+* `css` 			generated content: Can any items be made conditional? Any early support for the "six yet-to-be implemented CSS functions including content(), string(), and leader(), and the three 'target' functions"
+* `css`				"Layout was forced before the page was fully loaded. If stylesheets are not yet loaded this may cause a flash of unstyled content."
+* `js`				"This expression is not constructable. Type '....' has no construct signatures.ts(2351)"
+* `js`				Derived subclass as function parameter?
+* `js,jsdoc`		[JSDoc typechecking for inline scripts](<jsdoc typechecking for inline scripts.md>)
+* `jsdoc,ts`		Correct typing for HTMLFormElement.elements / HTMLFormControlsCollection items
+* `jsdoc,ts`		correct type for a dynamically imported module
+* `jsdoc,ts`		partial typing - see if there are ways to declare generic types that only specify certain items of a type signature, eg *just* the return type of a function - and be able to mix these partials together a bit like interfaces
 	* See if there's a way to type the whole of a function's arguments object, not just individual parameters
 	* See if @interface typing can be applied to non-class objects
 	* Look for other duck/mixin typing options
@@ -45,7 +46,7 @@ Todo
 * `html`		details/summary move the marker to the right, styling in general
 * `svg/css`		Look into: https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/d#using_d_as_a_css_property
 * `svg`			Look into stroke gradients
-* `svg`			Dig a limit more into 'stroke-miterlimit'
+* `svg`			Dig more into 'stroke-miterlimit'
 
 
 
