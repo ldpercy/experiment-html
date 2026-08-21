@@ -25,6 +25,29 @@ export async function importFile(filePath) {
 
 
 
+
+/** importJson
+ * @param {string} filePath
+ * @returns {Promise<object>}
+ */
+export async function importJson(filePath) {
+	//console.log(textImport);
+	let result = undefined;
+
+	try {
+		const jsonImport = await import(`${filePath}`, { with: { type:'json' }});
+		//console.log('jsonImport',jsonImport);
+		result = jsonImport.default;
+	}
+	catch {
+		console.log(`importJson: cannot read "${filePath}"`);
+	}
+
+	return result;
+}/* importJson */
+
+
+
 /** fetchFile
  * @param {string} filePath
  * @returns {Promise<string>}

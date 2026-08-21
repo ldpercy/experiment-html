@@ -1,11 +1,10 @@
-console.clear();
-log = createPageLog(document.getElementById('pageLog'));
-log('async-await: run');
+
+console.log('async-await: run');
 
 document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
 function documentDOMContentLoaded() {
-	log('document DOMContentLoaded');
+	console.log('document DOMContentLoaded');
 
 	addEventListener('#button-test-1', 'click', asyncCall );
 
@@ -33,9 +32,9 @@ function resolveAfterTimeout(ms) {
 }
 
 async function asyncCall() {
-	log("calling");
+	console.log("calling");
 	const result = await resolveAfterTimeout(1000);
-	log(result);
+	console.log(result);
 	// Expected output: "resolved"
 }
 
@@ -50,11 +49,11 @@ async function asyncCall() {
 **	simple
 */
 
-log('simple: run');
+console.log('simple: run');
 
 
 async function myFunction() {
-	log('myFunction');
+	console.log('myFunction');
 	return "Hello";
 }
 
@@ -78,8 +77,8 @@ function conditionPromise(condition) {
 }
 
 async function asyncCondition(condition) {
-	log(`asyncCondition: ${condition}`);
+	console.log(`asyncCondition: ${condition}`);
 	const result = await conditionPromise(condition);
-	log(result);
+	console.log(result);
 	// Expected output: "resolved"
 }

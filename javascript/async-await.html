@@ -13,27 +13,115 @@
 		<span slot="h1">async-await</span>
 	</page-header>
 
-	<script defer src="async-await.js"></script>
+
+	<!-- <script defer src="async-await.js"></script> -->
 
 	<!--
 	<script defer src="script/example.js"></script>
 	<script defer src="script/simple.js"></script>
 	 -->
 
+	<main>
+
+		<form name="silverdata-test">
+			<h2>silverdata-test</h2>
+
+			<label>base path</label>
+			<input type="text" name="basePath" value="/silver-language/silverdata-js/test/">
+
+			<button type="button" name="load-silverdata-test">
+				load silverdata-test
+			</button>
+
+		</form>
 
 
 
-	<button id="button-test-1">
-		test 1
-	</button>
 
-	<button id="button-ac-true">
-		asyncCondition(true)
-	</button>
+		<form name="old">
 
-	<button id="button-ac-false">
-		asyncCondition(false)
-	</button>
+			<button id="button-test-1">
+				test 1
+			</button>
+
+			<button id="button-ac-true">
+				asyncCondition(true)
+			</button>
+
+			<button id="button-ac-false">
+				asyncCondition(false)
+			</button>
+		</form>
+
+
+
+
+		<script type="module">
+			import { importFile, importJson } from '../[common]/file.js';
+			import { render } from '../[common]/js-to-html.js';
+
+			var basePath = '';
+
+			/** loadTestDirectory
+			 * @param {string} directoryPath
+			 * @return {Promise<TestDirectory>}
+			 */
+			async function loadTestDirectory(directoryPath) {
+				const result = {
+					path	: directoryPath,
+					entry	: []
+				};
+
+				/** @type Array<TestDirEntry> */
+				result.entry = await importJson(`${basePath}${directoryPath}_test.json`);
+
+
+				result.entry = await Array.fromAsync(
+					result.entry,
+					(item) => {
+						if (item.endsWith('/')) {
+							//return "its a dir";
+							const subDir = loadTestDirectory(item);
+							return subDir;
+						}
+						else {
+							return item;
+						}
+					}
+				);
+
+
+				console.log('--loadTestDirectory', directoryPath, result);
+
+				return result;
+			}/* loadTestDirectory */
+
+
+
+
+
+			async function loadSilverdataTest() {
+				basePath = document.forms['silverdata-test']['basePath'].value;
+
+				const result = await loadTestDirectory('/');
+				console.log(result);
+
+				document.getElementById('theOutput').innerHTML = render(result);
+			}
+
+			document.forms['silverdata-test']['load-silverdata-test'].addEventListener('click', loadSilverdataTest);
+
+		</script>
+		<output >
+			<h2>the output</h2>
+			<div id="theOutput"></div>
+		</output>
+
+	</main>
+
+
+
+
 
 </body>
 </html>

@@ -1,4 +1,3 @@
-import { PageHeader } from "./page-header.component.js";
 
-export { PageHeader };
+export { PageHeader } from "./page-header.component.js";
 
