@@ -39,7 +39,7 @@ function renderObject(object) {
 	if (object === null) {
 		result = `<code>null</code>`;
 	}
-	else if (object.constructor.name === 'array') {
+	else if (Array.isArray(object)) {
 		result = renderArray(object);
 	}
 	else {
@@ -55,13 +55,18 @@ function renderObject(object) {
  * @return {string}
  */
 function renderArray(array) {
-	const elements = array.map(
-		(item)=>`<li>${render(item)}</li>`
-	);
+	let elements = '';
+	for (const [index, element] of array.entries()) {
+		//console.log(index, element);
+		elements += `<tr><th>${index}</th><td>${render(element)}</td></tr>`;
+	}
+	// const elements = array.map(
+	// 	(item)=>`<li>${render(item)}</li>`
+	// );
 	const result = `
-		<ol>
+		<table class="array">
 			${elements}
-		</ol>
+		</table>
 	`;
 	return result;
 }
@@ -74,12 +79,12 @@ function renderArray(array) {
 function renderObjectObject(object) {
 	let elements = '';
 	for (const [key, value] of Object.entries(object)) {
-		elements += `<li>${key} : ${render(value)}</li>`;
+		elements += `<tr><th>${key}</th><td>${render(value)}</td></tr>`;
 	}
 	const result = `
-		<ul>
+		<table class="object">
 			${elements}
-		</ul>
+		</table>
 	`;
 	//console.log(result);
 	return result;

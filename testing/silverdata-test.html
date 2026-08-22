@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>silverdata test</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../favicon.svg">
+	<link rel="stylesheet" href="../[common]/style.css">
+	<script type="module" src="../[common]/module.js"></script>
+	<!-- <script defer src="../../[common]/common-script.js"></script> -->
+</head>
+<body>
+	<page-header>
+		<span slot="h1">silverdata test</span>
+	</page-header>
+
+
+	<!-- <script defer src="async-await.js"></script> -->
+
+	<!--
+	<script defer src="script/example.js"></script>
+	<script defer src="script/simple.js"></script>
+	 -->
+
+	<main>
+
+
+
+
+
+		<style contenteditable="plaintext-only">
+			#htmlOutput {
+				table { border-collapse:collapse; }
+				th { vertical-align: middle; }
+
+				table.array {
+					border-color: #aaaaaa;
+					&>tbody>tr>th, &>tbody>tr>td { border-color: #aaaaaa; }
+				}
+
+				table.object {
+					border-color: transparent;
+					&>tbody>tr>th { border: none; background-color: lightsalmon;}
+					&>tbody>tr>td { border-color: lightsalmon; }
+
+
+					&>tbody>tr:first-child { border-radius: 1ex;}
+					&>tbody>tr:first-child {
+						&>th { border-radius: 1ex 0ex 0ex 0ex; }
+						&>td { border-radius: 0ex 1ex 0ex 0ex; }
+					}
+					&>tbody>tr:last-child>th { border-radius: 0ex 0ex 0ex 1ex; }
+
+				}
+			}
+
+		</style>
+
+
+		<form name="silverdata-test">
+			<h2>silverdata-test</h2>
+
+			<label>base path</label>
+			<input type="text" name="basePath" value="/silver-language/silverdata-js/test/">
+
+			<button type="button" name="load-silverdata-test">
+				load silverdata-test
+			</button>
+			<button type="button" name="load-silverdata-test">
+				load & flatten
+			</button>
+		</form>
+
+
+		<script type="module">
+			import { importFile, importJson } from '../[common]/file.js';
+			import { render } from '../[common]/js-to-html.js';
+
+			var basePath = '';
+
+			/** loadTestDirectory
+			 * @param {string} directoryPath
+			 * @return {Promise<TestDirectory>}
+			 */
+			async function loadTestDirectory(directoryPath) {
+				const result = {
+					path	: directoryPath,
+					entry	: []
+				};
+
+				/** @type Array<TestDirEntry> */
+				result.entry = await importJson(`${basePath}${directoryPath}_test.json`);
+
+
+				result.entry = await Array.fromAsync(
+					result.entry,
+					(item) => {
+						if (item.endsWith('/')) {
+							//return "its a dir";
+							const subDir = loadTestDirectory(item);
+							return subDir;
+						}
+						else {
+							return item;
+						}
+					}
+				);
+
+
+				console.log('--loadTestDirectory', directoryPath, result);
+
+				return result;
+			}/* loadTestDirectory */
+
+
+			/* loadSilverdataTest */
+			async function loadSilverdataTest() {
+				basePath = document.forms['silverdata-test']['basePath'].value;
+
+				const result = await loadTestDirectory('/');
+				console.log(result);
+
+				document.getElementById('htmlOutput').innerHTML = render(result);
+				document.getElementById('jsonOutput').innerHTML = JSON.stringify(result,undefined, '	');
+			}
+
+			document.forms['silverdata-test']['load-silverdata-test'].addEventListener('click', loadSilverdataTest);
+
+
+
+			/**
+			 * @param {directory} directory
+			 * @return {array<directory>}
+			 */
+			function flattenPaths(directory) {
+
+				for (const [index, element] of directory.entry.entries()) {
+					//console.log(index, element);
+					//elements += `<tr><th>${index}</th><td>${render(element)}</td></tr>`;
+				}
+
+			}
+
+
+
+			loadSilverdataTest();
+
+		</script>
+
+		<output >
+			<h3>html output</h3>
+			<div id="htmlOutput"></div>
+			<h3>json output</h3>
+			<pre id="jsonOutput"></pre>
+		</output>
+
+
+	</main>
+
+
+</body>
+</html>
