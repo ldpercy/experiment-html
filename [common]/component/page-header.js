@@ -27,6 +27,7 @@ export class PageHeader extends HTMLElement {
 		this.shadowRoot.innerHTML = `
 			<style>
 				@import "/html-experiment/[common]/style.css";				/* this works */
+
 				a { color: color-mix(in srgb, var(--project-colour) 75%, var(--text-colour)); }
 				.project-icon {
 					display: inline-block;

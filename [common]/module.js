@@ -1,3 +1,3 @@
 
-export { PageHeader } from "./page-header.component.js";
-
+export { PageHeader } from "./component/page-header.js";
+export { DataView } from "./component/data-view.js";
