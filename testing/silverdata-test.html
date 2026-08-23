@@ -13,23 +13,9 @@
 		<span slot="h1">silverdata test</span>
 	</page-header>
 
-
-	<!-- <script defer src="async-await.js"></script> -->
-
-	<!--
-	<script defer src="script/example.js"></script>
-	<script defer src="script/simple.js"></script>
-	 -->
-
 	<main>
 
-
-
-
-
 		<style contenteditable="plaintext-only">
-
-
 		</style>
 
 
@@ -61,27 +47,31 @@
 			async function loadTestDirectory(directoryPath) {
 				const result = {
 					path	: directoryPath,
-					entry	: []
+					item	: []
 				};
 
 				/** @type Array<TestDirEntry> */
-				result.entry = await importJson(`${basePath}${directoryPath}_test.json`);
+				try {
+					result.item = await importJson(`${basePath}${directoryPath}_test.json`);
 
-
-				result.entry = await Array.fromAsync(
-					result.entry,
-					(item) => {
-						if (item.endsWith('/')) {
-							//return "its a dir";
-							const subDir = loadTestDirectory(item);
-							return subDir;
+					result.item = await Array.fromAsync(
+						result.item,
+						(item) => {
+							let result;
+							if (item.endsWith('/')) {
+								result = loadTestDirectory(item);
+							}
+							else {
+								result = item;
+							}
+							//console.log(`Array.fromAsync`,result);
+							return result;
 						}
-						else {
-							return item;
-						}
-					}
-				);
-
+					);
+				}
+				catch {
+					console.log(`Can't load ${basePath}${directoryPath}_test.json`);
+				}
 
 				console.log('--loadTestDirectory', directoryPath, result);
 
@@ -89,42 +79,60 @@
 			}/* loadTestDirectory */
 
 
-			/* loadSilverdataTest */
-			async function loadSilverdataTest() {
-				basePath = document.forms['silverdata-test']['basePath'].value;
 
-				const result = await loadTestDirectory('/');
-				console.log(result);
-
-
-				document.getElementById('data-output').render(result);
-				// document.getElementById('htmlOutput').innerHTML = render(result);
-				// document.getElementById('jsonOutput').innerHTML = JSON.stringify(result,undefined, '	');
-			}/* loadSilverdataTest */
-
-
-			document.forms['silverdata-test']['load-silverdata-test'].addEventListener('click', loadSilverdataTest);
-
-
-
-			/**
+			/** flattenSubdirectories
 			 * @param {directory} directory
 			 * @return {array<directory>}
 			 */
 			function flattenSubdirectories(directory) {
-				const result = [];
-				for (const [index, element] of directory.entry.entries()) {
+				const result = [
+					{
+						path: directory.path,
+						item: [],
+					}
+				];
 
-					if (typeof element === 'object') {
+				for (const item of directory.item.values()) {
 
+					if (typeof item === 'string') {
+						result[0].item.push(item);
+					}
+					else if (typeof item === 'object') {
+						result.push(
+							{
+								path: `${directory.path}${item.path}`,
+								item: item.item,
+							}
+						);
 					}
 
 					//console.log(index, element);
 					//elements += `<tr><th>${index}</th><td>${render(element)}</td></tr>`;
 				}
+				return result;
+			}/* flattenSubdirectories */
 
-			}
 
+			/* loadSilverdataTest */
+			async function loadSilverdataTest() {
+				basePath = document.forms['silverdata-test']['basePath'].value;
+				const result = await loadTestDirectory('/');
+				console.log(result);
+				document.getElementById('data-output').render(result);
+			}/* loadSilverdataTest */
+
+			/* loadSilverdataTest */
+			async function loadAndFlatten() {
+				basePath = document.forms['silverdata-test']['basePath'].value;
+				const result = await loadTestDirectory('/');
+				const flattened = flattenSubdirectories(result);
+				console.log(flattened);
+				document.getElementById('data-output').render(flattened);
+			}/* loadAndFlatten */
+
+
+			document.forms['silverdata-test']['load-silverdata-test'].addEventListener('click', loadSilverdataTest);
+			document.forms['silverdata-test']['load-and-flatten'].addEventListener('click', loadAndFlatten);
 
 
 			loadSilverdataTest();
@@ -133,15 +141,7 @@
 
 		<output >
 
-
-
-			<!-- <h3>html output</h3>
-			<div id="htmlOutput"></div>
-			<h3>json output</h3>
-			<pre id="jsonOutput"></pre> -->
-
 			<data-view id="data-output"></data-view>
-
 
 		</output>
 
