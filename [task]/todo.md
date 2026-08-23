@@ -39,7 +39,7 @@ Todo
 * `css`			Parent selector - 'has'
 * `css`			Find out if select size can be controlled *nicely* with css
 * `css`			See if there's a way to collapse the single extra spaces that sometimes get added just from formatting, eg `<h1>	<a ...`
-* `font`		find some web-safe ones or figure out serving
+* `font`		Find some web-safe ones or figure out serving. Gentium is quite nice.
 * `css grid`	is there a simple way to make grid items go full-width without knowing the column count?
 * `css grid`	dynamic grids in general - eg based on custom vars
 * `dom`			3d transform experiments
