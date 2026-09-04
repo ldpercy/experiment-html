@@ -36,7 +36,7 @@ Have to figure out what it's doing.
 See: https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#import
 
 
-### Root content???
+### Root context???
 Also, type checking sometimes appears to include files that aren't imported or included in any way.
 I'll get duplicate type warnings across files that don't yet seem to be implicated with one another.
 Not sure from where the compiler/checker sets it root context to start building the type catalog.

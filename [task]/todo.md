@@ -6,6 +6,8 @@ Task
 
 Todo
 ----
+* `tree`			Get a few basic data structures in place w/ types & classes; some experimental code for things like metrics
+* `permutation`		Once tree ADTs in place see if permutations can be returned as trees
 * `async`			Revamp the async-await experiment, really need to dig in here, especially dependent sequences of awaits
 * `file`			Continue file read experiments with fetch & import
 * `web components`	find out more about so-called "html web components", ie those *without* shadow dom
