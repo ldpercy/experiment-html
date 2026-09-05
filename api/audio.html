@@ -6,7 +6,6 @@
 	<link rel="icon" href="../favicon.svg">
 	<link rel="stylesheet" href="../[common]/style.css">
 	<script type="module" src="../[common]/module.js"></script>
-	<!-- <script defer src="../../[common]/common-script.js"></script> -->
 </head>
 <body>
 	<page-header>
@@ -19,10 +18,17 @@
 		</style>
 
 
-		<form name="silverdata-test">
-			<h2>silverdata-test</h2>
+		<form name="main">
+			<h2>main</h2>
 
-			<label>base path</label>
+			<figure>
+				<figcaption>audio - bass thing.ogg</figcaption>
+				<audio controls src="./audio - bass thing.ogg"></audio>
+				<a href="./audio - bass thing.ogg"> Download audio </a>
+			</figure>
+
+
+			<!-- <label>base path</label>
 			<input type="text" name="basePath" value="/silver-language/silverdata-js/test/">
 
 			<button type="button" name="load-silverdata-test">
@@ -30,37 +36,20 @@
 			</button>
 			<button type="button" name="load-and-flatten">
 				load & flatten
-			</button>
+			</button> -->
 		</form>
 
 
 		<script type="module">
 
-			import { loadTestDirectory, flattenSubdirectories, setBasePath } from './silverdata-test.js';
-
-			/* loadSilverdataTest */
-			async function loadSilverdataTest() {
-				setBasePath(document.forms['silverdata-test']['basePath'].value);
-				const result = await loadTestDirectory('/');
-				console.log(result);
-				document.getElementById('data-output').render(result);
-			}/* loadSilverdataTest */
-
-			/* loadSilverdataTest */
-			async function loadAndFlatten() {
-				setBasePath(document.forms['silverdata-test']['basePath'].value);
-				const result = await loadTestDirectory('/');
-				const flattened = flattenSubdirectories(result);
-				console.log(flattened);
-				document.getElementById('data-output').render(flattened);
-			}/* loadAndFlatten */
+			import { documentDOMContentLoaded } from './audio.js';
 
 
-			document.forms['silverdata-test']['load-silverdata-test'].addEventListener('click', loadSilverdataTest);
-			document.forms['silverdata-test']['load-and-flatten'].addEventListener('click', loadAndFlatten);
+			// document.forms['silverdata-test']['load-silverdata-test'].addEventListener('click', loadSilverdataTest);
+			// document.forms['silverdata-test']['load-and-flatten'].addEventListener('click', loadAndFlatten);
 
 
-			loadSilverdataTest();
+			document.addEventListener('DOMContentLoaded', documentDOMContentLoaded);
 
 		</script>
 
