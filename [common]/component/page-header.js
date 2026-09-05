@@ -45,7 +45,7 @@ export class PageHeader extends HTMLElement {
 				<h1>
 					<a href="/html-experiment" class="project-icon"><img src="/html-experiment/favicon.svg"></a>
 					<a href="">
-						<slot name="h1">Default page title</slot>
+						<slot name="page-title">Default page title</slot>
 					</a>
 				</h1>
 				<nav>
